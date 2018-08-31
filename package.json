@@ -1,0 +1,46 @@
+{
+  "name": "massiv-design-system",
+  "version": "0.0.1",
+  "description": "a simple design system",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src --out-dir dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jarvispact/massiv-design-system.git"
+  },
+  "keywords": [
+    "react",
+    "design",
+    "system",
+    "massiv"
+  ],
+  "author": "jarvispact <jarvispact@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jarvispact/massiv-design-system/issues"
+  },
+  "homepage": "https://github.com/jarvispact/massiv-design-system#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "eslint": "^5.4.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2"
+  },
+  "peerDependencies": {
+    "react": ">= 16.0.0"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.2",
+    "styled-components": "^3.4.5"
+  }
+}
