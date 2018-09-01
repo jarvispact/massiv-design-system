@@ -26,6 +26,7 @@
   "homepage": "https://github.com/jarvispact/massiv-design-system#readme",
   "devDependencies": {
     "@storybook/addon-actions": "^3.4.10",
+    "@storybook/addon-knobs": "^3.4.10",
     "@storybook/react": "^3.4.10",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
