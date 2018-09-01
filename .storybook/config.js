@@ -8,6 +8,7 @@ import './global.css';
 const loadStories = () => {
     require('../src/atoms/Button/Button.story.js');
     require('../src/atoms/Icon/Icon.story.js');
+    require('../src/atoms/Text/Text.story.js');
 }
 
 const GlobalDecorator = storyFn => (

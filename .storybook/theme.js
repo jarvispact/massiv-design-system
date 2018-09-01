@@ -9,6 +9,7 @@ export default {
     fonts: {
         heading: '"Josefin Sans", sans-serif',
         paragraph: '"Raleway", sans-serif',
+        anchor: '"Raleway", sans-serif',
     },
 
     color: {

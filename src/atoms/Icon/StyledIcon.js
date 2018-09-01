@@ -14,13 +14,11 @@ const StyledIcon = styled.i`
     }};
     color: ${(props) => {
         const themeColor = props.theme.color;
-        if (props.color) return themeColor[props.color] || props.color;
-        return themeColor.black;
+        return themeColor[props.color] || props.color;
     }};
     font-size: ${(props) => {
         const themeScale = props.theme.scale;
-        if (props.scale) return themeScale[props.scale] || props.scale;
-        return themeScale.m;
+        return themeScale[props.scale] || props.scale;
     }};
     ${(props) => {
         if (props.loading) {
