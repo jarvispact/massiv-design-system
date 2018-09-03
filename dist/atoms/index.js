@@ -13,4 +13,22 @@ Object.defineProperty(exports, 'Button', {
   }
 });
 
+var _Icon = require('./Icon');
+
+Object.defineProperty(exports, 'Icon', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Icon).default;
+  }
+});
+
+var _Text = require('./Text');
+
+Object.defineProperty(exports, 'Text', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Text).default;
+  }
+});
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
