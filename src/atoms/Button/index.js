@@ -1,31 +1,50 @@
 import React from 'react';
-import { bool, string, func, node } from 'prop-types';
+import { bool, string, func, node, oneOf } from 'prop-types';
 import StyledButton from './StyledButton';
 
 const propTypes = {
+    type: oneOf(['submit', 'button']),
+    flat: bool,
+    raised: bool,
+    border: bool,
     disabled: bool,
     color: string,
-    scale: string,
     fontColor: string,
-    onClick: func.isRequired,
-    children: node.isRequired,
+    scale: string,
+    className: string,
+    children: node,
+    onClick: func,
+    styles: func,
 };
 
 const defaultProps = {
+    type: 'button',
+    flat: undefined,
+    raised: undefined,
+    border: undefined,
     disabled: undefined,
     color: undefined,
-    scale: undefined,
     fontColor: undefined,
+    scale: undefined,
+    className: undefined,
+    children: undefined,
+    onClick: undefined,
+    styles: undefined,
 };
 
-const Button = ({ disabled, color, scale, fontColor, onClick, children }) => (
+const Button = ({ type, flat, raised, border, disabled, color, fontColor, scale, className, children, onClick, styles }) => (
     <StyledButton
-        type="button"
+        type={type}
+        flat={flat}
+        raised={raised}
+        border={border}
         disabled={disabled}
-        onClick={onClick}
         color={color}
-        scale={scale}
         fontColor={fontColor}
+        scale={scale}
+        className={className}
+        onClick={onClick}
+        styles={styles}
     >
         {children}
     </StyledButton>

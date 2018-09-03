@@ -16,6 +16,7 @@ export default {
         black: '#202021',
         white: '#F7F7F7',
         lightGray: '#d8d8d8',
+        disabled: '#d8d8d8',
         darkGray: '#4f4f4f',
         info: '#48C5FC',
         success: '#37B661',

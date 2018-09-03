@@ -6,31 +6,31 @@ const propTypes = {
     name: string.isRequired,
     color: string,
     scale: string,
-    disabled: bool,
     loading: bool,
     onClick: func,
     className: string,
+    styles: func,
 };
 
 const defaultProps = {
     color: undefined,
     scale: undefined,
-    disabled: undefined,
     loading: undefined,
     onClick: undefined,
     className: undefined,
+    styles: undefined,
 };
 
-const Icon = ({ name, color, scale, disabled, loading, onClick, className }) => {
+const Icon = ({ name, color, scale, loading, onClick, className, styles }) => {
     const cssClassNames = `material-icons ${className || ''}`;
     return (
         <StyledIcon
-            color={disabled ? 'lightGray' : color}
+            color={color}
             scale={scale}
-            disabled={disabled}
             loading={loading}
-            onClick={disabled || loading ? undefined : onClick}
+            onClick={loading ? undefined : onClick}
             className={cssClassNames}
+            styles={styles}
         >
             {loading ? 'settings' : name}
         </StyledIcon>

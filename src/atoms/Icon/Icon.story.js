@@ -14,7 +14,6 @@ storiesOf('Icon', module)
             name={text('name', 'grade')}
             color={text('color', undefined)}
             scale={text('scale', undefined)}
-            disabled={boolean('disabled', false)}
             loading={boolean('loading', false)}
         />
     ))
@@ -23,7 +22,6 @@ storiesOf('Icon', module)
             name={text('name', 'grade')}
             color={text('color', undefined)}
             scale={text('scale', undefined)}
-            disabled={boolean('disabled', false)}
             loading={boolean('loading', false)}
             onClick={action('clicked')}
         />

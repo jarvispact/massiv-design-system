@@ -9,7 +9,7 @@ const StyledIcon = styled.i`
     vertical-align: -16%;
     padding: 0 0.25rem;
     cursor: ${(props) => {
-        if (props.disabled || props.loading) return 'not-allowed';
+        if (props.loading) return 'not-allowed';
         if (props.onClick) return 'pointer';
     }};
     color: ${(props) => {
@@ -28,7 +28,7 @@ const StyledIcon = styled.i`
             `;
         }
     }};
-
+    ${props => props.styles && props.styles(props)};
 `;
 
 export default StyledIcon;
