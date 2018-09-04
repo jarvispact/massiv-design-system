@@ -6,7 +6,7 @@ const propTypes = {
     theme: shape({
         screen: object,
         color: object,
-        scale: object,
+        fontScale: object,
     }).isRequired,
     children: node.isRequired,
 };

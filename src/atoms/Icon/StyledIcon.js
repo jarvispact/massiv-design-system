@@ -6,7 +6,7 @@ const rotationKeyframes = keyframes`
 `;
 
 const StyledIcon = styled.i`
-    vertical-align: -16%;
+    vertical-align: ${props => props.theme.icons.verticalAlign};
     padding: 0 0.25rem;
     cursor: ${(props) => {
         if (props.loading) return 'not-allowed';
@@ -17,7 +17,7 @@ const StyledIcon = styled.i`
         return themeColor[props.color] || props.color;
     }};
     font-size: ${(props) => {
-        const themeScale = props.theme.scale;
+        const themeScale = props.theme.fontScale;
         return themeScale[props.scale] || props.scale;
     }};
     ${(props) => {

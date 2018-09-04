@@ -8,7 +8,7 @@ const StyledButton = styled.button`
     ${getBorder()};
     ${getShadow()};
     color: ${getFontColor()};
-    font-size: ${props => props.theme.scale[props.scale] || props.scale};
+    font-size: ${props => props.theme.fontScale[props.scale] || props.scale};
     font-family: ${props => props.theme.fonts.paragraph};
     padding: 0.5rem 1rem;
     &:focus {

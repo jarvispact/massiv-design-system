@@ -6,8 +6,13 @@ export default {
         xl: '1600px',
     },
 
+    icons: {
+        className: 'material-icons',
+        verticalAlign: '-16%',
+    },
+
     fonts: {
-        heading: '"Josefin Sans", sans-serif',
+        heading: '"Josefin Sans", serif',
         paragraph: '"Raleway", sans-serif',
         anchor: '"Raleway", sans-serif',
     },
@@ -16,7 +21,6 @@ export default {
         black: '#202021',
         white: '#F7F7F7',
         lightGray: '#d8d8d8',
-        disabled: '#d8d8d8',
         darkGray: '#4f4f4f',
         info: '#48C5FC',
         success: '#37B661',
@@ -24,11 +28,10 @@ export default {
         error: '#E25650',
         primary: '#3F51B5',
         secondary: '#FFC107',
+        disabled: '#d8d8d8',
     },
 
-    scale: {
-        xxxs: '0.15rem',
-        xxs: '0.25rem',
+    fontScale: {
         xs: '0.5rem',
         s: '0.8rem',
         m: '1rem',

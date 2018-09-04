@@ -1,8 +1,14 @@
 import React from 'react';
-import { string, bool, func } from 'prop-types';
+import { shape, string, bool, func } from 'prop-types';
+import { withTheme } from 'styled-components';
 import StyledIcon from './StyledIcon';
 
 const propTypes = {
+    theme: shape({
+        icons: shape({
+            className: string.isRequired,
+        }).isRequired,
+    }).isRequired,
     name: string.isRequired,
     color: string,
     scale: string,
@@ -21,23 +27,20 @@ const defaultProps = {
     styles: undefined,
 };
 
-const Icon = ({ name, color, scale, loading, onClick, className, styles }) => {
-    const cssClassNames = `material-icons ${className || ''}`;
-    return (
-        <StyledIcon
-            color={color}
-            scale={scale}
-            loading={loading}
-            onClick={loading ? undefined : onClick}
-            className={cssClassNames}
-            styles={styles}
-        >
-            {loading ? 'settings' : name}
-        </StyledIcon>
-    );
-};
+const Icon = ({ theme, name, color, scale, loading, onClick, className, styles }) => (
+    <StyledIcon
+        color={color}
+        scale={scale}
+        loading={loading}
+        onClick={loading ? undefined : onClick}
+        className={`${theme.icons.className} ${className || ''}`}
+        styles={styles}
+    >
+        {loading ? 'settings' : name}
+    </StyledIcon>
+);
 
 Icon.propTypes = propTypes;
 Icon.defaultProps = defaultProps;
 
-export default Icon;
+export default withTheme(Icon);

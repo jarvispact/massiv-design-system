@@ -23,7 +23,7 @@ const font = type => props => `
 
 const textStyle = () => props => `
     color: ${props.theme.color[props.color] || props.color};
-    font-size: ${props.theme.scale[props.scale] || props.scale};
+    font-size: ${props.theme.fontScale[props.scale] || props.scale};
     ${props.styles && props.styles(props)};
 `;
 
