@@ -1,7 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 import { text, boolean } from '@storybook/addon-knobs';
 import Icon from '.';
 
@@ -17,12 +16,13 @@ storiesOf('Icon', module)
             loading={boolean('loading', false)}
         />
     ))
-    .add('icon with knobs and onClick handler', () => (
+    .add('icon with custom styles prop', () => (
         <Icon
             name={text('name', 'grade')}
-            color={text('color', undefined)}
-            scale={text('scale', undefined)}
             loading={boolean('loading', false)}
-            onClick={action('clicked')}
+            styles={props => `
+                color: ${props.theme.color.primary};
+                font-size: ${props.theme.fontScale.xxl};
+            `}
         />
     ));

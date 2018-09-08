@@ -13,4 +13,13 @@ Object.defineProperty(exports, 'Theme', {
   }
 });
 
+var _ThemeChanger = require('./ThemeChanger');
+
+Object.defineProperty(exports, 'ThemeChanger', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_ThemeChanger).default;
+  }
+});
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

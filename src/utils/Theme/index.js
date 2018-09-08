@@ -1,19 +1,44 @@
-import React from 'react';
-import { shape, object, node } from 'prop-types';
+import React, { Component } from 'react';
+import { shape, string, node } from 'prop-types';
 import { ThemeProvider } from 'styled-components';
+import { ThemeContext } from '../../contexts';
 
 const propTypes = {
-    theme: shape({
-        screen: object,
-        color: object,
-        fontScale: object,
-    }).isRequired,
+    themes: shape({}).isRequired,
+    activeTheme: string.isRequired,
     children: node.isRequired,
 };
 
-const Theme = ({ theme, children }) => (
-    <ThemeProvider theme={theme}>{children}</ThemeProvider>
-);
+class Theme extends Component {
+    constructor(props) {
+        super(props);
+        const { themes, activeTheme } = this.props;
+        this.state = { themes, activeTheme };
+    }
+
+    setTheme(theme) {
+        this.setState({ activeTheme: theme });
+    }
+
+    render() {
+        const { children } = this.props;
+        const { themes, activeTheme } = this.state;
+
+        const ctx = {
+            themes,
+            activeTheme,
+            setTheme: this.setTheme,
+        };
+
+        return (
+            <ThemeContext.Provider value={ctx}>
+                <ThemeContext.Consumer>
+                    {context => <ThemeProvider theme={context.themes[context.activeTheme]}>{children}</ThemeProvider>}
+                </ThemeContext.Consumer>
+            </ThemeContext.Provider>
+        );
+    }
+}
 
 Theme.propTypes = propTypes;
 

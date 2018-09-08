@@ -4,12 +4,12 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Icon = require('./Icon');
+var _ThemeContext = require('./ThemeContext');
 
-Object.defineProperty(exports, 'Icon', {
+Object.defineProperty(exports, 'ThemeContext', {
   enumerable: true,
   get: function get() {
-    return _interopRequireDefault(_Icon).default;
+    return _interopRequireDefault(_ThemeContext).default;
   }
 });
 
