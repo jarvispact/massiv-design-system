@@ -1,9 +1,13 @@
 import React from 'react';
-import { shape, string, bool, func } from 'prop-types';
+import { shape, object, string, bool, func } from 'prop-types';
 import styled, { withTheme } from 'styled-components';
 
 const propTypes = {
-    theme: shape({}).isRequired,
+    theme: shape({
+        settings: shape({
+            icons: object.isRequired,
+        }).isRequired,
+    }).isRequired,
     name: string.isRequired,
     color: string,
     scale: string,
@@ -30,7 +34,7 @@ const Icon = ({ theme, name, color, scale, loading, className, styles }) => (
         color={color}
         scale={scale}
         loading={loading}
-        className={`${theme.settings.icons.className || ''} ${className || ''}`.trim()}
+        className={`${theme.settings.icons.className || ''} ${className || ''}`.trim() || undefined}
         styles={styles}
     >
         {loading ? 'settings' : name}

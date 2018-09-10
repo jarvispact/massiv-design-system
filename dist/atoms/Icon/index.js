@@ -21,7 +21,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var propTypes = {
-    theme: (0, _propTypes.shape)({}).isRequired,
+    theme: (0, _propTypes.shape)({
+        settings: (0, _propTypes.shape)({
+            icons: _propTypes.object.isRequired
+        }).isRequired
+    }).isRequired,
     name: _propTypes.string.isRequired,
     color: _propTypes.string,
     scale: _propTypes.string,
@@ -58,7 +62,7 @@ var Icon = function Icon(_ref) {
             color: color,
             scale: scale,
             loading: loading,
-            className: ((theme.settings.icons.className || '') + ' ' + (className || '')).trim(),
+            className: ((theme.settings.icons.className || '') + ' ' + (className || '')).trim() || undefined,
             styles: styles
         },
         loading ? 'settings' : name
