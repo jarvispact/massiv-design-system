@@ -58,7 +58,7 @@ var Icon = function Icon(_ref) {
             color: color,
             scale: scale,
             loading: loading,
-            className: (theme.settings.icons.className || '') + ' ' + (className || ''),
+            className: ((theme.settings.icons.className || '') + ' ' + (className || '')).trim(),
             styles: styles
         },
         loading ? 'settings' : name

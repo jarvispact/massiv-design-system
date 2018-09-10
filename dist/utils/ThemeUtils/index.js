@@ -24,20 +24,19 @@ var defaultProps = {
     children: undefined
 };
 
-var ThemeChanger = function ThemeChanger(_ref) {
+var ThemeUtils = function ThemeUtils(_ref) {
     var render = _ref.render,
         children = _ref.children;
     return _react2.default.createElement(
         _contexts.ThemeContext.Consumer,
         null,
-        function (_ref2) {
-            var setTheme = _ref2.setTheme;
-            return render ? render(setTheme) : children(setTheme);
+        function (ctx) {
+            return render ? render(ctx) : children(ctx);
         }
     );
 };
 
-ThemeChanger.propTypes = propTypes;
-ThemeChanger.defaultProps = defaultProps;
+ThemeUtils.propTypes = propTypes;
+ThemeUtils.defaultProps = defaultProps;
 
-exports.default = ThemeChanger;
+exports.default = ThemeUtils;
