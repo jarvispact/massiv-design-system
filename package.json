@@ -8,6 +8,7 @@
     "build": "babel src --out-dir dist",
     "storybook": "start-storybook -p 9001 -c .storybook"
   },
+  "pre-commit": ["build"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jarvispact/massiv-design-system.git"
@@ -39,6 +40,7 @@
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
     "material-design-icons": "^3.0.1",
+    "pre-commit": "^1.2.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2"
   },
