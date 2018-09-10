@@ -30,7 +30,7 @@ const Icon = ({ theme, name, color, scale, loading, className, styles }) => (
         color={color}
         scale={scale}
         loading={loading}
-        className={`${theme.settings.icons.className || ''} ${className || ''}`}
+        className={`${theme.settings.icons.className || ''} ${className || ''}`.trim()}
         styles={styles}
     >
         {loading ? 'settings' : name}

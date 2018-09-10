@@ -12,13 +12,13 @@ const defaultProps = {
     children: undefined,
 };
 
-const ThemeChanger = ({ render, children }) => (
+const ThemeUtils = ({ render, children }) => (
     <ThemeContext.Consumer>
-        {({ setTheme }) => (render ? render(setTheme) : children(setTheme))}
+        {ctx => (render ? render(ctx) : children(ctx))}
     </ThemeContext.Consumer>
 );
 
-ThemeChanger.propTypes = propTypes;
-ThemeChanger.defaultProps = defaultProps;
+ThemeUtils.propTypes = propTypes;
+ThemeUtils.defaultProps = defaultProps;
 
-export default ThemeChanger;
+export default ThemeUtils;
