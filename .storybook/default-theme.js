@@ -1,5 +1,3 @@
-import IconStyles from '../src/atoms/Icon/Icon.styles';
-
 const settings = {
     screen: {
         s: '450px',
@@ -41,13 +39,8 @@ const fontScale = {
     xxxl: '3rem',
 };
 
-const components = {
-    Icon: IconStyles,
-};
-
 export default {
     settings,
     color,
     fontScale,
-    components,
 };

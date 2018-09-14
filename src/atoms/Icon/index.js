@@ -1,40 +1,36 @@
 import React from 'react';
 import { shape, object, string, bool, func } from 'prop-types';
-import styled, { withTheme } from 'styled-components';
+import { withTheme } from 'styled-components';
+import StyledIcon from './StyledIcon';
 
 const propTypes = {
     theme: shape({
         settings: shape({
-            icons: object.isRequired,
+            icons: object,
         }).isRequired,
     }).isRequired,
     name: string.isRequired,
-    color: string,
-    scale: string,
+    fontColor: string,
+    fontScale: string,
     loading: bool,
     className: string,
     styles: func,
 };
 
 const defaultProps = {
-    color: undefined,
-    scale: undefined,
+    fontColor: undefined,
+    fontScale: undefined,
     loading: undefined,
     className: undefined,
     styles: undefined,
 };
 
-const StyledIcon = styled.i`
-    ${props => props.theme.components.Icon(props)};
-    ${props => props.styles && props.styles(props)};
-`;
-
-const Icon = ({ theme, name, color, scale, loading, className, styles }) => (
+const Icon = ({ theme, name, fontColor, fontScale, loading, className, styles }) => (
     <StyledIcon
-        color={color}
-        scale={scale}
+        fontColor={fontColor}
+        fontScale={fontScale}
         loading={loading}
-        className={`${theme.settings.icons.className || ''} ${className || ''}`.trim() || undefined}
+        className={`${theme.settings.icons ? theme.settings.icons.className : ''} ${className || ''}`.trim()}
         styles={styles}
     >
         {loading ? 'settings' : name}
