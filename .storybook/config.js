@@ -12,6 +12,7 @@ const themes = {
 const loadStories = () => {
     require('../src/atoms/Icon/Icon.story.js');
     require('../src/atoms/Text/Text.story.js');
+    require('../src/atoms/Box/Box.story.js');
 }
 
 const GlobalDecorator = storyFn => (

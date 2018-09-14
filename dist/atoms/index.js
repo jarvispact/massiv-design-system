@@ -4,6 +4,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _Box = require('./Box');
+
+Object.defineProperty(exports, 'Box', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Box).default;
+  }
+});
+
 var _Icon = require('./Icon');
 
 Object.defineProperty(exports, 'Icon', {
