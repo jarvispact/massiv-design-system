@@ -10,13 +10,29 @@ var _styledComponents = require('styled-components');
 
 var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
+var _propTypes = require('prop-types');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
+var propTypes = {
+    fontColor: _propTypes.string,
+    fontScale: _propTypes.string,
+    styles: _propTypes.func,
+    className: _propTypes.string
+};
+
+var defaultProps = {
+    fontColor: undefined,
+    fontScale: undefined,
+    styles: undefined,
+    className: undefined
+};
+
 var getStyles = function getStyles(type) {
     return function (props) {
-        return '\n    font-family: ' + props.theme.settings.fonts[type] + ';\n    color: ' + (props.theme.color[props.fontColor] || props.fontColor) + ';\n    font-size: ' + (props.theme.fontScale[props.fontScale] || props.fontScale) + ';\n    ' + (props.styles && props.styles(props)) + ';\n';
+        return '\n    font-family: ' + props.theme.settings.fonts[type] + ';\n    color: ' + (props.theme.color[props.fontColor] || props.fontColor || '') + ';\n    font-size: ' + (props.theme.fontScale[props.fontScale] || props.fontScale || '') + ';\n    ' + (props.styles ? props.styles(props) : '') + ';\n';
     };
 };
 
@@ -32,5 +48,11 @@ var Text = {
     Span: _styledComponents2.default.span(_templateObject, getStyles('paragraph')),
     Label: _styledComponents2.default.label(_templateObject, getStyles('paragraph'))
 };
+
+Object.keys(Text).forEach(function (key) {
+    var Component = Text[key];
+    Component.propTypes = propTypes;
+    Component.defaultProps = defaultProps;
+});
 
 exports.default = Text;

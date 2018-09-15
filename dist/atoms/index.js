@@ -13,6 +13,15 @@ Object.defineProperty(exports, 'Box', {
   }
 });
 
+var _Button = require('./Button');
+
+Object.defineProperty(exports, 'Button', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Button).default;
+  }
+});
+
 var _Icon = require('./Icon');
 
 Object.defineProperty(exports, 'Icon', {

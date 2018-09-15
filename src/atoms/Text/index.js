@@ -1,10 +1,25 @@
 import styled from 'styled-components';
+import { string, func } from 'prop-types';
+
+const propTypes = {
+    fontColor: string,
+    fontScale: string,
+    styles: func,
+    className: string,
+};
+
+const defaultProps = {
+    fontColor: undefined,
+    fontScale: undefined,
+    styles: undefined,
+    className: undefined,
+};
 
 const getStyles = type => props => `
     font-family: ${props.theme.settings.fonts[type]};
-    color: ${props.theme.color[props.fontColor] || props.fontColor};
-    font-size: ${props.theme.fontScale[props.fontScale] || props.fontScale};
-    ${props.styles && props.styles(props)};
+    color: ${props.theme.color[props.fontColor] || props.fontColor || ''};
+    font-size: ${props.theme.fontScale[props.fontScale] || props.fontScale || ''};
+    ${props.styles ? props.styles(props) : ''};
 `;
 
 const Text = {
@@ -19,5 +34,11 @@ const Text = {
     Span: styled.span`${getStyles('paragraph')}`,
     Label: styled.label`${getStyles('paragraph')}`,
 };
+
+Object.keys(Text).forEach((key) => {
+    const Component = Text[key];
+    Component.propTypes = propTypes;
+    Component.defaultProps = defaultProps;
+});
 
 export default Text;

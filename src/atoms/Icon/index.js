@@ -13,16 +13,16 @@ const propTypes = {
     fontColor: string,
     fontScale: string,
     loading: bool,
-    className: string,
     styles: func,
+    className: string,
 };
 
 const defaultProps = {
     fontColor: undefined,
     fontScale: undefined,
     loading: undefined,
-    className: undefined,
     styles: undefined,
+    className: undefined,
 };
 
 const Icon = ({ theme, name, fontColor, fontScale, loading, className, styles }) => (

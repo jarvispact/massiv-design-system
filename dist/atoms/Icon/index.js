@@ -28,16 +28,16 @@ var propTypes = {
     fontColor: _propTypes.string,
     fontScale: _propTypes.string,
     loading: _propTypes.bool,
-    className: _propTypes.string,
-    styles: _propTypes.func
+    styles: _propTypes.func,
+    className: _propTypes.string
 };
 
 var defaultProps = {
     fontColor: undefined,
     fontScale: undefined,
     loading: undefined,
-    className: undefined,
-    styles: undefined
+    styles: undefined,
+    className: undefined
 };
 
 var Icon = function Icon(_ref) {
