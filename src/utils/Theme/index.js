@@ -33,9 +33,7 @@ class Theme extends Component {
 
         return (
             <ThemeContext.Provider value={ctx}>
-                <ThemeContext.Consumer>
-                    {context => <ThemeProvider theme={context.themes[context.activeTheme]}>{children}</ThemeProvider>}
-                </ThemeContext.Consumer>
+                <ThemeProvider theme={ctx.themes[ctx.activeTheme]}>{children}</ThemeProvider>
             </ThemeContext.Provider>
         );
     }

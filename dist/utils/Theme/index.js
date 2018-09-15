@@ -70,15 +70,9 @@ var Theme = function (_Component) {
                 _contexts.ThemeContext.Provider,
                 { value: ctx },
                 _react2.default.createElement(
-                    _contexts.ThemeContext.Consumer,
-                    null,
-                    function (context) {
-                        return _react2.default.createElement(
-                            _styledComponents.ThemeProvider,
-                            { theme: context.themes[context.activeTheme] },
-                            children
-                        );
-                    }
+                    _styledComponents.ThemeProvider,
+                    { theme: ctx.themes[ctx.activeTheme] },
+                    children
                 )
             );
         }
