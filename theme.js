@@ -16,6 +16,7 @@ const settings = {
 };
 
 const color = {
+    white: '#F7F7F7',
     background: '#F7F7F7',
     primary: '#3F51B5',
     secondary: '#FFC107',
@@ -36,19 +37,19 @@ const fontScale = {
     xxxl: '3rem',
 };
 
-const scale = {
+const spacing = {
     xs: '0.5rem',
     s: '1rem',
     m: '1.5rem',
     l: '2rem',
-    xl: '2.5rem',
-    xxl: '3rem',
-    xxxl: '4rem',
+    xl: '3rem',
+    xxl: '4rem',
+    xxxl: '6rem',
 };
 
 export default {
     settings,
     color,
     fontScale,
-    scale,
+    spacing,
 };

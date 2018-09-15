@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _templateObject = _taggedTemplateLiteral(['\n    from { transform: rotate(0deg); }\n    to { transform: rotate(360deg); }\n'], ['\n    from { transform: rotate(0deg); }\n    to { transform: rotate(360deg); }\n']),
-    _templateObject2 = _taggedTemplateLiteral(['\n    color: ', ';\n    font-size: ', ';\n    ', ';\n    ', ';\n'], ['\n    color: ', ';\n    font-size: ', ';\n    ', ';\n    ', ';\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n    color: ', ';\n    font-size: ', ';\n    vertical-align: -16%;\n    ', ';\n    ', ';\n'], ['\n    color: ', ';\n    font-size: ', ';\n    vertical-align: -16%;\n    ', ';\n    ', ';\n']),
     _templateObject3 = _taggedTemplateLiteral(['\n                display: inline-block;\n                animation: ', ' 0.85s linear infinite;\n            '], ['\n                display: inline-block;\n                animation: ', ' 0.85s linear infinite;\n            ']);
 
 var _styledComponents = require('styled-components');

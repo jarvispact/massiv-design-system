@@ -1,39 +1,47 @@
-import styled from 'styled-components';
+import React from 'react';
 import { string, func, node } from 'prop-types';
+import StyledButton from './StyledButton';
 
 const propTypes = {
-    bgColor: string,
-    fontColor: string,
-    w: string,
-    h: string,
+    onClick: func.isRequired,
+    type: string,
+    color: string,
+    scale: string,
+    bg: string,
+    width: string,
+    height: string,
     styles: func,
     className: string,
     children: node,
 };
 
 const defaultProps = {
-    bgColor: undefined,
-    fontColor: undefined,
-    w: undefined,
-    h: undefined,
+    type: undefined,
+    color: undefined,
+    scale: undefined,
+    bg: undefined,
+    width: undefined,
+    height: undefined,
     styles: undefined,
     className: undefined,
     children: undefined,
 };
 
-const Button = styled.button`
-    padding: 0.5rem 1rem;
-    border-style: none;
-    border-radius: 2px;
-    &:focus {
-        outline: 0;
-    }
-    ${props => (props.bgColor ? `background-color: ${props.theme.color[props.bgColor] || props.bgColor}` : 'background-color: transparent')};
-    ${props => (props.fontColor ? `color: ${props.theme.color[props.fontColor] || props.fontColor}` : undefined)};
-    ${props => (props.w ? `width: ${props.theme.scale[props.w] || props.w}` : undefined)};
-    ${props => (props.h ? `height: ${props.theme.scale[props.h] || props.h}` : undefined)};
-    ${props => (props.styles ? props.styles(props) : '')};
-`;
+const Button = ({ onClick, type, color, scale, bg, width, height, styles, className, children }) => (
+    <StyledButton
+        onClick={onClick}
+        type={type}
+        fontColor={color}
+        fontScale={scale}
+        bgColor={bg}
+        w={width}
+        h={height}
+        styles={styles}
+        className={className}
+    >
+        {children}
+    </StyledButton>
+);
 
 Button.propTypes = propTypes;
 Button.defaultProps = defaultProps;

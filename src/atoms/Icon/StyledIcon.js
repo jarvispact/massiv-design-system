@@ -8,6 +8,7 @@ const rotationKeyframes = keyframes`
 const StyledIcon = styled.i`
     color: ${props => props.theme.color[props.fontColor] || props.fontColor};
     font-size: ${props => props.theme.fontScale[props.fontScale] || props.fontScale};
+    vertical-align: -16%;
     ${(props) => {
         if (props.loading) {
             return css`
