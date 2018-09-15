@@ -10,25 +10,25 @@ const propTypes = {
         }).isRequired,
     }).isRequired,
     name: string.isRequired,
-    fontColor: string,
-    fontScale: string,
+    color: string,
+    scale: string,
     loading: bool,
     styles: func,
     className: string,
 };
 
 const defaultProps = {
-    fontColor: undefined,
-    fontScale: undefined,
+    color: undefined,
+    scale: undefined,
     loading: undefined,
     styles: undefined,
     className: undefined,
 };
 
-const Icon = ({ theme, name, fontColor, fontScale, loading, className, styles }) => (
+const Icon = ({ theme, name, color, scale, loading, className, styles }) => (
     <StyledIcon
-        fontColor={fontColor}
-        fontScale={fontScale}
+        fontColor={color}
+        fontScale={scale}
         loading={loading}
         className={`${theme.settings.icons ? theme.settings.icons.className : ''} ${className || ''}`.trim()}
         styles={styles}

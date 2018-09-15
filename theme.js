@@ -16,20 +16,14 @@ const settings = {
 };
 
 const color = {
-    black: '#202021',
-    white: '#F7F7F7',
-    dark: '#202021',
-    light: '#F7F7F7',
     background: '#F7F7F7',
-    lightGray: '#d8d8d8',
-    darkGray: '#4f4f4f',
+    primary: '#3F51B5',
+    secondary: '#FFC107',
+    disabled: '#d8d8d8',
     info: '#48C5FC',
     success: '#37B661',
     warning: '#DD9913',
     error: '#E25650',
-    primary: '#3F51B5',
-    secondary: '#FFC107',
-    disabled: '#d8d8d8',
 };
 
 const fontScale = {

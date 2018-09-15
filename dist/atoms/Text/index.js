@@ -4,50 +4,216 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(['', ''], ['', '']);
+var _react = require('react');
 
-var _styledComponents = require('styled-components');
-
-var _styledComponents2 = _interopRequireDefault(_styledComponents);
+var _react2 = _interopRequireDefault(_react);
 
 var _propTypes = require('prop-types');
 
+var _StyledText = require('./StyledText');
+
+var _StyledText2 = _interopRequireDefault(_StyledText);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
 var propTypes = {
-    fontColor: _propTypes.string,
-    fontScale: _propTypes.string,
+    color: _propTypes.string,
+    scale: _propTypes.string,
     styles: _propTypes.func,
-    className: _propTypes.string
-};
+    className: _propTypes.string,
+    children: _propTypes.node
+}; /* eslint-disable react/prop-types */
+
 
 var defaultProps = {
-    fontColor: undefined,
-    fontScale: undefined,
+    color: undefined,
+    scale: undefined,
     styles: undefined,
-    className: undefined
+    className: undefined,
+    children: undefined
 };
 
-var getStyles = function getStyles(type) {
-    return function (props) {
-        return '\n    font-family: ' + props.theme.settings.fonts[type] + ';\n    color: ' + (props.theme.color[props.fontColor] || props.fontColor || '') + ';\n    font-size: ' + (props.theme.fontScale[props.fontScale] || props.fontScale || '') + ';\n    ' + (props.styles ? props.styles(props) : '') + ';\n';
-    };
+var H1 = function H1(_ref) {
+    var color = _ref.color,
+        scale = _ref.scale,
+        styles = _ref.styles,
+        className = _ref.className,
+        children = _ref.children;
+    return _react2.default.createElement(
+        _StyledText2.default.H1,
+        {
+            fontColor: color,
+            fontScale: scale,
+            styles: styles,
+            className: className
+        },
+        children
+    );
 };
 
-var Text = {
-    H1: _styledComponents2.default.h1(_templateObject, getStyles('heading')),
-    H2: _styledComponents2.default.h2(_templateObject, getStyles('heading')),
-    H3: _styledComponents2.default.h3(_templateObject, getStyles('heading')),
-    H4: _styledComponents2.default.h4(_templateObject, getStyles('heading')),
-    H5: _styledComponents2.default.h5(_templateObject, getStyles('heading')),
-    H6: _styledComponents2.default.h6(_templateObject, getStyles('heading')),
-    P: _styledComponents2.default.p(_templateObject, getStyles('paragraph')),
-    A: _styledComponents2.default.a(_templateObject, getStyles('anchor')),
-    Span: _styledComponents2.default.span(_templateObject, getStyles('paragraph')),
-    Label: _styledComponents2.default.label(_templateObject, getStyles('paragraph'))
+var H2 = function H2(_ref2) {
+    var color = _ref2.color,
+        scale = _ref2.scale,
+        styles = _ref2.styles,
+        className = _ref2.className,
+        children = _ref2.children;
+    return _react2.default.createElement(
+        _StyledText2.default.H2,
+        {
+            fontColor: color,
+            fontScale: scale,
+            styles: styles,
+            className: className
+        },
+        children
+    );
 };
+
+var H3 = function H3(_ref3) {
+    var color = _ref3.color,
+        scale = _ref3.scale,
+        styles = _ref3.styles,
+        className = _ref3.className,
+        children = _ref3.children;
+    return _react2.default.createElement(
+        _StyledText2.default.H3,
+        {
+            fontColor: color,
+            fontScale: scale,
+            styles: styles,
+            className: className
+        },
+        children
+    );
+};
+
+var H4 = function H4(_ref4) {
+    var color = _ref4.color,
+        scale = _ref4.scale,
+        styles = _ref4.styles,
+        className = _ref4.className,
+        children = _ref4.children;
+    return _react2.default.createElement(
+        _StyledText2.default.H4,
+        {
+            fontColor: color,
+            fontScale: scale,
+            styles: styles,
+            className: className
+        },
+        children
+    );
+};
+
+var H5 = function H5(_ref5) {
+    var color = _ref5.color,
+        scale = _ref5.scale,
+        styles = _ref5.styles,
+        className = _ref5.className,
+        children = _ref5.children;
+    return _react2.default.createElement(
+        _StyledText2.default.H5,
+        {
+            fontColor: color,
+            fontScale: scale,
+            styles: styles,
+            className: className
+        },
+        children
+    );
+};
+
+var H6 = function H6(_ref6) {
+    var color = _ref6.color,
+        scale = _ref6.scale,
+        styles = _ref6.styles,
+        className = _ref6.className,
+        children = _ref6.children;
+    return _react2.default.createElement(
+        _StyledText2.default.H6,
+        {
+            fontColor: color,
+            fontScale: scale,
+            styles: styles,
+            className: className
+        },
+        children
+    );
+};
+
+var P = function P(_ref7) {
+    var color = _ref7.color,
+        scale = _ref7.scale,
+        styles = _ref7.styles,
+        className = _ref7.className,
+        children = _ref7.children;
+    return _react2.default.createElement(
+        _StyledText2.default.P,
+        {
+            fontColor: color,
+            fontScale: scale,
+            styles: styles,
+            className: className
+        },
+        children
+    );
+};
+
+var Span = function Span(_ref8) {
+    var color = _ref8.color,
+        scale = _ref8.scale,
+        styles = _ref8.styles,
+        className = _ref8.className,
+        children = _ref8.children;
+    return _react2.default.createElement(
+        _StyledText2.default.Span,
+        {
+            fontColor: color,
+            fontScale: scale,
+            styles: styles,
+            className: className
+        },
+        children
+    );
+};
+
+var Label = function Label(_ref9) {
+    var color = _ref9.color,
+        scale = _ref9.scale,
+        styles = _ref9.styles,
+        className = _ref9.className,
+        children = _ref9.children;
+    return _react2.default.createElement(
+        _StyledText2.default.Label,
+        {
+            fontColor: color,
+            fontScale: scale,
+            styles: styles,
+            className: className
+        },
+        children
+    );
+};
+
+var A = function A(_ref10) {
+    var color = _ref10.color,
+        scale = _ref10.scale,
+        styles = _ref10.styles,
+        className = _ref10.className,
+        children = _ref10.children;
+    return _react2.default.createElement(
+        _StyledText2.default.A,
+        {
+            fontColor: color,
+            fontScale: scale,
+            styles: styles,
+            className: className
+        },
+        children
+    );
+};
+
+var Text = { H1: H1, H2: H2, H3: H3, H4: H4, H5: H5, H6: H6, P: P, Span: Span, Label: Label, A: A };
 
 Object.keys(Text).forEach(function (key) {
     var Component = Text[key];

@@ -1,39 +1,135 @@
-import styled from 'styled-components';
-import { string, func } from 'prop-types';
+/* eslint-disable react/prop-types */
+import React from 'react';
+import { string, func, node } from 'prop-types';
+import StyledText from './StyledText';
 
 const propTypes = {
-    fontColor: string,
-    fontScale: string,
+    color: string,
+    scale: string,
     styles: func,
     className: string,
+    children: node,
 };
 
 const defaultProps = {
-    fontColor: undefined,
-    fontScale: undefined,
+    color: undefined,
+    scale: undefined,
     styles: undefined,
     className: undefined,
+    children: undefined,
 };
 
-const getStyles = type => props => `
-    font-family: ${props.theme.settings.fonts[type]};
-    color: ${props.theme.color[props.fontColor] || props.fontColor || ''};
-    font-size: ${props.theme.fontScale[props.fontScale] || props.fontScale || ''};
-    ${props.styles ? props.styles(props) : ''};
-`;
+const H1 = ({ color, scale, styles, className, children }) => (
+    <StyledText.H1
+        fontColor={color}
+        fontScale={scale}
+        styles={styles}
+        className={className}
+    >
+        {children}
+    </StyledText.H1>
+);
 
-const Text = {
-    H1: styled.h1`${getStyles('heading')}`,
-    H2: styled.h2`${getStyles('heading')}`,
-    H3: styled.h3`${getStyles('heading')}`,
-    H4: styled.h4`${getStyles('heading')}`,
-    H5: styled.h5`${getStyles('heading')}`,
-    H6: styled.h6`${getStyles('heading')}`,
-    P: styled.p`${getStyles('paragraph')}`,
-    A: styled.a`${getStyles('anchor')}`,
-    Span: styled.span`${getStyles('paragraph')}`,
-    Label: styled.label`${getStyles('paragraph')}`,
-};
+const H2 = ({ color, scale, styles, className, children }) => (
+    <StyledText.H2
+        fontColor={color}
+        fontScale={scale}
+        styles={styles}
+        className={className}
+    >
+        {children}
+    </StyledText.H2>
+);
+
+const H3 = ({ color, scale, styles, className, children }) => (
+    <StyledText.H3
+        fontColor={color}
+        fontScale={scale}
+        styles={styles}
+        className={className}
+    >
+        {children}
+    </StyledText.H3>
+);
+
+const H4 = ({ color, scale, styles, className, children }) => (
+    <StyledText.H4
+        fontColor={color}
+        fontScale={scale}
+        styles={styles}
+        className={className}
+    >
+        {children}
+    </StyledText.H4>
+);
+
+const H5 = ({ color, scale, styles, className, children }) => (
+    <StyledText.H5
+        fontColor={color}
+        fontScale={scale}
+        styles={styles}
+        className={className}
+    >
+        {children}
+    </StyledText.H5>
+);
+
+const H6 = ({ color, scale, styles, className, children }) => (
+    <StyledText.H6
+        fontColor={color}
+        fontScale={scale}
+        styles={styles}
+        className={className}
+    >
+        {children}
+    </StyledText.H6>
+);
+
+const P = ({ color, scale, styles, className, children }) => (
+    <StyledText.P
+        fontColor={color}
+        fontScale={scale}
+        styles={styles}
+        className={className}
+    >
+        {children}
+    </StyledText.P>
+);
+
+const Span = ({ color, scale, styles, className, children }) => (
+    <StyledText.Span
+        fontColor={color}
+        fontScale={scale}
+        styles={styles}
+        className={className}
+    >
+        {children}
+    </StyledText.Span>
+);
+
+const Label = ({ color, scale, styles, className, children }) => (
+    <StyledText.Label
+        fontColor={color}
+        fontScale={scale}
+        styles={styles}
+        className={className}
+    >
+        {children}
+    </StyledText.Label>
+);
+
+const A = ({ color, scale, styles, className, children }) => (
+    <StyledText.A
+        fontColor={color}
+        fontScale={scale}
+        styles={styles}
+        className={className}
+    >
+        {children}
+    </StyledText.A>
+);
+
+const Text = { H1, H2, H3, H4, H5, H6, P, Span, Label, A };
 
 Object.keys(Text).forEach((key) => {
     const Component = Text[key];

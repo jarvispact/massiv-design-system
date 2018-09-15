@@ -11,8 +11,8 @@ storiesOf('Icon', module)
     .add('icon with knobs', () => (
         <Icon
             name={text('name', 'grade')}
-            fontColor={text('fontColor', undefined)}
-            fontScale={text('fontScale', undefined)}
+            color={text('color', undefined)}
+            scale={text('scale', undefined)}
             loading={boolean('loading', false)}
         />
     ))

@@ -25,16 +25,16 @@ var propTypes = {
         }).isRequired
     }).isRequired,
     name: _propTypes.string.isRequired,
-    fontColor: _propTypes.string,
-    fontScale: _propTypes.string,
+    color: _propTypes.string,
+    scale: _propTypes.string,
     loading: _propTypes.bool,
     styles: _propTypes.func,
     className: _propTypes.string
 };
 
 var defaultProps = {
-    fontColor: undefined,
-    fontScale: undefined,
+    color: undefined,
+    scale: undefined,
     loading: undefined,
     styles: undefined,
     className: undefined
@@ -43,16 +43,16 @@ var defaultProps = {
 var Icon = function Icon(_ref) {
     var theme = _ref.theme,
         name = _ref.name,
-        fontColor = _ref.fontColor,
-        fontScale = _ref.fontScale,
+        color = _ref.color,
+        scale = _ref.scale,
         loading = _ref.loading,
         className = _ref.className,
         styles = _ref.styles;
     return _react2.default.createElement(
         _StyledIcon2.default,
         {
-            fontColor: fontColor,
-            fontScale: fontScale,
+            fontColor: color,
+            fontScale: scale,
             loading: loading,
             className: ((theme.settings.icons ? theme.settings.icons.className : '') + ' ' + (className || '')).trim(),
             styles: styles

@@ -7,80 +7,80 @@ import Text from '.';
 storiesOf('Text', module)
     .add('Text.H1', () => (
         <Text.H1
-            fontColor={text('fontColor', undefined)}
-            fontScale={text('fontScale', undefined)}
+            color={text('color', undefined)}
+            scale={text('scale', undefined)}
         >
             Text.H1
         </Text.H1>
     ))
     .add('Text.H2', () => (
         <Text.H2
-            fontColor={text('fontColor', undefined)}
-            fontScale={text('fontScale', undefined)}
+            color={text('color', undefined)}
+            scale={text('scale', undefined)}
         >
             Text.H2
         </Text.H2>
     ))
     .add('Text.H3', () => (
         <Text.H3
-            fontColor={text('fontColor', undefined)}
-            fontScale={text('fontScale', undefined)}
+            color={text('color', undefined)}
+            scale={text('scale', undefined)}
         >
             Text.H3
         </Text.H3>
     ))
     .add('Text.H4', () => (
         <Text.H4
-            fontColor={text('fontColor', undefined)}
-            fontScale={text('fontScale', undefined)}
+            color={text('color', undefined)}
+            scale={text('scale', undefined)}
         >
             Text.H4
         </Text.H4>
     ))
     .add('Text.H5', () => (
         <Text.H5
-            fontColor={text('fontColor', undefined)}
-            fontScale={text('fontScale', undefined)}
+            color={text('color', undefined)}
+            scale={text('scale', undefined)}
         >
             Text.H5
         </Text.H5>
     ))
     .add('Text.H6', () => (
         <Text.H6
-            fontColor={text('fontColor', undefined)}
-            fontScale={text('fontScale', undefined)}
+            color={text('color', undefined)}
+            scale={text('scale', undefined)}
         >
             Text.H6
         </Text.H6>
     ))
     .add('Text.P', () => (
         <Text.P
-            fontColor={text('fontColor', undefined)}
-            fontScale={text('fontScale', undefined)}
+            color={text('color', undefined)}
+            scale={text('scale', undefined)}
         >
             Text.P
         </Text.P>
     ))
     .add('Text.A', () => (
         <Text.A
-            fontColor={text('fontColor', undefined)}
-            fontScale={text('fontScale', undefined)}
+            color={text('color', undefined)}
+            scale={text('scale', undefined)}
         >
             Text.A
         </Text.A>
     ))
     .add('Text.Span', () => (
         <Text.Span
-            fontColor={text('fontColor', undefined)}
-            fontScale={text('fontScale', undefined)}
+            color={text('color', undefined)}
+            scale={text('scale', undefined)}
         >
             Text.Span
         </Text.Span>
     ))
     .add('Text.Label', () => (
         <Text.Label
-            fontColor={text('fontColor', undefined)}
-            fontScale={text('fontScale', undefined)}
+            color={text('color', undefined)}
+            scale={text('scale', undefined)}
         >
             Text.Label
         </Text.Label>
@@ -89,7 +89,7 @@ storiesOf('Text', module)
         <Text.Label
             styles={props => `
                 color: ${props.theme.color.primary};
-                font-size: ${props.theme.fontScale.xxl};
+                font-size: ${props.theme.scale.xxl};
             `}
         >
             Text.Label
