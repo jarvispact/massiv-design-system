@@ -38,6 +38,10 @@ var Theme = function (_Component) {
 
         var _this = _possibleConstructorReturn(this, (Theme.__proto__ || Object.getPrototypeOf(Theme)).call(this, props));
 
+        _this.setTheme = function (theme) {
+            _this.setState({ activeTheme: theme });
+        };
+
         var _this$props = _this.props,
             themes = _this$props.themes,
             activeTheme = _this$props.activeTheme;
@@ -47,13 +51,9 @@ var Theme = function (_Component) {
     }
 
     _createClass(Theme, [{
-        key: 'setTheme',
-        value: function setTheme(theme) {
-            this.setState({ activeTheme: theme });
-        }
-    }, {
         key: 'render',
         value: function render() {
+            var setTheme = this.setTheme;
             var children = this.props.children;
             var _state = this.state,
                 themes = _state.themes,
@@ -63,7 +63,7 @@ var Theme = function (_Component) {
             var ctx = {
                 themes: themes,
                 activeTheme: activeTheme,
-                setTheme: this.setTheme
+                setTheme: setTheme
             };
 
             return _react2.default.createElement(

@@ -16,18 +16,19 @@ class Theme extends Component {
         this.state = { themes, activeTheme };
     }
 
-    setTheme(theme) {
+    setTheme = (theme) => {
         this.setState({ activeTheme: theme });
     }
 
     render() {
+        const { setTheme } = this;
         const { children } = this.props;
         const { themes, activeTheme } = this.state;
 
         const ctx = {
             themes,
             activeTheme,
-            setTheme: this.setTheme,
+            setTheme,
         };
 
         return (
