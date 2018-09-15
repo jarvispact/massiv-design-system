@@ -46,32 +46,25 @@ var Theme = function (_Component) {
             themes = _this$props.themes,
             activeTheme = _this$props.activeTheme;
 
-        _this.state = { themes: themes, activeTheme: activeTheme };
+        _this.state = { themes: themes, activeTheme: activeTheme, setTheme: _this.setTheme }; // eslint-disable-line react/no-unused-state
         return _this;
     }
 
     _createClass(Theme, [{
         key: 'render',
         value: function render() {
-            var setTheme = this.setTheme;
             var children = this.props.children;
             var _state = this.state,
                 themes = _state.themes,
                 activeTheme = _state.activeTheme;
 
 
-            var ctx = {
-                themes: themes,
-                activeTheme: activeTheme,
-                setTheme: setTheme
-            };
-
             return _react2.default.createElement(
                 _contexts.ThemeContext.Provider,
-                { value: ctx },
+                { value: this.state },
                 _react2.default.createElement(
                     _styledComponents.ThemeProvider,
-                    { theme: ctx.themes[ctx.activeTheme] },
+                    { theme: themes[activeTheme] },
                     children
                 )
             );

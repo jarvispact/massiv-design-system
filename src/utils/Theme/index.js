@@ -13,7 +13,7 @@ class Theme extends Component {
     constructor(props) {
         super(props);
         const { themes, activeTheme } = this.props;
-        this.state = { themes, activeTheme };
+        this.state = { themes, activeTheme, setTheme: this.setTheme }; // eslint-disable-line react/no-unused-state
     }
 
     setTheme = (theme) => {
@@ -21,19 +21,12 @@ class Theme extends Component {
     }
 
     render() {
-        const { setTheme } = this;
         const { children } = this.props;
         const { themes, activeTheme } = this.state;
 
-        const ctx = {
-            themes,
-            activeTheme,
-            setTheme,
-        };
-
         return (
-            <ThemeContext.Provider value={ctx}>
-                <ThemeProvider theme={ctx.themes[ctx.activeTheme]}>{children}</ThemeProvider>
+            <ThemeContext.Provider value={this.state}>
+                <ThemeProvider theme={themes[activeTheme]}>{children}</ThemeProvider>
             </ThemeContext.Provider>
         );
     }
