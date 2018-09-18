@@ -22,6 +22,15 @@ Object.defineProperty(exports, 'Button', {
   }
 });
 
+var _Flex = require('./Flex');
+
+Object.defineProperty(exports, 'Flex', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Flex).default;
+  }
+});
+
 var _Icon = require('./Icon');
 
 Object.defineProperty(exports, 'Icon', {
