@@ -2,11 +2,11 @@ import React from 'react';
 import { addDecorator, configure } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs';
 import Theme from '../src/utils/Theme';
-import defaultTheme from './default-theme';
+import theme from './theme';
 import './global.css';
 
 const themes = {
-    default: defaultTheme,
+    default: theme,
 };
 
 const loadStories = () => {

@@ -118,12 +118,16 @@ const Label = ({ color, scale, styles, className, children }) => (
     </StyledText.Label>
 );
 
-const A = ({ color, scale, styles, className, children }) => (
+const A = ({ color, scale, styles, className, href, rel, target, download, children }) => (
     <StyledText.A
         fontColor={color}
         fontScale={scale}
         styles={styles}
         className={className}
+        href={href}
+        rel={rel}
+        target={target}
+        download={download}
     >
         {children}
     </StyledText.A>

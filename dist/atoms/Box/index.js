@@ -4,121 +4,137 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(['\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n'], ['\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n    ', ';\n']);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _styledComponents = require('styled-components');
+var _react = require('react');
 
-var _styledComponents2 = _interopRequireDefault(_styledComponents);
+var _react2 = _interopRequireDefault(_react);
 
 var _propTypes = require('prop-types');
 
+var _StyledBox = require('./StyledBox');
+
+var _StyledBox2 = _interopRequireDefault(_StyledBox);
+
+var _propTypes2 = require('./prop-types');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-var propTypes = {
-    bgColor: _propTypes.string,
-    fontColor: _propTypes.string,
-    pos: _propTypes.string,
-    top: _propTypes.string,
-    bottom: _propTypes.string,
-    left: _propTypes.string,
-    right: _propTypes.string,
-    w: _propTypes.string,
-    h: _propTypes.string,
-    boxDisplay: _propTypes.string,
-    flexDirection: _propTypes.string,
-    flexWrap: _propTypes.string,
-    flexFlow: _propTypes.string,
-    justifyContent: _propTypes.string,
-    alignItems: _propTypes.string,
-    alignContent: _propTypes.string,
-    flexOrder: _propTypes.string,
-    flexGrow: _propTypes.string,
-    flexShrink: _propTypes.string,
-    flexBasis: _propTypes.string,
-    flex: _propTypes.string,
-    alignSelf: _propTypes.string,
+var propTypes = _extends({}, _propTypes2.boxPropTypes, _propTypes2.colorPropTypes, _propTypes2.positionPropTypes, _propTypes2.spacingPropTypes, _propTypes2.borderPropTypes, {
     styles: _propTypes.func,
     className: _propTypes.string,
     children: _propTypes.node
-};
+});
 
-var defaultProps = {
-    bgColor: undefined,
-    fontColor: undefined,
-    pos: undefined,
-    top: undefined,
-    bottom: undefined,
-    left: undefined,
-    right: undefined,
-    w: undefined,
-    h: undefined,
-    boxDisplay: undefined,
-    flexDirection: undefined,
-    flexWrap: undefined,
-    flexFlow: undefined,
-    justifyContent: undefined,
-    alignItems: undefined,
-    alignContent: undefined,
-    flexOrder: undefined,
-    flexGrow: undefined,
-    flexShrink: undefined,
-    flexBasis: undefined,
-    flex: undefined,
-    alignSelf: undefined,
+var defaultProps = _extends({}, _propTypes2.boxDefaultProps, _propTypes2.colorDefaultProps, _propTypes2.positionDefaultProps, _propTypes2.spacingDefaultProps, _propTypes2.borderDefaultProps, {
     styles: undefined,
     className: undefined,
     children: undefined
-};
-
-var Box = _styledComponents2.default.div(_templateObject, function (props) {
-    return props.bgColor ? 'background-color: ' + (props.theme.color[props.bgColor] || props.bgColor) : undefined;
-}, function (props) {
-    return props.fontColor ? 'color: ' + (props.theme.color[props.fontColor] || props.fontColor) : undefined;
-}, function (props) {
-    return props.pos ? 'position: ' + props.pos : undefined;
-}, function (props) {
-    return props.top ? 'top: ' + (props.theme.scale[props.top] || props.top) : undefined;
-}, function (props) {
-    return props.bottom ? 'bottom: ' + (props.theme.scale[props.bottom] || props.bottom) : undefined;
-}, function (props) {
-    return props.left ? 'left: ' + (props.theme.scale[props.left] || props.left) : undefined;
-}, function (props) {
-    return props.right ? 'right: ' + (props.theme.scale[props.right] || props.right) : undefined;
-}, function (props) {
-    return props.w ? 'width: ' + (props.theme.scale[props.w] || props.w) : undefined;
-}, function (props) {
-    return props.h ? 'height: ' + (props.theme.scale[props.h] || props.h) : undefined;
-}, function (props) {
-    return props.boxDisplay ? 'display: ' + props.boxDisplay : undefined;
-}, function (props) {
-    return props.flexDirection ? 'flex-direction: ' + props.flexDirection : undefined;
-}, function (props) {
-    return props.flexWrap ? 'flex-wrap: ' + props.flexWrap : undefined;
-}, function (props) {
-    return props.flexFlow ? 'flex-flow: ' + props.flexFlow : undefined;
-}, function (props) {
-    return props.justifyContent ? 'justify-content: ' + props.justifyContent : undefined;
-}, function (props) {
-    return props.alignItems ? 'align-items: ' + props.alignItems : undefined;
-}, function (props) {
-    return props.alignContent ? 'align-content: ' + props.alignContent : undefined;
-}, function (props) {
-    return props.flexOrder ? 'order: ' + props.flexOrder : undefined;
-}, function (props) {
-    return props.flexGrow ? 'flex-grow: ' + props.flexGrow : undefined;
-}, function (props) {
-    return props.flexShrink ? 'flex-shrink: ' + props.flexShrink : undefined;
-}, function (props) {
-    return props.flexBasis ? 'flex-basis: ' + props.flexBasis : undefined;
-}, function (props) {
-    return props.flex ? 'flex: ' + props.flex : undefined;
-}, function (props) {
-    return props.alignSelf ? 'align-self: ' + props.alignSelf : undefined;
-}, function (props) {
-    return props.styles ? props.styles(props) : '';
 });
+
+var Box = function Box(_ref) {
+    var display = _ref.display,
+        shadow = _ref.shadow,
+        color = _ref.color,
+        bg = _ref.bg,
+        pos = _ref.pos,
+        top = _ref.top,
+        bottom = _ref.bottom,
+        left = _ref.left,
+        right = _ref.right,
+        width = _ref.width,
+        height = _ref.height,
+        minWidth = _ref.minWidth,
+        minHeight = _ref.minHeight,
+        maxWidth = _ref.maxWidth,
+        maxHeight = _ref.maxHeight,
+        p = _ref.p,
+        pt = _ref.pt,
+        pb = _ref.pb,
+        pl = _ref.pl,
+        pr = _ref.pr,
+        m = _ref.m,
+        mt = _ref.mt,
+        mb = _ref.mb,
+        ml = _ref.ml,
+        mr = _ref.mr,
+        bs = _ref.bs,
+        bw = _ref.bw,
+        bc = _ref.bc,
+        br = _ref.br,
+        bts = _ref.bts,
+        btw = _ref.btw,
+        btc = _ref.btc,
+        bbs = _ref.bbs,
+        bbw = _ref.bbw,
+        bbc = _ref.bbc,
+        bls = _ref.bls,
+        blw = _ref.blw,
+        blc = _ref.blc,
+        brs = _ref.brs,
+        brw = _ref.brw,
+        brc = _ref.brc,
+        btlr = _ref.btlr,
+        btrr = _ref.btrr,
+        bblr = _ref.bblr,
+        bbrr = _ref.bbrr,
+        styles = _ref.styles,
+        className = _ref.className,
+        children = _ref.children;
+    return _react2.default.createElement(
+        _StyledBox2.default,
+        {
+            boxDisplay: display,
+            shadow: shadow,
+            fontColor: color,
+            bgColor: bg,
+            pos: pos,
+            top: top,
+            bottom: bottom,
+            left: left,
+            right: right,
+            w: width,
+            h: height,
+            minWidth: minWidth,
+            minHeight: minHeight,
+            maxWidth: maxWidth,
+            maxHeight: maxHeight,
+            p: p,
+            pt: pt,
+            pb: pb,
+            pl: pl,
+            pr: pr,
+            m: m,
+            mt: mt,
+            mb: mb,
+            ml: ml,
+            mr: mr,
+            bs: bs,
+            bw: bw,
+            bc: bc,
+            br: br,
+            bts: bts,
+            btw: btw,
+            btc: btc,
+            bbs: bbs,
+            bbw: bbw,
+            bbc: bbc,
+            bls: bls,
+            blw: blw,
+            blc: blc,
+            brs: brs,
+            brw: brw,
+            brc: brc,
+            btlr: btlr,
+            btrr: btrr,
+            bblr: bblr,
+            bbrr: bbrr,
+            styles: styles,
+            className: className
+        },
+        children
+    );
+};
 
 Box.propTypes = propTypes;
 Box.defaultProps = defaultProps;

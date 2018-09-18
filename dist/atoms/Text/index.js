@@ -200,6 +200,10 @@ var A = function A(_ref10) {
         scale = _ref10.scale,
         styles = _ref10.styles,
         className = _ref10.className,
+        href = _ref10.href,
+        rel = _ref10.rel,
+        target = _ref10.target,
+        download = _ref10.download,
         children = _ref10.children;
     return _react2.default.createElement(
         _StyledText2.default.A,
@@ -207,7 +211,11 @@ var A = function A(_ref10) {
             fontColor: color,
             fontScale: scale,
             styles: styles,
-            className: className
+            className: className,
+            href: href,
+            rel: rel,
+            target: target,
+            download: download
         },
         children
     );

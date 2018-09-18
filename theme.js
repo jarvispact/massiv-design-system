@@ -47,9 +47,16 @@ const spacing = {
     xxxl: '6rem',
 };
 
+const shadow = {
+    s: '2px 2px 5px 0px rgba(0,0,0,0.75)',
+    m: '4px 4px 5px 0px rgba(0,0,0,0.58)',
+    l: '6px 6px 5px 0px rgba(0,0,0,0.45)',
+};
+
 export default {
     settings,
     color,
     fontScale,
     spacing,
+    shadow,
 };
