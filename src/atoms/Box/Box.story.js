@@ -1,10 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { text, boolean } from '@storybook/addon-knobs';
+import { text } from '@storybook/addon-knobs';
 import Box from '.';
-import Icon from '../Icon';
-import Text from '../Text';
 
 storiesOf('Box', module)
     .add('Default Box', () => (

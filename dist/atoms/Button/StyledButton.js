@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(['\n    padding: 0.5rem;\n    border-style: none;\n    border-radius: 2px;\n    &:focus {\n        outline: 0;\n    }\n    color: ', ';\n    font-size: ', ';\n    background-color: ', ';\n    width: ', ';\n    height: ', ';\n    ', ';\n'], ['\n    padding: 0.5rem;\n    border-style: none;\n    border-radius: 2px;\n    &:focus {\n        outline: 0;\n    }\n    color: ', ';\n    font-size: ', ';\n    background-color: ', ';\n    width: ', ';\n    height: ', ';\n    ', ';\n']);
+var _templateObject = _taggedTemplateLiteral(['\n    border-style: none;\n    border-radius: 2px;\n    cursor: ', ';\n    opacity: ', ';\n    &:focus {\n        outline: 0;\n    }\n    color: ', ';\n    font-size: ', ';\n    background-color: ', ';\n    width: ', ';\n    height: ', ';\n    padding: ', ';\n    padding-top: ', ';\n    padding-bottom: ', ';\n    padding-left: ', ';\n    padding-right: ', ';\n    ', ';\n'], ['\n    border-style: none;\n    border-radius: 2px;\n    cursor: ', ';\n    opacity: ', ';\n    &:focus {\n        outline: 0;\n    }\n    color: ', ';\n    font-size: ', ';\n    background-color: ', ';\n    width: ', ';\n    height: ', ';\n    padding: ', ';\n    padding-top: ', ';\n    padding-bottom: ', ';\n    padding-left: ', ';\n    padding-right: ', ';\n    ', ';\n']);
 
 var _styledComponents = require('styled-components');
 
@@ -15,17 +15,31 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var StyledButton = _styledComponents2.default.button(_templateObject, function (props) {
+    return props.disabled ? 'not-allowed' : 'pointer';
+}, function (props) {
+    return props.disabled && '0.5';
+}, function (props) {
     return props.theme.color[props.fontColor] || props.fontColor;
 }, function (props) {
     return props.theme.fontScale[props.fontScale] || props.fontScale;
 }, function (props) {
-    return props.theme.color[props.bgColor] || props.bgColor || 'transparent';
+    return props.theme.color[props.bgColor] || props.bgColor;
 }, function (props) {
     return props.w;
 }, function (props) {
     return props.h;
 }, function (props) {
-    return props.styles ? props.styles(props) : '';
+    return props.theme.spacing[props.p] || props.p;
+}, function (props) {
+    return props.theme.spacing[props.pt] || props.pt;
+}, function (props) {
+    return props.theme.spacing[props.pb] || props.pb;
+}, function (props) {
+    return props.theme.spacing[props.pl] || props.pl;
+}, function (props) {
+    return props.theme.spacing[props.pr] || props.pr;
+}, function (props) {
+    return props.styles && props.styles(props);
 });
 
 exports.default = StyledButton;
