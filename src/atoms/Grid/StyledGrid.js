@@ -6,6 +6,7 @@ const mapToPercent = mapRange(0, 12, 0, 100);
 const StyledGrid = {
     Row: styled.div`
         box-sizing: border-box;
+        ${props => props.styles && props.styles(props)};
     `,
     Col: styled.div`
         box-sizing: border-box;
@@ -27,6 +28,7 @@ const StyledGrid = {
         @media screen and (min-width: ${props => props.theme.settings.screen.xxl}) {
             width: ${props => mapToPercent(props.colXXL)}%;
         }
+        ${props => props.styles && props.styles(props)};
     `,
 };
 

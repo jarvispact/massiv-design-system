@@ -4,8 +4,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(['\n        display: ', ';\n        flex-direction: ', ';\n        flex-wrap: ', ';\n        flex-flow: ', ';\n        justify-content: ', ';\n        align-items: ', ';\n        align-content: ', ';\n    '], ['\n        display: ', ';\n        flex-direction: ', ';\n        flex-wrap: ', ';\n        flex-flow: ', ';\n        justify-content: ', ';\n        align-items: ', ';\n        align-content: ', ';\n    ']),
-    _templateObject2 = _taggedTemplateLiteral(['\n        order: ', ';\n        flex-grow: ', ';\n        flex-shrink: ', ';\n        flex-basis: ', ';\n        flex: ', ';\n        align-self: ', ';\n    '], ['\n        order: ', ';\n        flex-grow: ', ';\n        flex-shrink: ', ';\n        flex-basis: ', ';\n        flex: ', ';\n        align-self: ', ';\n    ']);
+var _templateObject = _taggedTemplateLiteral(['\n        display: ', ';\n        flex-direction: ', ';\n        flex-wrap: ', ';\n        flex-flow: ', ';\n        justify-content: ', ';\n        align-items: ', ';\n        align-content: ', ';\n        ', ';\n    '], ['\n        display: ', ';\n        flex-direction: ', ';\n        flex-wrap: ', ';\n        flex-flow: ', ';\n        justify-content: ', ';\n        align-items: ', ';\n        align-content: ', ';\n        ', ';\n    ']),
+    _templateObject2 = _taggedTemplateLiteral(['\n        order: ', ';\n        flex-grow: ', ';\n        flex-shrink: ', ';\n        flex-basis: ', ';\n        flex: ', ';\n        align-self: ', ';\n        ', ';\n    '], ['\n        order: ', ';\n        flex-grow: ', ';\n        flex-shrink: ', ';\n        flex-basis: ', ';\n        flex: ', ';\n        align-self: ', ';\n        ', ';\n    ']);
 
 var _styledComponents = require('styled-components');
 
@@ -34,6 +34,8 @@ var StyledFlex = {
         return props.alignItems;
     }, function (props) {
         return props.alignContent;
+    }, function (props) {
+        return props.styles && props.styles(props);
     }),
     Child: (0, _styledComponents2.default)(_Box2.default)(_templateObject2, function (props) {
         return props.flexOrder;
@@ -47,6 +49,8 @@ var StyledFlex = {
         return props.flex;
     }, function (props) {
         return props.alignSelf;
+    }, function (props) {
+        return props.styles && props.styles(props);
     })
 };
 

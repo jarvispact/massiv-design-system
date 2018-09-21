@@ -4,8 +4,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(['\n        box-sizing: border-box;\n    '], ['\n        box-sizing: border-box;\n    ']),
-    _templateObject2 = _taggedTemplateLiteral(['\n        box-sizing: border-box;\n        float: left;\n        width: ', '%;\n        padding: ', ';\n        @media screen and (min-width: ', ') {\n            width: ', '%;\n        }\n        @media screen and (min-width: ', ') {\n            width: ', '%;\n        }\n        @media screen and (min-width: ', ') {\n            width: ', '%;\n        }\n        @media screen and (min-width: ', ') {\n            width: ', '%;\n        }\n        @media screen and (min-width: ', ') {\n            width: ', '%;\n        }\n    '], ['\n        box-sizing: border-box;\n        float: left;\n        width: ', '%;\n        padding: ', ';\n        @media screen and (min-width: ', ') {\n            width: ', '%;\n        }\n        @media screen and (min-width: ', ') {\n            width: ', '%;\n        }\n        @media screen and (min-width: ', ') {\n            width: ', '%;\n        }\n        @media screen and (min-width: ', ') {\n            width: ', '%;\n        }\n        @media screen and (min-width: ', ') {\n            width: ', '%;\n        }\n    ']);
+var _templateObject = _taggedTemplateLiteral(['\n        box-sizing: border-box;\n        ', ';\n    '], ['\n        box-sizing: border-box;\n        ', ';\n    ']),
+    _templateObject2 = _taggedTemplateLiteral(['\n        box-sizing: border-box;\n        float: left;\n        width: ', '%;\n        padding: ', ';\n        @media screen and (min-width: ', ') {\n            width: ', '%;\n        }\n        @media screen and (min-width: ', ') {\n            width: ', '%;\n        }\n        @media screen and (min-width: ', ') {\n            width: ', '%;\n        }\n        @media screen and (min-width: ', ') {\n            width: ', '%;\n        }\n        @media screen and (min-width: ', ') {\n            width: ', '%;\n        }\n        ', ';\n    '], ['\n        box-sizing: border-box;\n        float: left;\n        width: ', '%;\n        padding: ', ';\n        @media screen and (min-width: ', ') {\n            width: ', '%;\n        }\n        @media screen and (min-width: ', ') {\n            width: ', '%;\n        }\n        @media screen and (min-width: ', ') {\n            width: ', '%;\n        }\n        @media screen and (min-width: ', ') {\n            width: ', '%;\n        }\n        @media screen and (min-width: ', ') {\n            width: ', '%;\n        }\n        ', ';\n    ']);
 
 var _styledComponents = require('styled-components');
 
@@ -23,7 +23,9 @@ var mapRange = function mapRange(inMin, inMax, outMin, outMax) {
 var mapToPercent = mapRange(0, 12, 0, 100);
 
 var StyledGrid = {
-    Row: _styledComponents2.default.div(_templateObject),
+    Row: _styledComponents2.default.div(_templateObject, function (props) {
+        return props.styles && props.styles(props);
+    }),
     Col: _styledComponents2.default.div(_templateObject2, function () {
         return mapToPercent(12);
     }, function (props) {
@@ -48,6 +50,8 @@ var StyledGrid = {
         return props.theme.settings.screen.xxl;
     }, function (props) {
         return mapToPercent(props.colXXL);
+    }, function (props) {
+        return props.styles && props.styles(props);
     })
 };
 

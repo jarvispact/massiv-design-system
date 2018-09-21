@@ -46,6 +46,7 @@ const StyledBox = styled.div`
     border-top-right-radius: ${props => props.theme.spacing[props.btrr] || props.btrr};
     border-bottom-left-radius: ${props => props.theme.spacing[props.bblr] || props.bblr};
     border-bottom-right-radius: ${props => props.theme.spacing[props.bbrr] || props.bbrr};
+    ${props => props.styles && props.styles(props)};
 `;
 
 export default StyledBox;

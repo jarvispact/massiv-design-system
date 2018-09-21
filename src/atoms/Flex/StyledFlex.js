@@ -10,6 +10,7 @@ const StyledFlex = {
         justify-content: ${props => props.justifyContent};
         align-items: ${props => props.alignItems};
         align-content: ${props => props.alignContent};
+        ${props => props.styles && props.styles(props)};
     `,
     Child: styled(Box)`
         order: ${props => props.flexOrder};
@@ -18,6 +19,7 @@ const StyledFlex = {
         flex-basis: ${props => props.flexBasis};
         flex: ${props => props.flex};
         align-self: ${props => props.alignSelf};
+        ${props => props.styles && props.styles(props)};
     `,
 };
 
