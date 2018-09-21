@@ -5,7 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _templateObject = _taggedTemplateLiteral(['\n        box-sizing: border-box;\n        ', ';\n    '], ['\n        box-sizing: border-box;\n        ', ';\n    ']),
-    _templateObject2 = _taggedTemplateLiteral(['\n        box-sizing: border-box;\n        float: left;\n        width: ', '%;\n        padding: ', ';\n        @media screen and (min-width: ', ') {\n            width: ', '%;\n        }\n        @media screen and (min-width: ', ') {\n            width: ', '%;\n        }\n        @media screen and (min-width: ', ') {\n            width: ', '%;\n        }\n        @media screen and (min-width: ', ') {\n            width: ', '%;\n        }\n        @media screen and (min-width: ', ') {\n            width: ', '%;\n        }\n        ', ';\n    '], ['\n        box-sizing: border-box;\n        float: left;\n        width: ', '%;\n        padding: ', ';\n        @media screen and (min-width: ', ') {\n            width: ', '%;\n        }\n        @media screen and (min-width: ', ') {\n            width: ', '%;\n        }\n        @media screen and (min-width: ', ') {\n            width: ', '%;\n        }\n        @media screen and (min-width: ', ') {\n            width: ', '%;\n        }\n        @media screen and (min-width: ', ') {\n            width: ', '%;\n        }\n        ', ';\n    ']);
+    _templateObject2 = _taggedTemplateLiteral(['\n        box-sizing: border-box;\n        float: left;\n        width: ', '%;\n        padding: ', ';\n        ', ';\n        ', ';\n        ', ';\n        ', ';\n        ', ';\n        ', ';\n    '], ['\n        box-sizing: border-box;\n        float: left;\n        width: ', '%;\n        padding: ', ';\n        ', ';\n        ', ';\n        ', ';\n        ', ';\n        ', ';\n        ', ';\n    ']),
+    _templateObject3 = _taggedTemplateLiteral(['\n                    @media screen and (min-width: ', ') {\n                        width: ', '%;\n                    }\n                '], ['\n                    @media screen and (min-width: ', ') {\n                        width: ', '%;\n                    }\n                ']);
 
 var _styledComponents = require('styled-components');
 
@@ -13,7 +14,8 @@ var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); } /* eslint-disable indent */
+
 
 var mapRange = function mapRange(inMin, inMax, outMin, outMax) {
     return function (value) {
@@ -31,25 +33,25 @@ var StyledGrid = {
     }, function (props) {
         return props.theme.spacing[props.gutter] || props.gutter;
     }, function (props) {
-        return props.theme.settings.screen.s;
+        if (props.colS) {
+            return (0, _styledComponents.css)(_templateObject3, props.theme.settings.screen.s, mapToPercent(props.colS));
+        }
     }, function (props) {
-        return mapToPercent(props.colS);
+        if (props.colM) {
+            return (0, _styledComponents.css)(_templateObject3, props.theme.settings.screen.m, mapToPercent(props.colM));
+        }
     }, function (props) {
-        return props.theme.settings.screen.m;
+        if (props.colL) {
+            return (0, _styledComponents.css)(_templateObject3, props.theme.settings.screen.l, mapToPercent(props.colL));
+        }
     }, function (props) {
-        return mapToPercent(props.colM);
+        if (props.colXL) {
+            return (0, _styledComponents.css)(_templateObject3, props.theme.settings.screen.xl, mapToPercent(props.colXL));
+        }
     }, function (props) {
-        return props.theme.settings.screen.l;
-    }, function (props) {
-        return mapToPercent(props.colL);
-    }, function (props) {
-        return props.theme.settings.screen.xl;
-    }, function (props) {
-        return mapToPercent(props.colXL);
-    }, function (props) {
-        return props.theme.settings.screen.xxl;
-    }, function (props) {
-        return mapToPercent(props.colXXL);
+        if (props.colXXL) {
+            return (0, _styledComponents.css)(_templateObject3, props.theme.settings.screen.xxl, mapToPercent(props.colXXL));
+        }
     }, function (props) {
         return props.styles && props.styles(props);
     })
