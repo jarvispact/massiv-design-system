@@ -1,9 +1,10 @@
 const settings = {
     screen: {
         s: '450px',
-        m: '750px',
-        l: '1200px',
-        xl: '1600px',
+        m: '650px',
+        l: '900px',
+        xl: '1200px',
+        xxl: '1600px',
     },
     icons: {
         className: 'material-icons',
