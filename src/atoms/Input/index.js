@@ -1,48 +1,63 @@
 import React from 'react';
 import { string, func, bool } from 'prop-types';
 import StyledInput from './StyledInput';
+import { colorPropTypes, colorDefaultProps, spacingPropTypes, spacingDefaultProps } from '../prop-types';
 
 const propTypes = {
+    ...colorPropTypes,
+    ...spacingPropTypes,
     type: string,
     name: string,
     value: string,
     onChange: func,
     disabled: bool,
-    color: string,
     scale: string,
-    bg: string,
     width: string,
     height: string,
-    p: string,
-    pt: string,
-    pb: string,
-    pl: string,
-    pr: string,
     styles: func,
     className: string,
 };
 
 const defaultProps = {
+    ...colorDefaultProps,
+    ...spacingDefaultProps,
+    p: '0', // override padding default
     type: 'text',
     name: undefined,
     value: '',
     onChange: undefined,
     disabled: undefined,
-    color: undefined,
     scale: undefined,
-    bg: 'transparent',
     width: undefined,
     height: undefined,
-    p: '0',
-    pt: undefined,
-    pb: undefined,
-    pl: undefined,
-    pr: undefined,
     styles: undefined,
     className: undefined,
 };
 
-const Input = ({ type, name, value, onChange, disabled, color, scale, bg, width, height, p, pt, pb, pl, pr, className, styles }) => (
+const Input = ({
+    type,
+    name,
+    value,
+    onChange,
+    disabled,
+    color,
+    scale,
+    bg,
+    width,
+    height,
+    p,
+    pt,
+    pb,
+    pl,
+    pr,
+    m,
+    mt,
+    mb,
+    ml,
+    mr,
+    className,
+    styles,
+}) => (
     <StyledInput
         type={type}
         name={name}
@@ -59,6 +74,11 @@ const Input = ({ type, name, value, onChange, disabled, color, scale, bg, width,
         pb={pb}
         pl={pl}
         pr={pr}
+        m={m}
+        mt={mt}
+        mb={mb}
+        ml={ml}
+        mr={mr}
         className={className}
         styles={styles}
     />

@@ -3,19 +3,9 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.borderDefaultProps = exports.borderPropTypes = exports.spacingDefaultProps = exports.spacingPropTypes = exports.positionDefaultProps = exports.positionPropTypes = exports.colorDefaultProps = exports.colorPropTypes = exports.boxDefaultProps = exports.boxPropTypes = undefined;
+exports.borderDefaultProps = exports.borderPropTypes = exports.spacingDefaultProps = exports.spacingPropTypes = exports.positionDefaultProps = exports.positionPropTypes = exports.colorDefaultProps = exports.colorPropTypes = undefined;
 
 var _propTypes = require('prop-types');
-
-var boxPropTypes = exports.boxPropTypes = {
-    display: _propTypes.string,
-    shadow: _propTypes.string
-};
-
-var boxDefaultProps = exports.boxDefaultProps = {
-    display: undefined,
-    shadow: undefined
-};
 
 var colorPropTypes = exports.colorPropTypes = {
     color: _propTypes.string,

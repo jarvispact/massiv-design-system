@@ -1,15 +1,5 @@
 import { string } from 'prop-types';
 
-export const boxPropTypes = {
-    display: string,
-    shadow: string,
-};
-
-export const boxDefaultProps = {
-    display: undefined,
-    shadow: undefined,
-};
-
 export const colorPropTypes = {
     color: string,
     bg: string,

@@ -2,8 +2,6 @@ import React from 'react';
 import { string, func, node } from 'prop-types';
 import StyledBox from './StyledBox';
 import {
-    boxPropTypes,
-    boxDefaultProps,
     colorPropTypes,
     colorDefaultProps,
     positionPropTypes,
@@ -12,25 +10,27 @@ import {
     spacingDefaultProps,
     borderPropTypes,
     borderDefaultProps,
-} from './prop-types';
+} from '../prop-types';
 
 const propTypes = {
-    ...boxPropTypes,
     ...colorPropTypes,
     ...positionPropTypes,
     ...spacingPropTypes,
     ...borderPropTypes,
+    display: string,
+    shadow: string,
     styles: func,
     className: string,
     children: node,
 };
 
 const defaultProps = {
-    ...boxDefaultProps,
     ...colorDefaultProps,
     ...positionDefaultProps,
     ...spacingDefaultProps,
     ...borderDefaultProps,
+    display: undefined,
+    shadow: undefined,
     styles: undefined,
     className: undefined,
     children: undefined,

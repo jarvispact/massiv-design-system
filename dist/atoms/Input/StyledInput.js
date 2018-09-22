@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(['\n    border-style: none;\n    border-radius: 2px\n    &:focus {\n        outline: 0;\n    }\n    cursor: ', ';\n    opacity: ', ';\n    color: ', ';\n    font-family: ', ';\n    font-size: ', ';\n    background-color: ', ';\n    width: ', ';\n    height: ', ';\n    padding: ', ';\n    padding-top: ', ';\n    padding-bottom: ', ';\n    padding-left: ', ';\n    padding-right: ', ';\n    ', ';\n'], ['\n    border-style: none;\n    border-radius: 2px\n    &:focus {\n        outline: 0;\n    }\n    cursor: ', ';\n    opacity: ', ';\n    color: ', ';\n    font-family: ', ';\n    font-size: ', ';\n    background-color: ', ';\n    width: ', ';\n    height: ', ';\n    padding: ', ';\n    padding-top: ', ';\n    padding-bottom: ', ';\n    padding-left: ', ';\n    padding-right: ', ';\n    ', ';\n']);
+var _templateObject = _taggedTemplateLiteral(['\n    border-style: none;\n    border-radius: 2px\n    &:focus {\n        outline: 0;\n    }\n    cursor: ', ';\n    opacity: ', ';\n    color: ', ';\n    font-family: ', ';\n    font-size: ', ';\n    background-color: ', ';\n    width: ', ';\n    height: ', ';\n    padding: ', ';\n    padding-top: ', ';\n    padding-bottom: ', ';\n    padding-left: ', ';\n    padding-right: ', ';\n    margin: ', ';\n    margin-top: ', ';\n    margin-bottom: ', ';\n    margin-left: ', ';\n    margin-right: ', ';\n    ', ';\n'], ['\n    border-style: none;\n    border-radius: 2px\n    &:focus {\n        outline: 0;\n    }\n    cursor: ', ';\n    opacity: ', ';\n    color: ', ';\n    font-family: ', ';\n    font-size: ', ';\n    background-color: ', ';\n    width: ', ';\n    height: ', ';\n    padding: ', ';\n    padding-top: ', ';\n    padding-bottom: ', ';\n    padding-left: ', ';\n    padding-right: ', ';\n    margin: ', ';\n    margin-top: ', ';\n    margin-bottom: ', ';\n    margin-left: ', ';\n    margin-right: ', ';\n    ', ';\n']);
 
 var _styledComponents = require('styled-components');
 
@@ -40,6 +40,16 @@ var StyledInput = _styledComponents2.default.input(_templateObject, function (pr
     return props.theme.spacing[props.pl] || props.pl;
 }, function (props) {
     return props.theme.spacing[props.pr] || props.pr;
+}, function (props) {
+    return props.theme.spacing[props.m] || props.m;
+}, function (props) {
+    return props.theme.spacing[props.mt] || props.mt;
+}, function (props) {
+    return props.theme.spacing[props.mb] || props.mb;
+}, function (props) {
+    return props.theme.spacing[props.ml] || props.ml;
+}, function (props) {
+    return props.theme.spacing[props.mr] || props.mr;
 }, function (props) {
     return props.styles && props.styles(props);
 });

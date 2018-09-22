@@ -4,6 +4,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -14,47 +16,36 @@ var _StyledInput = require('./StyledInput');
 
 var _StyledInput2 = _interopRequireDefault(_StyledInput);
 
+var _propTypes2 = require('../prop-types');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var propTypes = {
+var propTypes = _extends({}, _propTypes2.colorPropTypes, _propTypes2.spacingPropTypes, {
     type: _propTypes.string,
     name: _propTypes.string,
     value: _propTypes.string,
     onChange: _propTypes.func,
     disabled: _propTypes.bool,
-    color: _propTypes.string,
     scale: _propTypes.string,
-    bg: _propTypes.string,
     width: _propTypes.string,
     height: _propTypes.string,
-    p: _propTypes.string,
-    pt: _propTypes.string,
-    pb: _propTypes.string,
-    pl: _propTypes.string,
-    pr: _propTypes.string,
     styles: _propTypes.func,
     className: _propTypes.string
-};
+});
 
-var defaultProps = {
+var defaultProps = _extends({}, _propTypes2.colorDefaultProps, _propTypes2.spacingDefaultProps, {
+    p: '0', // override padding default
     type: 'text',
     name: undefined,
     value: '',
     onChange: undefined,
     disabled: undefined,
-    color: undefined,
     scale: undefined,
-    bg: 'transparent',
     width: undefined,
     height: undefined,
-    p: '0',
-    pt: undefined,
-    pb: undefined,
-    pl: undefined,
-    pr: undefined,
     styles: undefined,
     className: undefined
-};
+});
 
 var Input = function Input(_ref) {
     var type = _ref.type,
@@ -72,6 +63,11 @@ var Input = function Input(_ref) {
         pb = _ref.pb,
         pl = _ref.pl,
         pr = _ref.pr,
+        m = _ref.m,
+        mt = _ref.mt,
+        mb = _ref.mb,
+        ml = _ref.ml,
+        mr = _ref.mr,
         className = _ref.className,
         styles = _ref.styles;
     return _react2.default.createElement(_StyledInput2.default, {
@@ -90,6 +86,11 @@ var Input = function Input(_ref) {
         pb: pb,
         pl: pl,
         pr: pr,
+        m: m,
+        mt: mt,
+        mb: mb,
+        ml: ml,
+        mr: mr,
         className: className,
         styles: styles
     });

@@ -23,6 +23,11 @@ storiesOf('Button', module)
             pb={text('pb', undefined)}
             pl={text('pl', undefined)}
             pr={text('pr', undefined)}
+            m={text('m', undefined)}
+            mt={text('mt', undefined)}
+            mb={text('mb', undefined)}
+            ml={text('ml', undefined)}
+            mr={text('mr', undefined)}
         >
             <Icon name="grade" />
         </Button>
@@ -41,6 +46,11 @@ storiesOf('Button', module)
             pb={text('pb', undefined)}
             pl={text('pl', undefined)}
             pr={text('pr', undefined)}
+            m={text('m', undefined)}
+            mt={text('mt', undefined)}
+            mb={text('mb', undefined)}
+            ml={text('ml', undefined)}
+            mr={text('mr', undefined)}
         >
             <Text.Span>
                 <Icon name="grade" />

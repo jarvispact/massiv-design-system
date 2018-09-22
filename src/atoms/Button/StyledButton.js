@@ -19,6 +19,11 @@ const StyledButton = styled.button`
     padding-bottom: ${props => props.theme.spacing[props.pb] || props.pb};
     padding-left: ${props => props.theme.spacing[props.pl] || props.pl};
     padding-right: ${props => props.theme.spacing[props.pr] || props.pr};
+    margin: ${props => props.theme.spacing[props.m] || props.m};
+    margin-top: ${props => props.theme.spacing[props.mt] || props.mt};
+    margin-bottom: ${props => props.theme.spacing[props.mb] || props.mb};
+    margin-left: ${props => props.theme.spacing[props.ml] || props.ml};
+    margin-right: ${props => props.theme.spacing[props.mr] || props.mr};
     ${props => props.styles && props.styles(props)};
 `;
 

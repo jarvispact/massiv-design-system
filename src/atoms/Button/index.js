@@ -1,45 +1,60 @@
 import React from 'react';
 import { bool, string, func, node } from 'prop-types';
 import StyledButton from './StyledButton';
+import { colorPropTypes, colorDefaultProps, spacingPropTypes, spacingDefaultProps } from '../prop-types';
 
 const propTypes = {
+    ...colorPropTypes,
+    ...spacingPropTypes,
     onClick: func.isRequired,
     type: string,
     disabled: bool,
-    color: string,
     scale: string,
-    bg: string,
     width: string,
     height: string,
-    p: string,
-    pt: string,
-    pb: string,
-    pl: string,
-    pr: string,
     styles: func,
     className: string,
     children: node,
 };
 
 const defaultProps = {
+    ...colorDefaultProps,
+    ...spacingDefaultProps,
     type: undefined,
     disabled: undefined,
-    color: undefined,
     scale: undefined,
-    bg: 'transparent',
+    bg: 'transparent', // override background-color default
     width: undefined,
     height: undefined,
-    p: '0',
-    pt: undefined,
-    pb: undefined,
-    pl: undefined,
-    pr: undefined,
+    p: '0', // override padding default
     styles: undefined,
     className: undefined,
     children: undefined,
 };
 
-const Button = ({ onClick, type, disabled, color, scale, bg, width, height, p, pt, pb, pl, pr, styles, className, children }) => (
+const Button = ({
+    onClick,
+    type,
+    disabled,
+    color,
+    scale,
+    bg,
+    width,
+    height,
+    p,
+    pt,
+    pb,
+    pl,
+    pr,
+    m,
+    mt,
+    mb,
+    ml,
+    mr,
+    styles,
+    className,
+    children,
+}) => (
     <StyledButton
         onClick={onClick}
         type={type}
@@ -54,6 +69,11 @@ const Button = ({ onClick, type, disabled, color, scale, bg, width, height, p, p
         pb={pb}
         pl={pl}
         pr={pr}
+        m={m}
+        mt={mt}
+        mb={mb}
+        ml={ml}
+        mr={mr}
         styles={styles}
         className={className}
     >

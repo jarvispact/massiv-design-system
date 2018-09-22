@@ -16,17 +16,21 @@ var _StyledBox = require('./StyledBox');
 
 var _StyledBox2 = _interopRequireDefault(_StyledBox);
 
-var _propTypes2 = require('./prop-types');
+var _propTypes2 = require('../prop-types');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var propTypes = _extends({}, _propTypes2.boxPropTypes, _propTypes2.colorPropTypes, _propTypes2.positionPropTypes, _propTypes2.spacingPropTypes, _propTypes2.borderPropTypes, {
+var propTypes = _extends({}, _propTypes2.colorPropTypes, _propTypes2.positionPropTypes, _propTypes2.spacingPropTypes, _propTypes2.borderPropTypes, {
+    display: _propTypes.string,
+    shadow: _propTypes.string,
     styles: _propTypes.func,
     className: _propTypes.string,
     children: _propTypes.node
 });
 
-var defaultProps = _extends({}, _propTypes2.boxDefaultProps, _propTypes2.colorDefaultProps, _propTypes2.positionDefaultProps, _propTypes2.spacingDefaultProps, _propTypes2.borderDefaultProps, {
+var defaultProps = _extends({}, _propTypes2.colorDefaultProps, _propTypes2.positionDefaultProps, _propTypes2.spacingDefaultProps, _propTypes2.borderDefaultProps, {
+    display: undefined,
+    shadow: undefined,
     styles: undefined,
     className: undefined,
     children: undefined
