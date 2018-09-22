@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 
-const StyledButton = styled.button`
+const StyledInput = styled.input`
     border-style: none;
-    border-radius: 2px;
+    border-radius: 2px
     &:focus {
         outline: 0;
     }
-    cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
+    cursor: ${props => (props.disabled && 'not-allowed')};
     opacity: ${props => props.disabled && '0.5'};
     color: ${props => props.theme.color[props.fontColor] || props.fontColor};
-    font-family: ${props => props.theme.settings.fonts.button};
+    font-family: ${props => props.theme.settings.fonts.input};
     font-size: ${props => props.theme.fontScale[props.fontScale] || props.fontScale};
     background-color: ${props => props.theme.color[props.bgColor] || props.bgColor};
     width: ${props => props.w};
@@ -22,4 +22,4 @@ const StyledButton = styled.button`
     ${props => props.styles && props.styles(props)};
 `;
 
-export default StyledButton;
+export default StyledInput;

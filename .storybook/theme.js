@@ -13,6 +13,8 @@ const settings = {
         heading: '"Josefin Sans", serif',
         paragraph: '"Raleway", sans-serif',
         anchor: '"Raleway", sans-serif',
+        input: '"Raleway", sans-serif',
+        button: '"Raleway", sans-serif',
     },
 };
 
