@@ -31,12 +31,30 @@ Object.defineProperty(exports, 'Flex', {
   }
 });
 
+var _Grid = require('./Grid');
+
+Object.defineProperty(exports, 'Grid', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Grid).default;
+  }
+});
+
 var _Icon = require('./Icon');
 
 Object.defineProperty(exports, 'Icon', {
   enumerable: true,
   get: function get() {
     return _interopRequireDefault(_Icon).default;
+  }
+});
+
+var _Input = require('./Input');
+
+Object.defineProperty(exports, 'Input', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Input).default;
   }
 });
 
