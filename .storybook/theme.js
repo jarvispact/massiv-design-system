@@ -1,5 +1,5 @@
 const settings = {
-    screen: {
+    breakpoints: {
         s: '450px',
         m: '650px',
         l: '900px',

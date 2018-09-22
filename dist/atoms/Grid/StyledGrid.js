@@ -22,35 +22,35 @@ var mapRange = function mapRange(inMin, inMax, outMin, outMax) {
         return (value - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
     };
 };
-var mapToPercent = mapRange(0, 12, 0, 100);
+var mapGridToPercent = mapRange(0, 12, 0, 100);
 
 var StyledGrid = {
     Row: _styledComponents2.default.div(_templateObject, function (props) {
         return props.styles && props.styles(props);
     }),
     Col: _styledComponents2.default.div(_templateObject2, function () {
-        return mapToPercent(12);
+        return mapGridToPercent(12);
     }, function (props) {
         return props.theme.spacing[props.gutter] || props.gutter;
     }, function (props) {
         if (props.colS) {
-            return (0, _styledComponents.css)(_templateObject3, props.theme.settings.screen.s, mapToPercent(props.colS));
+            return (0, _styledComponents.css)(_templateObject3, props.theme.settings.breakpoints.s, mapGridToPercent(props.colS));
         }
     }, function (props) {
         if (props.colM) {
-            return (0, _styledComponents.css)(_templateObject3, props.theme.settings.screen.m, mapToPercent(props.colM));
+            return (0, _styledComponents.css)(_templateObject3, props.theme.settings.breakpoints.m, mapGridToPercent(props.colM));
         }
     }, function (props) {
         if (props.colL) {
-            return (0, _styledComponents.css)(_templateObject3, props.theme.settings.screen.l, mapToPercent(props.colL));
+            return (0, _styledComponents.css)(_templateObject3, props.theme.settings.breakpoints.l, mapGridToPercent(props.colL));
         }
     }, function (props) {
         if (props.colXL) {
-            return (0, _styledComponents.css)(_templateObject3, props.theme.settings.screen.xl, mapToPercent(props.colXL));
+            return (0, _styledComponents.css)(_templateObject3, props.theme.settings.breakpoints.xl, mapGridToPercent(props.colXL));
         }
     }, function (props) {
         if (props.colXXL) {
-            return (0, _styledComponents.css)(_templateObject3, props.theme.settings.screen.xxl, mapToPercent(props.colXXL));
+            return (0, _styledComponents.css)(_templateObject3, props.theme.settings.breakpoints.xxl, mapGridToPercent(props.colXXL));
         }
     }, function (props) {
         return props.styles && props.styles(props);

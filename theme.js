@@ -1,9 +1,10 @@
 const settings = {
-    screen: {
+    breakpoints: {
         s: '450px',
-        m: '750px',
-        l: '1200px',
-        xl: '1600px',
+        m: '650px',
+        l: '900px',
+        xl: '1200px',
+        xxl: '1600px',
     },
     icons: {
         className: 'material-icons',
@@ -12,6 +13,8 @@ const settings = {
         heading: '"Josefin Sans", serif',
         paragraph: '"Raleway", sans-serif',
         anchor: '"Raleway", sans-serif',
+        input: '"Raleway", sans-serif',
+        button: '"Raleway", sans-serif',
     },
 };
 

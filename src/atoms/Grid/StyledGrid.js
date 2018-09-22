@@ -2,7 +2,7 @@
 import styled, { css } from 'styled-components';
 
 const mapRange = (inMin, inMax, outMin, outMax) => value => (value - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
-const mapToPercent = mapRange(0, 12, 0, 100);
+const mapGridToPercent = mapRange(0, 12, 0, 100);
 
 const StyledGrid = {
     Row: styled.div`
@@ -12,13 +12,13 @@ const StyledGrid = {
     Col: styled.div`
         box-sizing: border-box;
         float: left;
-        width: ${() => mapToPercent(12)}%;
+        width: ${() => mapGridToPercent(12)}%;
         padding: ${props => props.theme.spacing[props.gutter] || props.gutter};
         ${(props) => {
             if (props.colS) {
                 return css`
-                    @media screen and (min-width: ${props.theme.settings.screen.s}) {
-                        width: ${mapToPercent(props.colS)}%;
+                    @media screen and (min-width: ${props.theme.settings.breakpoints.s}) {
+                        width: ${mapGridToPercent(props.colS)}%;
                     }
                 `;
             }
@@ -26,8 +26,8 @@ const StyledGrid = {
         ${(props) => {
             if (props.colM) {
                 return css`
-                    @media screen and (min-width: ${props.theme.settings.screen.m}) {
-                        width: ${mapToPercent(props.colM)}%;
+                    @media screen and (min-width: ${props.theme.settings.breakpoints.m}) {
+                        width: ${mapGridToPercent(props.colM)}%;
                     }
                 `;
             }
@@ -35,8 +35,8 @@ const StyledGrid = {
         ${(props) => {
             if (props.colL) {
                 return css`
-                    @media screen and (min-width: ${props.theme.settings.screen.l}) {
-                        width: ${mapToPercent(props.colL)}%;
+                    @media screen and (min-width: ${props.theme.settings.breakpoints.l}) {
+                        width: ${mapGridToPercent(props.colL)}%;
                     }
                 `;
             }
@@ -44,8 +44,8 @@ const StyledGrid = {
         ${(props) => {
             if (props.colXL) {
                 return css`
-                    @media screen and (min-width: ${props.theme.settings.screen.xl}) {
-                        width: ${mapToPercent(props.colXL)}%;
+                    @media screen and (min-width: ${props.theme.settings.breakpoints.xl}) {
+                        width: ${mapGridToPercent(props.colXL)}%;
                     }
                 `;
             }
@@ -53,8 +53,8 @@ const StyledGrid = {
         ${(props) => {
             if (props.colXXL) {
                 return css`
-                    @media screen and (min-width: ${props.theme.settings.screen.xxl}) {
-                        width: ${mapToPercent(props.colXXL)}%;
+                    @media screen and (min-width: ${props.theme.settings.breakpoints.xxl}) {
+                        width: ${mapGridToPercent(props.colXXL)}%;
                     }
                 `;
             }
