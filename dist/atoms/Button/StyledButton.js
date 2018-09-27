@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(['\n    border-style: none;\n    border-radius: 2px;\n    &:focus {\n        outline: 0;\n    }\n    cursor: ', ';\n    opacity: ', ';\n    color: ', ';\n    font-family: ', ';\n    font-size: ', ';\n    background-color: ', ';\n    width: ', ';\n    height: ', ';\n    padding: ', ';\n    padding-top: ', ';\n    padding-bottom: ', ';\n    padding-left: ', ';\n    padding-right: ', ';\n    margin: ', ';\n    margin-top: ', ';\n    margin-bottom: ', ';\n    margin-left: ', ';\n    margin-right: ', ';\n    ', ';\n'], ['\n    border-style: none;\n    border-radius: 2px;\n    &:focus {\n        outline: 0;\n    }\n    cursor: ', ';\n    opacity: ', ';\n    color: ', ';\n    font-family: ', ';\n    font-size: ', ';\n    background-color: ', ';\n    width: ', ';\n    height: ', ';\n    padding: ', ';\n    padding-top: ', ';\n    padding-bottom: ', ';\n    padding-left: ', ';\n    padding-right: ', ';\n    margin: ', ';\n    margin-top: ', ';\n    margin-bottom: ', ';\n    margin-left: ', ';\n    margin-right: ', ';\n    ', ';\n']);
+var _templateObject = _taggedTemplateLiteral(['\n    border-style: none;\n    border-radius: 2px;\n    &:focus {\n        outline: 0;\n    }\n    cursor: ', ';\n    opacity: ', ';\n    color: ', ';\n    font-family: ', ';\n    font-size: ', ';\n    background-color: ', ';\n    width: ', ';\n    height: ', ';\n    min-width: ', ';\n    min-height: ', ';\n    max-width: ', ';\n    max-height: ', ';\n    padding: ', ';\n    padding-top: ', ';\n    padding-bottom: ', ';\n    padding-left: ', ';\n    padding-right: ', ';\n    margin: ', ';\n    margin-top: ', ';\n    margin-bottom: ', ';\n    margin-left: ', ';\n    margin-right: ', ';\n    ', ';\n'], ['\n    border-style: none;\n    border-radius: 2px;\n    &:focus {\n        outline: 0;\n    }\n    cursor: ', ';\n    opacity: ', ';\n    color: ', ';\n    font-family: ', ';\n    font-size: ', ';\n    background-color: ', ';\n    width: ', ';\n    height: ', ';\n    min-width: ', ';\n    min-height: ', ';\n    max-width: ', ';\n    max-height: ', ';\n    padding: ', ';\n    padding-top: ', ';\n    padding-bottom: ', ';\n    padding-left: ', ';\n    padding-right: ', ';\n    margin: ', ';\n    margin-top: ', ';\n    margin-bottom: ', ';\n    margin-left: ', ';\n    margin-right: ', ';\n    ', ';\n']);
 
 var _styledComponents = require('styled-components');
 
@@ -27,9 +27,17 @@ var StyledButton = _styledComponents2.default.button(_templateObject, function (
 }, function (props) {
     return props.theme.color[props.bgColor] || props.bgColor;
 }, function (props) {
-    return props.w;
+    return props.theme.spacing[props.w] || props.w;
 }, function (props) {
-    return props.h;
+    return props.theme.spacing[props.h] || props.h;
+}, function (props) {
+    return props.theme.spacing[props.minWidth] || props.minWidth;
+}, function (props) {
+    return props.theme.spacing[props.minHeight] || props.minHeight;
+}, function (props) {
+    return props.theme.spacing[props.maxWidth] || props.maxWidth;
+}, function (props) {
+    return props.theme.spacing[props.maxHeight] || props.maxHeight;
 }, function (props) {
     return props.theme.spacing[props.p] || props.p;
 }, function (props) {

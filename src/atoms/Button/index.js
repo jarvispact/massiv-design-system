@@ -12,6 +12,10 @@ const propTypes = {
     scale: string,
     width: string,
     height: string,
+    minWidth: string,
+    minHeight: string,
+    maxWidth: string,
+    maxHeight: string,
     styles: func,
     className: string,
     children: node,
@@ -23,10 +27,14 @@ const defaultProps = {
     type: undefined,
     disabled: undefined,
     scale: undefined,
-    bg: 'transparent', // override background-color default
+    bg: 'transparent',
     width: undefined,
     height: undefined,
-    p: '0', // override padding default
+    minWidth: undefined,
+    minHeight: undefined,
+    maxWidth: undefined,
+    maxHeight: undefined,
+    p: '0',
     styles: undefined,
     className: undefined,
     children: undefined,
@@ -41,6 +49,10 @@ const Button = ({
     bg,
     width,
     height,
+    minWidth,
+    minHeight,
+    maxWidth,
+    maxHeight,
     p,
     pt,
     pb,
@@ -64,6 +76,10 @@ const Button = ({
         bgColor={bg}
         w={width}
         h={height}
+        minWidth={minWidth}
+        minHeight={minHeight}
+        maxWidth={maxWidth}
+        maxHeight={maxHeight}
         p={p}
         pt={pt}
         pb={pb}

@@ -41,17 +41,17 @@ var StyledBox = _styledComponents2.default.div(_templateObject, function (props)
 }, function (props) {
     return props.right;
 }, function (props) {
-    return props.w;
+    return props.theme.spacing[props.w] || props.w;
 }, function (props) {
-    return props.h;
+    return props.theme.spacing[props.h] || props.h;
 }, function (props) {
-    return props.minWidth;
+    return props.theme.spacing[props.minWidth] || props.minWidth;
 }, function (props) {
-    return props.minHeight;
+    return props.theme.spacing[props.minHeight] || props.minHeight;
 }, function (props) {
-    return props.maxWidth;
+    return props.theme.spacing[props.maxWidth] || props.maxWidth;
 }, function (props) {
-    return props.maxHeight;
+    return props.theme.spacing[props.maxHeight] || props.maxHeight;
 }, function (props) {
     return props.theme.spacing[props.p] || props.p;
 }, function (props) {

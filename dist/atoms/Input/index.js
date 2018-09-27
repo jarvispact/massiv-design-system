@@ -29,6 +29,10 @@ var propTypes = _extends({}, _propTypes2.colorPropTypes, _propTypes2.spacingProp
     scale: _propTypes.string,
     width: _propTypes.string,
     height: _propTypes.string,
+    minWidth: _propTypes.string,
+    minHeight: _propTypes.string,
+    maxWidth: _propTypes.string,
+    maxHeight: _propTypes.string,
     styles: _propTypes.func,
     className: _propTypes.string
 });
@@ -43,6 +47,10 @@ var defaultProps = _extends({}, _propTypes2.colorDefaultProps, _propTypes2.spaci
     scale: undefined,
     width: undefined,
     height: undefined,
+    minWidth: undefined,
+    minHeight: undefined,
+    maxWidth: undefined,
+    maxHeight: undefined,
     styles: undefined,
     className: undefined
 });
@@ -58,6 +66,10 @@ var Input = function Input(_ref) {
         bg = _ref.bg,
         width = _ref.width,
         height = _ref.height,
+        minWidth = _ref.minWidth,
+        minHeight = _ref.minHeight,
+        maxWidth = _ref.maxWidth,
+        maxHeight = _ref.maxHeight,
         p = _ref.p,
         pt = _ref.pt,
         pb = _ref.pb,
@@ -81,6 +93,10 @@ var Input = function Input(_ref) {
         bgColor: bg,
         w: width,
         h: height,
+        minWidth: minWidth,
+        minHeight: minHeight,
+        maxWidth: maxWidth,
+        maxHeight: maxHeight,
         p: p,
         pt: pt,
         pb: pb,

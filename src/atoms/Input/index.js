@@ -14,6 +14,10 @@ const propTypes = {
     scale: string,
     width: string,
     height: string,
+    minWidth: string,
+    minHeight: string,
+    maxWidth: string,
+    maxHeight: string,
     styles: func,
     className: string,
 };
@@ -30,6 +34,10 @@ const defaultProps = {
     scale: undefined,
     width: undefined,
     height: undefined,
+    minWidth: undefined,
+    minHeight: undefined,
+    maxWidth: undefined,
+    maxHeight: undefined,
     styles: undefined,
     className: undefined,
 };
@@ -45,6 +53,10 @@ const Input = ({
     bg,
     width,
     height,
+    minWidth,
+    minHeight,
+    maxWidth,
+    maxHeight,
     p,
     pt,
     pb,
@@ -69,6 +81,10 @@ const Input = ({
         bgColor={bg}
         w={width}
         h={height}
+        minWidth={minWidth}
+        minHeight={minHeight}
+        maxWidth={maxWidth}
+        maxHeight={maxHeight}
         p={p}
         pt={pt}
         pb={pb}
