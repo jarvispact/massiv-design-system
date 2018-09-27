@@ -23,6 +23,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var propTypes = _extends({}, _propTypes2.colorPropTypes, _propTypes2.positionPropTypes, _propTypes2.spacingPropTypes, _propTypes2.borderPropTypes, {
     display: _propTypes.string,
     shadow: _propTypes.string,
+    zIndex: _propTypes.string,
+    overflow: _propTypes.string,
+    overflowX: _propTypes.string,
+    overflowY: _propTypes.string,
     styles: _propTypes.func,
     className: _propTypes.string,
     children: _propTypes.node
@@ -31,6 +35,10 @@ var propTypes = _extends({}, _propTypes2.colorPropTypes, _propTypes2.positionPro
 var defaultProps = _extends({}, _propTypes2.colorDefaultProps, _propTypes2.positionDefaultProps, _propTypes2.spacingDefaultProps, _propTypes2.borderDefaultProps, {
     display: undefined,
     shadow: undefined,
+    zIndex: undefined,
+    overflow: undefined,
+    overflowX: undefined,
+    overflowY: undefined,
     styles: undefined,
     className: undefined,
     children: undefined
@@ -39,6 +47,10 @@ var defaultProps = _extends({}, _propTypes2.colorDefaultProps, _propTypes2.posit
 var Box = function Box(_ref) {
     var display = _ref.display,
         shadow = _ref.shadow,
+        zIndex = _ref.zIndex,
+        overflow = _ref.overflow,
+        overflowX = _ref.overflowX,
+        overflowY = _ref.overflowY,
         color = _ref.color,
         bg = _ref.bg,
         pos = _ref.pos,
@@ -90,6 +102,10 @@ var Box = function Box(_ref) {
         {
             boxDisplay: display,
             shadow: shadow,
+            zIndex: zIndex,
+            boxOverflow: overflow,
+            boxOverflowX: overflowX,
+            boxOverflowY: overflowY,
             fontColor: color,
             bgColor: bg,
             pos: pos,

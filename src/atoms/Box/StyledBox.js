@@ -3,6 +3,10 @@ import styled from 'styled-components';
 const StyledBox = styled.div`
     display: ${props => props.boxDisplay};
     box-shadow: ${props => props.theme.shadow[props.shadow] || props.shadow};
+    z-index: ${props => props.zIndex};
+    overflow: ${props => props.boxOverflow};
+    overflow-x: ${props => props.boxOverflowX};
+    overflow-y: ${props => props.boxOverflowY};
     color: ${props => props.theme.color[props.fontColor] || props.fontColor};
     background-color: ${props => props.theme.color[props.bgColor] || props.bgColor};
     position: ${props => props.pos};

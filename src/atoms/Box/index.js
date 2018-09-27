@@ -19,6 +19,10 @@ const propTypes = {
     ...borderPropTypes,
     display: string,
     shadow: string,
+    zIndex: string,
+    overflow: string,
+    overflowX: string,
+    overflowY: string,
     styles: func,
     className: string,
     children: node,
@@ -31,6 +35,10 @@ const defaultProps = {
     ...borderDefaultProps,
     display: undefined,
     shadow: undefined,
+    zIndex: undefined,
+    overflow: undefined,
+    overflowX: undefined,
+    overflowY: undefined,
     styles: undefined,
     className: undefined,
     children: undefined,
@@ -39,6 +47,10 @@ const defaultProps = {
 const Box = ({
     display,
     shadow,
+    zIndex,
+    overflow,
+    overflowX,
+    overflowY,
     color,
     bg,
     pos,
@@ -89,6 +101,10 @@ const Box = ({
     <StyledBox
         boxDisplay={display}
         shadow={shadow}
+        zIndex={zIndex}
+        boxOverflow={overflow}
+        boxOverflowX={overflowX}
+        boxOverflowY={overflowY}
         fontColor={color}
         bgColor={bg}
         pos={pos}

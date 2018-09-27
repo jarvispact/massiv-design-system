@@ -4,6 +4,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _MediaQuery = require('./MediaQuery');
+
+Object.defineProperty(exports, 'MediaQuery', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_MediaQuery).default;
+  }
+});
+
 var _Theme = require('./Theme');
 
 Object.defineProperty(exports, 'Theme', {
