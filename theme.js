@@ -1,11 +1,11 @@
 const settings = {
-    breakpoints: {
-        s: '450px',
-        m: '650px',
-        l: '900px',
-        xl: '1200px',
-        xxl: '1600px',
-    },
+    breakpoints: [
+        '450px',
+        '650px',
+        '900px',
+        '1200px',
+        '1600px',
+    ],
     icons: {
         className: 'material-icons',
     },
@@ -54,6 +54,7 @@ const shadow = {
     s: '2px 2px 5px 0px rgba(0,0,0,0.75)',
     m: '4px 4px 5px 0px rgba(0,0,0,0.58)',
     l: '6px 6px 5px 0px rgba(0,0,0,0.45)',
+    xl: '8px 8px 5px 0px rgba(0,0,0,0.45)',
 };
 
 export default {

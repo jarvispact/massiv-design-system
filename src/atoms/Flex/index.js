@@ -2,21 +2,40 @@
 import React from 'react';
 import { bool, string, func, node } from 'prop-types';
 import StyledFlex from './StyledFlex';
+import {
+    colorPropTypes,
+    colorDefaultProps,
+    positionPropTypes,
+    positionDefaultProps,
+    spacingPropTypes,
+    spacingDefaultProps,
+    borderPropTypes,
+    borderDefaultProps,
+    stringOrArray,
+} from '../../prop-types';
 
 const parentPropTypes = {
+    ...colorPropTypes,
+    ...positionPropTypes,
+    ...spacingPropTypes,
+    ...borderPropTypes,
     inline: bool,
-    dir: string,
-    wrap: string,
-    flow: string,
-    justifyContent: string,
-    alignItems: string,
-    alignContent: string,
+    dir: stringOrArray,
+    wrap: stringOrArray,
+    flow: stringOrArray,
+    justifyContent: stringOrArray,
+    alignItems: stringOrArray,
+    alignContent: stringOrArray,
     styles: func,
     className: string,
     children: node,
 };
 
 const parentDefaultProps = {
+    ...colorDefaultProps,
+    ...positionDefaultProps,
+    ...spacingDefaultProps,
+    ...borderDefaultProps,
     inline: undefined,
     dir: undefined,
     wrap: undefined,
@@ -30,18 +49,26 @@ const parentDefaultProps = {
 };
 
 const childPropTypes = {
-    order: string,
-    grow: string,
-    shrink: string,
-    basis: string,
-    flex: string,
-    alignSelf: string,
+    ...colorPropTypes,
+    ...positionPropTypes,
+    ...spacingPropTypes,
+    ...borderPropTypes,
+    order: stringOrArray,
+    grow: stringOrArray,
+    shrink: stringOrArray,
+    basis: stringOrArray,
+    flex: stringOrArray,
+    alignSelf: stringOrArray,
     styles: func,
     className: string,
     children: node,
 };
 
 const childDefaultProps = {
+    ...colorDefaultProps,
+    ...positionDefaultProps,
+    ...spacingDefaultProps,
+    ...borderDefaultProps,
     order: undefined,
     grow: undefined,
     shrink: undefined,

@@ -1,9 +1,16 @@
+/* eslint-disable no-multi-spaces, comma-spacing */
 import styled from 'styled-components';
+import buildCss from '../../build-css';
+
+const textProperties = [
+    { cssProp: 'display',   reactProp: 'textDisplay',   themeProp: null },
+    { cssProp: 'color',     reactProp: 'fontColor',     themeProp: 'color' },
+    { cssProp: 'font-size', reactProp: 'fontScale',     themeProp: 'fontScale' },
+];
 
 const getStyles = type => props => `
+    ${buildCss(textProperties)(props)};
     font-family: ${props.theme.settings.fonts[type]};
-    color: ${props.theme.color[props.fontColor] || props.fontColor || ''};
-    font-size: ${props.theme.fontScale[props.fontScale] || props.fontScale || ''};
     ${props.styles ? props.styles(props) : ''};
 `;
 

@@ -16,7 +16,7 @@ var _StyledButton = require('./StyledButton');
 
 var _StyledButton2 = _interopRequireDefault(_StyledButton);
 
-var _propTypes2 = require('../prop-types');
+var _propTypes2 = require('../../prop-types');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -24,13 +24,14 @@ var propTypes = _extends({}, _propTypes2.colorPropTypes, _propTypes2.spacingProp
     onClick: _propTypes.func.isRequired,
     type: _propTypes.string,
     disabled: _propTypes.bool,
-    scale: _propTypes.string,
-    width: _propTypes.string,
-    height: _propTypes.string,
-    minWidth: _propTypes.string,
-    minHeight: _propTypes.string,
-    maxWidth: _propTypes.string,
-    maxHeight: _propTypes.string,
+    display: _propTypes2.stringOrArray,
+    scale: _propTypes2.stringOrArray,
+    width: _propTypes2.stringOrArray,
+    height: _propTypes2.stringOrArray,
+    minWidth: _propTypes2.stringOrArray,
+    minHeight: _propTypes2.stringOrArray,
+    maxWidth: _propTypes2.stringOrArray,
+    maxHeight: _propTypes2.stringOrArray,
     styles: _propTypes.func,
     className: _propTypes.string,
     children: _propTypes.node
@@ -39,6 +40,7 @@ var propTypes = _extends({}, _propTypes2.colorPropTypes, _propTypes2.spacingProp
 var defaultProps = _extends({}, _propTypes2.colorDefaultProps, _propTypes2.spacingDefaultProps, {
     type: undefined,
     disabled: undefined,
+    display: undefined,
     scale: undefined,
     bg: 'transparent',
     width: undefined,
@@ -57,6 +59,7 @@ var Button = function Button(_ref) {
     var onClick = _ref.onClick,
         type = _ref.type,
         disabled = _ref.disabled,
+        display = _ref.display,
         color = _ref.color,
         scale = _ref.scale,
         bg = _ref.bg,
@@ -85,6 +88,7 @@ var Button = function Button(_ref) {
             onClick: onClick,
             type: type,
             disabled: disabled,
+            buttonDisplay: display,
             fontColor: color,
             fontScale: scale,
             bgColor: bg,

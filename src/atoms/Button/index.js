@@ -1,7 +1,7 @@
 import React from 'react';
 import { bool, string, func, node } from 'prop-types';
 import StyledButton from './StyledButton';
-import { colorPropTypes, colorDefaultProps, spacingPropTypes, spacingDefaultProps } from '../prop-types';
+import { colorPropTypes, colorDefaultProps, spacingPropTypes, spacingDefaultProps, stringOrArray } from '../../prop-types';
 
 const propTypes = {
     ...colorPropTypes,
@@ -9,13 +9,14 @@ const propTypes = {
     onClick: func.isRequired,
     type: string,
     disabled: bool,
-    scale: string,
-    width: string,
-    height: string,
-    minWidth: string,
-    minHeight: string,
-    maxWidth: string,
-    maxHeight: string,
+    display: stringOrArray,
+    scale: stringOrArray,
+    width: stringOrArray,
+    height: stringOrArray,
+    minWidth: stringOrArray,
+    minHeight: stringOrArray,
+    maxWidth: stringOrArray,
+    maxHeight: stringOrArray,
     styles: func,
     className: string,
     children: node,
@@ -26,6 +27,7 @@ const defaultProps = {
     ...spacingDefaultProps,
     type: undefined,
     disabled: undefined,
+    display: undefined,
     scale: undefined,
     bg: 'transparent',
     width: undefined,
@@ -44,6 +46,7 @@ const Button = ({
     onClick,
     type,
     disabled,
+    display,
     color,
     scale,
     bg,
@@ -71,6 +74,7 @@ const Button = ({
         onClick={onClick}
         type={type}
         disabled={disabled}
+        buttonDisplay={display}
         fontColor={color}
         fontScale={scale}
         bgColor={bg}

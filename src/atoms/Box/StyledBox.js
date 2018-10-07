@@ -1,55 +1,68 @@
+/* eslint-disable no-multi-spaces, comma-spacing */
 import styled from 'styled-components';
+import buildCss from '../../build-css';
+
+const boxProperties = [
+    { cssProp: 'display',                   reactProp: 'boxDisplay',    themeProp: null },
+    { cssProp: 'box-shadow',                reactProp: 'shadow',        themeProp: 'shadow' },
+    { cssProp: 'z-index',                   reactProp: 'zIndex',        themeProp: null },
+
+    { cssProp: 'color',                     reactProp: 'fontColor',     themeProp: 'color' },
+    { cssProp: 'background-color',          reactProp: 'bgColor',       themeProp: 'color' },
+
+    { cssProp: 'position',                  reactProp: 'pos',           themeProp: null },
+    { cssProp: 'top',                       reactProp: 'top',           themeProp: 'spacing' },
+    { cssProp: 'bottom',                    reactProp: 'bottom',        themeProp: 'spacing' },
+    { cssProp: 'left',                      reactProp: 'left',          themeProp: 'spacing' },
+    { cssProp: 'right',                     reactProp: 'right',         themeProp: 'spacing' },
+    { cssProp: 'width',                     reactProp: 'w',             themeProp: 'spacing' },
+    { cssProp: 'height',                    reactProp: 'h',             themeProp: 'spacing' },
+    { cssProp: 'min-width',                 reactProp: 'minWidth',      themeProp: 'spacing' },
+    { cssProp: 'min-height',                reactProp: 'minHeight',     themeProp: 'spacing' },
+    { cssProp: 'max-width',                 reactProp: 'maxWidth',      themeProp: 'spacing' },
+    { cssProp: 'max-height',                reactProp: 'maxHeight',     themeProp: 'spacing' },
+
+    { cssProp: 'padding',                   reactProp: 'p',             themeProp: 'spacing' },
+    { cssProp: 'padding-top',               reactProp: 'pt',            themeProp: 'spacing' },
+    { cssProp: 'padding-bottom',            reactProp: 'pb',            themeProp: 'spacing' },
+    { cssProp: 'padding-left',              reactProp: 'pl',            themeProp: 'spacing' },
+    { cssProp: 'padding-right',             reactProp: 'pr',            themeProp: 'spacing' },
+
+    { cssProp: 'margin',                    reactProp: 'm',             themeProp: 'spacing' },
+    { cssProp: 'margin-top',                reactProp: 'mt',            themeProp: 'spacing' },
+    { cssProp: 'margin-bottom',             reactProp: 'mb',            themeProp: 'spacing' },
+    { cssProp: 'margin-left',               reactProp: 'ml',            themeProp: 'spacing' },
+    { cssProp: 'margin-right',              reactProp: 'mr',            themeProp: 'spacing' },
+
+    { cssProp: 'border-style',              reactProp: 'bs',            themeProp: null },
+    { cssProp: 'border-width',              reactProp: 'bw',            themeProp: 'spacing' },
+    { cssProp: 'border-color',              reactProp: 'bc',            themeProp: 'color' },
+    { cssProp: 'border-radius',             reactProp: 'br',            themeProp: 'spacing' },
+
+    { cssProp: 'border-top-style',          reactProp: 'bts',           themeProp: null },
+    { cssProp: 'border-top-width',          reactProp: 'btw',           themeProp: 'spacing' },
+    { cssProp: 'border-top-color',          reactProp: 'btc',           themeProp: 'color' },
+
+    { cssProp: 'border-bottom-style',       reactProp: 'bbs',           themeProp: null },
+    { cssProp: 'border-bottom-width',       reactProp: 'bbw',           themeProp: 'spacing' },
+    { cssProp: 'border-bottom-color',       reactProp: 'bbc',           themeProp: 'color' },
+
+    { cssProp: 'border-left-style',         reactProp: 'bls',           themeProp: null },
+    { cssProp: 'border-left-width',         reactProp: 'blw',           themeProp: 'spacing' },
+    { cssProp: 'border-left-color',         reactProp: 'blc',           themeProp: 'color' },
+
+    { cssProp: 'border-right-style',        reactProp: 'brs',           themeProp: null },
+    { cssProp: 'border-right-width',        reactProp: 'brw',           themeProp: 'spacing' },
+    { cssProp: 'border-right-color',        reactProp: 'brc',           themeProp: 'color' },
+
+    { cssProp: 'border-top-left-radius',    reactProp: 'btlr',          themeProp: 'spacing' },
+    { cssProp: 'border-top-right-radius',   reactProp: 'btrr',          themeProp: 'spacing' },
+    { cssProp: 'border-bottom-left-radius', reactProp: 'bblr',          themeProp: 'spacing' },
+    { cssProp: 'border-bottom-right-radius',reactProp: 'bbrr',          themeProp: 'spacing' },
+];
 
 const StyledBox = styled.div`
-    display: ${props => props.boxDisplay};
-    box-shadow: ${props => props.theme.shadow[props.shadow] || props.shadow};
-    z-index: ${props => props.zIndex};
-    overflow: ${props => props.boxOverflow};
-    overflow-x: ${props => props.boxOverflowX};
-    overflow-y: ${props => props.boxOverflowY};
-    color: ${props => props.theme.color[props.fontColor] || props.fontColor};
-    background-color: ${props => props.theme.color[props.bgColor] || props.bgColor};
-    position: ${props => props.pos};
-    top: ${props => props.top};
-    bottom: ${props => props.bottom};
-    left: ${props => props.left};
-    right: ${props => props.right};
-    width: ${props => props.theme.spacing[props.w] || props.w};
-    height: ${props => props.theme.spacing[props.h] || props.h};
-    min-width: ${props => props.theme.spacing[props.minWidth] || props.minWidth};
-    min-height: ${props => props.theme.spacing[props.minHeight] || props.minHeight};
-    max-width: ${props => props.theme.spacing[props.maxWidth] || props.maxWidth};
-    max-height: ${props => props.theme.spacing[props.maxHeight] || props.maxHeight};
-    padding: ${props => props.theme.spacing[props.p] || props.p};
-    padding-top: ${props => props.theme.spacing[props.pt] || props.pt};
-    padding-bottom: ${props => props.theme.spacing[props.pb] || props.pb};
-    padding-left: ${props => props.theme.spacing[props.pl] || props.pl};
-    padding-right: ${props => props.theme.spacing[props.pr] || props.pr};
-    margin: ${props => props.theme.spacing[props.m] || props.m};
-    margin-top: ${props => props.theme.spacing[props.mt] || props.mt};
-    margin-bottom: ${props => props.theme.spacing[props.mb] || props.mb};
-    margin-left: ${props => props.theme.spacing[props.ml] || props.ml};
-    margin-right: ${props => props.theme.spacing[props.mr] || props.mr};
-    border-style: ${props => props.bs};
-    border-width: ${props => props.theme.spacing[props.bw] || props.bw};
-    border-color: ${props => props.theme.color[props.bc] || props.bc};
-    border-radius: ${props => props.theme.spacing[props.br] || props.br};
-    border-top-style: ${props => props.bts};
-    border-top-width: ${props => props.theme.spacing[props.btw] || props.btw};
-    border-top-color: ${props => props.theme.color[props.btc] || props.btc};
-    border-bottom-style: ${props => props.bbs};
-    border-bottom-width: ${props => props.theme.spacing[props.bbw] || props.bbw};
-    border-bottom-color: ${props => props.theme.color[props.bbc] || props.bbc};
-    border-left-style: ${props => props.bls};
-    border-left-width: ${props => props.theme.spacing[props.blw] || props.blw};
-    border-left-color: ${props => props.theme.color[props.blc] || props.blc};
-    border-right-style: ${props => props.brs};
-    border-right-width: ${props => props.theme.spacing[props.brw] || props.brw};
-    border-right-color: ${props => props.theme.color[props.brc] || props.brc};
-    border-top-left-radius: ${props => props.theme.spacing[props.btlr] || props.btlr};
-    border-top-right-radius: ${props => props.theme.spacing[props.btrr] || props.btrr};
-    border-bottom-left-radius: ${props => props.theme.spacing[props.bblr] || props.bblr};
-    border-bottom-right-radius: ${props => props.theme.spacing[props.bbrr] || props.bbrr};
+    ${buildCss(boxProperties)};
     ${props => props.styles && props.styles(props)};
 `;
 

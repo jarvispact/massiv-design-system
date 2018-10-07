@@ -2,16 +2,19 @@
 import React from 'react';
 import { string, func, node } from 'prop-types';
 import StyledText from './StyledText';
+import { stringOrArray } from '../../prop-types';
 
 const propTypes = {
-    color: string,
-    scale: string,
+    display: stringOrArray,
+    color: stringOrArray,
+    scale: stringOrArray,
     styles: func,
     className: string,
     children: node,
 };
 
 const defaultProps = {
+    display: undefined,
     color: undefined,
     scale: undefined,
     styles: undefined,
@@ -19,8 +22,9 @@ const defaultProps = {
     children: undefined,
 };
 
-const H1 = ({ color, scale, styles, className, children }) => (
+const H1 = ({ display, color, scale, styles, className, children }) => (
     <StyledText.H1
+        textDisplay={display}
         fontColor={color}
         fontScale={scale}
         styles={styles}
@@ -30,8 +34,9 @@ const H1 = ({ color, scale, styles, className, children }) => (
     </StyledText.H1>
 );
 
-const H2 = ({ color, scale, styles, className, children }) => (
+const H2 = ({ display, color, scale, styles, className, children }) => (
     <StyledText.H2
+        textDisplay={display}
         fontColor={color}
         fontScale={scale}
         styles={styles}
@@ -41,8 +46,9 @@ const H2 = ({ color, scale, styles, className, children }) => (
     </StyledText.H2>
 );
 
-const H3 = ({ color, scale, styles, className, children }) => (
+const H3 = ({ display, color, scale, styles, className, children }) => (
     <StyledText.H3
+        textDisplay={display}
         fontColor={color}
         fontScale={scale}
         styles={styles}
@@ -52,8 +58,9 @@ const H3 = ({ color, scale, styles, className, children }) => (
     </StyledText.H3>
 );
 
-const H4 = ({ color, scale, styles, className, children }) => (
+const H4 = ({ display, color, scale, styles, className, children }) => (
     <StyledText.H4
+        textDisplay={display}
         fontColor={color}
         fontScale={scale}
         styles={styles}
@@ -63,8 +70,9 @@ const H4 = ({ color, scale, styles, className, children }) => (
     </StyledText.H4>
 );
 
-const H5 = ({ color, scale, styles, className, children }) => (
+const H5 = ({ display, color, scale, styles, className, children }) => (
     <StyledText.H5
+        textDisplay={display}
         fontColor={color}
         fontScale={scale}
         styles={styles}
@@ -74,8 +82,9 @@ const H5 = ({ color, scale, styles, className, children }) => (
     </StyledText.H5>
 );
 
-const H6 = ({ color, scale, styles, className, children }) => (
+const H6 = ({ display, color, scale, styles, className, children }) => (
     <StyledText.H6
+        textDisplay={display}
         fontColor={color}
         fontScale={scale}
         styles={styles}
@@ -85,8 +94,9 @@ const H6 = ({ color, scale, styles, className, children }) => (
     </StyledText.H6>
 );
 
-const P = ({ color, scale, styles, className, children }) => (
+const P = ({ display, color, scale, styles, className, children }) => (
     <StyledText.P
+        textDisplay={display}
         fontColor={color}
         fontScale={scale}
         styles={styles}
@@ -96,8 +106,9 @@ const P = ({ color, scale, styles, className, children }) => (
     </StyledText.P>
 );
 
-const Span = ({ color, scale, styles, className, children }) => (
+const Span = ({ display, color, scale, styles, className, children }) => (
     <StyledText.Span
+        textDisplay={display}
         fontColor={color}
         fontScale={scale}
         styles={styles}
@@ -107,8 +118,9 @@ const Span = ({ color, scale, styles, className, children }) => (
     </StyledText.Span>
 );
 
-const Label = ({ color, scale, styles, className, children }) => (
+const Label = ({ display, color, scale, styles, className, children }) => (
     <StyledText.Label
+        textDisplay={display}
         fontColor={color}
         fontScale={scale}
         styles={styles}
@@ -118,8 +130,9 @@ const Label = ({ color, scale, styles, className, children }) => (
     </StyledText.Label>
 );
 
-const A = ({ color, scale, styles, className, href, rel, target, download, children }) => (
+const A = ({ display, color, scale, styles, className, href, rel, target, download, children }) => (
     <StyledText.A
+        textDisplay={display}
         fontColor={color}
         fontScale={scale}
         styles={styles}

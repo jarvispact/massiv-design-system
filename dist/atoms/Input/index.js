@@ -16,7 +16,7 @@ var _StyledInput = require('./StyledInput');
 
 var _StyledInput2 = _interopRequireDefault(_StyledInput);
 
-var _propTypes2 = require('../prop-types');
+var _propTypes2 = require('../../prop-types');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26,24 +26,26 @@ var propTypes = _extends({}, _propTypes2.colorPropTypes, _propTypes2.spacingProp
     value: _propTypes.string,
     onChange: _propTypes.func,
     disabled: _propTypes.bool,
-    scale: _propTypes.string,
-    width: _propTypes.string,
-    height: _propTypes.string,
-    minWidth: _propTypes.string,
-    minHeight: _propTypes.string,
-    maxWidth: _propTypes.string,
-    maxHeight: _propTypes.string,
+    display: _propTypes2.stringOrArray,
+    scale: _propTypes2.stringOrArray,
+    width: _propTypes2.stringOrArray,
+    height: _propTypes2.stringOrArray,
+    minWidth: _propTypes2.stringOrArray,
+    minHeight: _propTypes2.stringOrArray,
+    maxWidth: _propTypes2.stringOrArray,
+    maxHeight: _propTypes2.stringOrArray,
     styles: _propTypes.func,
     className: _propTypes.string
 });
 
 var defaultProps = _extends({}, _propTypes2.colorDefaultProps, _propTypes2.spacingDefaultProps, {
-    p: '0', // override padding default
+    p: '0',
     type: 'text',
     name: undefined,
     value: '',
     onChange: undefined,
     disabled: undefined,
+    display: undefined,
     scale: undefined,
     width: undefined,
     height: undefined,
@@ -61,6 +63,7 @@ var Input = function Input(_ref) {
         value = _ref.value,
         onChange = _ref.onChange,
         disabled = _ref.disabled,
+        display = _ref.display,
         color = _ref.color,
         scale = _ref.scale,
         bg = _ref.bg,
@@ -88,6 +91,7 @@ var Input = function Input(_ref) {
         value: value,
         onChange: onChange,
         disabled: disabled,
+        inputDisplay: display,
         fontColor: color,
         fontScale: scale,
         bgColor: bg,

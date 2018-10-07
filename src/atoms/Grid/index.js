@@ -1,10 +1,12 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { string, number, func, node } from 'prop-types';
+import { string, func, node } from 'prop-types';
 import StyledGrid from './StyledGrid';
+import { stringOrArray, numberOrArray } from '../../prop-types';
 
 const rowPropTypes = {
-    gutter: string,
+    gutter: stringOrArray,
+    columns: numberOrArray,
     styles: func,
     className: string,
     children: node,
@@ -12,52 +14,41 @@ const rowPropTypes = {
 
 const rowDefaultProps = {
     gutter: undefined,
+    columns: undefined,
     styles: undefined,
     className: undefined,
     children: undefined,
 };
 
 const colPropTypes = {
-    s: number,
-    m: number,
-    l: number,
-    xl: number,
-    xxl: number,
-    gutter: string,
+    gutter: stringOrArray,
+    columns: numberOrArray,
     styles: func,
     className: string,
     children: node,
 };
 
 const colDefaultProps = {
-    s: undefined,
-    m: undefined,
-    l: undefined,
-    xl: undefined,
-    xxl: undefined,
     gutter: undefined,
+    columns: undefined,
     styles: undefined,
     className: undefined,
     children: undefined,
 };
 
-const Row = ({ gutter, styles, className, children }) => (
+const Row = ({ gutter, columns, styles, className, children }) => (
     <StyledGrid.Row
         styles={styles}
         className={className}
     >
-        {React.Children.map(children, child => React.cloneElement(child, { gutter }))}
+        {React.Children.map(children, child => React.cloneElement(child, { gutter, columns }))}
     </StyledGrid.Row>
 );
 
-const Col = ({ s, m, l, xl, xxl, gutter, styles, className, children }) => (
+const Col = ({ gutter, columns, styles, className, children }) => (
     <StyledGrid.Col
-        colS={s}
-        colM={m}
-        colL={l}
-        colXL={xl}
-        colXXL={xxl}
         gutter={gutter}
+        columns={columns}
         styles={styles}
         className={className}
     >

@@ -5,8 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _templateObject = _taggedTemplateLiteral(['\n        box-sizing: border-box;\n        ', ';\n    '], ['\n        box-sizing: border-box;\n        ', ';\n    ']),
-    _templateObject2 = _taggedTemplateLiteral(['\n        box-sizing: border-box;\n        float: left;\n        width: ', '%;\n        padding: ', ';\n        ', ';\n        ', ';\n        ', ';\n        ', ';\n        ', ';\n        ', ';\n    '], ['\n        box-sizing: border-box;\n        float: left;\n        width: ', '%;\n        padding: ', ';\n        ', ';\n        ', ';\n        ', ';\n        ', ';\n        ', ';\n        ', ';\n    ']),
-    _templateObject3 = _taggedTemplateLiteral(['\n                    @media screen and (min-width: ', ') {\n                        width: ', '%;\n                    }\n                '], ['\n                    @media screen and (min-width: ', ') {\n                        width: ', '%;\n                    }\n                ']);
+    _templateObject2 = _taggedTemplateLiteral(['\n        box-sizing: border-box;\n        float: left;\n        width: ', '%;\n        padding: ', ';\n        ', ';\n        ', ';\n    '], ['\n        box-sizing: border-box;\n        float: left;\n        width: ', '%;\n        padding: ', ';\n        ', ';\n        ', ';\n    ']),
+    _templateObject3 = _taggedTemplateLiteral(['\n                        @media screen and (min-width: ', ') {\n                            ', ';\n                            ', ';\n                        }\n                    '], ['\n                        @media screen and (min-width: ', ') {\n                            ', ';\n                            ', ';\n                        }\n                    ']);
 
 var _styledComponents = require('styled-components');
 
@@ -14,7 +14,7 @@ var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); } /* eslint-disable indent */
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); } /* eslint-disable indent, no-multi-spaces, comma-spacing */
 
 
 var mapRange = function mapRange(inMin, inMax, outMin, outMax) {
@@ -28,30 +28,27 @@ var StyledGrid = {
     Row: _styledComponents2.default.div(_templateObject, function (props) {
         return props.styles && props.styles(props);
     }),
-    Col: _styledComponents2.default.div(_templateObject2, function () {
-        return mapGridToPercent(12);
+    Col: _styledComponents2.default.div(_templateObject2, function (props) {
+        return mapGridToPercent(props.columns[0]);
     }, function (props) {
-        return props.theme.spacing[props.gutter] || props.gutter;
+        var theme = props.theme;
+
+        var gutter = Array.isArray(props.gutter) ? props.gutter : [props.gutter];
+        return gutter[0] ? theme.spacing[gutter[0]] : gutter[0];
     }, function (props) {
-        if (props.colS) {
-            return (0, _styledComponents.css)(_templateObject3, props.theme.settings.breakpoints.s, mapGridToPercent(props.colS));
-        }
-    }, function (props) {
-        if (props.colM) {
-            return (0, _styledComponents.css)(_templateObject3, props.theme.settings.breakpoints.m, mapGridToPercent(props.colM));
-        }
-    }, function (props) {
-        if (props.colL) {
-            return (0, _styledComponents.css)(_templateObject3, props.theme.settings.breakpoints.l, mapGridToPercent(props.colL));
-        }
-    }, function (props) {
-        if (props.colXL) {
-            return (0, _styledComponents.css)(_templateObject3, props.theme.settings.breakpoints.xl, mapGridToPercent(props.colXL));
-        }
-    }, function (props) {
-        if (props.colXXL) {
-            return (0, _styledComponents.css)(_templateObject3, props.theme.settings.breakpoints.xxl, mapGridToPercent(props.colXXL));
-        }
+        var breakpoints = props.theme.settings.breakpoints;
+
+        var gutter = Array.isArray(props.gutter) ? props.gutter : [props.gutter];
+        var columns = Array.isArray(props.columns) ? props.columns : [props.columns];
+        var cssArray = [];
+        breakpoints.forEach(function (breakpoint, breakpointIndex) {
+            var propIndex = breakpointIndex + 1;
+            if (gutter[propIndex] || columns[propIndex]) {
+                var breakpointCss = (0, _styledComponents.css)(_templateObject3, breakpoints[breakpointIndex], gutter[propIndex] ? 'padding: ' + (props.theme.spacing[gutter[propIndex]] || gutter[propIndex]) : '', columns[propIndex] ? 'width: ' + mapGridToPercent(columns[propIndex]) + '%' : '');
+                cssArray.push(breakpointCss.join(''));
+            }
+        });
+        return cssArray.join('\n');
     }, function (props) {
         return props.styles && props.styles(props);
     })

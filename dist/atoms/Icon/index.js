@@ -16,6 +16,8 @@ var _StyledIcon = require('./StyledIcon');
 
 var _StyledIcon2 = _interopRequireDefault(_StyledIcon);
 
+var _propTypes2 = require('../../prop-types');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var propTypes = {
@@ -25,8 +27,8 @@ var propTypes = {
         }).isRequired
     }).isRequired,
     name: _propTypes.string.isRequired,
-    color: _propTypes.string,
-    scale: _propTypes.string,
+    color: _propTypes2.stringOrArray,
+    scale: _propTypes2.stringOrArray,
     loading: _propTypes.bool,
     styles: _propTypes.func,
     className: _propTypes.string

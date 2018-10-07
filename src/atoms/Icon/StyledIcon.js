@@ -1,14 +1,20 @@
+/* eslint-disable no-multi-spaces, comma-spacing */
 import styled, { keyframes, css } from 'styled-components';
+import buildCss from '../../build-css';
 
 const rotationKeyframes = keyframes`
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 `;
 
+const iconProperties = [
+    { cssProp: 'color',     reactProp: 'fontColor', themeProp: 'color' },
+    { cssProp: 'font-size', reactProp: 'fontScale', themeProp: 'fontScale' },
+];
+
 const StyledIcon = styled.i`
-    color: ${props => props.theme.color[props.fontColor] || props.fontColor};
-    font-size: ${props => props.theme.fontScale[props.fontScale] || props.fontScale};
     vertical-align: -16%;
+    ${buildCss(iconProperties)};
     ${(props) => {
         if (props.loading) {
             return css`

@@ -4,60 +4,29 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(['\n    border-style: none;\n    border-radius: 2px;\n    &:focus {\n        outline: 0;\n    }\n    cursor: ', ';\n    opacity: ', ';\n    color: ', ';\n    font-family: ', ';\n    font-size: ', ';\n    background-color: ', ';\n    width: ', ';\n    height: ', ';\n    min-width: ', ';\n    min-height: ', ';\n    max-width: ', ';\n    max-height: ', ';\n    padding: ', ';\n    padding-top: ', ';\n    padding-bottom: ', ';\n    padding-left: ', ';\n    padding-right: ', ';\n    margin: ', ';\n    margin-top: ', ';\n    margin-bottom: ', ';\n    margin-left: ', ';\n    margin-right: ', ';\n    ', ';\n'], ['\n    border-style: none;\n    border-radius: 2px;\n    &:focus {\n        outline: 0;\n    }\n    cursor: ', ';\n    opacity: ', ';\n    color: ', ';\n    font-family: ', ';\n    font-size: ', ';\n    background-color: ', ';\n    width: ', ';\n    height: ', ';\n    min-width: ', ';\n    min-height: ', ';\n    max-width: ', ';\n    max-height: ', ';\n    padding: ', ';\n    padding-top: ', ';\n    padding-bottom: ', ';\n    padding-left: ', ';\n    padding-right: ', ';\n    margin: ', ';\n    margin-top: ', ';\n    margin-bottom: ', ';\n    margin-left: ', ';\n    margin-right: ', ';\n    ', ';\n']);
+var _templateObject = _taggedTemplateLiteral(['\n    ', ';\n    border-style: none;\n    border-radius: 2px;\n    &:focus { outline: 0; }\n    cursor: ', ';\n    opacity: ', ';\n    font-family: ', ';\n    ', ';\n'], ['\n    ', ';\n    border-style: none;\n    border-radius: 2px;\n    &:focus { outline: 0; }\n    cursor: ', ';\n    opacity: ', ';\n    font-family: ', ';\n    ', ';\n']);
 
 var _styledComponents = require('styled-components');
 
 var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
+var _buildCss = require('../../build-css');
+
+var _buildCss2 = _interopRequireDefault(_buildCss);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); } /* eslint-disable no-multi-spaces, comma-spacing */
 
-var StyledButton = _styledComponents2.default.button(_templateObject, function (props) {
+
+var buttonProperties = [{ cssProp: 'display', reactProp: 'buttonDisplay', themeProp: null }, { cssProp: 'font-size', reactProp: 'fontScale', themeProp: 'fontScale' }, { cssProp: 'color', reactProp: 'fontColor', themeProp: 'color' }, { cssProp: 'background-color', reactProp: 'bgColor', themeProp: 'color' }, { cssProp: 'width', reactProp: 'w', themeProp: 'spacing' }, { cssProp: 'height', reactProp: 'h', themeProp: 'spacing' }, { cssProp: 'min-width', reactProp: 'minWidth', themeProp: 'spacing' }, { cssProp: 'min-height', reactProp: 'minHeight', themeProp: 'spacing' }, { cssProp: 'max-width', reactProp: 'maxWidth', themeProp: 'spacing' }, { cssProp: 'max-height', reactProp: 'maxHeight', themeProp: 'spacing' }, { cssProp: 'padding', reactProp: 'p', themeProp: 'spacing' }, { cssProp: 'padding-top', reactProp: 'pt', themeProp: 'spacing' }, { cssProp: 'padding-bottom', reactProp: 'pb', themeProp: 'spacing' }, { cssProp: 'padding-left', reactProp: 'pl', themeProp: 'spacing' }, { cssProp: 'padding-right', reactProp: 'pr', themeProp: 'spacing' }, { cssProp: 'margin', reactProp: 'm', themeProp: 'spacing' }, { cssProp: 'margin-top', reactProp: 'mt', themeProp: 'spacing' }, { cssProp: 'margin-bottom', reactProp: 'mb', themeProp: 'spacing' }, { cssProp: 'margin-left', reactProp: 'ml', themeProp: 'spacing' }, { cssProp: 'margin-right', reactProp: 'mr', themeProp: 'spacing' }];
+
+var StyledButton = _styledComponents2.default.button(_templateObject, (0, _buildCss2.default)(buttonProperties), function (props) {
     return props.disabled ? 'not-allowed' : 'pointer';
 }, function (props) {
     return props.disabled && '0.5';
 }, function (props) {
-    return props.theme.color[props.fontColor] || props.fontColor;
-}, function (props) {
     return props.theme.settings.fonts.button;
-}, function (props) {
-    return props.theme.fontScale[props.fontScale] || props.fontScale;
-}, function (props) {
-    return props.theme.color[props.bgColor] || props.bgColor;
-}, function (props) {
-    return props.theme.spacing[props.w] || props.w;
-}, function (props) {
-    return props.theme.spacing[props.h] || props.h;
-}, function (props) {
-    return props.theme.spacing[props.minWidth] || props.minWidth;
-}, function (props) {
-    return props.theme.spacing[props.minHeight] || props.minHeight;
-}, function (props) {
-    return props.theme.spacing[props.maxWidth] || props.maxWidth;
-}, function (props) {
-    return props.theme.spacing[props.maxHeight] || props.maxHeight;
-}, function (props) {
-    return props.theme.spacing[props.p] || props.p;
-}, function (props) {
-    return props.theme.spacing[props.pt] || props.pt;
-}, function (props) {
-    return props.theme.spacing[props.pb] || props.pb;
-}, function (props) {
-    return props.theme.spacing[props.pl] || props.pl;
-}, function (props) {
-    return props.theme.spacing[props.pr] || props.pr;
-}, function (props) {
-    return props.theme.spacing[props.m] || props.m;
-}, function (props) {
-    return props.theme.spacing[props.mt] || props.mt;
-}, function (props) {
-    return props.theme.spacing[props.mb] || props.mb;
-}, function (props) {
-    return props.theme.spacing[props.ml] || props.ml;
-}, function (props) {
-    return props.theme.spacing[props.mr] || props.mr;
 }, function (props) {
     return props.styles && props.styles(props);
 });

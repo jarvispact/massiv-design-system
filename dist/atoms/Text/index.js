@@ -14,18 +14,22 @@ var _StyledText = require('./StyledText');
 
 var _StyledText2 = _interopRequireDefault(_StyledText);
 
+var _propTypes2 = require('../../prop-types');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/* eslint-disable react/prop-types */
 var propTypes = {
-    color: _propTypes.string,
-    scale: _propTypes.string,
+    display: _propTypes2.stringOrArray,
+    color: _propTypes2.stringOrArray,
+    scale: _propTypes2.stringOrArray,
     styles: _propTypes.func,
     className: _propTypes.string,
     children: _propTypes.node
-}; /* eslint-disable react/prop-types */
-
+};
 
 var defaultProps = {
+    display: undefined,
     color: undefined,
     scale: undefined,
     styles: undefined,
@@ -34,7 +38,8 @@ var defaultProps = {
 };
 
 var H1 = function H1(_ref) {
-    var color = _ref.color,
+    var display = _ref.display,
+        color = _ref.color,
         scale = _ref.scale,
         styles = _ref.styles,
         className = _ref.className,
@@ -42,6 +47,7 @@ var H1 = function H1(_ref) {
     return _react2.default.createElement(
         _StyledText2.default.H1,
         {
+            textDisplay: display,
             fontColor: color,
             fontScale: scale,
             styles: styles,
@@ -52,7 +58,8 @@ var H1 = function H1(_ref) {
 };
 
 var H2 = function H2(_ref2) {
-    var color = _ref2.color,
+    var display = _ref2.display,
+        color = _ref2.color,
         scale = _ref2.scale,
         styles = _ref2.styles,
         className = _ref2.className,
@@ -60,6 +67,7 @@ var H2 = function H2(_ref2) {
     return _react2.default.createElement(
         _StyledText2.default.H2,
         {
+            textDisplay: display,
             fontColor: color,
             fontScale: scale,
             styles: styles,
@@ -70,7 +78,8 @@ var H2 = function H2(_ref2) {
 };
 
 var H3 = function H3(_ref3) {
-    var color = _ref3.color,
+    var display = _ref3.display,
+        color = _ref3.color,
         scale = _ref3.scale,
         styles = _ref3.styles,
         className = _ref3.className,
@@ -78,6 +87,7 @@ var H3 = function H3(_ref3) {
     return _react2.default.createElement(
         _StyledText2.default.H3,
         {
+            textDisplay: display,
             fontColor: color,
             fontScale: scale,
             styles: styles,
@@ -88,7 +98,8 @@ var H3 = function H3(_ref3) {
 };
 
 var H4 = function H4(_ref4) {
-    var color = _ref4.color,
+    var display = _ref4.display,
+        color = _ref4.color,
         scale = _ref4.scale,
         styles = _ref4.styles,
         className = _ref4.className,
@@ -96,6 +107,7 @@ var H4 = function H4(_ref4) {
     return _react2.default.createElement(
         _StyledText2.default.H4,
         {
+            textDisplay: display,
             fontColor: color,
             fontScale: scale,
             styles: styles,
@@ -106,7 +118,8 @@ var H4 = function H4(_ref4) {
 };
 
 var H5 = function H5(_ref5) {
-    var color = _ref5.color,
+    var display = _ref5.display,
+        color = _ref5.color,
         scale = _ref5.scale,
         styles = _ref5.styles,
         className = _ref5.className,
@@ -114,6 +127,7 @@ var H5 = function H5(_ref5) {
     return _react2.default.createElement(
         _StyledText2.default.H5,
         {
+            textDisplay: display,
             fontColor: color,
             fontScale: scale,
             styles: styles,
@@ -124,7 +138,8 @@ var H5 = function H5(_ref5) {
 };
 
 var H6 = function H6(_ref6) {
-    var color = _ref6.color,
+    var display = _ref6.display,
+        color = _ref6.color,
         scale = _ref6.scale,
         styles = _ref6.styles,
         className = _ref6.className,
@@ -132,6 +147,7 @@ var H6 = function H6(_ref6) {
     return _react2.default.createElement(
         _StyledText2.default.H6,
         {
+            textDisplay: display,
             fontColor: color,
             fontScale: scale,
             styles: styles,
@@ -142,7 +158,8 @@ var H6 = function H6(_ref6) {
 };
 
 var P = function P(_ref7) {
-    var color = _ref7.color,
+    var display = _ref7.display,
+        color = _ref7.color,
         scale = _ref7.scale,
         styles = _ref7.styles,
         className = _ref7.className,
@@ -150,6 +167,7 @@ var P = function P(_ref7) {
     return _react2.default.createElement(
         _StyledText2.default.P,
         {
+            textDisplay: display,
             fontColor: color,
             fontScale: scale,
             styles: styles,
@@ -160,7 +178,8 @@ var P = function P(_ref7) {
 };
 
 var Span = function Span(_ref8) {
-    var color = _ref8.color,
+    var display = _ref8.display,
+        color = _ref8.color,
         scale = _ref8.scale,
         styles = _ref8.styles,
         className = _ref8.className,
@@ -168,6 +187,7 @@ var Span = function Span(_ref8) {
     return _react2.default.createElement(
         _StyledText2.default.Span,
         {
+            textDisplay: display,
             fontColor: color,
             fontScale: scale,
             styles: styles,
@@ -178,7 +198,8 @@ var Span = function Span(_ref8) {
 };
 
 var Label = function Label(_ref9) {
-    var color = _ref9.color,
+    var display = _ref9.display,
+        color = _ref9.color,
         scale = _ref9.scale,
         styles = _ref9.styles,
         className = _ref9.className,
@@ -186,6 +207,7 @@ var Label = function Label(_ref9) {
     return _react2.default.createElement(
         _StyledText2.default.Label,
         {
+            textDisplay: display,
             fontColor: color,
             fontScale: scale,
             styles: styles,
@@ -196,7 +218,8 @@ var Label = function Label(_ref9) {
 };
 
 var A = function A(_ref10) {
-    var color = _ref10.color,
+    var display = _ref10.display,
+        color = _ref10.color,
         scale = _ref10.scale,
         styles = _ref10.styles,
         className = _ref10.className,
@@ -208,6 +231,7 @@ var A = function A(_ref10) {
     return _react2.default.createElement(
         _StyledText2.default.A,
         {
+            textDisplay: display,
             fontColor: color,
             fontScale: scale,
             styles: styles,

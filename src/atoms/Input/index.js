@@ -1,7 +1,7 @@
 import React from 'react';
 import { string, func, bool } from 'prop-types';
 import StyledInput from './StyledInput';
-import { colorPropTypes, colorDefaultProps, spacingPropTypes, spacingDefaultProps } from '../prop-types';
+import { colorPropTypes, colorDefaultProps, spacingPropTypes, spacingDefaultProps, stringOrArray } from '../../prop-types';
 
 const propTypes = {
     ...colorPropTypes,
@@ -11,13 +11,14 @@ const propTypes = {
     value: string,
     onChange: func,
     disabled: bool,
-    scale: string,
-    width: string,
-    height: string,
-    minWidth: string,
-    minHeight: string,
-    maxWidth: string,
-    maxHeight: string,
+    display: stringOrArray,
+    scale: stringOrArray,
+    width: stringOrArray,
+    height: stringOrArray,
+    minWidth: stringOrArray,
+    minHeight: stringOrArray,
+    maxWidth: stringOrArray,
+    maxHeight: stringOrArray,
     styles: func,
     className: string,
 };
@@ -25,12 +26,13 @@ const propTypes = {
 const defaultProps = {
     ...colorDefaultProps,
     ...spacingDefaultProps,
-    p: '0', // override padding default
+    p: '0',
     type: 'text',
     name: undefined,
     value: '',
     onChange: undefined,
     disabled: undefined,
+    display: undefined,
     scale: undefined,
     width: undefined,
     height: undefined,
@@ -48,6 +50,7 @@ const Input = ({
     value,
     onChange,
     disabled,
+    display,
     color,
     scale,
     bg,
@@ -76,6 +79,7 @@ const Input = ({
         value={value}
         onChange={onChange}
         disabled={disabled}
+        inputDisplay={display}
         fontColor={color}
         fontScale={scale}
         bgColor={bg}

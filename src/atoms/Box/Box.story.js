@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { text } from '@storybook/addon-knobs';
+import { array } from '@storybook/addon-knobs';
 import Box from '.';
 
 storiesOf('Box', module)
@@ -10,51 +10,52 @@ storiesOf('Box', module)
     ))
     .add('Box with knobs', () => (
         <Box
-            display={text('display', undefined)}
-            shadow={text('shadow', undefined)}
-            color={text('color', undefined)}
-            bg={text('bg', undefined)}
-            pos={text('pos', undefined)}
-            top={text('top', undefined)}
-            bottom={text('bottom', undefined)}
-            left={text('left', undefined)}
-            right={text('right', undefined)}
-            width={text('width', undefined)}
-            height={text('height', undefined)}
-            minWidth={text('minWidth', undefined)}
-            minHeight={text('minHeight', undefined)}
-            maxWidth={text('maxWidth', undefined)}
-            maxHeight={text('maxHeight', undefined)}
-            p={text('p', undefined)}
-            pt={text('pt', undefined)}
-            pb={text('pb', undefined)}
-            pl={text('pl', undefined)}
-            pr={text('pr', undefined)}
-            m={text('m', undefined)}
-            mt={text('mt', undefined)}
-            mb={text('mb', undefined)}
-            ml={text('ml', undefined)}
-            mr={text('mr', undefined)}
-            bs={text('bs', undefined)}
-            bw={text('bw', undefined)}
-            bc={text('bc', undefined)}
-            br={text('br', undefined)}
-            bts={text('bts', undefined)}
-            btw={text('btw', undefined)}
-            btc={text('btc', undefined)}
-            bbs={text('bbs', undefined)}
-            bbw={text('bbw', undefined)}
-            bbc={text('bbc', undefined)}
-            bls={text('bls', undefined)}
-            blw={text('blw', undefined)}
-            blc={text('blc', undefined)}
-            brs={text('brs', undefined)}
-            brw={text('brw', undefined)}
-            brc={text('brc', undefined)}
-            btlr={text('btlr', undefined)}
-            btrr={text('btrr', undefined)}
-            bblr={text('bblr', undefined)}
-            bbrr={text('bbrr', undefined)}
+            display={array('display', [])}
+            shadow={array('shadow', [])}
+            zIndex={array('zIndex', [])}
+            color={array('color', [])}
+            bg={array('bg', [])}
+            pos={array('pos', [])}
+            top={array('top', [])}
+            bottom={array('bottom', [])}
+            left={array('left', [])}
+            right={array('right', [])}
+            width={array('width', [])}
+            height={array('height', [])}
+            minWidth={array('minWidth', [])}
+            minHeight={array('minHeight', [])}
+            maxWidth={array('maxWidth', [])}
+            maxHeight={array('maxHeight', [])}
+            p={array('p', [])}
+            pt={array('pt', [])}
+            pb={array('pb', [])}
+            pl={array('pl', [])}
+            pr={array('pr', [])}
+            m={array('m', [])}
+            mt={array('mt', [])}
+            mb={array('mb', [])}
+            ml={array('ml', [])}
+            mr={array('mr', [])}
+            bs={array('bs', [])}
+            bw={array('bw', [])}
+            bc={array('bc', [])}
+            br={array('br', [])}
+            bts={array('bts', [])}
+            btw={array('btw', [])}
+            btc={array('btc', [])}
+            bbs={array('bbs', [])}
+            bbw={array('bbw', [])}
+            bbc={array('bbc', [])}
+            bls={array('bls', [])}
+            blw={array('blw', [])}
+            blc={array('blc', [])}
+            brs={array('brs', [])}
+            brw={array('brw', [])}
+            brc={array('brc', [])}
+            btlr={array('btlr', [])}
+            btrr={array('btrr', [])}
+            bblr={array('bblr', [])}
+            bbrr={array('bbrr', [])}
         >
             Test
         </Box>

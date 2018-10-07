@@ -10,13 +10,20 @@ var _styledComponents = require('styled-components');
 
 var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
+var _buildCss = require('../../build-css');
+
+var _buildCss2 = _interopRequireDefault(_buildCss);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); } /* eslint-disable no-multi-spaces, comma-spacing */
+
+
+var textProperties = [{ cssProp: 'display', reactProp: 'textDisplay', themeProp: null }, { cssProp: 'color', reactProp: 'fontColor', themeProp: 'color' }, { cssProp: 'font-size', reactProp: 'fontScale', themeProp: 'fontScale' }];
 
 var getStyles = function getStyles(type) {
     return function (props) {
-        return '\n    font-family: ' + props.theme.settings.fonts[type] + ';\n    color: ' + (props.theme.color[props.fontColor] || props.fontColor || '') + ';\n    font-size: ' + (props.theme.fontScale[props.fontScale] || props.fontScale || '') + ';\n    ' + (props.styles ? props.styles(props) : '') + ';\n';
+        return '\n    ' + (0, _buildCss2.default)(textProperties)(props) + ';\n    font-family: ' + props.theme.settings.fonts[type] + ';\n    ' + (props.styles ? props.styles(props) : '') + ';\n';
     };
 };
 

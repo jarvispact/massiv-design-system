@@ -10,19 +10,20 @@ import {
     spacingDefaultProps,
     borderPropTypes,
     borderDefaultProps,
-} from '../prop-types';
+    stringOrArray,
+} from '../../prop-types';
 
 const propTypes = {
     ...colorPropTypes,
     ...positionPropTypes,
     ...spacingPropTypes,
     ...borderPropTypes,
-    display: string,
-    shadow: string,
-    zIndex: string,
-    overflow: string,
-    overflowX: string,
-    overflowY: string,
+    display: stringOrArray,
+    shadow: stringOrArray,
+    zIndex: stringOrArray,
+    overflow: stringOrArray,
+    overflowX: stringOrArray,
+    overflowY: stringOrArray,
     styles: func,
     className: string,
     children: node,

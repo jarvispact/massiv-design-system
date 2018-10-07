@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { text, boolean } from '@storybook/addon-knobs';
+import { text, boolean, array } from '@storybook/addon-knobs';
 import Icon from '.';
 
 storiesOf('Icon', module)
@@ -11,8 +11,8 @@ storiesOf('Icon', module)
     .add('icon with knobs', () => (
         <Icon
             name={text('name', 'grade')}
-            color={text('color', undefined)}
-            scale={text('scale', undefined)}
+            color={array('color', [])}
+            scale={array('scale', [])}
             loading={boolean('loading', false)}
         />
     ))

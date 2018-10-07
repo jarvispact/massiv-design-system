@@ -4,7 +4,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /* eslint-disable react/prop-types */
+
 
 var _react = require('react');
 
@@ -16,25 +17,26 @@ var _StyledFlex = require('./StyledFlex');
 
 var _StyledFlex2 = _interopRequireDefault(_StyledFlex);
 
+var _propTypes2 = require('../../prop-types');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; } /* eslint-disable react/prop-types */
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
-
-var parentPropTypes = {
+var parentPropTypes = _extends({}, _propTypes2.colorPropTypes, _propTypes2.positionPropTypes, _propTypes2.spacingPropTypes, _propTypes2.borderPropTypes, {
     inline: _propTypes.bool,
-    dir: _propTypes.string,
-    wrap: _propTypes.string,
-    flow: _propTypes.string,
-    justifyContent: _propTypes.string,
-    alignItems: _propTypes.string,
-    alignContent: _propTypes.string,
+    dir: _propTypes2.stringOrArray,
+    wrap: _propTypes2.stringOrArray,
+    flow: _propTypes2.stringOrArray,
+    justifyContent: _propTypes2.stringOrArray,
+    alignItems: _propTypes2.stringOrArray,
+    alignContent: _propTypes2.stringOrArray,
     styles: _propTypes.func,
     className: _propTypes.string,
     children: _propTypes.node
-};
+});
 
-var parentDefaultProps = {
+var parentDefaultProps = _extends({}, _propTypes2.colorDefaultProps, _propTypes2.positionDefaultProps, _propTypes2.spacingDefaultProps, _propTypes2.borderDefaultProps, {
     inline: undefined,
     dir: undefined,
     wrap: undefined,
@@ -45,21 +47,21 @@ var parentDefaultProps = {
     styles: undefined,
     className: undefined,
     children: undefined
-};
+});
 
-var childPropTypes = {
-    order: _propTypes.string,
-    grow: _propTypes.string,
-    shrink: _propTypes.string,
-    basis: _propTypes.string,
-    flex: _propTypes.string,
-    alignSelf: _propTypes.string,
+var childPropTypes = _extends({}, _propTypes2.colorPropTypes, _propTypes2.positionPropTypes, _propTypes2.spacingPropTypes, _propTypes2.borderPropTypes, {
+    order: _propTypes2.stringOrArray,
+    grow: _propTypes2.stringOrArray,
+    shrink: _propTypes2.stringOrArray,
+    basis: _propTypes2.stringOrArray,
+    flex: _propTypes2.stringOrArray,
+    alignSelf: _propTypes2.stringOrArray,
     styles: _propTypes.func,
     className: _propTypes.string,
     children: _propTypes.node
-};
+});
 
-var childDefaultProps = {
+var childDefaultProps = _extends({}, _propTypes2.colorDefaultProps, _propTypes2.positionDefaultProps, _propTypes2.spacingDefaultProps, _propTypes2.borderDefaultProps, {
     order: undefined,
     grow: undefined,
     shrink: undefined,
@@ -69,7 +71,7 @@ var childDefaultProps = {
     styles: undefined,
     className: undefined,
     children: undefined
-};
+});
 
 var Parent = function Parent(_ref) {
     var inline = _ref.inline,

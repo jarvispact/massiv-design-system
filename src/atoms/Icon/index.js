@@ -2,6 +2,7 @@ import React from 'react';
 import { shape, object, string, bool, func } from 'prop-types';
 import { withTheme } from 'styled-components';
 import StyledIcon from './StyledIcon';
+import { stringOrArray } from '../../prop-types';
 
 const propTypes = {
     theme: shape({
@@ -10,8 +11,8 @@ const propTypes = {
         }).isRequired,
     }).isRequired,
     name: string.isRequired,
-    color: string,
-    scale: string,
+    color: stringOrArray,
+    scale: stringOrArray,
     loading: bool,
     styles: func,
     className: string,
