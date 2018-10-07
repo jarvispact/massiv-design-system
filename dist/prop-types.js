@@ -25,13 +25,7 @@ var positionPropTypes = exports.positionPropTypes = {
     top: stringOrArray,
     bottom: stringOrArray,
     left: stringOrArray,
-    right: stringOrArray,
-    width: stringOrArray,
-    height: stringOrArray,
-    minWidth: stringOrArray,
-    minHeight: stringOrArray,
-    maxWidth: stringOrArray,
-    maxHeight: stringOrArray
+    right: stringOrArray
 };
 
 var positionDefaultProps = exports.positionDefaultProps = {
@@ -39,13 +33,7 @@ var positionDefaultProps = exports.positionDefaultProps = {
     top: undefined,
     bottom: undefined,
     left: undefined,
-    right: undefined,
-    width: undefined,
-    height: undefined,
-    minWidth: undefined,
-    minHeight: undefined,
-    maxWidth: undefined,
-    maxHeight: undefined
+    right: undefined
 };
 
 var spacingPropTypes = exports.spacingPropTypes = {
@@ -58,7 +46,13 @@ var spacingPropTypes = exports.spacingPropTypes = {
     mt: stringOrArray,
     mb: stringOrArray,
     ml: stringOrArray,
-    mr: stringOrArray
+    mr: stringOrArray,
+    width: stringOrArray,
+    height: stringOrArray,
+    minWidth: stringOrArray,
+    minHeight: stringOrArray,
+    maxWidth: stringOrArray,
+    maxHeight: stringOrArray
 };
 
 var spacingDefaultProps = exports.spacingDefaultProps = {
@@ -71,7 +65,13 @@ var spacingDefaultProps = exports.spacingDefaultProps = {
     mt: undefined,
     mb: undefined,
     ml: undefined,
-    mr: undefined
+    mr: undefined,
+    width: undefined,
+    height: undefined,
+    minWidth: undefined,
+    minHeight: undefined,
+    maxWidth: undefined,
+    maxHeight: undefined
 };
 
 var borderPropTypes = exports.borderPropTypes = {

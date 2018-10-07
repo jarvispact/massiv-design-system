@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _templateObject = _taggedTemplateLiteral(['\n    from { transform: rotate(0deg); }\n    to { transform: rotate(360deg); }\n'], ['\n    from { transform: rotate(0deg); }\n    to { transform: rotate(360deg); }\n']),
-    _templateObject2 = _taggedTemplateLiteral(['\n    vertical-align: -16%;\n    ', ';\n    ', ';\n    ', ';\n'], ['\n    vertical-align: -16%;\n    ', ';\n    ', ';\n    ', ';\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n    ', ';\n    vertical-align: -16%;\n    ', ';\n    ', ';\n'], ['\n    ', ';\n    vertical-align: -16%;\n    ', ';\n    ', ';\n']),
     _templateObject3 = _taggedTemplateLiteral(['\n                display: inline-block;\n                animation: ', ' 0.85s linear infinite;\n            '], ['\n                display: inline-block;\n                animation: ', ' 0.85s linear infinite;\n            ']);
 
 var _styledComponents = require('styled-components');
@@ -23,7 +23,7 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 var rotationKeyframes = (0, _styledComponents.keyframes)(_templateObject);
 
-var iconProperties = [{ cssProp: 'color', reactProp: 'fontColor', themeProp: 'color' }, { cssProp: 'font-size', reactProp: 'fontScale', themeProp: 'fontScale' }];
+var iconProperties = [{ cssProp: 'display', reactProp: 'iconDisplay', themeProp: null }, { cssProp: 'color', reactProp: 'fontColor', themeProp: 'color' }, { cssProp: 'font-size', reactProp: 'fontScale', themeProp: 'fontScale' }];
 
 var StyledIcon = _styledComponents2.default.i(_templateObject2, (0, _buildCss2.default)(iconProperties), function (props) {
     if (props.loading) {

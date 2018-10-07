@@ -15,6 +15,7 @@ const boxProperties = [
     { cssProp: 'bottom',                    reactProp: 'bottom',        themeProp: 'spacing' },
     { cssProp: 'left',                      reactProp: 'left',          themeProp: 'spacing' },
     { cssProp: 'right',                     reactProp: 'right',         themeProp: 'spacing' },
+
     { cssProp: 'width',                     reactProp: 'w',             themeProp: 'spacing' },
     { cssProp: 'height',                    reactProp: 'h',             themeProp: 'spacing' },
     { cssProp: 'min-width',                 reactProp: 'minWidth',      themeProp: 'spacing' },

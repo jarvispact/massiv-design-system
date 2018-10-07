@@ -8,13 +8,14 @@ const rotationKeyframes = keyframes`
 `;
 
 const iconProperties = [
-    { cssProp: 'color',     reactProp: 'fontColor', themeProp: 'color' },
-    { cssProp: 'font-size', reactProp: 'fontScale', themeProp: 'fontScale' },
+    { cssProp: 'display',   reactProp: 'iconDisplay',   themeProp: null },
+    { cssProp: 'color',     reactProp: 'fontColor',     themeProp: 'color' },
+    { cssProp: 'font-size', reactProp: 'fontScale',     themeProp: 'fontScale' },
 ];
 
 const StyledIcon = styled.i`
-    vertical-align: -16%;
     ${buildCss(iconProperties)};
+    vertical-align: -16%;
     ${(props) => {
         if (props.loading) {
             return css`

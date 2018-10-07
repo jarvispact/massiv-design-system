@@ -11,6 +11,7 @@ const propTypes = {
         }).isRequired,
     }).isRequired,
     name: string.isRequired,
+    display: stringOrArray,
     color: stringOrArray,
     scale: stringOrArray,
     loading: bool,
@@ -19,6 +20,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+    display: undefined,
     color: undefined,
     scale: undefined,
     loading: undefined,
@@ -26,8 +28,9 @@ const defaultProps = {
     className: undefined,
 };
 
-const Icon = ({ theme, name, color, scale, loading, className, styles }) => (
+const Icon = ({ theme, name, display, color, scale, loading, className, styles }) => (
     <StyledIcon
+        iconDisplay={display}
         fontColor={color}
         fontScale={scale}
         loading={loading}

@@ -19,12 +19,6 @@ export const positionPropTypes = {
     bottom: stringOrArray,
     left: stringOrArray,
     right: stringOrArray,
-    width: stringOrArray,
-    height: stringOrArray,
-    minWidth: stringOrArray,
-    minHeight: stringOrArray,
-    maxWidth: stringOrArray,
-    maxHeight: stringOrArray,
 };
 
 export const positionDefaultProps = {
@@ -33,12 +27,6 @@ export const positionDefaultProps = {
     bottom: undefined,
     left: undefined,
     right: undefined,
-    width: undefined,
-    height: undefined,
-    minWidth: undefined,
-    minHeight: undefined,
-    maxWidth: undefined,
-    maxHeight: undefined,
 };
 
 export const spacingPropTypes = {
@@ -52,6 +40,12 @@ export const spacingPropTypes = {
     mb: stringOrArray,
     ml: stringOrArray,
     mr: stringOrArray,
+    width: stringOrArray,
+    height: stringOrArray,
+    minWidth: stringOrArray,
+    minHeight: stringOrArray,
+    maxWidth: stringOrArray,
+    maxHeight: stringOrArray,
 };
 
 export const spacingDefaultProps = {
@@ -65,6 +59,12 @@ export const spacingDefaultProps = {
     mb: undefined,
     ml: undefined,
     mr: undefined,
+    width: undefined,
+    height: undefined,
+    minWidth: undefined,
+    minHeight: undefined,
+    maxWidth: undefined,
+    maxHeight: undefined,
 };
 
 export const borderPropTypes = {
