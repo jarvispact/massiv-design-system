@@ -1,11 +1,20 @@
 import React from 'react';
 import { bool, string, func, node } from 'prop-types';
 import StyledButton from './StyledButton';
-import { colorPropTypes, colorDefaultProps, spacingPropTypes, spacingDefaultProps, stringOrArray } from '../../prop-types';
+import {
+    colorPropTypes,
+    colorDefaultProps,
+    spacingPropTypes,
+    spacingDefaultProps,
+    borderPropTypes,
+    borderDefaultProps,
+    stringOrArray,
+} from '../../prop-types';
 
 const propTypes = {
     ...colorPropTypes,
     ...spacingPropTypes,
+    ...borderPropTypes,
     onClick: func.isRequired,
     type: string,
     disabled: bool,
@@ -19,12 +28,15 @@ const propTypes = {
 const defaultProps = {
     ...colorDefaultProps,
     ...spacingDefaultProps,
+    ...borderDefaultProps,
     type: undefined,
     disabled: undefined,
     display: undefined,
     scale: undefined,
     bg: 'transparent',
     p: '0',
+    bs: 'none',
+    br: '2px',
     styles: undefined,
     className: undefined,
     children: undefined,
@@ -54,6 +66,26 @@ const Button = ({
     mb,
     ml,
     mr,
+    bs,
+    bw,
+    bc,
+    br,
+    bts,
+    btw,
+    btc,
+    bbs,
+    bbw,
+    bbc,
+    bls,
+    blw,
+    blc,
+    brs,
+    brw,
+    brc,
+    btlr,
+    btrr,
+    bblr,
+    bbrr,
     styles,
     className,
     children,
@@ -82,6 +114,26 @@ const Button = ({
         mb={mb}
         ml={ml}
         mr={mr}
+        bs={bs}
+        bw={bw}
+        bc={bc}
+        br={br}
+        bts={bts}
+        btw={btw}
+        btc={btc}
+        bbs={bbs}
+        bbw={bbw}
+        bbc={bbc}
+        bls={bls}
+        blw={blw}
+        blc={blc}
+        brs={brs}
+        brw={brw}
+        brc={brc}
+        btlr={btlr}
+        btrr={btrr}
+        bblr={bblr}
+        bbrr={bbrr}
         styles={styles}
         className={className}
     >

@@ -20,7 +20,7 @@ var _propTypes2 = require('../../prop-types');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var propTypes = _extends({}, _propTypes2.colorPropTypes, _propTypes2.spacingPropTypes, {
+var propTypes = _extends({}, _propTypes2.colorPropTypes, _propTypes2.spacingPropTypes, _propTypes2.borderPropTypes, {
     type: _propTypes.string,
     name: _propTypes.string,
     value: _propTypes.string,
@@ -32,15 +32,17 @@ var propTypes = _extends({}, _propTypes2.colorPropTypes, _propTypes2.spacingProp
     className: _propTypes.string
 });
 
-var defaultProps = _extends({}, _propTypes2.colorDefaultProps, _propTypes2.spacingDefaultProps, {
-    p: '0',
-    type: 'text',
+var defaultProps = _extends({}, _propTypes2.colorDefaultProps, _propTypes2.spacingDefaultProps, _propTypes2.borderDefaultProps, {
     name: undefined,
-    value: '',
     onChange: undefined,
     disabled: undefined,
     display: undefined,
     scale: undefined,
+    p: '0',
+    type: 'text',
+    value: '',
+    bs: 'none',
+    br: '2px',
     styles: undefined,
     className: undefined
 });
@@ -71,6 +73,26 @@ var Input = function Input(_ref) {
         mb = _ref.mb,
         ml = _ref.ml,
         mr = _ref.mr,
+        bs = _ref.bs,
+        bw = _ref.bw,
+        bc = _ref.bc,
+        br = _ref.br,
+        bts = _ref.bts,
+        btw = _ref.btw,
+        btc = _ref.btc,
+        bbs = _ref.bbs,
+        bbw = _ref.bbw,
+        bbc = _ref.bbc,
+        bls = _ref.bls,
+        blw = _ref.blw,
+        blc = _ref.blc,
+        brs = _ref.brs,
+        brw = _ref.brw,
+        brc = _ref.brc,
+        btlr = _ref.btlr,
+        btrr = _ref.btrr,
+        bblr = _ref.bblr,
+        bbrr = _ref.bbrr,
         className = _ref.className,
         styles = _ref.styles;
     return _react2.default.createElement(_StyledInput2.default, {
@@ -99,6 +121,26 @@ var Input = function Input(_ref) {
         mb: mb,
         ml: ml,
         mr: mr,
+        bs: bs,
+        bw: bw,
+        bc: bc,
+        br: br,
+        bts: bts,
+        btw: btw,
+        btc: btc,
+        bbs: bbs,
+        bbw: bbw,
+        bbc: bbc,
+        bls: bls,
+        blw: blw,
+        blc: blc,
+        brs: brs,
+        brw: brw,
+        brc: brc,
+        btlr: btlr,
+        btrr: btrr,
+        bblr: bblr,
+        bbrr: bbrr,
         className: className,
         styles: styles
     });

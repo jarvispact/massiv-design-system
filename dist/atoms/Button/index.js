@@ -20,7 +20,7 @@ var _propTypes2 = require('../../prop-types');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var propTypes = _extends({}, _propTypes2.colorPropTypes, _propTypes2.spacingPropTypes, {
+var propTypes = _extends({}, _propTypes2.colorPropTypes, _propTypes2.spacingPropTypes, _propTypes2.borderPropTypes, {
     onClick: _propTypes.func.isRequired,
     type: _propTypes.string,
     disabled: _propTypes.bool,
@@ -31,13 +31,15 @@ var propTypes = _extends({}, _propTypes2.colorPropTypes, _propTypes2.spacingProp
     children: _propTypes.node
 });
 
-var defaultProps = _extends({}, _propTypes2.colorDefaultProps, _propTypes2.spacingDefaultProps, {
+var defaultProps = _extends({}, _propTypes2.colorDefaultProps, _propTypes2.spacingDefaultProps, _propTypes2.borderDefaultProps, {
     type: undefined,
     disabled: undefined,
     display: undefined,
     scale: undefined,
     bg: 'transparent',
     p: '0',
+    bs: 'none',
+    br: '2px',
     styles: undefined,
     className: undefined,
     children: undefined
@@ -67,6 +69,26 @@ var Button = function Button(_ref) {
         mb = _ref.mb,
         ml = _ref.ml,
         mr = _ref.mr,
+        bs = _ref.bs,
+        bw = _ref.bw,
+        bc = _ref.bc,
+        br = _ref.br,
+        bts = _ref.bts,
+        btw = _ref.btw,
+        btc = _ref.btc,
+        bbs = _ref.bbs,
+        bbw = _ref.bbw,
+        bbc = _ref.bbc,
+        bls = _ref.bls,
+        blw = _ref.blw,
+        blc = _ref.blc,
+        brs = _ref.brs,
+        brw = _ref.brw,
+        brc = _ref.brc,
+        btlr = _ref.btlr,
+        btrr = _ref.btrr,
+        bblr = _ref.bblr,
+        bbrr = _ref.bbrr,
         styles = _ref.styles,
         className = _ref.className,
         children = _ref.children;
@@ -96,6 +118,26 @@ var Button = function Button(_ref) {
             mb: mb,
             ml: ml,
             mr: mr,
+            bs: bs,
+            bw: bw,
+            bc: bc,
+            br: br,
+            bts: bts,
+            btw: btw,
+            btc: btc,
+            bbs: bbs,
+            bbw: bbw,
+            bbc: bbc,
+            bls: bls,
+            blw: blw,
+            blc: blc,
+            brs: brs,
+            brw: brw,
+            brc: brc,
+            btlr: btlr,
+            btrr: btrr,
+            bblr: bblr,
+            bbrr: bbrr,
             styles: styles,
             className: className
         },

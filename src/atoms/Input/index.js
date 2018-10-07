@@ -1,11 +1,20 @@
 import React from 'react';
 import { string, func, bool } from 'prop-types';
 import StyledInput from './StyledInput';
-import { colorPropTypes, colorDefaultProps, spacingPropTypes, spacingDefaultProps, stringOrArray } from '../../prop-types';
+import {
+    colorPropTypes,
+    colorDefaultProps,
+    spacingPropTypes,
+    spacingDefaultProps,
+    borderPropTypes,
+    borderDefaultProps,
+    stringOrArray,
+} from '../../prop-types';
 
 const propTypes = {
     ...colorPropTypes,
     ...spacingPropTypes,
+    ...borderPropTypes,
     type: string,
     name: string,
     value: string,
@@ -20,14 +29,17 @@ const propTypes = {
 const defaultProps = {
     ...colorDefaultProps,
     ...spacingDefaultProps,
-    p: '0',
-    type: 'text',
+    ...borderDefaultProps,
     name: undefined,
-    value: '',
     onChange: undefined,
     disabled: undefined,
     display: undefined,
     scale: undefined,
+    p: '0',
+    type: 'text',
+    value: '',
+    bs: 'none',
+    br: '2px',
     styles: undefined,
     className: undefined,
 };
@@ -58,6 +70,26 @@ const Input = ({
     mb,
     ml,
     mr,
+    bs,
+    bw,
+    bc,
+    br,
+    bts,
+    btw,
+    btc,
+    bbs,
+    bbw,
+    bbc,
+    bls,
+    blw,
+    blc,
+    brs,
+    brw,
+    brc,
+    btlr,
+    btrr,
+    bblr,
+    bbrr,
     className,
     styles,
 }) => (
@@ -87,6 +119,26 @@ const Input = ({
         mb={mb}
         ml={ml}
         mr={mr}
+        bs={bs}
+        bw={bw}
+        bc={bc}
+        br={br}
+        bts={bts}
+        btw={btw}
+        btc={btc}
+        bbs={bbs}
+        bbw={bbw}
+        bbc={bbc}
+        bls={bls}
+        blw={blw}
+        blc={blc}
+        brs={brs}
+        brw={brw}
+        brc={brc}
+        btlr={btlr}
+        btrr={btrr}
+        bblr={bblr}
+        bbrr={bbrr}
         className={className}
         styles={styles}
     />

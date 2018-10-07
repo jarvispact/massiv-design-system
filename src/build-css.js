@@ -29,7 +29,7 @@ export default (propertyConfigList) => (props) => {
         if (value) cssArray.push(`${configObj.cssProp}: ${value};`);
     });
 
-    if (hasNoMediaQueries(listWithValues)) return cssArray.length > 0 ? cssArray.join('\n') : undefined;
+    if (hasNoMediaQueries(listWithValues)) return cssArray.length > 0 ? cssArray.join('\n') : '';
 
     const { breakpoints } = props.theme.settings;
     breakpoints.forEach((breakpoint, breakpointIndex) => {

@@ -29,6 +29,26 @@ storiesOf('Input', module)
                 mb={array('mb', [])}
                 ml={array('ml', [])}
                 mr={array('mr', [])}
+                bs={array('bs', [])}
+                bw={array('bw', [])}
+                bc={array('bc', [])}
+                br={array('br', [])}
+                bts={array('bts', [])}
+                btw={array('btw', [])}
+                btc={array('btc', [])}
+                bbs={array('bbs', [])}
+                bbw={array('bbw', [])}
+                bbc={array('bbc', [])}
+                bls={array('bls', [])}
+                blw={array('blw', [])}
+                blc={array('blc', [])}
+                brs={array('brs', [])}
+                brw={array('brw', [])}
+                brc={array('brc', [])}
+                btlr={array('btlr', [])}
+                btrr={array('btrr', [])}
+                bblr={array('bblr', [])}
+                bbrr={array('bbrr', [])}
             />
         </div>
     ));
