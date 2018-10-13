@@ -25,6 +25,8 @@ var propTypes = _extends({}, _propTypes2.colorPropTypes, _propTypes2.spacingProp
     name: _propTypes.string,
     value: _propTypes.string,
     onChange: _propTypes.func,
+    onFocus: _propTypes.func,
+    onBlur: _propTypes.func,
     disabled: _propTypes.bool,
     display: _propTypes2.stringOrArray,
     scale: _propTypes2.stringOrArray,
@@ -36,6 +38,8 @@ var propTypes = _extends({}, _propTypes2.colorPropTypes, _propTypes2.spacingProp
 var defaultProps = _extends({}, _propTypes2.colorDefaultProps, _propTypes2.spacingDefaultProps, _propTypes2.borderDefaultProps, {
     name: undefined,
     onChange: undefined,
+    onFocus: undefined,
+    onBlur: undefined,
     disabled: undefined,
     display: undefined,
     scale: undefined,
@@ -45,7 +49,7 @@ var defaultProps = _extends({}, _propTypes2.colorDefaultProps, _propTypes2.spaci
     bs: 'none',
     br: '2px',
     styles: undefined,
-    id: _propTypes.string,
+    id: undefined,
     className: undefined
 });
 

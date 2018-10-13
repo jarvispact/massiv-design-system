@@ -19,6 +19,8 @@ const propTypes = {
     name: string,
     value: string,
     onChange: func,
+    onFocus: func,
+    onBlur: func,
     disabled: bool,
     display: stringOrArray,
     scale: stringOrArray,
@@ -33,6 +35,8 @@ const defaultProps = {
     ...borderDefaultProps,
     name: undefined,
     onChange: undefined,
+    onFocus: undefined,
+    onBlur: undefined,
     disabled: undefined,
     display: undefined,
     scale: undefined,
@@ -42,7 +46,7 @@ const defaultProps = {
     bs: 'none',
     br: '2px',
     styles: undefined,
-    id: string,
+    id: undefined,
     className: undefined,
 };
 
