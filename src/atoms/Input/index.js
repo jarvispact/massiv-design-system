@@ -55,6 +55,8 @@ const Input = ({
     name,
     value,
     onChange,
+    onFocus,
+    onBlur,
     disabled,
     display,
     color,
@@ -105,6 +107,8 @@ const Input = ({
         name={name}
         value={value}
         onChange={onChange}
+        onFocus={onFocus}
+        onBlur={onBlur}
         disabled={disabled}
         inputDisplay={display}
         fontColor={color}
