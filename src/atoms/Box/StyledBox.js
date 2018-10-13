@@ -6,6 +6,9 @@ const boxProperties = [
     { cssProp: 'display',                   reactProp: 'boxDisplay',    themeProp: null },
     { cssProp: 'box-shadow',                reactProp: 'shadow',        themeProp: 'shadow' },
     { cssProp: 'z-index',                   reactProp: 'zIndex',        themeProp: null },
+    { cssProp: 'overflow',                  reactProp: 'boxOverflow',   themeProp: null },
+    { cssProp: 'overflow-x',                reactProp: 'boxOverflowX',  themeProp: null },
+    { cssProp: 'overflow-y',                reactProp: 'boxOverflowY',  themeProp: null },
 
     { cssProp: 'color',                     reactProp: 'fontColor',     themeProp: 'color' },
     { cssProp: 'background-color',          reactProp: 'bgColor',       themeProp: 'color' },
