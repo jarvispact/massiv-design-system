@@ -29,6 +29,7 @@ var propTypes = _extends({}, _propTypes2.colorPropTypes, _propTypes2.spacingProp
     display: _propTypes2.stringOrArray,
     scale: _propTypes2.stringOrArray,
     styles: _propTypes.func,
+    id: _propTypes.string,
     className: _propTypes.string
 });
 
@@ -44,6 +45,7 @@ var defaultProps = _extends({}, _propTypes2.colorDefaultProps, _propTypes2.spaci
     bs: 'none',
     br: '2px',
     styles: undefined,
+    id: _propTypes.string,
     className: undefined
 });
 
@@ -93,8 +95,9 @@ var Input = function Input(_ref) {
         btrr = _ref.btrr,
         bblr = _ref.bblr,
         bbrr = _ref.bbrr,
-        className = _ref.className,
-        styles = _ref.styles;
+        styles = _ref.styles,
+        id = _ref.id,
+        className = _ref.className;
     return _react2.default.createElement(_StyledInput2.default, {
         type: type,
         name: name,
@@ -141,8 +144,9 @@ var Input = function Input(_ref) {
         btrr: btrr,
         bblr: bblr,
         bbrr: bbrr,
-        className: className,
-        styles: styles
+        styles: styles,
+        id: id,
+        className: className
     });
 };
 

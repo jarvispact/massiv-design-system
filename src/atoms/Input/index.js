@@ -23,6 +23,7 @@ const propTypes = {
     display: stringOrArray,
     scale: stringOrArray,
     styles: func,
+    id: string,
     className: string,
 };
 
@@ -41,6 +42,7 @@ const defaultProps = {
     bs: 'none',
     br: '2px',
     styles: undefined,
+    id: string,
     className: undefined,
 };
 
@@ -90,8 +92,9 @@ const Input = ({
     btrr,
     bblr,
     bbrr,
-    className,
     styles,
+    id,
+    className,
 }) => (
     <StyledInput
         type={type}
@@ -139,8 +142,9 @@ const Input = ({
         btrr={btrr}
         bblr={bblr}
         bbrr={bbrr}
-        className={className}
         styles={styles}
+        id={id}
+        className={className}
     />
 );
 
