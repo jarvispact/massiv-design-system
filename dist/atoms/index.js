@@ -49,6 +49,15 @@ Object.defineProperty(exports, 'Icon', {
   }
 });
 
+var _Image = require('./Image');
+
+Object.defineProperty(exports, 'Image', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Image).default;
+  }
+});
+
 var _Input = require('./Input');
 
 Object.defineProperty(exports, 'Input', {
