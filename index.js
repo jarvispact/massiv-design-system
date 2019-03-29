@@ -1,1 +1,1 @@
-export { default as Box } from './src/box';
+export * from './dist';
