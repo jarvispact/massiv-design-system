@@ -9,14 +9,54 @@ const settings = {
     icons: {
         className: 'material-icons',
     },
-    fonts: {
-        heading: '"Josefin Sans", serif',
-        paragraph: '"Raleway", sans-serif',
-        anchor: '"Raleway", sans-serif',
-        input: '"Raleway", sans-serif',
-        button: '"Raleway", sans-serif',
+};
+
+// font-family: 'Josefin Slab', serif;
+// font-family: 'M PLUS Rounded 1c', sans-serif;
+
+
+// const fonts = {
+//     heading: '"Josefin Sans", serif',
+//     paragraph: '"Raleway", sans-serif',
+//     anchor: '"Raleway", sans-serif',
+//     span: '"Raleway", sans-serif',
+//     label: '"Raleway", sans-serif',
+//     input: '"Raleway", sans-serif',
+//     button: '"Raleway", sans-serif',
+// };
+
+const fonts = {
+    heading: {
+        family: '"Josefin Slab", serif',
+        weights: { light: '300', medium: '400', bold: '700' },
+    },
+    paragraph: {
+        family: '"M PLUS Rounded 1c", sans-serif',
+        weights: { light: '100', medium: '400', bold: '700' },
+    },
+    anchor: {
+        family: '"M PLUS Rounded 1c", sans-serif',
+        weights: { light: '100', medium: '400', bold: '700' },
+    },
+    span: {
+        family: '"M PLUS Rounded 1c", sans-serif',
+        weights: { light: '100', medium: '400', bold: '700' },
+    },
+    label: {
+        family: '"M PLUS Rounded 1c", sans-serif',
+        weights: { light: '100', medium: '400', bold: '700' },
+    },
+    input: {
+        family: '"M PLUS Rounded 1c", sans-serif',
+        weights: { light: '100', medium: '400', bold: '700' },
+    },
+    button: {
+        family: '"M PLUS Rounded 1c", sans-serif',
+        weights: { light: '100', medium: '400', bold: '700' },
     },
 };
+
+
 
 const color = {
     white: '#F7F7F7',
@@ -58,6 +98,7 @@ const shadow = {
 };
 
 export default {
+    fonts,
     settings,
     color,
     fontScale,

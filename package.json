@@ -32,32 +32,32 @@
   },
   "homepage": "https://github.com/jarvispact/massiv-design-system#readme",
   "devDependencies": {
-    "@storybook/addon-actions": "^3.4.10",
-    "@storybook/addon-knobs": "^3.4.10",
-    "@storybook/addon-viewport": "^3.4.10",
-    "@storybook/react": "^3.4.10",
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-eslint": "^9.0.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "eslint": "^5.4.0",
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.4.0",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/preset-react": "^7.0.0",
+    "@storybook/addon-actions": "^5.0.5",
+    "@storybook/addon-knobs": "^5.0.5",
+    "@storybook/addon-viewport": "^5.0.5",
+    "@storybook/react": "^5.0.5",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.15.3",
     "eslint-config-airbnb": "^17.1.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4",
     "material-design-icons": "^3.0.1",
     "pre-commit": "^1.2.2",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2"
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   },
   "peerDependencies": {
-    "react": ">= 16.3.0"
+    "react": ">= 16.8.0"
   },
   "dependencies": {
-    "prop-types": "^15.6.2",
-    "styled-components": "^3.4.5"
+    "prop-types": "^15.7.2",
+    "styled-components": "^4.2.0"
   }
 }
