@@ -6,31 +6,32 @@ import Box from './box';
 storiesOf('Box', module)
     .add('Box', () => (
         <Box
-            cssDisplay={text('cssDisplay', undefined)}
-            cssPosition={text('cssPosition', undefined)}
-            cssTop={text('cssTop', undefined)}
-            cssLeft={text('cssLeft', undefined)}
-            cssBottom={text('cssBottom', undefined)}
-            cssRight={text('cssRight', undefined)}
-            cssWidth={text('cssWidth', undefined)}
-            cssHeight={text('cssHeight', undefined)}
-            cssMinWidth={text('cssMinWidth', undefined)}
-            cssMinHeight={text('cssMinHeight', undefined)}
-            cssMaxWidth={text('cssMaxWidth', undefined)}
-            cssMaxHeight={text('cssMaxHeight', undefined)}
-            cssOverflow={text('cssOverflow', undefined)}
-            cssOverflowX={text('cssOverflowX', undefined)}
-            cssOverflowY={text('cssOverflowY', undefined)}
-            cssPadding={text('cssPadding', undefined)}
-            cssPaddingTop={text('cssPaddingTop', undefined)}
-            cssPaddingLeft={text('cssPaddingLeft', undefined)}
-            cssPaddingBottom={text('cssPaddingBottom', undefined)}
-            cssPaddingRight={text('cssPaddingRight', undefined)}
-            cssMargin={text('cssMargin', undefined)}
-            cssMarginTop={text('cssMarginTop', undefined)}
-            cssMarginLeft={text('cssMarginLeft', undefined)}
-            cssMarginBottom={text('cssMarginBottom', undefined)}
-            cssMarginRight={text('cssMarginRight', undefined)}
+            display={text('display', undefined)}
+            position={text('position', undefined)}
+            top={text('top', undefined)}
+            left={text('left', undefined)}
+            bottom={text('bottom', undefined)}
+            right={text('right', undefined)}
+            width={text('width', undefined)}
+            height={text('height', undefined)}
+            minWidth={text('minWidth', undefined)}
+            minHeight={text('minHeight', undefined)}
+            maxWidth={text('maxWidth', undefined)}
+            maxHeight={text('maxHeight', undefined)}
+            overflow={text('overflow', undefined)}
+            overflowX={text('overflowX', undefined)}
+            overflowY={text('overflowY', undefined)}
+            p={text('p', undefined)}
+            pt={text('pt', undefined)}
+            pl={text('pl', undefined)}
+            pb={text('pb', undefined)}
+            pr={text('pr', undefined)}
+            m={text('m', undefined)}
+            mt={text('mt', undefined)}
+            ml={text('ml', undefined)}
+            mb={text('mb', undefined)}
+            mr={text('mr', undefined)}
+            bg={text('bg', undefined)}
         >
             Box Test
         </Box>

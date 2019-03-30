@@ -21,8 +21,8 @@ const fonts = {
     input: sharedFontTextConfig,
     button: sharedFontTextConfig,
     scales: {
-        xxs: '0.3rem',
-        xs: '0.5rem',
+        xxs: '0.5rem',
+        xs: '0.6rem',
         s: '0.8rem',
         m: '1rem',
         l: '1.2rem',
@@ -31,8 +31,6 @@ const fonts = {
         xxxl: '2.5rem',
     }
 };
-
-
 
 const colors = {
     white: '#F7F7F7',
@@ -46,7 +44,18 @@ const colors = {
     error: '#E25650',
 };
 
+const spacing = {
+    xxs: '0.4rem',
+    xs: '0.6rem',
+    s: '0.8rem',
+    m: '1rem',
+    l: '1.2rem',
+    xl: '1.4rem',
+    xxl: '1.6rem',
+}
+
 export default {
     fonts,
     colors,
+    spacing,
 };
