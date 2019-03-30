@@ -10,8 +10,8 @@ const themes = {
 };
 
 const loadStories = () => {
-    require('../src/box.story.js');
-    require('../src/fonts.story.js');
+    require('../stories/box.story.js');
+    require('../stories/fonts.story.js');
 }
 
 const GlobalDecorator = storyFn => (

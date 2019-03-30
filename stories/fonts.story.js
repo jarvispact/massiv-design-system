@@ -1,15 +1,15 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { text } from '@storybook/addon-knobs';
-import H1 from './h1';
-import H2 from './h2';
-import H3 from './h3';
-import H4 from './h4';
-import H5 from './h5';
-import H6 from './h6';
-import Text from './text';
-import Link from './link';
-import Label from './label';
+import H1 from '../src/h1';
+import H2 from '../src/h2';
+import H3 from '../src/h3';
+import H4 from '../src/h4';
+import H5 from '../src/h5';
+import H6 from '../src/h6';
+import Text from '../src/text';
+import Link from '../src/link';
+import Label from '../src/label';
 
 storiesOf('Text', module)
     .add('H1', () => (
