@@ -2,36 +2,36 @@ import React from 'react';
 import { string, node } from 'prop-types';
 import styled from 'styled-components';
 
-const StyledText = styled.span`
-    font-family: ${props => props.theme.fonts.text.family};
-    font-weight: ${props => props.theme.fonts.text.weights[props.massivWeight] || props.massivWeight || props.theme.fonts.text.weights.m};
+const StyledH5 = styled.h5`
+    font-family: ${props => props.theme.fonts.h5.family};
+    font-weight: ${props => props.theme.fonts.h5.weights[props.massivWeight] || props.massivWeight || props.theme.fonts.h5.weights.m};
     font-size: ${props => props.theme.fonts.scales[props.massivScale] || props.massivScale};
     color: ${props => props.theme.colors[props.massivColor] || props.massivColor};
 `;
 
-const Text = ({ weight, scale, color, children, ...otherProps }) => (
-    <StyledText
+const H5 = ({ weight, scale, color, children, ...otherProps }) => (
+    <StyledH5
         massivWeight={weight}
         massivScale={scale}
         massivColor={color}
         {...otherProps}
     >
         {children}
-    </StyledText>
+    </StyledH5>
 );
 
-Text.propTypes = {
+H5.propTypes = {
     weight: string,
     scale: string,
     color: string,
     children: node,
 };
 
-Text.defaultProps = {
+H5.defaultProps = {
     weight: undefined,
     scale: undefined,
     color: undefined,
     children: undefined,
 };
 
-export default Text;
+export default H5;

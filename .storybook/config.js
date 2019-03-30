@@ -11,7 +11,7 @@ const themes = {
 
 const loadStories = () => {
     require('../src/box.story.js');
-    require('../src/text.story.js');
+    require('../src/fonts.story.js');
 }
 
 const GlobalDecorator = storyFn => (

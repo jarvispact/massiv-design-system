@@ -31,41 +31,41 @@ function _templateObject() {
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var StyledText = _styledComponents.default.span(_templateObject(), function (props) {
-  return props.theme.fonts.text.family;
+var StyledH2 = _styledComponents.default.h2(_templateObject(), function (props) {
+  return props.theme.fonts.h2.family;
 }, function (props) {
-  return props.theme.fonts.text.weights[props.massivWeight] || props.massivWeight || props.theme.fonts.text.weights.m;
+  return props.theme.fonts.h2.weights[props.massivWeight] || props.massivWeight || props.theme.fonts.h2.weights.m;
 }, function (props) {
   return props.theme.fonts.scales[props.massivScale] || props.massivScale;
 }, function (props) {
   return props.theme.colors[props.massivColor] || props.massivColor;
 });
 
-var Text = function Text(_ref) {
+var H2 = function H2(_ref) {
   var weight = _ref.weight,
       scale = _ref.scale,
       color = _ref.color,
       children = _ref.children,
       otherProps = _objectWithoutProperties(_ref, ["weight", "scale", "color", "children"]);
 
-  return _react.default.createElement(StyledText, _extends({
+  return _react.default.createElement(StyledH2, _extends({
     massivWeight: weight,
     massivScale: scale,
     massivColor: color
   }, otherProps), children);
 };
 
-Text.propTypes = {
+H2.propTypes = {
   weight: _propTypes.string,
   scale: _propTypes.string,
   color: _propTypes.string,
   children: _propTypes.node
 };
-Text.defaultProps = {
+H2.defaultProps = {
   weight: undefined,
   scale: undefined,
   color: undefined,
   children: undefined
 };
-var _default = Text;
+var _default = H2;
 exports.default = _default;

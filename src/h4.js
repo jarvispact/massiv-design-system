@@ -2,36 +2,36 @@ import React from 'react';
 import { string, node } from 'prop-types';
 import styled from 'styled-components';
 
-const StyledText = styled.span`
-    font-family: ${props => props.theme.fonts.text.family};
-    font-weight: ${props => props.theme.fonts.text.weights[props.massivWeight] || props.massivWeight || props.theme.fonts.text.weights.m};
+const StyledH4 = styled.h4`
+    font-family: ${props => props.theme.fonts.h4.family};
+    font-weight: ${props => props.theme.fonts.h4.weights[props.massivWeight] || props.massivWeight || props.theme.fonts.h4.weights.m};
     font-size: ${props => props.theme.fonts.scales[props.massivScale] || props.massivScale};
     color: ${props => props.theme.colors[props.massivColor] || props.massivColor};
 `;
 
-const Text = ({ weight, scale, color, children, ...otherProps }) => (
-    <StyledText
+const H4 = ({ weight, scale, color, children, ...otherProps }) => (
+    <StyledH4
         massivWeight={weight}
         massivScale={scale}
         massivColor={color}
         {...otherProps}
     >
         {children}
-    </StyledText>
+    </StyledH4>
 );
 
-Text.propTypes = {
+H4.propTypes = {
     weight: string,
     scale: string,
     color: string,
     children: node,
 };
 
-Text.defaultProps = {
+H4.defaultProps = {
     weight: undefined,
     scale: undefined,
     color: undefined,
     children: undefined,
 };
 
-export default Text;
+export default H4;
