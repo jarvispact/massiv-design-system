@@ -13,6 +13,7 @@ const loadStories = () => {
     require('../stories/box.story.js');
     require('../stories/flex.story.js');
     require('../stories/fonts.story.js');
+    require('../stories/input.story.js');
 }
 
 const GlobalDecorator = storyFn => (

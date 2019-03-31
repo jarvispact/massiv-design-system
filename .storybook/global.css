@@ -76,7 +76,7 @@
     font-feature-settings: 'liga';
 }
 
-html {
+html, input {
   box-sizing: border-box;
 }
 
@@ -97,4 +97,8 @@ a {
 img {
   max-width: 100%;
   height: auto;
+}
+
+input, select, textarea, button {
+  font-family: inherit;
 }
