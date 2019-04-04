@@ -1,62 +1,85 @@
 import React from 'react';
-import { string, bool, node } from 'prop-types';
+import { node } from 'prop-types';
 import styled from 'styled-components';
+import buildCss from '../utils/build-css';
+import { arrayOfStringsOrString } from '../utils/prop-types';
+import buildScopedProps from '../utils/build-scoped-props';
+import buildPropTypes from '../utils/build-prop-types';
+
+const themeProperty = null;
+const propertyType = arrayOfStringsOrString;
+const defaultProperty = undefined;
+
+const propertyConfig = [
+    {
+        cssProperty: 'flex-direction',
+        componentProperty: 'direction',
+        scopedProperty: 'massivFlexDirection',
+        themeProperty,
+        propertyType,
+        defaultProperty,
+    },
+    {
+        cssProperty: 'flex-wrap',
+        componentProperty: 'wrap',
+        scopedProperty: 'massivFlexWrap',
+        themeProperty,
+        propertyType,
+        defaultProperty,
+    },
+    {
+        cssProperty: 'flex-flow',
+        componentProperty: 'flow',
+        scopedProperty: 'massivFlexFlow',
+        themeProperty,
+        propertyType,
+        defaultProperty,
+    },
+    {
+        cssProperty: 'justify-content',
+        componentProperty: 'justifyContent',
+        scopedProperty: 'massivJustifyContent',
+        themeProperty,
+        propertyType,
+        defaultProperty,
+    },
+    {
+        cssProperty: 'align-items',
+        componentProperty: 'alignItems',
+        scopedProperty: 'massivAlignItems',
+        themeProperty,
+        propertyType,
+        defaultProperty,
+    },
+    {
+        cssProperty: 'align-content',
+        componentProperty: 'alignContent',
+        scopedProperty: 'massivAlignContent',
+        themeProperty,
+        propertyType,
+        defaultProperty,
+    },
+];
 
 const StyledFlex = styled.div`
-    display: ${props => props.massivDisplay};
-    flex-direction: ${props => props.massivDirection};
-    flex-wrap: ${props => props.massivFlexWrap};
-    flex-flow: ${props => props.massivFlexFlow};
-    justify-content: ${props => props.massivJustifyContent};
-    align-items: ${props => props.massivAlignItems};
-    align-content: ${props => props.massivAlignContent};
+    display: ${props => props.inline ? 'inline-flex' : 'flex'};
+    ${buildCss(propertyConfig)}
 `;
 
-const Flex = ({
-    inline,
-    direction,
-    flexWrap,
-    flexFlow,
-    justifyContent,
-    alignItems,
-    alignContent,
-    children,
-    ...otherProps
-}) => (
-    <StyledFlex
-        massivDisplay={inline ? 'inline-flex' : 'flex'}
-        massivDirection={direction}
-        massivFlexWrap={flexWrap}
-        massivFlexFlow={flexFlow}
-        massivJustifyContent={justifyContent}
-        massivAlignItems={alignItems}
-        massivAlignContent={alignContent}
-        {...otherProps}
-    >
-        {children}
-    </StyledFlex>
-);
-
-Flex.propTypes = {
-    inline: bool,
-    direction: string,
-    flexWrap: string,
-    flexFlow: string,
-    justifyContent: string,
-    alignItems: string,
-    alignContent: string,
-    children: node,
+const Flex = (_props) => {
+    const { children, ...props } = _props;
+    const scopedProps = buildScopedProps(propertyConfig, props);
+    return (<StyledFlex {...scopedProps}>{children}</StyledFlex>);
 };
 
-Flex.defaultProps = {
-    inline: false,
-    direction: undefined,
-    flexWrap: undefined,
-    flexFlow: undefined,
-    justifyContent: undefined,
-    alignItems: undefined,
-    alignContent: undefined,
-    children: undefined,
+const defaultPropTypes = {
+    propTypes: { children: node },
+    defaultProps: { children: undefined },
 };
+
+const { propTypes, defaultProps } = buildPropTypes(propertyConfig, defaultPropTypes);
+
+Flex.propTypes = propTypes;
+Flex.defaultProps = defaultProps;
 
 export default Flex;
