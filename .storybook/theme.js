@@ -54,8 +54,31 @@ const spacing = {
     xxl: '1.6rem',
 }
 
+const breakpoints = [
+    '450px',
+    '650px',
+    '900px',
+    '1200px',
+    '1600px',
+];
+
+const widths = {
+    s: '100px',
+    m: '200px',
+    l: '300px',
+};
+
+const heights = {
+    s: '100px',
+    m: '200px',
+    l: '300px',
+};
+
 export default {
+    breakpoints,
     fonts,
     colors,
     spacing,
+    widths,
+    heights,
 };
