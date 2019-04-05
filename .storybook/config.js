@@ -2,6 +2,7 @@ import React from 'react';
 import { addDecorator, configure } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs';
 import Theme from '../src/theme';
+import GlobalStyle from '../src/global-style';
 import theme from './theme';
 import './global.css';
 
@@ -18,7 +19,10 @@ const loadStories = () => {
 
 const GlobalDecorator = storyFn => (
     <Theme themes={themes} activeTheme="default">
-        {storyFn()}
+        <>
+            <GlobalStyle />
+            {storyFn()}
+        </>
     </Theme>
 );
 

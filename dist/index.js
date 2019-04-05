@@ -15,6 +15,12 @@ Object.defineProperty(exports, "Flex", {
     return _flex.default;
   }
 });
+Object.defineProperty(exports, "GlobalStyle", {
+  enumerable: true,
+  get: function get() {
+    return _globalStyle.default;
+  }
+});
 Object.defineProperty(exports, "H1", {
   enumerable: true,
   get: function get() {
@@ -85,6 +91,8 @@ Object.defineProperty(exports, "Theme", {
 var _box = _interopRequireDefault(require("./box"));
 
 var _flex = _interopRequireDefault(require("./flex"));
+
+var _globalStyle = _interopRequireDefault(require("./global-style"));
 
 var _h = _interopRequireDefault(require("./h1"));
 

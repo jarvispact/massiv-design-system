@@ -4,8 +4,8 @@ const sharedFontHeadingConfig = {
 };
 
 const sharedFontTextConfig = {
-    family: '"M PLUS Rounded 1c", sans-serif',
-    weights: { s: '100', m: '400', l: '700' },
+    family: '"Nunito", sans-serif',
+    weights: { s: '200', m: '400', l: '700' },
 };
 
 const fonts = {

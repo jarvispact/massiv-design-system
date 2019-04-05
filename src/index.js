@@ -1,5 +1,6 @@
 export { default as Box } from './box';
 export { default as Flex } from './flex';
+export { default as GlobalStyle } from './global-style';
 export { default as H1 } from './h1';
 export { default as H2 } from './h2';
 export { default as H3 } from './h3';
