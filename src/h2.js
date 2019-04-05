@@ -1,37 +1,50 @@
 import React from 'react';
-import { string, node } from 'prop-types';
+import { node } from 'prop-types';
 import styled from 'styled-components';
+import { arrayOfStringsOrString } from '../utils/prop-types';
+import buildCss from '../utils/build-css';
+import buildScopedProps from '../utils/build-scoped-props';
+import buildPropTypes from '../utils/build-prop-types';
+import fontPropertyConfig from '../utils/font-property-config';
+
+const propertyType = arrayOfStringsOrString;
+const defaultProperty = undefined;
+
+const h2PropertyConfig = [
+    {
+        cssProperty: 'font-weight',
+        componentProperty: 'weight',
+        scopedProperty: 'massivFontWeight',
+        themeProperty: 'fonts.h2.weights',
+        propertyType,
+        defaultProperty,
+    },
+];
+
+const propertyConfig = [
+    ...fontPropertyConfig,
+    ...h2PropertyConfig,
+];
 
 const StyledH2 = styled.h2`
     font-family: ${props => props.theme.fonts.h2.family};
-    font-weight: ${props => props.theme.fonts.h2.weights[props.massivWeight] || props.massivWeight || props.theme.fonts.h2.weights.m};
-    font-size: ${props => props.theme.fonts.scales[props.massivScale] || props.massivScale};
-    color: ${props => props.theme.colors[props.massivColor] || props.massivColor};
+    ${buildCss(propertyConfig)}
 `;
 
-const H2 = ({ weight, scale, color, children, ...otherProps }) => (
-    <StyledH2
-        massivWeight={weight}
-        massivScale={scale}
-        massivColor={color}
-        {...otherProps}
-    >
-        {children}
-    </StyledH2>
-);
-
-H2.propTypes = {
-    weight: string,
-    scale: string,
-    color: string,
-    children: node,
+const H2 = (_props) => {
+    const { children, ...props } = _props;
+    const scopedProps = buildScopedProps(propertyConfig, props);
+    return (<StyledH2 {...scopedProps}>{children}</StyledH2>);
 };
 
-H2.defaultProps = {
-    weight: undefined,
-    scale: undefined,
-    color: undefined,
-    children: undefined,
+const defaultPropTypes = {
+    propTypes: { children: node },
+    defaultProps: { children: undefined },
 };
+
+const { propTypes, defaultProps } = buildPropTypes(propertyConfig, defaultPropTypes);
+
+H2.propTypes = propTypes;
+H2.defaultProps = defaultProps;
 
 export default H2;

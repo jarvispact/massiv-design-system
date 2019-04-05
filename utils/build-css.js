@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import path from './path';
 
 const addValuesToList = (list, props) => list.map(configObj => Object.assign({}, configObj, {
     values: Array.isArray(props[configObj.scopedProperty]) ? props[configObj.scopedProperty] : [props[configObj.scopedProperty]],
@@ -8,9 +9,10 @@ const hasNoMediaQueries = list => list.every(configObj => configObj.values.lengt
 
 const getValue = (configObj, valueIndex, props) => {
     const { themeProperty, values } = configObj;
+    const themePropertyPath = themeProperty ? themeProperty.split('.') : [];
     const { theme } = props;
     const value = values[valueIndex];
-    return themeProperty && theme[themeProperty][value] ? theme[themeProperty][value] : value;
+    return themeProperty && path(themePropertyPath, theme)[value] ? path(themePropertyPath, theme)[value] : value;
 };
 
 const getMediaQueryForBreakpoint = (breakpoint, cssArray) => {

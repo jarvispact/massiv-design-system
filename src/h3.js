@@ -1,37 +1,50 @@
 import React from 'react';
-import { string, node } from 'prop-types';
+import { node } from 'prop-types';
 import styled from 'styled-components';
+import { arrayOfStringsOrString } from '../utils/prop-types';
+import buildCss from '../utils/build-css';
+import buildScopedProps from '../utils/build-scoped-props';
+import buildPropTypes from '../utils/build-prop-types';
+import fontPropertyConfig from '../utils/font-property-config';
+
+const propertyType = arrayOfStringsOrString;
+const defaultProperty = undefined;
+
+const h3PropertyConfig = [
+    {
+        cssProperty: 'font-weight',
+        componentProperty: 'weight',
+        scopedProperty: 'massivFontWeight',
+        themeProperty: 'fonts.h3.weights',
+        propertyType,
+        defaultProperty,
+    },
+];
+
+const propertyConfig = [
+    ...fontPropertyConfig,
+    ...h3PropertyConfig,
+];
 
 const StyledH3 = styled.h3`
     font-family: ${props => props.theme.fonts.h3.family};
-    font-weight: ${props => props.theme.fonts.h3.weights[props.massivWeight] || props.massivWeight || props.theme.fonts.h3.weights.m};
-    font-size: ${props => props.theme.fonts.scales[props.massivScale] || props.massivScale};
-    color: ${props => props.theme.colors[props.massivColor] || props.massivColor};
+    ${buildCss(propertyConfig)}
 `;
 
-const H3 = ({ weight, scale, color, children, ...otherProps }) => (
-    <StyledH3
-        massivWeight={weight}
-        massivScale={scale}
-        massivColor={color}
-        {...otherProps}
-    >
-        {children}
-    </StyledH3>
-);
-
-H3.propTypes = {
-    weight: string,
-    scale: string,
-    color: string,
-    children: node,
+const H3 = (_props) => {
+    const { children, ...props } = _props;
+    const scopedProps = buildScopedProps(propertyConfig, props);
+    return (<StyledH3 {...scopedProps}>{children}</StyledH3>);
 };
 
-H3.defaultProps = {
-    weight: undefined,
-    scale: undefined,
-    color: undefined,
-    children: undefined,
+const defaultPropTypes = {
+    propTypes: { children: node },
+    defaultProps: { children: undefined },
 };
+
+const { propTypes, defaultProps } = buildPropTypes(propertyConfig, defaultPropTypes);
+
+H3.propTypes = propTypes;
+H3.defaultProps = defaultProps;
 
 export default H3;

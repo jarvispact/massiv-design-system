@@ -69,10 +69,10 @@ Object.defineProperty(exports, "Text", {
     return _text.default;
   }
 });
-Object.defineProperty(exports, "ThemeUtils", {
+Object.defineProperty(exports, "ThemeContext", {
   enumerable: true,
   get: function get() {
-    return _themeUtils.default;
+    return _themeContext.default;
   }
 });
 Object.defineProperty(exports, "Theme", {
@@ -104,7 +104,7 @@ var _link = _interopRequireDefault(require("./link"));
 
 var _text = _interopRequireDefault(require("./text"));
 
-var _themeUtils = _interopRequireDefault(require("./theme-utils"));
+var _themeContext = _interopRequireDefault(require("./theme-context"));
 
 var _theme = _interopRequireDefault(require("./theme"));
 

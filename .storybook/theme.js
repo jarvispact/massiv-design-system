@@ -29,7 +29,12 @@ const fonts = {
         xl: '1.5rem',
         xxl: '2rem',
         xxxl: '2.5rem',
-    }
+    },
+    letterSpacings: {
+        s: '0.1rem',
+        m: '0.2rem',
+        l: '0.3rem',
+    },
 };
 
 const colors = {

@@ -1,37 +1,50 @@
 import React from 'react';
-import { string, node } from 'prop-types';
+import { node } from 'prop-types';
 import styled from 'styled-components';
+import { arrayOfStringsOrString } from '../utils/prop-types';
+import buildCss from '../utils/build-css';
+import buildScopedProps from '../utils/build-scoped-props';
+import buildPropTypes from '../utils/build-prop-types';
+import fontPropertyConfig from '../utils/font-property-config';
+
+const propertyType = arrayOfStringsOrString;
+const defaultProperty = undefined;
+
+const linkPropertyConfig = [
+    {
+        cssProperty: 'font-weight',
+        componentProperty: 'weight',
+        scopedProperty: 'massivFontWeight',
+        themeProperty: 'fonts.link.weights',
+        propertyType,
+        defaultProperty,
+    },
+];
+
+const propertyConfig = [
+    ...fontPropertyConfig,
+    ...linkPropertyConfig,
+];
 
 const StyledLink = styled.a`
     font-family: ${props => props.theme.fonts.link.family};
-    font-weight: ${props => props.theme.fonts.link.weights[props.massivWeight] || props.massivWeight || props.theme.fonts.link.weights.m};
-    font-size: ${props => props.theme.fonts.scales[props.massivScale] || props.massivScale};
-    color: ${props => props.theme.colors[props.massivColor] || props.massivColor};
+    ${buildCss(propertyConfig)}
 `;
 
-const Link = ({ weight, scale, color, children, ...otherProps }) => (
-    <StyledLink
-        massivWeight={weight}
-        massivScale={scale}
-        massivColor={color}
-        {...otherProps}
-    >
-        {children}
-    </StyledLink>
-);
-
-Link.propTypes = {
-    weight: string,
-    scale: string,
-    color: string,
-    children: node,
+const Link = (_props) => {
+    const { children, ...props } = _props;
+    const scopedProps = buildScopedProps(propertyConfig, props);
+    return (<StyledLink {...scopedProps}>{children}</StyledLink>);
 };
 
-Link.defaultProps = {
-    weight: undefined,
-    scale: undefined,
-    color: undefined,
-    children: undefined,
+const defaultPropTypes = {
+    propTypes: { children: node },
+    defaultProps: { children: undefined },
 };
+
+const { propTypes, defaultProps } = buildPropTypes(propertyConfig, defaultPropTypes);
+
+Link.propTypes = propTypes;
+Link.defaultProps = defaultProps;
 
 export default Link;

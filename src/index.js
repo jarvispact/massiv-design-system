@@ -9,5 +9,5 @@ export { default as H6 } from './h6';
 export { default as Label } from './label';
 export { default as Link } from './link';
 export { default as Text } from './text';
-export { default as ThemeUtils } from './theme-utils';
+export { default as ThemeContext } from './theme-context';
 export { default as Theme } from './theme';
