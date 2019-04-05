@@ -63,6 +63,12 @@ Object.defineProperty(exports, "Icon", {
     return _icon.default;
   }
 });
+Object.defineProperty(exports, "Input", {
+  enumerable: true,
+  get: function get() {
+    return _input.default;
+  }
+});
 Object.defineProperty(exports, "Label", {
   enumerable: true,
   get: function get() {
@@ -113,6 +119,8 @@ var _h5 = _interopRequireDefault(require("./h5"));
 var _h6 = _interopRequireDefault(require("./h6"));
 
 var _icon = _interopRequireDefault(require("./icon"));
+
+var _input = _interopRequireDefault(require("./input"));
 
 var _label = _interopRequireDefault(require("./label"));
 
