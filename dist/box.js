@@ -25,6 +25,8 @@ var _flexChildPropertyConfig = _interopRequireDefault(require("../utils/flex-chi
 
 var _colorPropertyConfig = _interopRequireDefault(require("../utils/color-property-config"));
 
+var _borderPropertyConfig = _interopRequireDefault(require("../utils/border-property-config"));
+
 var _propTypes2 = require("../utils/prop-types");
 
 var _buildScopedProps = _interopRequireDefault(require("../utils/build-scoped-props"));
@@ -82,7 +84,7 @@ var boxPropertyConfig = [{
   propertyType: propertyType,
   defaultProperty: defaultProperty
 }];
-var propertyConfig = [].concat(_toConsumableArray(_positionPropertyConfig.default), _toConsumableArray(_spacingPropertyConfig.default), _toConsumableArray(_widthPropertyConfig.default), _toConsumableArray(_heightPropertyConfig.default), _toConsumableArray(_flexChildPropertyConfig.default), _toConsumableArray(_colorPropertyConfig.default), boxPropertyConfig);
+var propertyConfig = [].concat(_toConsumableArray(_positionPropertyConfig.default), _toConsumableArray(_spacingPropertyConfig.default), _toConsumableArray(_widthPropertyConfig.default), _toConsumableArray(_heightPropertyConfig.default), _toConsumableArray(_flexChildPropertyConfig.default), _toConsumableArray(_colorPropertyConfig.default), _toConsumableArray(_borderPropertyConfig.default), boxPropertyConfig);
 
 var StyledBox = _styledComponents.default.div(_templateObject(), (0, _buildCss.default)(propertyConfig));
 

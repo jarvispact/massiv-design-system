@@ -33,7 +33,26 @@ storiesOf('Box', module)
             mr={array('mr', [])}
             color={array('color', [])}
             bg={array('bg', [])}
+            borderStyle={array('borderStyle', [])}
+            borderWidth={array('borderWidth', [])}
             borderColor={array('borderColor', [])}
+            borderRadius={array('borderRadius', [])}
+            borderTopStyle={array('borderTopStyle', [])}
+            borderTopWidth={array('borderTopWidth', [])}
+            borderTopColor={array('borderTopColor', [])}
+            borderBottomStyle={array('borderBottomStyle', [])}
+            borderBottomWidth={array('borderBottomWidth', [])}
+            borderBottomColor={array('borderBottomColor', [])}
+            borderLeftStyle={array('borderLeftStyle', [])}
+            borderLeftWidth={array('borderLeftWidth', [])}
+            borderLeftColor={array('borderLeftColor', [])}
+            borderRightStyle={array('borderRightStyle', [])}
+            borderRightWidth={array('borderRightWidth', [])}
+            borderRightColor={array('borderRightColor', [])}
+            borderTopLeftRadius={array('borderTopLeftRadius', [])}
+            borderTopRightRadius={array('borderTopRightRadius', [])}
+            borderBottomLeftRadius={array('borderBottomLeftRadius', [])}
+            borderBottomRightRadius={array('borderBottomRightRadius', [])}
         >
             Box Test
         </Box>

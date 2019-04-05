@@ -8,6 +8,7 @@ import widthPropertyConfig from '../utils/width-property-config';
 import heightPropertyConfig from '../utils/height-property-config';
 import flexChildPropertyConfig from '../utils/flex-child-property-config';
 import colorPropertyConfig from '../utils/color-property-config';
+import borderPropertyConfig from '../utils/border-property-config';
 import { arrayOfStringsOrString } from '../utils/prop-types';
 import buildScopedProps from '../utils/build-scoped-props';
 import buildPropTypes from '../utils/build-prop-types';
@@ -50,6 +51,7 @@ const propertyConfig = [
     ...heightPropertyConfig,
     ...flexChildPropertyConfig,
     ...colorPropertyConfig,
+    ...borderPropertyConfig,
     ...boxPropertyConfig,
 ];
 

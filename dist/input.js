@@ -11,16 +11,32 @@ var _propTypes = require("prop-types");
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _buildCss = _interopRequireDefault(require("../utils/build-css"));
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+var _buildScopedProps = _interopRequireDefault(require("../utils/build-scoped-props"));
+
+var _buildPropTypes2 = _interopRequireDefault(require("../utils/build-prop-types"));
+
+var _propTypes2 = require("../utils/prop-types");
+
+var _colorPropertyConfig = _interopRequireDefault(require("../utils/color-property-config"));
+
+var _spacingPropertyConfig = _interopRequireDefault(require("../utils/spacing-property-config"));
+
+var _widthPropertyConfig = _interopRequireDefault(require("../utils/width-property-config"));
+
+var _heightPropertyConfig = _interopRequireDefault(require("../utils/height-property-config"));
+
+var _borderPropertyConfig = _interopRequireDefault(require("../utils/border-property-config"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    width: 100%;\n    border-style: none;\n    &:focus { outline: 0; }\n    padding: 0.4rem;\n    border-radius: 2px;\n    background-color: ", ";\n    cursor: ", ";\n    opacity: ", ";\n    font-family: ", ";\n    font-weight: ", ";\n    font-size: ", ";\n    color: ", ";\n"]);
+  var data = _taggedTemplateLiteral(["\n    &:focus { outline: 0; }\n    cursor: ", ";\n    opacity: ", ";\n    font-family: ", ";\n    ", "\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -31,83 +47,80 @@ function _templateObject() {
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+var propertyType = _propTypes2.arrayOfStringsOrString;
+var defaultProperty = undefined;
+var inputPropertyConfig = [{
+  cssProperty: 'font-weight',
+  componentProperty: 'fontWeight',
+  scopedProperty: 'massivFontWeight',
+  themeProperty: 'fonts.input.weights',
+  propertyType: propertyType,
+  defaultProperty: defaultProperty
+}, {
+  cssProperty: 'font-size',
+  componentProperty: 'fontSize',
+  scopedProperty: 'massivFontSize',
+  themeProperty: 'fonts.scales',
+  propertyType: propertyType,
+  defaultProperty: defaultProperty
+}, {
+  cssProperty: 'letter-spacing',
+  componentProperty: 'letterSpacing',
+  scopedProperty: 'massivLetterSpacing',
+  themeProperty: 'fonts.letterSpacings',
+  propertyType: propertyType,
+  defaultProperty: defaultProperty
+}];
+var propertyConfig = [].concat(_toConsumableArray(_colorPropertyConfig.default), _toConsumableArray(_spacingPropertyConfig.default), _toConsumableArray(_widthPropertyConfig.default), _toConsumableArray(_heightPropertyConfig.default), _toConsumableArray(_borderPropertyConfig.default), inputPropertyConfig);
+
 var StyledInput = _styledComponents.default.input(_templateObject(), function (props) {
-  return props.theme.colors[props.massivBg] || props.massivBg;
-}, function (props) {
   return props.disabled && 'not-allowed';
 }, function (props) {
   return props.disabled && '0.5';
 }, function (props) {
   return props.theme.fonts.input.family;
-}, function (props) {
-  return props.theme.fonts.input.weights[props.massivFontWeight] || props.massivFontWeight || props.theme.fonts.input.weights.m;
-}, function (props) {
-  return props.theme.fonts.scales[props.massivFontScale] || props.massivFontScale;
-}, function (props) {
-  return props.theme.colors[props.massivFontColor] || props.massivFontColor;
-});
+}, (0, _buildCss.default)(propertyConfig));
 
-var Input = function Input(_ref) {
-  var type = _ref.type,
-      id = _ref.id,
-      name = _ref.name,
-      value = _ref.value,
-      disabled = _ref.disabled,
-      onChange = _ref.onChange,
-      onBlur = _ref.onBlur,
-      onFocus = _ref.onFocus,
-      fontWeight = _ref.fontWeight,
-      fontScale = _ref.fontScale,
-      fontColor = _ref.fontColor,
-      bg = _ref.bg,
-      children = _ref.children,
-      otherProps = _objectWithoutProperties(_ref, ["type", "id", "name", "value", "disabled", "onChange", "onBlur", "onFocus", "fontWeight", "fontScale", "fontColor", "bg", "children"]);
+var Input = function Input(_props) {
+  var children = _props.children,
+      props = _objectWithoutProperties(_props, ["children"]);
 
-  return _react.default.createElement(StyledInput, _extends({
-    type: type,
-    id: id,
-    name: name,
-    value: value,
-    disabled: disabled,
-    onChange: onChange,
-    onBlur: onBlur,
-    onFocus: onFocus,
-    massivFontWeight: fontWeight,
-    massivFontScale: fontScale,
-    massivFontColor: fontColor,
-    massivBg: bg
-  }, otherProps), children);
+  var scopedProps = (0, _buildScopedProps.default)(propertyConfig, props);
+  return _react.default.createElement(StyledInput, scopedProps, children);
 };
 
-Input.propTypes = {
-  type: _propTypes.string,
-  id: _propTypes.string,
-  name: _propTypes.string,
-  value: _propTypes.string,
-  disabled: _propTypes.bool,
-  onChange: _propTypes.func,
-  onBlur: _propTypes.func,
-  onFocus: _propTypes.func,
-  fontWeight: _propTypes.string,
-  fontScale: _propTypes.string,
-  fontColor: _propTypes.string,
-  bg: _propTypes.string,
-  children: _propTypes.node
+var defaultPropTypes = {
+  propTypes: {
+    type: _propTypes.string,
+    id: _propTypes.string,
+    name: _propTypes.string,
+    value: _propTypes.string,
+    disabled: _propTypes.bool,
+    children: _propTypes.node
+  },
+  defaultProps: {
+    type: 'text',
+    id: undefined,
+    name: undefined,
+    value: undefined,
+    disabled: false,
+    children: undefined
+  }
 };
-Input.defaultProps = {
-  type: 'text',
-  id: undefined,
-  name: undefined,
-  value: undefined,
-  disabled: false,
-  onChange: undefined,
-  onBlur: undefined,
-  onFocus: undefined,
-  fontWeight: undefined,
-  fontScale: undefined,
-  fontColor: undefined,
-  bg: undefined,
-  children: undefined
-};
+
+var _buildPropTypes = (0, _buildPropTypes2.default)(propertyConfig, defaultPropTypes),
+    propTypes = _buildPropTypes.propTypes,
+    defaultProps = _buildPropTypes.defaultProps;
+
+Input.propTypes = propTypes;
+Input.defaultProps = defaultProps;
 var _default = Input;
 exports.default = _default;
