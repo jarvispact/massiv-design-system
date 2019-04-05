@@ -10,6 +10,7 @@ import H6 from '../src/h6';
 import Text from '../src/text';
 import Link from '../src/link';
 import Label from '../src/label';
+import Icon from '../src/icon';
 
 storiesOf('Text', module)
     .add('H1', () => (
@@ -22,6 +23,18 @@ storiesOf('Text', module)
             Text H1
         </H1>
     ))
+    .add('H1 with Icon', () => (
+        <H1
+            weight={array('weight', [])}
+            scale={array('scale', [])}
+            color={array('color', [])}
+            letterSpacing={array('letterSpacing', [])}
+        >
+            <Icon>donut_large</Icon>
+            {' '}
+            H1 Text
+        </H1>
+    ))
     .add('H2', () => (
         <H2
             weight={array('weight', [])}
@@ -30,6 +43,18 @@ storiesOf('Text', module)
             letterSpacing={array('letterSpacing', [])}
         >
             Text H2
+        </H2>
+    ))
+    .add('H2 with Icon', () => (
+        <H2
+            weight={array('weight', [])}
+            scale={array('scale', [])}
+            color={array('color', [])}
+            letterSpacing={array('letterSpacing', [])}
+        >
+            <Icon>donut_large</Icon>
+            {' '}
+            H2 Text
         </H2>
     ))
     .add('H3', () => (
@@ -81,6 +106,31 @@ storiesOf('Text', module)
         >
             Text
         </Text>
+    ))
+    .add('Text with Icon embedded', () => (
+        <Text
+            weight={array('weight', [])}
+            scale={array('scale', [])}
+            color={array('color', [])}
+            letterSpacing={array('letterSpacing', [])}
+        >
+            <Icon>donut_large</Icon>
+            {' '}
+            Text
+        </Text>
+    ))
+    .add('Text with Icon aside', () => (
+        <>
+            <Text
+                weight={array('weight', [])}
+                scale={array('scale', [])}
+                color={array('color', [])}
+                letterSpacing={array('letterSpacing', [])}
+            >
+            Text
+            </Text>
+            <Icon pl="s" name="donut_large" />
+        </>
     ))
     .add('Link', () => (
         <Link
