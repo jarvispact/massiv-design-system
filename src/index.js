@@ -7,6 +7,7 @@ export { default as H3 } from './h3';
 export { default as H4 } from './h4';
 export { default as H5 } from './h5';
 export { default as H6 } from './h6';
+export { default as Icon } from './icon';
 export { default as Label } from './label';
 export { default as Link } from './link';
 export { default as Text } from './text';
