@@ -94,6 +94,13 @@ var flexPropertyConfig = [{
   themeProperty: themeProperty,
   propertyType: propertyType,
   defaultProperty: defaultProperty
+}, {
+  cssProperty: 'text-align',
+  componentProperty: 'textAlign',
+  scopedProperty: 'massivTextAlign',
+  themeProperty: themeProperty,
+  propertyType: propertyType,
+  defaultProperty: defaultProperty
 }];
 var propertyConfig = [].concat(_toConsumableArray(_widthPropertyConfig.default), _toConsumableArray(_heightPropertyConfig.default), flexPropertyConfig);
 

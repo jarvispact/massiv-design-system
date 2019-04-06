@@ -42,6 +42,14 @@ const boxPropertyConfig = [
         propertyType,
         defaultProperty,
     },
+    {
+        cssProperty: 'text-align',
+        componentProperty: 'textAlign',
+        scopedProperty: 'massivTextAlign',
+        themeProperty,
+        propertyType,
+        defaultProperty,
+    },
 ];
 
 const propertyConfig = [

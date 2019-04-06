@@ -83,6 +83,13 @@ var boxPropertyConfig = [{
   themeProperty: themeProperty,
   propertyType: propertyType,
   defaultProperty: defaultProperty
+}, {
+  cssProperty: 'text-align',
+  componentProperty: 'textAlign',
+  scopedProperty: 'massivTextAlign',
+  themeProperty: themeProperty,
+  propertyType: propertyType,
+  defaultProperty: defaultProperty
 }];
 var propertyConfig = [].concat(_toConsumableArray(_positionPropertyConfig.default), _toConsumableArray(_spacingPropertyConfig.default), _toConsumableArray(_widthPropertyConfig.default), _toConsumableArray(_heightPropertyConfig.default), _toConsumableArray(_flexChildPropertyConfig.default), _toConsumableArray(_colorPropertyConfig.default), _toConsumableArray(_borderPropertyConfig.default), boxPropertyConfig);
 
