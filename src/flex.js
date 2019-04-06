@@ -5,12 +5,14 @@ import buildCss from '../utils/build-css';
 import { arrayOfStringsOrString } from '../utils/prop-types';
 import buildScopedProps from '../utils/build-scoped-props';
 import buildPropTypes from '../utils/build-prop-types';
+import widthPropertyConfig from '../utils/width-property-config';
+import heightPropertyConfig from '../utils/height-property-config';
 
 const themeProperty = null;
 const propertyType = arrayOfStringsOrString;
 const defaultProperty = undefined;
 
-const propertyConfig = [
+const flexPropertyConfig = [
     {
         cssProperty: 'flex-direction',
         componentProperty: 'direction',
@@ -59,6 +61,12 @@ const propertyConfig = [
         propertyType,
         defaultProperty,
     },
+];
+
+const propertyConfig = [
+    ...widthPropertyConfig,
+    ...heightPropertyConfig,
+    ...flexPropertyConfig,
 ];
 
 const StyledFlex = styled.div`

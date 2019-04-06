@@ -19,6 +19,10 @@ var _buildScopedProps = _interopRequireDefault(require("../utils/build-scoped-pr
 
 var _buildPropTypes2 = _interopRequireDefault(require("../utils/build-prop-types"));
 
+var _widthPropertyConfig = _interopRequireDefault(require("../utils/width-property-config"));
+
+var _heightPropertyConfig = _interopRequireDefault(require("../utils/height-property-config"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
@@ -37,10 +41,18 @@ function _templateObject() {
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 var themeProperty = null;
 var propertyType = _propTypes2.arrayOfStringsOrString;
 var defaultProperty = undefined;
-var propertyConfig = [{
+var flexPropertyConfig = [{
   cssProperty: 'flex-direction',
   componentProperty: 'direction',
   scopedProperty: 'massivFlexDirection',
@@ -83,6 +95,7 @@ var propertyConfig = [{
   propertyType: propertyType,
   defaultProperty: defaultProperty
 }];
+var propertyConfig = [].concat(_toConsumableArray(_widthPropertyConfig.default), _toConsumableArray(_heightPropertyConfig.default), flexPropertyConfig);
 
 var StyledFlex = _styledComponents.default.div(_templateObject(), function (props) {
   return props.inline ? 'inline-flex' : 'flex';

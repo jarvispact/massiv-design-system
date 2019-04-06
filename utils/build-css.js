@@ -12,7 +12,9 @@ const getValue = (configObj, valueIndex, props) => {
     const themePropertyPath = themeProperty ? themeProperty.split('.') : [];
     const { theme } = props;
     const value = values[valueIndex];
-    return themeProperty && path(themePropertyPath, theme)[value] ? path(themePropertyPath, theme)[value] : value;
+
+    const themeSection = path(themePropertyPath, theme) || {};
+    return themeProperty && themeSection[value] ? themeSection[value] : value;
 };
 
 const getMediaQueryForBreakpoint = (breakpoint, cssArray) => {
