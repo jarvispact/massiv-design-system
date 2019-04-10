@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports["default"] = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -33,7 +33,7 @@ var _buildScopedProps = _interopRequireDefault(require("../utils/build-scoped-pr
 
 var _buildPropTypes2 = _interopRequireDefault(require("../utils/build-prop-types"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
@@ -91,16 +91,16 @@ var boxPropertyConfig = [{
   propertyType: propertyType,
   defaultProperty: defaultProperty
 }];
-var propertyConfig = [].concat(_toConsumableArray(_positionPropertyConfig.default), _toConsumableArray(_spacingPropertyConfig.default), _toConsumableArray(_widthPropertyConfig.default), _toConsumableArray(_heightPropertyConfig.default), _toConsumableArray(_flexChildPropertyConfig.default), _toConsumableArray(_colorPropertyConfig.default), _toConsumableArray(_borderPropertyConfig.default), boxPropertyConfig);
+var propertyConfig = [].concat(_toConsumableArray(_positionPropertyConfig["default"]), _toConsumableArray(_spacingPropertyConfig["default"]), _toConsumableArray(_widthPropertyConfig["default"]), _toConsumableArray(_heightPropertyConfig["default"]), _toConsumableArray(_flexChildPropertyConfig["default"]), _toConsumableArray(_colorPropertyConfig["default"]), _toConsumableArray(_borderPropertyConfig["default"]), boxPropertyConfig);
 
-var StyledBox = _styledComponents.default.div(_templateObject(), (0, _buildCss.default)(propertyConfig));
+var StyledBox = _styledComponents["default"].div(_templateObject(), (0, _buildCss["default"])(propertyConfig));
 
 var Box = function Box(_props) {
   var children = _props.children,
       props = _objectWithoutProperties(_props, ["children"]);
 
-  var scopedProps = (0, _buildScopedProps.default)(propertyConfig, props);
-  return _react.default.createElement(StyledBox, scopedProps, children);
+  var scopedProps = (0, _buildScopedProps["default"])(propertyConfig, props);
+  return _react["default"].createElement(StyledBox, scopedProps, children);
 };
 
 var defaultPropTypes = {
@@ -112,11 +112,11 @@ var defaultPropTypes = {
   }
 };
 
-var _buildPropTypes = (0, _buildPropTypes2.default)(propertyConfig, defaultPropTypes),
+var _buildPropTypes = (0, _buildPropTypes2["default"])(propertyConfig, defaultPropTypes),
     propTypes = _buildPropTypes.propTypes,
     defaultProps = _buildPropTypes.defaultProps;
 
 Box.propTypes = propTypes;
 Box.defaultProps = defaultProps;
 var _default = Box;
-exports.default = _default;
+exports["default"] = _default;

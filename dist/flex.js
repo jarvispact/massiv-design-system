@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports["default"] = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -23,7 +23,7 @@ var _widthPropertyConfig = _interopRequireDefault(require("../utils/width-proper
 
 var _heightPropertyConfig = _interopRequireDefault(require("../utils/height-property-config"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
@@ -102,18 +102,18 @@ var flexPropertyConfig = [{
   propertyType: propertyType,
   defaultProperty: defaultProperty
 }];
-var propertyConfig = [].concat(_toConsumableArray(_widthPropertyConfig.default), _toConsumableArray(_heightPropertyConfig.default), flexPropertyConfig);
+var propertyConfig = [].concat(_toConsumableArray(_widthPropertyConfig["default"]), _toConsumableArray(_heightPropertyConfig["default"]), flexPropertyConfig);
 
-var StyledFlex = _styledComponents.default.div(_templateObject(), function (props) {
+var StyledFlex = _styledComponents["default"].div(_templateObject(), function (props) {
   return props.inline ? 'inline-flex' : 'flex';
-}, (0, _buildCss.default)(propertyConfig));
+}, (0, _buildCss["default"])(propertyConfig));
 
 var Flex = function Flex(_props) {
   var children = _props.children,
       props = _objectWithoutProperties(_props, ["children"]);
 
-  var scopedProps = (0, _buildScopedProps.default)(propertyConfig, props);
-  return _react.default.createElement(StyledFlex, scopedProps, children);
+  var scopedProps = (0, _buildScopedProps["default"])(propertyConfig, props);
+  return _react["default"].createElement(StyledFlex, scopedProps, children);
 };
 
 var defaultPropTypes = {
@@ -125,11 +125,11 @@ var defaultPropTypes = {
   }
 };
 
-var _buildPropTypes = (0, _buildPropTypes2.default)(propertyConfig, defaultPropTypes),
+var _buildPropTypes = (0, _buildPropTypes2["default"])(propertyConfig, defaultPropTypes),
     propTypes = _buildPropTypes.propTypes,
     defaultProps = _buildPropTypes.defaultProps;
 
 Flex.propTypes = propTypes;
 Flex.defaultProps = defaultProps;
 var _default = Flex;
-exports.default = _default;
+exports["default"] = _default;

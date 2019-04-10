@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports["default"] = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -29,7 +29,7 @@ var _heightPropertyConfig = _interopRequireDefault(require("../utils/height-prop
 
 var _borderPropertyConfig = _interopRequireDefault(require("../utils/border-property-config"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
@@ -79,22 +79,22 @@ var inputPropertyConfig = [{
   propertyType: propertyType,
   defaultProperty: defaultProperty
 }];
-var propertyConfig = [].concat(_toConsumableArray(_colorPropertyConfig.default), _toConsumableArray(_spacingPropertyConfig.default), _toConsumableArray(_widthPropertyConfig.default), _toConsumableArray(_heightPropertyConfig.default), _toConsumableArray(_borderPropertyConfig.default), inputPropertyConfig);
+var propertyConfig = [].concat(_toConsumableArray(_colorPropertyConfig["default"]), _toConsumableArray(_spacingPropertyConfig["default"]), _toConsumableArray(_widthPropertyConfig["default"]), _toConsumableArray(_heightPropertyConfig["default"]), _toConsumableArray(_borderPropertyConfig["default"]), inputPropertyConfig);
 
-var StyledInput = _styledComponents.default.input(_templateObject(), function (props) {
+var StyledInput = _styledComponents["default"].input(_templateObject(), function (props) {
   return props.disabled && 'not-allowed';
 }, function (props) {
   return props.disabled && '0.5';
 }, function (props) {
   return props.theme.fonts.input.family;
-}, (0, _buildCss.default)(propertyConfig));
+}, (0, _buildCss["default"])(propertyConfig));
 
 var Input = function Input(_props) {
   var children = _props.children,
       props = _objectWithoutProperties(_props, ["children"]);
 
-  var scopedProps = (0, _buildScopedProps.default)(propertyConfig, props);
-  return _react.default.createElement(StyledInput, scopedProps, children);
+  var scopedProps = (0, _buildScopedProps["default"])(propertyConfig, props);
+  return _react["default"].createElement(StyledInput, scopedProps, children);
 };
 
 var defaultPropTypes = {
@@ -116,11 +116,11 @@ var defaultPropTypes = {
   }
 };
 
-var _buildPropTypes = (0, _buildPropTypes2.default)(propertyConfig, defaultPropTypes),
+var _buildPropTypes = (0, _buildPropTypes2["default"])(propertyConfig, defaultPropTypes),
     propTypes = _buildPropTypes.propTypes,
     defaultProps = _buildPropTypes.defaultProps;
 
 Input.propTypes = propTypes;
 Input.defaultProps = defaultProps;
 var _default = Input;
-exports.default = _default;
+exports["default"] = _default;

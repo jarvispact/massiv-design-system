@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports["default"] = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -23,7 +23,7 @@ var _colorPropertyConfig = _interopRequireDefault(require("../utils/color-proper
 
 var _spacingPropertyConfig = _interopRequireDefault(require("../utils/spacing-property-config"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
@@ -59,7 +59,7 @@ var iconPropertyConfig = [{
   propertyType: propertyType,
   defaultProperty: defaultProperty
 }];
-var propertyConfig = [].concat(_toConsumableArray(_colorPropertyConfig.default), _toConsumableArray(_spacingPropertyConfig.default), iconPropertyConfig);
+var propertyConfig = [].concat(_toConsumableArray(_colorPropertyConfig["default"]), _toConsumableArray(_spacingPropertyConfig["default"]), iconPropertyConfig);
 
 var getCursor = function getCursor(props) {
   if (props.disabled) return 'not-allowed';
@@ -67,21 +67,21 @@ var getCursor = function getCursor(props) {
   return undefined;
 };
 
-var StyledIcon = _styledComponents.default.i.attrs(function (props) {
+var StyledIcon = _styledComponents["default"].i.attrs(function (props) {
   return {
     className: props.theme.fonts.iconClassName
   };
 })(_templateObject(), getCursor, function (props) {
   return props.disabled && '0.5';
-}, (0, _buildCss.default)(propertyConfig));
+}, (0, _buildCss["default"])(propertyConfig));
 
 var Icon = function Icon(_props) {
   var children = _props.children,
       props = _objectWithoutProperties(_props, ["children"]);
 
-  var scopedProps = (0, _buildScopedProps.default)(propertyConfig, props);
+  var scopedProps = (0, _buildScopedProps["default"])(propertyConfig, props);
   if (scopedProps.onClick && scopedProps.disabled) scopedProps.onClick = undefined;
-  return _react.default.createElement(StyledIcon, scopedProps, scopedProps.name || children);
+  return _react["default"].createElement(StyledIcon, scopedProps, scopedProps.name || children);
 };
 
 var defaultPropTypes = {
@@ -97,11 +97,11 @@ var defaultPropTypes = {
   }
 };
 
-var _buildPropTypes = (0, _buildPropTypes2.default)(propertyConfig, defaultPropTypes),
+var _buildPropTypes = (0, _buildPropTypes2["default"])(propertyConfig, defaultPropTypes),
     propTypes = _buildPropTypes.propTypes,
     defaultProps = _buildPropTypes.defaultProps;
 
 Icon.propTypes = propTypes;
 Icon.defaultProps = defaultProps;
 var _default = Icon;
-exports.default = _default;
+exports["default"] = _default;

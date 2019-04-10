@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports["default"] = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -21,7 +21,7 @@ var _buildPropTypes2 = _interopRequireDefault(require("../utils/build-prop-types
 
 var _fontPropertyConfig = _interopRequireDefault(require("../utils/font-property-config"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
@@ -57,18 +57,18 @@ var h3PropertyConfig = [{
   propertyType: propertyType,
   defaultProperty: defaultProperty
 }];
-var propertyConfig = [].concat(_toConsumableArray(_fontPropertyConfig.default), h3PropertyConfig);
+var propertyConfig = [].concat(_toConsumableArray(_fontPropertyConfig["default"]), h3PropertyConfig);
 
-var StyledH3 = _styledComponents.default.h3(_templateObject(), function (props) {
+var StyledH3 = _styledComponents["default"].h3(_templateObject(), function (props) {
   return props.theme.fonts.h3.family;
-}, (0, _buildCss.default)(propertyConfig));
+}, (0, _buildCss["default"])(propertyConfig));
 
 var H3 = function H3(_props) {
   var children = _props.children,
       props = _objectWithoutProperties(_props, ["children"]);
 
-  var scopedProps = (0, _buildScopedProps.default)(propertyConfig, props);
-  return _react.default.createElement(StyledH3, scopedProps, children);
+  var scopedProps = (0, _buildScopedProps["default"])(propertyConfig, props);
+  return _react["default"].createElement(StyledH3, scopedProps, children);
 };
 
 var defaultPropTypes = {
@@ -80,11 +80,11 @@ var defaultPropTypes = {
   }
 };
 
-var _buildPropTypes = (0, _buildPropTypes2.default)(propertyConfig, defaultPropTypes),
+var _buildPropTypes = (0, _buildPropTypes2["default"])(propertyConfig, defaultPropTypes),
     propTypes = _buildPropTypes.propTypes,
     defaultProps = _buildPropTypes.defaultProps;
 
 H3.propTypes = propTypes;
 H3.defaultProps = defaultProps;
 var _default = H3;
-exports.default = _default;
+exports["default"] = _default;

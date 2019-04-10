@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports["default"] = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
@@ -13,9 +13,9 @@ var _styledComponents = require("styled-components");
 
 var _themeContext = _interopRequireDefault(require("./theme-context"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj["default"] = obj; return newObj; } }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -80,9 +80,9 @@ function (_Component) {
       var _this$state = this.state,
           themes = _this$state.themes,
           activeTheme = _this$state.activeTheme;
-      return _react.default.createElement(_themeContext.default.Provider, {
+      return _react["default"].createElement(_themeContext["default"].Provider, {
         value: this.state
-      }, _react.default.createElement(_styledComponents.ThemeProvider, {
+      }, _react["default"].createElement(_styledComponents.ThemeProvider, {
         theme: themes[activeTheme]
       }, children));
     }
@@ -93,4 +93,4 @@ function (_Component) {
 
 Theme.propTypes = propTypes;
 var _default = Theme;
-exports.default = _default;
+exports["default"] = _default;
