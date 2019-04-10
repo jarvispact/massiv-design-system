@@ -9,6 +9,12 @@ Object.defineProperty(exports, "Box", {
     return _box["default"];
   }
 });
+Object.defineProperty(exports, "Button", {
+  enumerable: true,
+  get: function get() {
+    return _button["default"];
+  }
+});
 Object.defineProperty(exports, "Flex", {
   enumerable: true,
   get: function get() {
@@ -101,6 +107,8 @@ Object.defineProperty(exports, "Theme", {
 });
 
 var _box = _interopRequireDefault(require("./box"));
+
+var _button = _interopRequireDefault(require("./button"));
 
 var _flex = _interopRequireDefault(require("./flex"));
 
