@@ -10,6 +10,7 @@ import widthPropertyConfig from '../utils/width-property-config';
 import heightPropertyConfig from '../utils/height-property-config';
 import colorPropertyConfig from '../utils/color-property-config';
 import borderPropertyConfig from '../utils/border-property-config';
+import setProperty from '../utils/set-property';
 
 const propertyType = arrayOfStringsOrString;
 const defaultProperty = undefined;
@@ -29,7 +30,7 @@ const buttonPropertyConfig = [
         scopedProperty: 'massivFontSize',
         themeProperty: 'fonts.scales',
         propertyType,
-        defaultProperty,
+        defaultProperty: 'm',
     },
     {
         cssProperty: 'font-weight',
@@ -57,6 +58,10 @@ const propertyConfig = [
     ...borderPropertyConfig,
     ...buttonPropertyConfig,
 ];
+
+setProperty('border-style', 'defaultProperty', 'none', propertyConfig);
+setProperty('border-radius', 'defaultProperty', '2px', propertyConfig);
+setProperty('padding', 'defaultProperty', '4px 8px', propertyConfig);
 
 const StyledButton = styled.button`
     &:focus { outline: 0; }

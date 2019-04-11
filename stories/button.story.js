@@ -3,8 +3,6 @@ import { storiesOf } from '@storybook/react';
 import { text, array, boolean } from '@storybook/addon-knobs';
 import Box from '../src/box';
 import Button from '../src/button';
-import Icon from '../src/icon';
-import H1 from '../src/h1';
 
 storiesOf('Button', module)
     .add('Button', () => (

@@ -29,6 +29,8 @@ var _colorPropertyConfig = _interopRequireDefault(require("../utils/color-proper
 
 var _borderPropertyConfig = _interopRequireDefault(require("../utils/border-property-config"));
 
+var _setProperty = _interopRequireDefault(require("../utils/set-property"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
@@ -70,7 +72,7 @@ var buttonPropertyConfig = [{
   scopedProperty: 'massivFontSize',
   themeProperty: 'fonts.scales',
   propertyType: propertyType,
-  defaultProperty: defaultProperty
+  defaultProperty: 'm'
 }, {
   cssProperty: 'font-weight',
   componentProperty: 'fontWeight',
@@ -87,6 +89,9 @@ var buttonPropertyConfig = [{
   defaultProperty: defaultProperty
 }];
 var propertyConfig = [].concat(_toConsumableArray(_widthPropertyConfig["default"]), _toConsumableArray(_heightPropertyConfig["default"]), _toConsumableArray(_spacingPropertyConfig["default"]), _toConsumableArray(_colorPropertyConfig["default"]), _toConsumableArray(_borderPropertyConfig["default"]), buttonPropertyConfig);
+(0, _setProperty["default"])('border-style', 'defaultProperty', 'none', propertyConfig);
+(0, _setProperty["default"])('border-radius', 'defaultProperty', '2px', propertyConfig);
+(0, _setProperty["default"])('padding', 'defaultProperty', '4px 8px', propertyConfig);
 
 var StyledButton = _styledComponents["default"].button(_templateObject(), function (props) {
   return props.disabled ? 'not-allowed' : 'pointer';

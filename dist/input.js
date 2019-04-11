@@ -29,6 +29,8 @@ var _heightPropertyConfig = _interopRequireDefault(require("../utils/height-prop
 
 var _borderPropertyConfig = _interopRequireDefault(require("../utils/border-property-config"));
 
+var _setProperty = _interopRequireDefault(require("../utils/set-property"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
@@ -70,7 +72,7 @@ var inputPropertyConfig = [{
   scopedProperty: 'massivFontSize',
   themeProperty: 'fonts.scales',
   propertyType: propertyType,
-  defaultProperty: defaultProperty
+  defaultProperty: 'm'
 }, {
   cssProperty: 'letter-spacing',
   componentProperty: 'letterSpacing',
@@ -80,6 +82,9 @@ var inputPropertyConfig = [{
   defaultProperty: defaultProperty
 }];
 var propertyConfig = [].concat(_toConsumableArray(_colorPropertyConfig["default"]), _toConsumableArray(_spacingPropertyConfig["default"]), _toConsumableArray(_widthPropertyConfig["default"]), _toConsumableArray(_heightPropertyConfig["default"]), _toConsumableArray(_borderPropertyConfig["default"]), inputPropertyConfig);
+(0, _setProperty["default"])('border-style', 'defaultProperty', 'none', propertyConfig);
+(0, _setProperty["default"])('border-radius', 'defaultProperty', '2px', propertyConfig);
+(0, _setProperty["default"])('padding', 'defaultProperty', '4px', propertyConfig);
 
 var StyledInput = _styledComponents["default"].input(_templateObject(), function (props) {
   return props.disabled && 'not-allowed';
