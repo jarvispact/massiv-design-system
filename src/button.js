@@ -11,6 +11,7 @@ import heightPropertyConfig from '../utils/height-property-config';
 import colorPropertyConfig from '../utils/color-property-config';
 import borderPropertyConfig from '../utils/border-property-config';
 import setProperty from '../utils/set-property';
+import clone from '../utils/clone';
 
 const propertyType = arrayOfStringsOrString;
 const defaultProperty = undefined;
@@ -51,12 +52,12 @@ const buttonPropertyConfig = [
 ];
 
 const propertyConfig = [
-    ...widthPropertyConfig,
-    ...heightPropertyConfig,
-    ...spacingPropertyConfig,
-    ...colorPropertyConfig,
-    ...borderPropertyConfig,
-    ...buttonPropertyConfig,
+    ...clone(colorPropertyConfig),
+    ...clone(spacingPropertyConfig),
+    ...clone(widthPropertyConfig),
+    ...clone(heightPropertyConfig),
+    ...clone(borderPropertyConfig),
+    ...clone(buttonPropertyConfig),
 ];
 
 setProperty('border-style', 'defaultProperty', 'none', propertyConfig);

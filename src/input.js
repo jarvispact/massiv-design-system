@@ -11,6 +11,7 @@ import widthPropertyConfig from '../utils/width-property-config';
 import heightPropertyConfig from '../utils/height-property-config';
 import borderPropertyConfig from '../utils/border-property-config';
 import setProperty from '../utils/set-property';
+import clone from '../utils/clone';
 
 const propertyType = arrayOfStringsOrString;
 const defaultProperty = undefined;
@@ -43,12 +44,12 @@ const inputPropertyConfig = [
 ];
 
 const propertyConfig = [
-    ...colorPropertyConfig,
-    ...spacingPropertyConfig,
-    ...widthPropertyConfig,
-    ...heightPropertyConfig,
-    ...borderPropertyConfig,
-    ...inputPropertyConfig,
+    ...clone(colorPropertyConfig),
+    ...clone(spacingPropertyConfig),
+    ...clone(widthPropertyConfig),
+    ...clone(heightPropertyConfig),
+    ...clone(borderPropertyConfig),
+    ...clone(inputPropertyConfig),
 ];
 
 setProperty('border-style', 'defaultProperty', 'none', propertyConfig);
