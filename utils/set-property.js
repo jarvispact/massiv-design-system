@@ -3,7 +3,7 @@
 const setProperty = (cssKey, key, value, propertyConfigList) => {
     propertyConfigList.forEach((propertyConfig) => {
         if (propertyConfig.cssProperty === cssKey) {
-            propertyConfig[key] = value;
+            propertyConfig = { ...propertyConfig, [key]: value };
         }
     });
 };
