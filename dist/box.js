@@ -33,6 +33,8 @@ var _buildScopedProps = _interopRequireDefault(require("../utils/build-scoped-pr
 
 var _buildPropTypes2 = _interopRequireDefault(require("../utils/build-prop-types"));
 
+var _clone = _interopRequireDefault(require("../utils/clone"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
@@ -91,7 +93,7 @@ var boxPropertyConfig = [{
   propertyType: propertyType,
   defaultProperty: defaultProperty
 }];
-var propertyConfig = [].concat(_toConsumableArray(_positionPropertyConfig["default"]), _toConsumableArray(_spacingPropertyConfig["default"]), _toConsumableArray(_widthPropertyConfig["default"]), _toConsumableArray(_heightPropertyConfig["default"]), _toConsumableArray(_flexChildPropertyConfig["default"]), _toConsumableArray(_colorPropertyConfig["default"]), _toConsumableArray(_borderPropertyConfig["default"]), boxPropertyConfig);
+var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_positionPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_widthPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_heightPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_flexChildPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_borderPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(boxPropertyConfig)));
 
 var StyledBox = _styledComponents["default"].div(_templateObject(), (0, _buildCss["default"])(propertyConfig));
 

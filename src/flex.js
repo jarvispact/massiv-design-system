@@ -5,8 +5,11 @@ import buildCss from '../utils/build-css';
 import { arrayOfStringsOrString } from '../utils/prop-types';
 import buildScopedProps from '../utils/build-scoped-props';
 import buildPropTypes from '../utils/build-prop-types';
+import positionPropertyConfig from '../utils/position-property-config';
+import spacingPropertyConfig from '../utils/spacing-property-config';
 import widthPropertyConfig from '../utils/width-property-config';
 import heightPropertyConfig from '../utils/height-property-config';
+import clone from '../utils/clone';
 
 const themeProperty = null;
 const propertyType = arrayOfStringsOrString;
@@ -72,9 +75,11 @@ const flexPropertyConfig = [
 ];
 
 const propertyConfig = [
-    ...widthPropertyConfig,
-    ...heightPropertyConfig,
-    ...flexPropertyConfig,
+    ...clone(positionPropertyConfig),
+    ...clone(spacingPropertyConfig),
+    ...clone(widthPropertyConfig),
+    ...clone(heightPropertyConfig),
+    ...clone(flexPropertyConfig),
 ];
 
 const StyledFlex = styled.div`

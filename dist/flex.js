@@ -19,9 +19,15 @@ var _buildScopedProps = _interopRequireDefault(require("../utils/build-scoped-pr
 
 var _buildPropTypes2 = _interopRequireDefault(require("../utils/build-prop-types"));
 
+var _positionPropertyConfig = _interopRequireDefault(require("../utils/position-property-config"));
+
+var _spacingPropertyConfig = _interopRequireDefault(require("../utils/spacing-property-config"));
+
 var _widthPropertyConfig = _interopRequireDefault(require("../utils/width-property-config"));
 
 var _heightPropertyConfig = _interopRequireDefault(require("../utils/height-property-config"));
+
+var _clone = _interopRequireDefault(require("../utils/clone"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -102,7 +108,7 @@ var flexPropertyConfig = [{
   propertyType: propertyType,
   defaultProperty: defaultProperty
 }];
-var propertyConfig = [].concat(_toConsumableArray(_widthPropertyConfig["default"]), _toConsumableArray(_heightPropertyConfig["default"]), flexPropertyConfig);
+var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_positionPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_widthPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_heightPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(flexPropertyConfig)));
 
 var StyledFlex = _styledComponents["default"].div(_templateObject(), function (props) {
   return props.inline ? 'inline-flex' : 'flex';

@@ -7,6 +7,7 @@ import buildScopedProps from '../utils/build-scoped-props';
 import buildPropTypes from '../utils/build-prop-types';
 import fontPropertyConfig from '../utils/font-property-config';
 import spacingPropertyConfig from '../utils/spacing-property-config';
+import clone from '../utils/clone';
 
 const propertyType = arrayOfStringsOrString;
 const defaultProperty = undefined;
@@ -23,9 +24,9 @@ const h4PropertyConfig = [
 ];
 
 const propertyConfig = [
-    ...spacingPropertyConfig,
-    ...fontPropertyConfig,
-    ...h4PropertyConfig,
+    ...clone(spacingPropertyConfig),
+    ...clone(fontPropertyConfig),
+    ...clone(h4PropertyConfig),
 ];
 
 const StyledH4 = styled.h4`

@@ -12,6 +12,7 @@ import borderPropertyConfig from '../utils/border-property-config';
 import { arrayOfStringsOrString } from '../utils/prop-types';
 import buildScopedProps from '../utils/build-scoped-props';
 import buildPropTypes from '../utils/build-prop-types';
+import clone from '../utils/clone';
 
 const themeProperty = null;
 const propertyType = arrayOfStringsOrString;
@@ -53,14 +54,14 @@ const boxPropertyConfig = [
 ];
 
 const propertyConfig = [
-    ...positionPropertyConfig,
-    ...spacingPropertyConfig,
-    ...widthPropertyConfig,
-    ...heightPropertyConfig,
-    ...flexChildPropertyConfig,
-    ...colorPropertyConfig,
-    ...borderPropertyConfig,
-    ...boxPropertyConfig,
+    ...clone(positionPropertyConfig),
+    ...clone(spacingPropertyConfig),
+    ...clone(widthPropertyConfig),
+    ...clone(heightPropertyConfig),
+    ...clone(flexChildPropertyConfig),
+    ...clone(colorPropertyConfig),
+    ...clone(borderPropertyConfig),
+    ...clone(boxPropertyConfig),
 ];
 
 const StyledBox = styled.div`

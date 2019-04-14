@@ -23,6 +23,8 @@ var _fontPropertyConfig = _interopRequireDefault(require("../utils/font-property
 
 var _spacingPropertyConfig = _interopRequireDefault(require("../utils/spacing-property-config"));
 
+var _clone = _interopRequireDefault(require("../utils/clone"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
@@ -59,7 +61,7 @@ var textPropertyConfig = [{
   propertyType: propertyType,
   defaultProperty: defaultProperty
 }];
-var propertyConfig = [].concat(_toConsumableArray(_spacingPropertyConfig["default"]), _toConsumableArray(_fontPropertyConfig["default"]), textPropertyConfig);
+var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_fontPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(textPropertyConfig)));
 
 var StyledText = _styledComponents["default"].span(_templateObject(), function (props) {
   return props.theme.fonts.text.family;

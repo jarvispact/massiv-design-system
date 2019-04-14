@@ -23,6 +23,8 @@ var _colorPropertyConfig = _interopRequireDefault(require("../utils/color-proper
 
 var _spacingPropertyConfig = _interopRequireDefault(require("../utils/spacing-property-config"));
 
+var _clone = _interopRequireDefault(require("../utils/clone"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
@@ -59,7 +61,7 @@ var iconPropertyConfig = [{
   propertyType: propertyType,
   defaultProperty: defaultProperty
 }];
-var propertyConfig = [].concat(_toConsumableArray(_colorPropertyConfig["default"]), _toConsumableArray(_spacingPropertyConfig["default"]), iconPropertyConfig);
+var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(iconPropertyConfig)));
 
 var getCursor = function getCursor(props) {
   if (props.disabled) return 'not-allowed';

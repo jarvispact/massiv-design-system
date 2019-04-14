@@ -7,6 +7,7 @@ import buildScopedProps from '../utils/build-scoped-props';
 import buildPropTypes from '../utils/build-prop-types';
 import colorPropertyConfig from '../utils/color-property-config';
 import spacingPropertyConfig from '../utils/spacing-property-config';
+import clone from '../utils/clone';
 
 const propertyType = arrayOfStringsOrString;
 const defaultProperty = undefined;
@@ -23,9 +24,9 @@ const iconPropertyConfig = [
 ];
 
 const propertyConfig = [
-    ...colorPropertyConfig,
-    ...spacingPropertyConfig,
-    ...iconPropertyConfig,
+    ...clone(colorPropertyConfig),
+    ...clone(spacingPropertyConfig),
+    ...clone(iconPropertyConfig),
 ];
 
 const getCursor = (props) => {
