@@ -21,6 +21,8 @@ var _buildPropTypes2 = _interopRequireDefault(require("../utils/build-prop-types
 
 var _fontPropertyConfig = _interopRequireDefault(require("../utils/font-property-config"));
 
+var _spacingPropertyConfig = _interopRequireDefault(require("../utils/spacing-property-config"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
@@ -57,7 +59,7 @@ var h5PropertyConfig = [{
   propertyType: propertyType,
   defaultProperty: defaultProperty
 }];
-var propertyConfig = [].concat(_toConsumableArray(_fontPropertyConfig["default"]), h5PropertyConfig);
+var propertyConfig = [].concat(_toConsumableArray(_spacingPropertyConfig["default"]), _toConsumableArray(_fontPropertyConfig["default"]), h5PropertyConfig);
 
 var StyledH5 = _styledComponents["default"].h5(_templateObject(), function (props) {
   return props.theme.fonts.h5.family;

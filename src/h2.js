@@ -6,6 +6,7 @@ import buildCss from '../utils/build-css';
 import buildScopedProps from '../utils/build-scoped-props';
 import buildPropTypes from '../utils/build-prop-types';
 import fontPropertyConfig from '../utils/font-property-config';
+import spacingPropertyConfig from '../utils/spacing-property-config';
 
 const propertyType = arrayOfStringsOrString;
 const defaultProperty = undefined;
@@ -22,6 +23,7 @@ const h2PropertyConfig = [
 ];
 
 const propertyConfig = [
+    ...spacingPropertyConfig,
     ...fontPropertyConfig,
     ...h2PropertyConfig,
 ];
