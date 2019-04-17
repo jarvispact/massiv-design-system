@@ -33,6 +33,8 @@ var _setProperty = _interopRequireDefault(require("../utils/set-property"));
 
 var _clone = _interopRequireDefault(require("../utils/clone"));
 
+var _icon = _interopRequireDefault(require("./icon"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
@@ -95,9 +97,13 @@ var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_colorP
 (0, _setProperty["default"])('border-radius', 'defaultProperty', '2px', propertyConfig);
 (0, _setProperty["default"])('padding', 'defaultProperty', '4px 8px', propertyConfig);
 
-var StyledButton = _styledComponents["default"].button(_templateObject(), function (props) {
-  return props.disabled ? 'not-allowed' : 'pointer';
-}, function (props) {
+var getCursor = function getCursor(props) {
+  if (props.loading) return 'progress';
+  if (props.disabled) return 'not-allowed';
+  return 'pointer';
+};
+
+var StyledButton = _styledComponents["default"].button(_templateObject(), getCursor, function (props) {
   return props.disabled && '0.5';
 }, function (props) {
   return props.theme.fonts.button.family;
@@ -108,7 +114,9 @@ var Button = function Button(_props) {
       props = _objectWithoutProperties(_props, ["children"]);
 
   var scopedProps = (0, _buildScopedProps["default"])(propertyConfig, props);
-  return _react["default"].createElement(StyledButton, scopedProps, children);
+  return _react["default"].createElement(StyledButton, scopedProps, scopedProps.loading ? _react["default"].createElement(_icon["default"], {
+    loading: true
+  }) : children);
 };
 
 var defaultPropTypes = {
@@ -116,12 +124,14 @@ var defaultPropTypes = {
     children: _propTypes.node,
     type: _propTypes.string,
     disabled: _propTypes.bool,
+    loading: _propTypes.bool,
     onClick: _propTypes.func.isRequired
   },
   defaultProps: {
     children: undefined,
     type: undefined,
-    disabled: false
+    disabled: false,
+    loading: false
   }
 };
 

@@ -9,7 +9,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = require("prop-types");
 
-var _styledComponents = _interopRequireDefault(require("styled-components"));
+var _styledComponents = _interopRequireWildcard(require("styled-components"));
 
 var _propTypes2 = require("../utils/prop-types");
 
@@ -25,14 +25,36 @@ var _spacingPropertyConfig = _interopRequireDefault(require("../utils/spacing-pr
 
 var _clone = _interopRequireDefault(require("../utils/clone"));
 
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj["default"] = obj; return newObj; } }
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
+function _templateObject3() {
+  var data = _taggedTemplateLiteral(["\n                display: inline-block;\n                animation: ", " 0.85s linear infinite;\n            "]);
+
+  _templateObject3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n    vertical-align: -16%;\n    cursor: ", ";\n    opacity: ", ";\n    ", ";\n    ", "\n"]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    vertical-align: -16%;\n    cursor: ", ";\n    opacity: ", ";\n    ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n    from { transform: rotate(0deg); }\n    to { transform: rotate(360deg); }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -64,37 +86,46 @@ var iconPropertyConfig = [{
 var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(iconPropertyConfig)));
 
 var getCursor = function getCursor(props) {
+  if (props.loading) return 'progress';
   if (props.disabled) return 'not-allowed';
-  if (props.onClick) return 'pointer';
-  return undefined;
+  return 'pointer';
 };
+
+var rotationKeyframes = (0, _styledComponents.keyframes)(_templateObject());
 
 var StyledIcon = _styledComponents["default"].i.attrs(function (props) {
   return {
-    className: props.theme.fonts.iconClassName
+    className: props.theme.fonts.icon.className
   };
-})(_templateObject(), getCursor, function (props) {
+})(_templateObject2(), getCursor, function (props) {
   return props.disabled && '0.5';
+}, function (props) {
+  if (props.loading) {
+    return (0, _styledComponents.css)(_templateObject3(), rotationKeyframes);
+  }
 }, (0, _buildCss["default"])(propertyConfig));
 
 var Icon = function Icon(_props) {
   var children = _props.children,
-      props = _objectWithoutProperties(_props, ["children"]);
+      theme = _props.theme,
+      props = _objectWithoutProperties(_props, ["children", "theme"]);
 
   var scopedProps = (0, _buildScopedProps["default"])(propertyConfig, props);
   if (scopedProps.onClick && scopedProps.disabled) scopedProps.onClick = undefined;
-  return _react["default"].createElement(StyledIcon, scopedProps, scopedProps.name || children);
+  return _react["default"].createElement(StyledIcon, scopedProps, scopedProps.loading ? theme.fonts.icon.loadingIcon : scopedProps.name || children);
 };
 
 var defaultPropTypes = {
   propTypes: {
     children: _propTypes.node,
     disabled: _propTypes.bool,
+    loading: _propTypes.bool,
     name: _propTypes.string
   },
   defaultProps: {
     children: undefined,
     disabled: false,
+    loading: false,
     name: undefined
   }
 };
@@ -105,5 +136,7 @@ var _buildPropTypes = (0, _buildPropTypes2["default"])(propertyConfig, defaultPr
 
 Icon.propTypes = propTypes;
 Icon.defaultProps = defaultProps;
-var _default = Icon;
+
+var _default = (0, _styledComponents.withTheme)(Icon);
+
 exports["default"] = _default;

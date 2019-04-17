@@ -20,7 +20,10 @@ const fonts = {
     label: sharedFontTextConfig,
     input: sharedFontTextConfig,
     button: sharedFontTextConfig,
-    iconClassName: 'material-icons',
+    icon: {
+        className: 'material-icons',
+        loadingIcon: 'settings',
+    },
     scales: {
         xxs: '0.5rem',
         xs: '0.6rem',

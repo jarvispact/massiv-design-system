@@ -12,6 +12,7 @@ import colorPropertyConfig from '../utils/color-property-config';
 import borderPropertyConfig from '../utils/border-property-config';
 import setProperty from '../utils/set-property';
 import clone from '../utils/clone';
+import Icon from './icon';
 
 const propertyType = arrayOfStringsOrString;
 const defaultProperty = undefined;
@@ -64,9 +65,15 @@ setProperty('border-style', 'defaultProperty', 'none', propertyConfig);
 setProperty('border-radius', 'defaultProperty', '2px', propertyConfig);
 setProperty('padding', 'defaultProperty', '4px 8px', propertyConfig);
 
+const getCursor = (props) => {
+    if (props.loading) return 'progress';
+    if (props.disabled) return 'not-allowed';
+    return 'pointer';
+};
+
 const StyledButton = styled.button`
     &:focus { outline: 0; }
-    cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
+    cursor: ${getCursor};
     opacity: ${props => props.disabled && '0.5'};
     font-family: ${props => props.theme.fonts.button.family};
     ${buildCss(propertyConfig)}
@@ -75,7 +82,7 @@ const StyledButton = styled.button`
 const Button = (_props) => {
     const { children, ...props } = _props;
     const scopedProps = buildScopedProps(propertyConfig, props);
-    return (<StyledButton {...scopedProps}>{children}</StyledButton>);
+    return (<StyledButton {...scopedProps}>{scopedProps.loading ? <Icon loading /> : children}</StyledButton>);
 };
 
 const defaultPropTypes = {
@@ -83,12 +90,14 @@ const defaultPropTypes = {
         children: node,
         type: string,
         disabled: bool,
+        loading: bool,
         onClick: func.isRequired,
     },
     defaultProps: {
         children: undefined,
         type: undefined,
         disabled: false,
+        loading: false,
     },
 };
 

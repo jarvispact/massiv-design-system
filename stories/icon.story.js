@@ -7,6 +7,7 @@ storiesOf('Icon', module)
     .add('Icon', () => (
         <Icon
             disabled={boolean('disabled', false)}
+            loading={boolean('loading', false)}
             onClick={(e) => console.log(e)}
             p={array('p', [])}
             pt={array('pt', [])}
@@ -28,6 +29,7 @@ storiesOf('Icon', module)
     .add('Icon with name prop', () => (
         <Icon
             disabled={boolean('disabled', false)}
+            loading={boolean('loading', false)}
             onClick={(e) => console.log(e)}
             name={text('name', undefined)}
             p={array('p', [])}

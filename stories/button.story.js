@@ -11,6 +11,7 @@ storiesOf('Button', module)
                 type={text('type', undefined)}
                 onClick={(e) => console.log('click', e)}
                 disabled={boolean('disabled', false)}
+                loading={boolean('loading', false)}
                 display={array('display', [])}
                 fontSize={array('fontSize', [])}
                 fontWeight={array('fontWeight', [])}
