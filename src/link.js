@@ -30,6 +30,7 @@ const propertyConfig = [
 ];
 
 const StyledLink = styled.a`
+    cursor: ${props => props.onClick && 'pointer'}
     font-family: ${props => props.theme.fonts.link.family};
     ${buildCss(propertyConfig)}
 `;
