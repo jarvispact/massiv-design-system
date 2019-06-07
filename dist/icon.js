@@ -44,7 +44,7 @@ function _templateObject3() {
 }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n    vertical-align: -16%;\n    cursor: ", ";\n    opacity: ", ";\n    ", ";\n    ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n    vertical-align: ", ";\n    cursor: ", ";\n    opacity: ", ";\n    ", ";\n    ", "\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -97,7 +97,9 @@ var StyledIcon = _styledComponents["default"].i.attrs(function (props) {
   return {
     className: props.theme.fonts.icon.className
   };
-})(_templateObject2(), getCursor, function (props) {
+})(_templateObject2(), function (props) {
+  return props.theme.fonts.icon.verticalAlign || '-0.3rem';
+}, getCursor, function (props) {
   return props.disabled && '0.5';
 }, function (props) {
   if (props.loading) {

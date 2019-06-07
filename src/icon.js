@@ -41,7 +41,7 @@ const rotationKeyframes = keyframes`
 `;
 
 const StyledIcon = styled.i.attrs(props => ({ className: props.theme.fonts.icon.className }))`
-    vertical-align: -16%;
+    vertical-align: ${props => props.theme.fonts.icon.verticalAlign || '-0.3rem'};
     cursor: ${getCursor};
     opacity: ${props => props.disabled && '0.5'};
     ${(props) => {
