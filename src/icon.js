@@ -21,6 +21,13 @@ const iconPropertyConfig = [
         propertyType,
         defaultProperty,
     },
+    {
+        componentProperty: 'loading',
+        scopedProperty: 'massivLoading',
+        themeProperty: undefined,
+        propertyType: bool,
+        defaultProperty: false,
+    },
 ];
 
 const propertyConfig = [
@@ -30,7 +37,7 @@ const propertyConfig = [
 ];
 
 const getCursor = (props) => {
-    if (props.loading) return 'progress';
+    if (props.massivLoading) return 'progress';
     if (props.disabled) return 'not-allowed';
     return 'pointer';
 };
@@ -45,7 +52,7 @@ const StyledIcon = styled.i.attrs(props => ({ className: props.theme.fonts.icon.
     cursor: ${getCursor};
     opacity: ${props => props.disabled && '0.5'};
     ${(props) => {
-        if (props.loading) {
+        if (props.massivLoading) {
             return css`
                 display: inline-block;
                 animation: ${rotationKeyframes} 0.85s linear infinite;
@@ -59,20 +66,18 @@ const Icon = (_props) => {
     const { children, theme, ...props } = _props;
     const scopedProps = buildScopedProps(propertyConfig, props);
     if (scopedProps.onClick && scopedProps.disabled) scopedProps.onClick = undefined;
-    return (<StyledIcon {...scopedProps}>{scopedProps.loading ? theme.fonts.icon.loadingIcon : scopedProps.name || children}</StyledIcon>);
+    return (<StyledIcon {...scopedProps}>{scopedProps.massivLoading ? theme.fonts.icon.loadingIcon : scopedProps.name || children}</StyledIcon>);
 };
 
 const defaultPropTypes = {
     propTypes: {
         children: node,
         disabled: bool,
-        loading: bool,
         name: string,
     },
     defaultProps: {
         children: undefined,
         disabled: false,
-        loading: false,
         name: undefined,
     },
 };

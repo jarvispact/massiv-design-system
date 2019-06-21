@@ -82,11 +82,17 @@ var iconPropertyConfig = [{
   themeProperty: 'fonts.scales',
   propertyType: propertyType,
   defaultProperty: defaultProperty
+}, {
+  componentProperty: 'loading',
+  scopedProperty: 'massivLoading',
+  themeProperty: undefined,
+  propertyType: _propTypes.bool,
+  defaultProperty: false
 }];
 var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(iconPropertyConfig)));
 
 var getCursor = function getCursor(props) {
-  if (props.loading) return 'progress';
+  if (props.massivLoading) return 'progress';
   if (props.disabled) return 'not-allowed';
   return 'pointer';
 };
@@ -102,7 +108,7 @@ var StyledIcon = _styledComponents["default"].i.attrs(function (props) {
 }, getCursor, function (props) {
   return props.disabled && '0.5';
 }, function (props) {
-  if (props.loading) {
+  if (props.massivLoading) {
     return (0, _styledComponents.css)(_templateObject3(), rotationKeyframes);
   }
 }, (0, _buildCss["default"])(propertyConfig));
@@ -114,20 +120,18 @@ var Icon = function Icon(_props) {
 
   var scopedProps = (0, _buildScopedProps["default"])(propertyConfig, props);
   if (scopedProps.onClick && scopedProps.disabled) scopedProps.onClick = undefined;
-  return _react["default"].createElement(StyledIcon, scopedProps, scopedProps.loading ? theme.fonts.icon.loadingIcon : scopedProps.name || children);
+  return _react["default"].createElement(StyledIcon, scopedProps, scopedProps.massivLoading ? theme.fonts.icon.loadingIcon : scopedProps.name || children);
 };
 
 var defaultPropTypes = {
   propTypes: {
     children: _propTypes.node,
     disabled: _propTypes.bool,
-    loading: _propTypes.bool,
     name: _propTypes.string
   },
   defaultProps: {
     children: undefined,
     disabled: false,
-    loading: false,
     name: undefined
   }
 };
