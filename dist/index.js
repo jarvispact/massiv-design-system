@@ -105,6 +105,12 @@ Object.defineProperty(exports, "Theme", {
     return _theme["default"];
   }
 });
+Object.defineProperty(exports, "withTheme", {
+  enumerable: true,
+  get: function get() {
+    return _withTheme["default"];
+  }
+});
 
 var _box = _interopRequireDefault(require("./box"));
 
@@ -139,5 +145,7 @@ var _text = _interopRequireDefault(require("./text"));
 var _themeContext = _interopRequireDefault(require("./theme-context"));
 
 var _theme = _interopRequireDefault(require("./theme"));
+
+var _withTheme = _interopRequireDefault(require("./with-theme"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
