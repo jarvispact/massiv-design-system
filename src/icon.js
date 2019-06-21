@@ -24,7 +24,7 @@ const iconPropertyConfig = [
     {
         componentProperty: 'loading',
         scopedProperty: 'massivLoading',
-        themeProperty: undefined,
+        themeProperty: null,
         propertyType: bool,
         defaultProperty: false,
     },

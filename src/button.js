@@ -50,6 +50,13 @@ const buttonPropertyConfig = [
         propertyType,
         defaultProperty,
     },
+    {
+        componentProperty: 'loading',
+        scopedProperty: 'massivLoading',
+        themeProperty: null,
+        propertyType: bool,
+        defaultProperty: false,
+    },
 ];
 
 const propertyConfig = [
@@ -82,7 +89,7 @@ const StyledButton = styled.button`
 const Button = (_props) => {
     const { children, ...props } = _props;
     const scopedProps = buildScopedProps(propertyConfig, props);
-    return (<StyledButton {...scopedProps}>{scopedProps.loading ? <Icon loading /> : children}</StyledButton>);
+    return (<StyledButton {...scopedProps}>{scopedProps.massivLoading ? <Icon loading /> : children}</StyledButton>);
 };
 
 const defaultPropTypes = {

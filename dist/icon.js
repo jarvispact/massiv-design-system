@@ -85,7 +85,7 @@ var iconPropertyConfig = [{
 }, {
   componentProperty: 'loading',
   scopedProperty: 'massivLoading',
-  themeProperty: undefined,
+  themeProperty: null,
   propertyType: _propTypes.bool,
   defaultProperty: false
 }];

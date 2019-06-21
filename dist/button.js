@@ -91,6 +91,12 @@ var buttonPropertyConfig = [{
   themeProperty: 'fonts.letterSpacings',
   propertyType: propertyType,
   defaultProperty: defaultProperty
+}, {
+  componentProperty: 'loading',
+  scopedProperty: 'massivLoading',
+  themeProperty: null,
+  propertyType: _propTypes.bool,
+  defaultProperty: false
 }];
 var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_widthPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_heightPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_borderPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(buttonPropertyConfig)));
 (0, _setProperty["default"])('border-style', 'defaultProperty', 'none', propertyConfig);
@@ -114,7 +120,7 @@ var Button = function Button(_props) {
       props = _objectWithoutProperties(_props, ["children"]);
 
   var scopedProps = (0, _buildScopedProps["default"])(propertyConfig, props);
-  return _react["default"].createElement(StyledButton, scopedProps, scopedProps.loading ? _react["default"].createElement(_icon["default"], {
+  return _react["default"].createElement(StyledButton, scopedProps, scopedProps.massivLoading ? _react["default"].createElement(_icon["default"], {
     loading: true
   }) : children);
 };
