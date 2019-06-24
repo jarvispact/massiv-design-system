@@ -9,6 +9,8 @@ import positionPropertyConfig from '../utils/position-property-config';
 import spacingPropertyConfig from '../utils/spacing-property-config';
 import widthPropertyConfig from '../utils/width-property-config';
 import heightPropertyConfig from '../utils/height-property-config';
+import colorPropertyConfig from '../utils/color-property-config';
+import borderPropertyConfig from '../utils/border-property-config';
 import clone from '../utils/clone';
 
 const themeProperty = null;
@@ -79,6 +81,8 @@ const propertyConfig = [
     ...clone(spacingPropertyConfig),
     ...clone(widthPropertyConfig),
     ...clone(heightPropertyConfig),
+    ...clone(colorPropertyConfig),
+    ...clone(borderPropertyConfig),
     ...clone(flexPropertyConfig),
 ];
 
