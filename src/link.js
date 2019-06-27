@@ -32,6 +32,7 @@ const propertyConfig = [
 const StyledLink = styled.a`
     cursor: ${props => props.onClick && 'pointer'}
     font-family: ${props => props.theme.fonts.link.family};
+    vertical-align: ${props => props.theme.fonts.link.verticalAlign || 'middle'};
     ${buildCss(propertyConfig)}
 `;
 

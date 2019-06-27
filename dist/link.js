@@ -32,7 +32,7 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    cursor: ", "\n    font-family: ", ";\n    ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n    cursor: ", "\n    font-family: ", ";\n    vertical-align: ", ";\n    ", "\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -67,6 +67,8 @@ var StyledLink = _styledComponents["default"].a(_templateObject(), function (pro
   return props.onClick && 'pointer';
 }, function (props) {
   return props.theme.fonts.link.family;
+}, function (props) {
+  return props.theme.fonts.link.verticalAlign || 'middle';
 }, (0, _buildCss["default"])(propertyConfig));
 
 var Link = function Link(_props) {

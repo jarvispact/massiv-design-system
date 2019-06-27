@@ -31,6 +31,7 @@ const propertyConfig = [
 
 const StyledH2 = styled.h2`
     font-family: ${props => props.theme.fonts.h2.family};
+    vertical-align: ${props => props.theme.fonts.h2.verticalAlign || 'middle'};
     ${buildCss(propertyConfig)}
 `;
 

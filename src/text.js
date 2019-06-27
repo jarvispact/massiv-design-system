@@ -31,6 +31,7 @@ const propertyConfig = [
 
 const StyledText = styled.span`
     font-family: ${props => props.theme.fonts.text.family};
+    vertical-align: ${props => props.theme.fonts.text.verticalAlign || 'middle'};
     ${buildCss(propertyConfig)}
 `;
 

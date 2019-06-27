@@ -104,7 +104,7 @@ var StyledIcon = _styledComponents["default"].i.attrs(function (props) {
     className: props.theme.fonts.icon.className
   };
 })(_templateObject2(), function (props) {
-  return props.theme.fonts.icon.verticalAlign || '-0.3rem';
+  return props.theme.fonts.icon.verticalAlign || 'middle';
 }, getCursor, function (props) {
   return props.disabled && '0.5';
 }, function (props) {

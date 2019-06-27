@@ -40,7 +40,7 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    &:focus { outline: 0; }\n    cursor: ", ";\n    opacity: ", ";\n    font-family: ", ";\n    ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n    &:focus { outline: 0; }\n    cursor: ", ";\n    opacity: ", ";\n    font-family: ", ";\n    vertical-align: ", ";\n    ", "\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -94,6 +94,8 @@ var StyledInput = _styledComponents["default"].input(_templateObject(), function
   return props.disabled && '0.5';
 }, function (props) {
   return props.theme.fonts.input.family;
+}, function (props) {
+  return props.theme.fonts.input.verticalAlign || 'middle';
 }, (0, _buildCss["default"])(propertyConfig));
 
 var Input = function Input(_props) {

@@ -32,7 +32,7 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    font-family: ", ";\n    ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n    font-family: ", ";\n    vertical-align: ", ";\n    ", "\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -65,6 +65,8 @@ var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_spacin
 
 var StyledText = _styledComponents["default"].span(_templateObject(), function (props) {
   return props.theme.fonts.text.family;
+}, function (props) {
+  return props.theme.fonts.text.verticalAlign || 'middle';
 }, (0, _buildCss["default"])(propertyConfig));
 
 var Text = function Text(_props) {

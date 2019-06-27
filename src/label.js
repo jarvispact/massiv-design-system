@@ -31,6 +31,7 @@ const propertyConfig = [
 
 const StyledLabel = styled.label`
     font-family: ${props => props.theme.fonts.label.family};
+    vertical-align: ${props => props.theme.fonts.label.verticalAlign || 'middle'};
     ${buildCss(propertyConfig)}
 `;
 
