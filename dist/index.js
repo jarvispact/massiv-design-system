@@ -87,6 +87,12 @@ Object.defineProperty(exports, "Link", {
     return _link["default"];
   }
 });
+Object.defineProperty(exports, "Tag", {
+  enumerable: true,
+  get: function get() {
+    return _tag["default"];
+  }
+});
 Object.defineProperty(exports, "Text", {
   enumerable: true,
   get: function get() {
@@ -139,6 +145,8 @@ var _input = _interopRequireDefault(require("./input"));
 var _label = _interopRequireDefault(require("./label"));
 
 var _link = _interopRequireDefault(require("./link"));
+
+var _tag = _interopRequireDefault(require("./tag"));
 
 var _text = _interopRequireDefault(require("./text"));
 
