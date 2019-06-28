@@ -1,47 +1,57 @@
 import React from 'react';
-import { string, func, shape } from 'prop-types';
+import { string, func, shape, node } from 'prop-types';
 import Flex from './flex';
 import Text from './text';
 import Button from './button';
 import Icon from './icon';
 
-const Tag = ({ name, onClose, wrapperProps, textProps, iconProps }) => (
-    <Flex {...wrapperProps}>
-        <Text {...textProps}>{name}</Text>
+const defaultWrapperProps = {
+    inline: true,
+    alignItems: 'center',
+    bg: 'gray300',
+    pl: '5px',
+    pr: '5px',
+    pt: '2px',
+    pb: '2px',
+    borderRadius: 's',
+};
+
+const defaultTextProps = {
+    pr: '5px',
+    scale: 'xs',
+};
+
+const defaultIconProps = {
+    name: 'clear',
+    pl: '5px',
+    scale: 'xs',
+};
+
+const Tag = ({ name, children, onClose, wrapperProps, textProps, iconProps }) => (
+    <Flex {...defaultWrapperProps} {...wrapperProps}>
+        <Text {...defaultTextProps} {...textProps}>{name || children}</Text>
         <Button bg="transparent" p="0" onClick={onClose}>
-            <Icon {...iconProps} />
+            <Icon {...defaultIconProps} {...iconProps} />
         </Button>
     </Flex>
 );
 
 Tag.propTypes = {
-    name: string.isRequired,
-    onClose: func.isRequired,
+    name: string,
+    children: node,
+    onClose: func,
     wrapperProps: shape({}),
     textProps: shape({}),
     iconProps: shape({}),
 };
 
 Tag.defaultProps = {
-    wrapperProps: {
-        inline: true,
-        alignItems: 'center',
-        bg: 'gray300',
-        pl: '5px',
-        pr: '5px',
-        pt: '2px',
-        pb: '2px',
-        borderRadius: 's',
-    },
-    textProps: {
-        pr: '5px',
-        scale: 'xs',
-    },
-    iconProps: {
-        name: 'clear',
-        pl: '5px',
-        scale: 'xs',
-    },
+    name: undefined,
+    children: undefined,
+    onClose: undefined,
+    wrapperProps: defaultWrapperProps,
+    textProps: defaultTextProps,
+    iconProps: defaultIconProps,
 };
 
 export default Tag;
