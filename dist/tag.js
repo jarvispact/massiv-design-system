@@ -41,6 +41,7 @@ Tag.propTypes = {
 };
 Tag.defaultProps = {
   wrapperProps: {
+    inline: true,
     alignItems: 'center',
     bg: 'gray300',
     pl: '5px',
