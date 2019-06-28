@@ -51,6 +51,8 @@ const colors = {
     success: '#37B661',
     warning: '#DD9913',
     error: '#E25650',
+    gray300: '#B3B3B3',
+    gray200: '#e0e0e0',
 };
 
 const spacing = {
@@ -83,6 +85,12 @@ const heights = {
     l: '300px',
 };
 
+const radii = {
+    s: '2px',
+    m: '4px',
+    l: '6px',
+};
+
 export default {
     breakpoints,
     fonts,
@@ -90,4 +98,5 @@ export default {
     spacing,
     widths,
     heights,
+    radii,
 };

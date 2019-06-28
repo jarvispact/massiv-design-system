@@ -17,6 +17,7 @@ const loadStories = () => {
     require('../stories/fonts.story.js');
     require('../stories/icon.story.js');
     require('../stories/input.story.js');
+    require('../stories/tag.story.js');
 }
 
 const GlobalDecorator = storyFn => (
