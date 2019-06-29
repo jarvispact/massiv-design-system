@@ -14,7 +14,7 @@ storiesOf('Responsive Grid', module)
     ))
     .add('Span 6', () => (
         <Box width="100vw">
-            <Row gutter="s">
+            <Row>
                 <Col span={[12, 6]}><Box bg="red" width="100%">test</Box></Col>
                 <Col span={[12, 6]}><Box bg="green" width="100%">test</Box></Col>
             </Row>

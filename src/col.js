@@ -6,7 +6,7 @@ import Box from './box';
 // if only one gutter value is passed we assume that it should be used for all breakpoints
 // if more than one value is passed we try to match it with the index of the passed span values
 
-const getGutter = (gutters, index) => gutters.length === 1 ? gutters[0] : gutters[index];
+const getGutter = (gutters, index) => gutters.length === 1 ? gutters[0] || '0px' : gutters[index] || '0px';
 const getWidth = gutters => (span, index) => `calc(${100 / 12 * span}% - ${span === 12 ? '0px' : getGutter(gutters, index)})`;
 
 const Col = ({ theme, gutter, span, children, ...others }) => {

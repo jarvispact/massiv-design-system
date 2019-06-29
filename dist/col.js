@@ -24,7 +24,7 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 // if only one gutter value is passed we assume that it should be used for all breakpoints
 // if more than one value is passed we try to match it with the index of the passed span values
 var getGutter = function getGutter(gutters, index) {
-  return gutters.length === 1 ? gutters[0] : gutters[index];
+  return gutters.length === 1 ? gutters[0] || '0px' : gutters[index] || '0px';
 };
 
 var getWidth = function getWidth(gutters) {
