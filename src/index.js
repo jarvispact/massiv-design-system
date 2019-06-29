@@ -1,5 +1,6 @@
 export { default as Box } from './box';
 export { default as Button } from './button';
+export { default as Col } from './col';
 export { default as Flex } from './flex';
 export { default as GlobalStyle } from './global-style';
 export { default as H1 } from './h1';
@@ -12,6 +13,7 @@ export { default as Icon } from './icon';
 export { default as Input } from './input';
 export { default as Label } from './label';
 export { default as Link } from './link';
+export { default as Row } from './row';
 export { default as Tag } from './tag';
 export { default as Text } from './text';
 export { default as ThemeContext } from './theme-context';

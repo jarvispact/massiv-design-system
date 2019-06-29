@@ -15,6 +15,12 @@ Object.defineProperty(exports, "Button", {
     return _button["default"];
   }
 });
+Object.defineProperty(exports, "Col", {
+  enumerable: true,
+  get: function get() {
+    return _col["default"];
+  }
+});
 Object.defineProperty(exports, "Flex", {
   enumerable: true,
   get: function get() {
@@ -87,6 +93,12 @@ Object.defineProperty(exports, "Link", {
     return _link["default"];
   }
 });
+Object.defineProperty(exports, "Row", {
+  enumerable: true,
+  get: function get() {
+    return _row["default"];
+  }
+});
 Object.defineProperty(exports, "Tag", {
   enumerable: true,
   get: function get() {
@@ -122,6 +134,8 @@ var _box = _interopRequireDefault(require("./box"));
 
 var _button = _interopRequireDefault(require("./button"));
 
+var _col = _interopRequireDefault(require("./col"));
+
 var _flex = _interopRequireDefault(require("./flex"));
 
 var _globalStyle = _interopRequireDefault(require("./global-style"));
@@ -145,6 +159,8 @@ var _input = _interopRequireDefault(require("./input"));
 var _label = _interopRequireDefault(require("./label"));
 
 var _link = _interopRequireDefault(require("./link"));
+
+var _row = _interopRequireDefault(require("./row"));
 
 var _tag = _interopRequireDefault(require("./tag"));
 
