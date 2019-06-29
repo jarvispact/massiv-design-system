@@ -60,6 +60,55 @@ var h4PropertyConfig = [{
   themeProperty: 'fonts.h4.weights',
   propertyType: propertyType,
   defaultProperty: defaultProperty
+}, {
+  cssProperty: 'display',
+  componentProperty: 'display',
+  scopedProperty: 'massivDisplay',
+  themeProperty: null,
+  propertyType: propertyType,
+  defaultProperty: defaultProperty
+}, {
+  cssProperty: 'overflow',
+  componentProperty: 'overflow',
+  scopedProperty: 'massivOverflow',
+  themeProperty: null,
+  propertyType: propertyType,
+  defaultProperty: defaultProperty
+}, {
+  cssProperty: 'overflow-x',
+  componentProperty: 'overflowX',
+  scopedProperty: 'massivOverflowX',
+  themeProperty: null,
+  propertyType: propertyType,
+  defaultProperty: defaultProperty
+}, {
+  cssProperty: 'overflow-y',
+  componentProperty: 'overflowY',
+  scopedProperty: 'massivOverflowY',
+  themeProperty: null,
+  propertyType: propertyType,
+  defaultProperty: defaultProperty
+}, {
+  cssProperty: 'text-align',
+  componentProperty: 'textAlign',
+  scopedProperty: 'massivTextAlign',
+  themeProperty: null,
+  propertyType: propertyType,
+  defaultProperty: defaultProperty
+}, {
+  cssProperty: 'white-space',
+  componentProperty: 'whiteSpace',
+  scopedProperty: 'massivWhiteSpace',
+  themeProperty: null,
+  propertyType: propertyType,
+  defaultProperty: defaultProperty
+}, {
+  cssProperty: 'text-overflow',
+  componentProperty: 'textOverflow',
+  scopedProperty: 'massivTextOverflow',
+  themeProperty: null,
+  propertyType: propertyType,
+  defaultProperty: defaultProperty
 }];
 var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_fontPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(h4PropertyConfig)));
 

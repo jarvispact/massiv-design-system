@@ -1,6 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+    html {
+        -webkit-tap-highlight-color: transparent;
+    }
+
     html, input {
         box-sizing: border-box;
     }
