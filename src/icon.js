@@ -39,7 +39,8 @@ const propertyConfig = [
 const getCursor = (props) => {
     if (props.massivLoading) return 'progress';
     if (props.disabled) return 'not-allowed';
-    return 'pointer';
+    if (props.onClick) return 'pointer';
+    return undefined;
 };
 
 const rotationKeyframes = keyframes`
@@ -63,10 +64,10 @@ const StyledIcon = styled.i.attrs(props => ({ className: props.theme.fonts.icon.
 `;
 
 const Icon = (_props) => {
-    const { children, theme, ...props } = _props;
+    const { children, theme, name, ...props } = _props;
     const scopedProps = buildScopedProps(propertyConfig, props);
     if (scopedProps.onClick && scopedProps.disabled) scopedProps.onClick = undefined;
-    return (<StyledIcon {...scopedProps}>{scopedProps.massivLoading ? theme.fonts.icon.loadingIcon : scopedProps.name || children}</StyledIcon>);
+    return (<StyledIcon {...scopedProps}>{scopedProps.massivLoading ? theme.fonts.icon.loadingIcon : name || children}</StyledIcon>);
 };
 
 const defaultPropTypes = {

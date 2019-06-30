@@ -94,7 +94,8 @@ var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_colorP
 var getCursor = function getCursor(props) {
   if (props.massivLoading) return 'progress';
   if (props.disabled) return 'not-allowed';
-  return 'pointer';
+  if (props.onClick) return 'pointer';
+  return undefined;
 };
 
 var rotationKeyframes = (0, _styledComponents.keyframes)(_templateObject());
@@ -116,11 +117,12 @@ var StyledIcon = _styledComponents["default"].i.attrs(function (props) {
 var Icon = function Icon(_props) {
   var children = _props.children,
       theme = _props.theme,
-      props = _objectWithoutProperties(_props, ["children", "theme"]);
+      name = _props.name,
+      props = _objectWithoutProperties(_props, ["children", "theme", "name"]);
 
   var scopedProps = (0, _buildScopedProps["default"])(propertyConfig, props);
   if (scopedProps.onClick && scopedProps.disabled) scopedProps.onClick = undefined;
-  return _react["default"].createElement(StyledIcon, scopedProps, scopedProps.massivLoading ? theme.fonts.icon.loadingIcon : scopedProps.name || children);
+  return _react["default"].createElement(StyledIcon, scopedProps, scopedProps.massivLoading ? theme.fonts.icon.loadingIcon : name || children);
 };
 
 var defaultPropTypes = {
