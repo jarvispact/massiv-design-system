@@ -58,6 +58,7 @@ setProperty('padding', 'defaultProperty', '4px', propertyConfig);
 
 const StyledTextArea = styled.textarea`
     &:focus { outline: 0; }
+    resize: none;
     cursor: ${props => (props.disabled && 'not-allowed')};
     opacity: ${props => props.disabled && '0.5'};
     font-family: ${props => props.theme.fonts.textarea.family};
@@ -73,6 +74,7 @@ const TextArea = (_props) => {
 
 const defaultPropTypes = {
     propTypes: {
+        rows: string,
         id: string,
         name: string,
         value: string,
@@ -80,6 +82,7 @@ const defaultPropTypes = {
         children: node,
     },
     defaultProps: {
+        rows: '6',
         id: undefined,
         name: undefined,
         value: undefined,

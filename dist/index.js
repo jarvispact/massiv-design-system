@@ -75,6 +75,12 @@ Object.defineProperty(exports, "Icon", {
     return _icon["default"];
   }
 });
+Object.defineProperty(exports, "InputField", {
+  enumerable: true,
+  get: function get() {
+    return _inputField["default"];
+  }
+});
 Object.defineProperty(exports, "Input", {
   enumerable: true,
   get: function get() {
@@ -103,6 +109,12 @@ Object.defineProperty(exports, "Tag", {
   enumerable: true,
   get: function get() {
     return _tag["default"];
+  }
+});
+Object.defineProperty(exports, "TextAreaField", {
+  enumerable: true,
+  get: function get() {
+    return _textAreaField["default"];
   }
 });
 Object.defineProperty(exports, "TextArea", {
@@ -160,6 +172,8 @@ var _h6 = _interopRequireDefault(require("./h6"));
 
 var _icon = _interopRequireDefault(require("./icon"));
 
+var _inputField = _interopRequireDefault(require("./input-field"));
+
 var _input = _interopRequireDefault(require("./input"));
 
 var _label = _interopRequireDefault(require("./label"));
@@ -169,6 +183,8 @@ var _link = _interopRequireDefault(require("./link"));
 var _row = _interopRequireDefault(require("./row"));
 
 var _tag = _interopRequireDefault(require("./tag"));
+
+var _textAreaField = _interopRequireDefault(require("./text-area-field"));
 
 var _textArea = _interopRequireDefault(require("./text-area"));
 

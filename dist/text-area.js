@@ -40,7 +40,7 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    &:focus { outline: 0; }\n    cursor: ", ";\n    opacity: ", ";\n    font-family: ", ";\n    vertical-align: ", ";\n    ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n    &:focus { outline: 0; }\n    resize: none;\n    cursor: ", ";\n    opacity: ", ";\n    font-family: ", ";\n    vertical-align: ", ";\n    ", "\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -108,6 +108,7 @@ var TextArea = function TextArea(_props) {
 
 var defaultPropTypes = {
   propTypes: {
+    rows: _propTypes.string,
     id: _propTypes.string,
     name: _propTypes.string,
     value: _propTypes.string,
@@ -115,6 +116,7 @@ var defaultPropTypes = {
     children: _propTypes.node
   },
   defaultProps: {
+    rows: '6',
     id: undefined,
     name: undefined,
     value: undefined,
