@@ -19,6 +19,7 @@ const loadStories = () => {
     require('../stories/input.story.js');
     require('../stories/tag.story.js');
     require('../stories/responsive-grid.story.js');
+    require('../stories/text-area.story.js');
 }
 
 const GlobalDecorator = storyFn => (

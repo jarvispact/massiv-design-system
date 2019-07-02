@@ -5,7 +5,7 @@ const GlobalStyle = createGlobalStyle`
         -webkit-tap-highlight-color: transparent;
     }
 
-    html, input {
+    html, input, textarea {
         box-sizing: border-box;
     }
 

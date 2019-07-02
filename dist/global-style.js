@@ -8,7 +8,7 @@ exports["default"] = void 0;
 var _styledComponents = require("styled-components");
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    html {\n        -webkit-tap-highlight-color: transparent;\n    }\n\n    html, input {\n        box-sizing: border-box;\n    }\n\n    body, h1, h2, h3, h4, h5, h6, p, ol, ul {\n        margin: 0;\n        padding: 0;\n        font-weight: normal;\n        display: inline-block;\n    }\n\n    ol, ul {\n        list-style: none;\n    }\n\n    a {\n        text-decoration: none;\n    }\n\n    img {\n        max-width: 100%;\n        height: auto;\n    }\n\n    input, select, textarea, button {\n        font-family: inherit;\n    }\n"]);
+  var data = _taggedTemplateLiteral(["\n    html {\n        -webkit-tap-highlight-color: transparent;\n    }\n\n    html, input, textarea {\n        box-sizing: border-box;\n    }\n\n    body, h1, h2, h3, h4, h5, h6, p, ol, ul {\n        margin: 0;\n        padding: 0;\n        font-weight: normal;\n        display: inline-block;\n    }\n\n    ol, ul {\n        list-style: none;\n    }\n\n    a {\n        text-decoration: none;\n    }\n\n    img {\n        max-width: 100%;\n        height: auto;\n    }\n\n    input, select, textarea, button {\n        font-family: inherit;\n    }\n"]);
 
   _templateObject = function _templateObject() {
     return data;

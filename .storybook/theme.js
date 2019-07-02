@@ -19,6 +19,7 @@ const fonts = {
     link: sharedFontTextConfig,
     label: sharedFontTextConfig,
     input: sharedFontTextConfig,
+    textarea: sharedFontTextConfig,
     button: sharedFontTextConfig,
     icon: {
         className: 'material-icons',
