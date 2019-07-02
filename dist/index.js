@@ -105,6 +105,12 @@ Object.defineProperty(exports, "Tag", {
     return _tag["default"];
   }
 });
+Object.defineProperty(exports, "TextArea", {
+  enumerable: true,
+  get: function get() {
+    return _textArea["default"];
+  }
+});
 Object.defineProperty(exports, "Text", {
   enumerable: true,
   get: function get() {
@@ -163,6 +169,8 @@ var _link = _interopRequireDefault(require("./link"));
 var _row = _interopRequireDefault(require("./row"));
 
 var _tag = _interopRequireDefault(require("./tag"));
+
+var _textArea = _interopRequireDefault(require("./text-area"));
 
 var _text = _interopRequireDefault(require("./text"));
 

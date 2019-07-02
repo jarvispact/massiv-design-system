@@ -15,6 +15,7 @@ export { default as Label } from './label';
 export { default as Link } from './link';
 export { default as Row } from './row';
 export { default as Tag } from './tag';
+export { default as TextArea } from './text-area';
 export { default as Text } from './text';
 export { default as ThemeContext } from './theme-context';
 export { default as Theme } from './theme';
