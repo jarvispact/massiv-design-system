@@ -29,6 +29,10 @@ var _colorPropertyConfig = _interopRequireDefault(require("../utils/color-proper
 
 var _borderPropertyConfig = _interopRequireDefault(require("../utils/border-property-config"));
 
+var _displayPropertyConfig = _interopRequireDefault(require("../utils/display-property-config"));
+
+var _createFontPropertyConfig = _interopRequireDefault(require("../utils/create-font-property-config"));
+
 var _setProperty = _interopRequireDefault(require("../utils/set-property"));
 
 var _clone = _interopRequireDefault(require("../utils/clone"));
@@ -61,44 +65,17 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-var propertyType = _propTypes2.arrayOfStringsOrString;
-var defaultProperty = undefined;
+var fontPropertyConfig = (0, _createFontPropertyConfig["default"])({
+  type: 'button'
+});
 var buttonPropertyConfig = [{
-  cssProperty: 'display',
-  componentProperty: 'display',
-  scopedProperty: 'massivDisplay',
-  themeProperty: null,
-  propertyType: propertyType,
-  defaultProperty: defaultProperty
-}, {
-  cssProperty: 'font-size',
-  componentProperty: 'fontSize',
-  scopedProperty: 'massivFontSize',
-  themeProperty: 'fonts.scales',
-  propertyType: propertyType,
-  defaultProperty: 'm'
-}, {
-  cssProperty: 'font-weight',
-  componentProperty: 'fontWeight',
-  scopedProperty: 'massivFontWeight',
-  themeProperty: 'fonts.h1.weights',
-  propertyType: propertyType,
-  defaultProperty: defaultProperty
-}, {
-  cssProperty: 'letter-spacing',
-  componentProperty: 'letterSpacing',
-  scopedProperty: 'massivLetterSpacing',
-  themeProperty: 'fonts.letterSpacings',
-  propertyType: propertyType,
-  defaultProperty: defaultProperty
-}, {
   componentProperty: 'loading',
   scopedProperty: 'massivLoading',
   themeProperty: null,
   propertyType: _propTypes.bool,
   defaultProperty: false
 }];
-var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_widthPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_heightPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_borderPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(buttonPropertyConfig)));
+var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_widthPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_heightPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_borderPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(fontPropertyConfig)), _toConsumableArray((0, _clone["default"])(_displayPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(buttonPropertyConfig)));
 (0, _setProperty["default"])('border-style', 'defaultProperty', 'none', propertyConfig);
 (0, _setProperty["default"])('border-radius', 'defaultProperty', '2px', propertyConfig);
 (0, _setProperty["default"])('padding', 'defaultProperty', '4px 8px', propertyConfig);

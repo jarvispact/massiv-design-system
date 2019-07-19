@@ -10,46 +10,15 @@ import widthPropertyConfig from '../utils/width-property-config';
 import heightPropertyConfig from '../utils/height-property-config';
 import colorPropertyConfig from '../utils/color-property-config';
 import borderPropertyConfig from '../utils/border-property-config';
+import displayPropertyConfig from '../utils/display-property-config';
+import createFontPropertyConfig from '../utils/create-font-property-config';
 import setProperty from '../utils/set-property';
 import clone from '../utils/clone';
 import Icon from './icon';
 
-const propertyType = arrayOfStringsOrString;
-const defaultProperty = undefined;
+const fontPropertyConfig = createFontPropertyConfig({ type: 'button' });
 
 const buttonPropertyConfig = [
-    {
-        cssProperty: 'display',
-        componentProperty: 'display',
-        scopedProperty: 'massivDisplay',
-        themeProperty: null,
-        propertyType,
-        defaultProperty,
-    },
-    {
-        cssProperty: 'font-size',
-        componentProperty: 'fontSize',
-        scopedProperty: 'massivFontSize',
-        themeProperty: 'fonts.scales',
-        propertyType,
-        defaultProperty: 'm',
-    },
-    {
-        cssProperty: 'font-weight',
-        componentProperty: 'fontWeight',
-        scopedProperty: 'massivFontWeight',
-        themeProperty: 'fonts.h1.weights',
-        propertyType,
-        defaultProperty,
-    },
-    {
-        cssProperty: 'letter-spacing',
-        componentProperty: 'letterSpacing',
-        scopedProperty: 'massivLetterSpacing',
-        themeProperty: 'fonts.letterSpacings',
-        propertyType,
-        defaultProperty,
-    },
     {
         componentProperty: 'loading',
         scopedProperty: 'massivLoading',
@@ -65,6 +34,8 @@ const propertyConfig = [
     ...clone(widthPropertyConfig),
     ...clone(heightPropertyConfig),
     ...clone(borderPropertyConfig),
+    ...clone(fontPropertyConfig),
+    ...clone(displayPropertyConfig),
     ...clone(buttonPropertyConfig),
 ];
 

@@ -11,17 +11,19 @@ var _propTypes = require("prop-types");
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
-var _propTypes2 = require("../utils/prop-types");
-
 var _buildCss = _interopRequireDefault(require("../utils/build-css"));
 
 var _buildScopedProps = _interopRequireDefault(require("../utils/build-scoped-props"));
 
 var _buildPropTypes2 = _interopRequireDefault(require("../utils/build-prop-types"));
 
-var _fontPropertyConfig = _interopRequireDefault(require("../utils/font-property-config"));
+var _createFontPropertyConfig = _interopRequireDefault(require("../utils/create-font-property-config"));
 
 var _spacingPropertyConfig = _interopRequireDefault(require("../utils/spacing-property-config"));
+
+var _overflowPropertyConfig = _interopRequireDefault(require("../utils/overflow-property-config"));
+
+var _displayPropertyConfig = _interopRequireDefault(require("../utils/display-property-config"));
 
 var _clone = _interopRequireDefault(require("../utils/clone"));
 
@@ -51,66 +53,10 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-var propertyType = _propTypes2.arrayOfStringsOrString;
-var defaultProperty = undefined;
-var h3PropertyConfig = [{
-  cssProperty: 'font-weight',
-  componentProperty: 'weight',
-  scopedProperty: 'massivFontWeight',
-  themeProperty: 'fonts.h3.weights',
-  propertyType: propertyType,
-  defaultProperty: defaultProperty
-}, {
-  cssProperty: 'display',
-  componentProperty: 'display',
-  scopedProperty: 'massivDisplay',
-  themeProperty: null,
-  propertyType: propertyType,
-  defaultProperty: defaultProperty
-}, {
-  cssProperty: 'overflow',
-  componentProperty: 'overflow',
-  scopedProperty: 'massivOverflow',
-  themeProperty: null,
-  propertyType: propertyType,
-  defaultProperty: defaultProperty
-}, {
-  cssProperty: 'overflow-x',
-  componentProperty: 'overflowX',
-  scopedProperty: 'massivOverflowX',
-  themeProperty: null,
-  propertyType: propertyType,
-  defaultProperty: defaultProperty
-}, {
-  cssProperty: 'overflow-y',
-  componentProperty: 'overflowY',
-  scopedProperty: 'massivOverflowY',
-  themeProperty: null,
-  propertyType: propertyType,
-  defaultProperty: defaultProperty
-}, {
-  cssProperty: 'text-align',
-  componentProperty: 'textAlign',
-  scopedProperty: 'massivTextAlign',
-  themeProperty: null,
-  propertyType: propertyType,
-  defaultProperty: defaultProperty
-}, {
-  cssProperty: 'white-space',
-  componentProperty: 'whiteSpace',
-  scopedProperty: 'massivWhiteSpace',
-  themeProperty: null,
-  propertyType: propertyType,
-  defaultProperty: defaultProperty
-}, {
-  cssProperty: 'text-overflow',
-  componentProperty: 'textOverflow',
-  scopedProperty: 'massivTextOverflow',
-  themeProperty: null,
-  propertyType: propertyType,
-  defaultProperty: defaultProperty
-}];
-var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_fontPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(h3PropertyConfig)));
+var fontPropertyConfig = (0, _createFontPropertyConfig["default"])({
+  type: 'h3'
+});
+var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(fontPropertyConfig)), _toConsumableArray((0, _clone["default"])(_overflowPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_displayPropertyConfig["default"])));
 
 var StyledH3 = _styledComponents["default"].h3(_templateObject(), function (props) {
   return props.theme.fonts.h3.family;
