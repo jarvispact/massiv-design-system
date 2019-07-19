@@ -25,6 +25,10 @@ var _overflowPropertyConfig = _interopRequireDefault(require("../utils/overflow-
 
 var _displayPropertyConfig = _interopRequireDefault(require("../utils/display-property-config"));
 
+var _colorPropertyConfig = _interopRequireDefault(require("../utils/color-property-config"));
+
+var _borderPropertyConfig = _interopRequireDefault(require("../utils/border-property-config"));
+
 var _clone = _interopRequireDefault(require("../utils/clone"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -56,7 +60,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 var fontPropertyConfig = (0, _createFontPropertyConfig["default"])({
   type: 'link'
 });
-var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(fontPropertyConfig)), _toConsumableArray((0, _clone["default"])(_overflowPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_displayPropertyConfig["default"])));
+var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(fontPropertyConfig)), _toConsumableArray((0, _clone["default"])(_overflowPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_displayPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_borderPropertyConfig["default"])));
 
 var StyledLink = _styledComponents["default"].a(_templateObject(), function (props) {
   return props.onClick && 'pointer';

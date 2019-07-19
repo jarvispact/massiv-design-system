@@ -21,14 +21,6 @@ export default ({ type } = {}) => [
         defaultProperty,
     },
     {
-        cssProperty: 'color',
-        componentProperty: 'color',
-        scopedProperty: 'massivColor',
-        themeProperty: 'colors',
-        propertyType,
-        defaultProperty,
-    },
-    {
         cssProperty: 'letter-spacing',
         componentProperty: 'letterSpacing',
         scopedProperty: 'massivLetterSpacing',

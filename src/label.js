@@ -8,6 +8,8 @@ import createFontPropertyConfig from '../utils/create-font-property-config';
 import spacingPropertyConfig from '../utils/spacing-property-config';
 import overflowPropertyConfig from '../utils/overflow-property-config';
 import displayPropertyConfig from '../utils/display-property-config';
+import colorPropertyConfig from '../utils/color-property-config';
+import borderPropertyConfig from '../utils/border-property-config';
 import clone from '../utils/clone';
 
 const fontPropertyConfig = createFontPropertyConfig({ type: 'label' });
@@ -17,6 +19,8 @@ const propertyConfig = [
     ...clone(fontPropertyConfig),
     ...clone(overflowPropertyConfig),
     ...clone(displayPropertyConfig),
+    ...clone(colorPropertyConfig),
+    ...clone(borderPropertyConfig),
 ];
 
 const StyledLabel = styled.label`

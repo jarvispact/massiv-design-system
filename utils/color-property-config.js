@@ -21,12 +21,4 @@ export default [
         propertyType,
         defaultProperty,
     },
-    {
-        cssProperty: 'border-color',
-        componentProperty: 'borderColor',
-        scopedProperty: 'massivBorderColor',
-        themeProperty,
-        propertyType,
-        defaultProperty,
-    },
 ];
