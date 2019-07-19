@@ -11,6 +11,7 @@ import widthPropertyConfig from '../utils/width-property-config';
 import heightPropertyConfig from '../utils/height-property-config';
 import colorPropertyConfig from '../utils/color-property-config';
 import borderPropertyConfig from '../utils/border-property-config';
+import overflowPropertyConfig from '../utils/overflow-property-config';
 import clone from '../utils/clone';
 
 const themeProperty = null;
@@ -83,6 +84,7 @@ const propertyConfig = [
     ...clone(heightPropertyConfig),
     ...clone(colorPropertyConfig),
     ...clone(borderPropertyConfig),
+    ...clone(overflowPropertyConfig),
     ...clone(flexPropertyConfig),
 ];
 

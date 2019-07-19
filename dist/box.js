@@ -27,6 +27,8 @@ var _colorPropertyConfig = _interopRequireDefault(require("../utils/color-proper
 
 var _borderPropertyConfig = _interopRequireDefault(require("../utils/border-property-config"));
 
+var _overflowPropertyConfig = _interopRequireDefault(require("../utils/overflow-property-config"));
+
 var _propTypes2 = require("../utils/prop-types");
 
 var _buildScopedProps = _interopRequireDefault(require("../utils/build-scoped-props"));
@@ -65,27 +67,6 @@ var themeProperty = null;
 var propertyType = _propTypes2.arrayOfStringsOrString;
 var defaultProperty = undefined;
 var boxPropertyConfig = [{
-  cssProperty: 'overflow',
-  componentProperty: 'overflow',
-  scopedProperty: 'massivOverflow',
-  themeProperty: themeProperty,
-  propertyType: propertyType,
-  defaultProperty: defaultProperty
-}, {
-  cssProperty: 'overflow-x',
-  componentProperty: 'overflowX',
-  scopedProperty: 'massivOverflowX',
-  themeProperty: themeProperty,
-  propertyType: propertyType,
-  defaultProperty: defaultProperty
-}, {
-  cssProperty: 'overflow-y',
-  componentProperty: 'overflowY',
-  scopedProperty: 'massivOverflowY',
-  themeProperty: themeProperty,
-  propertyType: propertyType,
-  defaultProperty: defaultProperty
-}, {
   cssProperty: 'text-align',
   componentProperty: 'textAlign',
   scopedProperty: 'massivTextAlign',
@@ -93,7 +74,7 @@ var boxPropertyConfig = [{
   propertyType: propertyType,
   defaultProperty: defaultProperty
 }];
-var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_positionPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_widthPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_heightPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_flexChildPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_borderPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(boxPropertyConfig)));
+var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_positionPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_widthPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_heightPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_flexChildPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_borderPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_overflowPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(boxPropertyConfig)));
 
 var StyledBox = _styledComponents["default"].div(_templateObject(), (0, _buildCss["default"])(propertyConfig));
 

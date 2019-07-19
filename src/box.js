@@ -9,6 +9,7 @@ import heightPropertyConfig from '../utils/height-property-config';
 import flexChildPropertyConfig from '../utils/flex-child-property-config';
 import colorPropertyConfig from '../utils/color-property-config';
 import borderPropertyConfig from '../utils/border-property-config';
+import overflowPropertyConfig from '../utils/overflow-property-config';
 import { arrayOfStringsOrString } from '../utils/prop-types';
 import buildScopedProps from '../utils/build-scoped-props';
 import buildPropTypes from '../utils/build-prop-types';
@@ -19,30 +20,6 @@ const propertyType = arrayOfStringsOrString;
 const defaultProperty = undefined;
 
 const boxPropertyConfig = [
-    {
-        cssProperty: 'overflow',
-        componentProperty: 'overflow',
-        scopedProperty: 'massivOverflow',
-        themeProperty,
-        propertyType,
-        defaultProperty,
-    },
-    {
-        cssProperty: 'overflow-x',
-        componentProperty: 'overflowX',
-        scopedProperty: 'massivOverflowX',
-        themeProperty,
-        propertyType,
-        defaultProperty,
-    },
-    {
-        cssProperty: 'overflow-y',
-        componentProperty: 'overflowY',
-        scopedProperty: 'massivOverflowY',
-        themeProperty,
-        propertyType,
-        defaultProperty,
-    },
     {
         cssProperty: 'text-align',
         componentProperty: 'textAlign',
@@ -61,6 +38,7 @@ const propertyConfig = [
     ...clone(flexChildPropertyConfig),
     ...clone(colorPropertyConfig),
     ...clone(borderPropertyConfig),
+    ...clone(overflowPropertyConfig),
     ...clone(boxPropertyConfig),
 ];
 
