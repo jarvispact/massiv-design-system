@@ -17,8 +17,6 @@ var _buildScopedProps = _interopRequireDefault(require("../utils/build-scoped-pr
 
 var _buildPropTypes2 = _interopRequireDefault(require("../utils/build-prop-types"));
 
-var _propTypes2 = require("../utils/prop-types");
-
 var _colorPropertyConfig = _interopRequireDefault(require("../utils/color-property-config"));
 
 var _spacingPropertyConfig = _interopRequireDefault(require("../utils/spacing-property-config"));
@@ -28,6 +26,8 @@ var _widthPropertyConfig = _interopRequireDefault(require("../utils/width-proper
 var _heightPropertyConfig = _interopRequireDefault(require("../utils/height-property-config"));
 
 var _borderPropertyConfig = _interopRequireDefault(require("../utils/border-property-config"));
+
+var _createFontPropertyConfig = _interopRequireDefault(require("../utils/create-font-property-config"));
 
 var _setProperty = _interopRequireDefault(require("../utils/set-property"));
 
@@ -59,31 +59,10 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-var propertyType = _propTypes2.arrayOfStringsOrString;
-var defaultProperty = undefined;
-var inputPropertyConfig = [{
-  cssProperty: 'font-weight',
-  componentProperty: 'fontWeight',
-  scopedProperty: 'massivFontWeight',
-  themeProperty: 'fonts.input.weights',
-  propertyType: propertyType,
-  defaultProperty: defaultProperty
-}, {
-  cssProperty: 'font-size',
-  componentProperty: 'fontSize',
-  scopedProperty: 'massivFontSize',
-  themeProperty: 'fonts.scales',
-  propertyType: propertyType,
-  defaultProperty: 'm'
-}, {
-  cssProperty: 'letter-spacing',
-  componentProperty: 'letterSpacing',
-  scopedProperty: 'massivLetterSpacing',
-  themeProperty: 'fonts.letterSpacings',
-  propertyType: propertyType,
-  defaultProperty: defaultProperty
-}];
-var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_widthPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_heightPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_borderPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(inputPropertyConfig)));
+var fontPropertyConfig = (0, _createFontPropertyConfig["default"])({
+  type: 'textarea'
+});
+var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_widthPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_heightPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_borderPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(fontPropertyConfig)));
 (0, _setProperty["default"])('border-style', 'defaultProperty', 'none', propertyConfig);
 (0, _setProperty["default"])('border-radius', 'defaultProperty', '2px', propertyConfig);
 (0, _setProperty["default"])('padding', 'defaultProperty', '4px', propertyConfig);
