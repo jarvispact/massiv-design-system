@@ -1,7 +1,6 @@
 import React from 'react';
 import { node, string, bool, func } from 'prop-types';
 import styled from 'styled-components';
-import { arrayOfStringsOrString } from '../utils/prop-types';
 import buildCss from '../utils/build-css';
 import buildScopedProps from '../utils/build-scoped-props';
 import buildPropTypes from '../utils/build-prop-types';
@@ -12,6 +11,7 @@ import colorPropertyConfig from '../utils/color-property-config';
 import borderPropertyConfig from '../utils/border-property-config';
 import displayPropertyConfig from '../utils/display-property-config';
 import createFontPropertyConfig from '../utils/create-font-property-config';
+import boxShadowPropertyConfig from '../utils/box-shadow-property-config';
 import setProperty from '../utils/set-property';
 import clone from '../utils/clone';
 import Icon from './icon';
@@ -36,6 +36,7 @@ const propertyConfig = [
     ...clone(borderPropertyConfig),
     ...clone(fontPropertyConfig),
     ...clone(displayPropertyConfig),
+    ...clone(boxShadowPropertyConfig),
     ...clone(buttonPropertyConfig),
 ];
 
@@ -44,7 +45,7 @@ setProperty('border-radius', 'defaultProperty', '2px', propertyConfig);
 setProperty('padding', 'defaultProperty', '4px 8px', propertyConfig);
 
 const getCursor = (props) => {
-    if (props.loading) return 'progress';
+    if (props.massivLoading) return 'progress';
     if (props.disabled) return 'not-allowed';
     return 'pointer';
 };

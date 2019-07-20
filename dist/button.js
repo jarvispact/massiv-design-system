@@ -11,8 +11,6 @@ var _propTypes = require("prop-types");
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
-var _propTypes2 = require("../utils/prop-types");
-
 var _buildCss = _interopRequireDefault(require("../utils/build-css"));
 
 var _buildScopedProps = _interopRequireDefault(require("../utils/build-scoped-props"));
@@ -32,6 +30,8 @@ var _borderPropertyConfig = _interopRequireDefault(require("../utils/border-prop
 var _displayPropertyConfig = _interopRequireDefault(require("../utils/display-property-config"));
 
 var _createFontPropertyConfig = _interopRequireDefault(require("../utils/create-font-property-config"));
+
+var _boxShadowPropertyConfig = _interopRequireDefault(require("../utils/box-shadow-property-config"));
 
 var _setProperty = _interopRequireDefault(require("../utils/set-property"));
 
@@ -75,13 +75,13 @@ var buttonPropertyConfig = [{
   propertyType: _propTypes.bool,
   defaultProperty: false
 }];
-var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_widthPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_heightPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_borderPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(fontPropertyConfig)), _toConsumableArray((0, _clone["default"])(_displayPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(buttonPropertyConfig)));
+var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_widthPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_heightPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_borderPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(fontPropertyConfig)), _toConsumableArray((0, _clone["default"])(_displayPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_boxShadowPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(buttonPropertyConfig)));
 (0, _setProperty["default"])('border-style', 'defaultProperty', 'none', propertyConfig);
 (0, _setProperty["default"])('border-radius', 'defaultProperty', '2px', propertyConfig);
 (0, _setProperty["default"])('padding', 'defaultProperty', '4px 8px', propertyConfig);
 
 var getCursor = function getCursor(props) {
-  if (props.loading) return 'progress';
+  if (props.massivLoading) return 'progress';
   if (props.disabled) return 'not-allowed';
   return 'pointer';
 };

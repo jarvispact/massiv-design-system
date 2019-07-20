@@ -6,14 +6,6 @@ const defaultProperty = undefined;
 
 export default [
     {
-        cssProperty: 'display',
-        componentProperty: 'display',
-        scopedProperty: 'massivDisplay',
-        themeProperty,
-        propertyType,
-        defaultProperty,
-    },
-    {
         cssProperty: 'position',
         componentProperty: 'position',
         scopedProperty: 'massivPosition',

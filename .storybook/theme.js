@@ -92,6 +92,12 @@ const radii = {
     l: '6px',
 };
 
+const shadows = {
+    s: '2px 2px',
+    m: '4px 4px',
+    l: '6px 6px',
+}
+
 export default {
     breakpoints,
     fonts,
@@ -100,4 +106,5 @@ export default {
     widths,
     heights,
     radii,
+    shadows,
 };

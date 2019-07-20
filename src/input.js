@@ -10,6 +10,7 @@ import widthPropertyConfig from '../utils/width-property-config';
 import heightPropertyConfig from '../utils/height-property-config';
 import borderPropertyConfig from '../utils/border-property-config';
 import createFontPropertyConfig from '../utils/create-font-property-config';
+import boxShadowPropertyConfig from '../utils/box-shadow-property-config';
 import setProperty from '../utils/set-property';
 import clone from '../utils/clone';
 
@@ -22,6 +23,7 @@ const propertyConfig = [
     ...clone(heightPropertyConfig),
     ...clone(borderPropertyConfig),
     ...clone(fontPropertyConfig),
+    ...clone(boxShadowPropertyConfig),
 ];
 
 setProperty('border-style', 'defaultProperty', 'none', propertyConfig);

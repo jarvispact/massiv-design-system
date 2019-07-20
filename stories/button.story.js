@@ -54,6 +54,7 @@ storiesOf('Button', module)
                 borderTopRightRadius={array('borderTopRightRadius', [])}
                 borderBottomLeftRadius={array('borderBottomLeftRadius', [])}
                 borderBottomRightRadius={array('borderBottomRightRadius', [])}
+                boxShadow={array('boxShadow', [])}
             >
                 Button
             </Button>

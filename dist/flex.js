@@ -21,6 +21,8 @@ var _buildPropTypes2 = _interopRequireDefault(require("../utils/build-prop-types
 
 var _positionPropertyConfig = _interopRequireDefault(require("../utils/position-property-config"));
 
+var _displayPropertyConfig = _interopRequireDefault(require("../utils/display-property-config"));
+
 var _spacingPropertyConfig = _interopRequireDefault(require("../utils/spacing-property-config"));
 
 var _widthPropertyConfig = _interopRequireDefault(require("../utils/width-property-config"));
@@ -32,6 +34,8 @@ var _colorPropertyConfig = _interopRequireDefault(require("../utils/color-proper
 var _borderPropertyConfig = _interopRequireDefault(require("../utils/border-property-config"));
 
 var _overflowPropertyConfig = _interopRequireDefault(require("../utils/overflow-property-config"));
+
+var _boxShadowPropertyConfig = _interopRequireDefault(require("../utils/box-shadow-property-config"));
 
 var _clone = _interopRequireDefault(require("../utils/clone"));
 
@@ -114,7 +118,7 @@ var flexPropertyConfig = [{
   propertyType: propertyType,
   defaultProperty: defaultProperty
 }];
-var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_positionPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_widthPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_heightPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_borderPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_overflowPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(flexPropertyConfig)));
+var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_positionPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_displayPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_widthPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_heightPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_borderPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_overflowPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_boxShadowPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(flexPropertyConfig)));
 
 var StyledFlex = _styledComponents["default"].div(_templateObject(), function (props) {
   return props.inline ? 'inline-flex' : 'flex';

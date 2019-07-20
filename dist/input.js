@@ -29,6 +29,8 @@ var _borderPropertyConfig = _interopRequireDefault(require("../utils/border-prop
 
 var _createFontPropertyConfig = _interopRequireDefault(require("../utils/create-font-property-config"));
 
+var _boxShadowPropertyConfig = _interopRequireDefault(require("../utils/box-shadow-property-config"));
+
 var _setProperty = _interopRequireDefault(require("../utils/set-property"));
 
 var _clone = _interopRequireDefault(require("../utils/clone"));
@@ -62,7 +64,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 var fontPropertyConfig = (0, _createFontPropertyConfig["default"])({
   type: 'input'
 });
-var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_widthPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_heightPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_borderPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(fontPropertyConfig)));
+var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_widthPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_heightPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_borderPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(fontPropertyConfig)), _toConsumableArray((0, _clone["default"])(_boxShadowPropertyConfig["default"])));
 (0, _setProperty["default"])('border-style', 'defaultProperty', 'none', propertyConfig);
 (0, _setProperty["default"])('border-radius', 'defaultProperty', '2px', propertyConfig);
 (0, _setProperty["default"])('padding', 'defaultProperty', '4px', propertyConfig);

@@ -58,6 +58,7 @@ storiesOf('TextArea', module)
                 borderTopRightRadius={array('borderTopRightRadius', [])}
                 borderBottomLeftRadius={array('borderBottomLeftRadius', [])}
                 borderBottomRightRadius={array('borderBottomRightRadius', [])}
+                boxShadow={array('boxShadow', [])}
             />
         </Box>
     ));
