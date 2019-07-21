@@ -31,10 +31,14 @@ var defaultWrapperProps = {
   pb: '2px',
   borderRadius: 's'
 };
-var defaultTextProps = {
-  pr: '5px',
-  scale: 'xs'
+
+var defaultTextProps = function defaultTextProps(onClose) {
+  return {
+    pr: onClose ? '5px' : undefined,
+    scale: 'xs'
+  };
 };
+
 var defaultIconProps = {
   name: 'clear',
   pl: '5px',
@@ -48,7 +52,7 @@ var Tag = function Tag(_ref) {
       wrapperProps = _ref.wrapperProps,
       textProps = _ref.textProps,
       iconProps = _ref.iconProps;
-  return _react["default"].createElement(_flex["default"], _extends({}, defaultWrapperProps, wrapperProps), _react["default"].createElement(_text["default"], _extends({}, defaultTextProps, textProps), name || children), _react["default"].createElement(_button["default"], {
+  return _react["default"].createElement(_flex["default"], _extends({}, defaultWrapperProps, wrapperProps), _react["default"].createElement(_text["default"], _extends({}, defaultTextProps(onClose), textProps), name || children), onClose && _react["default"].createElement(_button["default"], {
     bg: "transparent",
     p: "0",
     onClick: onClose

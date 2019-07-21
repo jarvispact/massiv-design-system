@@ -16,10 +16,10 @@ const defaultWrapperProps = {
     borderRadius: 's',
 };
 
-const defaultTextProps = {
-    pr: '5px',
+const defaultTextProps = (onClose) => ({
+    pr: onClose ? '5px' : undefined,
     scale: 'xs',
-};
+});
 
 const defaultIconProps = {
     name: 'clear',
@@ -29,10 +29,12 @@ const defaultIconProps = {
 
 const Tag = ({ name, children, onClose, wrapperProps, textProps, iconProps }) => (
     <Flex {...defaultWrapperProps} {...wrapperProps}>
-        <Text {...defaultTextProps} {...textProps}>{name || children}</Text>
-        <Button bg="transparent" p="0" onClick={onClose}>
-            <Icon {...defaultIconProps} {...iconProps} />
-        </Button>
+        <Text {...defaultTextProps(onClose)} {...textProps}>{name || children}</Text>
+        {onClose && (
+            <Button bg="transparent" p="0" onClick={onClose}>
+                <Icon {...defaultIconProps} {...iconProps} />
+            </Button>
+        )}
     </Flex>
 );
 
