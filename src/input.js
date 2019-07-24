@@ -35,7 +35,7 @@ const StyledInput = styled.input`
     cursor: ${props => (props.disabled && 'not-allowed')};
     opacity: ${props => props.disabled && '0.5'};
     font-family: ${props => props.theme.fonts.input.family};
-    vertical-align: ${props => props.theme.fonts.input.verticalAlign || 'middle'};
+    vertical-align: ${props => props.theme.fonts.input.verticalAlign};
     ${buildCss(propertyConfig)}
 `;
 

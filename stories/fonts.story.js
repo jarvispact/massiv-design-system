@@ -119,7 +119,20 @@ storiesOf('Text', module)
             Text
         </Text>
     ))
-    .add('Text with Icon aside', () => (
+    .add('Text with Icon aside 1', () => (
+        <>
+            <Icon pr="s" name="donut_large" />
+            <Text
+                weight={array('weight', [])}
+                scale={array('scale', [])}
+                color={array('color', [])}
+                letterSpacing={array('letterSpacing', [])}
+            >
+            Text
+            </Text>
+        </>
+    ))
+    .add('Text with Icon aside 2', () => (
         <>
             <Text
                 weight={array('weight', [])}

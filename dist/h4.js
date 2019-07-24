@@ -65,7 +65,7 @@ var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_spacin
 var StyledH4 = _styledComponents["default"].h4(_templateObject(), function (props) {
   return props.theme.fonts.h4.family;
 }, function (props) {
-  return props.theme.fonts.h4.verticalAlign || 'middle';
+  return props.theme.fonts.h4.verticalAlign;
 }, (0, _buildCss["default"])(propertyConfig));
 
 var H4 = function H4(_props) {

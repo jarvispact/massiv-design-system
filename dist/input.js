@@ -76,7 +76,7 @@ var StyledInput = _styledComponents["default"].input(_templateObject(), function
 }, function (props) {
   return props.theme.fonts.input.family;
 }, function (props) {
-  return props.theme.fonts.input.verticalAlign || 'middle';
+  return props.theme.fonts.input.verticalAlign;
 }, (0, _buildCss["default"])(propertyConfig));
 
 var Input = function Input(_props) {

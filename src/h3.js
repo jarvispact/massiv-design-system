@@ -25,7 +25,7 @@ const propertyConfig = [
 
 const StyledH3 = styled.h3`
     font-family: ${props => props.theme.fonts.h3.family};
-    vertical-align: ${props => props.theme.fonts.h3.verticalAlign || 'middle'};
+    vertical-align: ${props => props.theme.fonts.h3.verticalAlign};
     ${buildCss(propertyConfig)}
 `;
 

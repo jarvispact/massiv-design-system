@@ -65,7 +65,7 @@ var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_spacin
 var StyledLabel = _styledComponents["default"].label(_templateObject(), function (props) {
   return props.theme.fonts.label.family;
 }, function (props) {
-  return props.theme.fonts.label.verticalAlign || 'middle';
+  return props.theme.fonts.label.verticalAlign;
 }, (0, _buildCss["default"])(propertyConfig));
 
 var Label = function Label(_props) {

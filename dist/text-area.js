@@ -76,7 +76,7 @@ var StyledTextArea = _styledComponents["default"].textarea(_templateObject(), fu
 }, function (props) {
   return props.theme.fonts.textarea.family;
 }, function (props) {
-  return props.theme.fonts.textarea.verticalAlign || 'middle';
+  return props.theme.fonts.textarea.verticalAlign;
 }, (0, _buildCss["default"])(propertyConfig));
 
 var TextArea = function TextArea(_props) {

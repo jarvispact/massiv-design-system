@@ -65,7 +65,7 @@ var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_spacin
 var StyledText = _styledComponents["default"].span(_templateObject(), function (props) {
   return props.theme.fonts.text.family;
 }, function (props) {
-  return props.theme.fonts.text.verticalAlign || 'middle';
+  return props.theme.fonts.text.verticalAlign;
 }, (0, _buildCss["default"])(propertyConfig));
 
 var Text = function Text(_props) {

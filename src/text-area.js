@@ -36,7 +36,7 @@ const StyledTextArea = styled.textarea`
     cursor: ${props => (props.disabled && 'not-allowed')};
     opacity: ${props => props.disabled && '0.5'};
     font-family: ${props => props.theme.fonts.textarea.family};
-    vertical-align: ${props => props.theme.fonts.textarea.verticalAlign || 'middle'};
+    vertical-align: ${props => props.theme.fonts.textarea.verticalAlign};
     ${buildCss(propertyConfig)}
 `;
 

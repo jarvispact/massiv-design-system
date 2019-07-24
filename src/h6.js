@@ -25,7 +25,7 @@ const propertyConfig = [
 
 const StyledH6 = styled.h6`
     font-family: ${props => props.theme.fonts.h6.family};
-    vertical-align: ${props => props.theme.fonts.h6.verticalAlign || 'middle'};
+    vertical-align: ${props => props.theme.fonts.h6.verticalAlign};
     ${buildCss(propertyConfig)}
 `;
 

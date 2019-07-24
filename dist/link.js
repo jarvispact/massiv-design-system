@@ -67,7 +67,7 @@ var StyledLink = _styledComponents["default"].a(_templateObject(), function (pro
 }, function (props) {
   return props.theme.fonts.link.family;
 }, function (props) {
-  return props.theme.fonts.link.verticalAlign || 'middle';
+  return props.theme.fonts.link.verticalAlign;
 }, (0, _buildCss["default"])(propertyConfig));
 
 var Link = function Link(_props) {
