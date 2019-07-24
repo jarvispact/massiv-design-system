@@ -54,6 +54,7 @@ const colors = {
     error: '#E25650',
     gray300: '#B3B3B3',
     gray200: '#e0e0e0',
+    gray100: '#f2f2f2',
 };
 
 const spacing = {

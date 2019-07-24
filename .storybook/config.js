@@ -18,6 +18,7 @@ const loadStories = () => {
     require('../stories/icon.story.js');
     require('../stories/image.story.js');
     require('../stories/input.story.js');
+    require('../stories/table.story.js');
     require('../stories/tag.story.js');
     require('../stories/responsive-grid.story.js');
     require('../stories/text-area.story.js');
