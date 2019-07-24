@@ -7,30 +7,11 @@ import displayPropertyConfig from '../utils/display-property-config';
 import spacingPropertyConfig from '../utils/spacing-property-config';
 import widthPropertyConfig from '../utils/width-property-config';
 import heightPropertyConfig from '../utils/height-property-config';
-import flexChildPropertyConfig from '../utils/flex-child-property-config';
-import colorPropertyConfig from '../utils/color-property-config';
 import borderPropertyConfig from '../utils/border-property-config';
-import overflowPropertyConfig from '../utils/overflow-property-config';
 import boxShadowPropertyConfig from '../utils/box-shadow-property-config';
-import { arrayOfStringsOrString } from '../utils/prop-types';
 import buildScopedProps from '../utils/build-scoped-props';
 import buildPropTypes from '../utils/build-prop-types';
 import clone from '../utils/clone';
-
-const themeProperty = null;
-const propertyType = arrayOfStringsOrString;
-const defaultProperty = undefined;
-
-const boxPropertyConfig = [
-    {
-        cssProperty: 'text-align',
-        componentProperty: 'textAlign',
-        scopedProperty: 'massivTextAlign',
-        themeProperty,
-        propertyType,
-        defaultProperty,
-    },
-];
 
 const propertyConfig = [
     ...clone(positionPropertyConfig),
@@ -38,22 +19,18 @@ const propertyConfig = [
     ...clone(spacingPropertyConfig),
     ...clone(widthPropertyConfig),
     ...clone(heightPropertyConfig),
-    ...clone(flexChildPropertyConfig),
-    ...clone(colorPropertyConfig),
     ...clone(borderPropertyConfig),
-    ...clone(overflowPropertyConfig),
     ...clone(boxShadowPropertyConfig),
-    ...clone(boxPropertyConfig),
 ];
 
-const StyledImage = styled.image`
+const StyledImage = styled.img`
     ${buildCss(propertyConfig)}
 `;
 
 const Image = (_props) => {
-    const { children, ...props } = _props;
+    const { children, imageWidth, imageHeight, ...props } = _props;
     const scopedProps = buildScopedProps(propertyConfig, props);
-    return (<StyledImage {...scopedProps}>{children}</StyledImage>);
+    return (<StyledImage width={imageWidth} height={imageHeight} {...scopedProps}>{children}</StyledImage>);
 };
 
 const defaultPropTypes = {

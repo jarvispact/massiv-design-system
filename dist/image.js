@@ -23,17 +23,9 @@ var _widthPropertyConfig = _interopRequireDefault(require("../utils/width-proper
 
 var _heightPropertyConfig = _interopRequireDefault(require("../utils/height-property-config"));
 
-var _flexChildPropertyConfig = _interopRequireDefault(require("../utils/flex-child-property-config"));
-
-var _colorPropertyConfig = _interopRequireDefault(require("../utils/color-property-config"));
-
 var _borderPropertyConfig = _interopRequireDefault(require("../utils/border-property-config"));
 
-var _overflowPropertyConfig = _interopRequireDefault(require("../utils/overflow-property-config"));
-
 var _boxShadowPropertyConfig = _interopRequireDefault(require("../utils/box-shadow-property-config"));
-
-var _propTypes2 = require("../utils/prop-types");
 
 var _buildScopedProps = _interopRequireDefault(require("../utils/build-scoped-props"));
 
@@ -42,6 +34,8 @@ var _buildPropTypes2 = _interopRequireDefault(require("../utils/build-prop-types
 var _clone = _interopRequireDefault(require("../utils/clone"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
@@ -67,27 +61,21 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-var themeProperty = null;
-var propertyType = _propTypes2.arrayOfStringsOrString;
-var defaultProperty = undefined;
-var boxPropertyConfig = [{
-  cssProperty: 'text-align',
-  componentProperty: 'textAlign',
-  scopedProperty: 'massivTextAlign',
-  themeProperty: themeProperty,
-  propertyType: propertyType,
-  defaultProperty: defaultProperty
-}];
-var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_positionPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_displayPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_widthPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_heightPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_flexChildPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_borderPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_overflowPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_boxShadowPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(boxPropertyConfig)));
+var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_positionPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_displayPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_widthPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_heightPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_borderPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_boxShadowPropertyConfig["default"])));
 
-var StyledImage = _styledComponents["default"].image(_templateObject(), (0, _buildCss["default"])(propertyConfig));
+var StyledImage = _styledComponents["default"].img(_templateObject(), (0, _buildCss["default"])(propertyConfig));
 
 var Image = function Image(_props) {
   var children = _props.children,
-      props = _objectWithoutProperties(_props, ["children"]);
+      imageWidth = _props.imageWidth,
+      imageHeight = _props.imageHeight,
+      props = _objectWithoutProperties(_props, ["children", "imageWidth", "imageHeight"]);
 
   var scopedProps = (0, _buildScopedProps["default"])(propertyConfig, props);
-  return _react["default"].createElement(StyledImage, scopedProps, children);
+  return _react["default"].createElement(StyledImage, _extends({
+    width: imageWidth,
+    height: imageHeight
+  }, scopedProps), children);
 };
 
 var defaultPropTypes = {
