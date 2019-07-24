@@ -22,6 +22,7 @@ storiesOf('Icon', module)
             scale={array('scale', [])}
             color={array('color', [])}
             bg={array('bg', [])}
+            textShadow={array('textShadow', [])}
         >
             donut_large
         </Icon>

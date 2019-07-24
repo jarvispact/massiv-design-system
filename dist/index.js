@@ -75,6 +75,12 @@ Object.defineProperty(exports, "Icon", {
     return _icon["default"];
   }
 });
+Object.defineProperty(exports, "Image", {
+  enumerable: true,
+  get: function get() {
+    return _image["default"];
+  }
+});
 Object.defineProperty(exports, "InputField", {
   enumerable: true,
   get: function get() {
@@ -171,6 +177,8 @@ var _h5 = _interopRequireDefault(require("./h5"));
 var _h6 = _interopRequireDefault(require("./h6"));
 
 var _icon = _interopRequireDefault(require("./icon"));
+
+var _image = _interopRequireDefault(require("./image"));
 
 var _inputField = _interopRequireDefault(require("./input-field"));
 

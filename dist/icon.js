@@ -88,6 +88,13 @@ var iconPropertyConfig = [{
   themeProperty: null,
   propertyType: _propTypes.bool,
   defaultProperty: false
+}, {
+  cssProperty: 'text-shadow',
+  componentProperty: 'textShadow',
+  scopedProperty: 'massivTextShadow',
+  themeProperty: 'shadows',
+  propertyType: propertyType,
+  defaultProperty: defaultProperty
 }];
 var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(iconPropertyConfig)));
 

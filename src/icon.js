@@ -28,6 +28,14 @@ const iconPropertyConfig = [
         propertyType: bool,
         defaultProperty: false,
     },
+    {
+        cssProperty: 'text-shadow',
+        componentProperty: 'textShadow',
+        scopedProperty: 'massivTextShadow',
+        themeProperty: 'shadows',
+        propertyType,
+        defaultProperty,
+    },
 ];
 
 const propertyConfig = [

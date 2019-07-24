@@ -96,6 +96,7 @@ const shadows = {
     s: '2px 2px',
     m: '4px 4px',
     l: '6px 6px',
+    text: '4px 4px 2px rgba(150, 150, 150, 1)',
 }
 
 export default {

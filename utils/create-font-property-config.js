@@ -37,6 +37,14 @@ export default ({ type } = {}) => [
         defaultProperty,
     },
     {
+        cssProperty: 'text-shadow',
+        componentProperty: 'textShadow',
+        scopedProperty: 'massivTextShadow',
+        themeProperty: 'shadows',
+        propertyType,
+        defaultProperty,
+    },
+    {
         cssProperty: 'white-space',
         componentProperty: 'whiteSpace',
         scopedProperty: 'massivWhiteSpace',

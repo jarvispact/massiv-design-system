@@ -10,6 +10,7 @@ export { default as H4 } from './h4';
 export { default as H5 } from './h5';
 export { default as H6 } from './h6';
 export { default as Icon } from './icon';
+export { default as Image } from './image';
 export { default as InputField } from './input-field';
 export { default as Input } from './input';
 export { default as Label } from './label';
