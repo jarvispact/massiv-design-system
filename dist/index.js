@@ -15,6 +15,12 @@ Object.defineProperty(exports, "Button", {
     return _button["default"];
   }
 });
+Object.defineProperty(exports, "Code", {
+  enumerable: true,
+  get: function get() {
+    return _code["default"];
+  }
+});
 Object.defineProperty(exports, "Col", {
   enumerable: true,
   get: function get() {
@@ -193,6 +199,8 @@ Object.defineProperty(exports, "withTheme", {
 var _box = _interopRequireDefault(require("./box"));
 
 var _button = _interopRequireDefault(require("./button"));
+
+var _code = _interopRequireDefault(require("./code"));
 
 var _col = _interopRequireDefault(require("./col"));
 
