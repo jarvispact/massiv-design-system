@@ -5,11 +5,11 @@ const GlobalStyle = createGlobalStyle`
         -webkit-tap-highlight-color: transparent;
     }
 
-    html, input, textarea {
+    html, input, textarea, pre {
         box-sizing: border-box;
     }
 
-    body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+    body, h1, h2, h3, h4, h5, h6, p, ol, ul, pre {
         margin: 0;
         padding: 0;
         font-weight: normal;

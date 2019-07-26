@@ -14,6 +14,7 @@ const loadStories = () => {
     require('../stories/box.story.js');
     require('../stories/button.story.js');
     require('../stories/code.story.js');
+    require('../stories/error-indicator.story.js');
     require('../stories/flex.story.js');
     require('../stories/fonts.story.js');
     require('../stories/icon.story.js');
