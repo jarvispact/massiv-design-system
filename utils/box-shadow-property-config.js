@@ -1,6 +1,6 @@
 import { arrayOfStringsOrString } from './prop-types';
 
-const themeProperty = 'shadows';
+const themeProperty = 'boxShadows';
 const propertyType = arrayOfStringsOrString;
 const defaultProperty = undefined;
 

@@ -93,11 +93,14 @@ const radii = {
     l: '6px',
 };
 
-const shadows = {
+const boxShadows = {
     s: '2px 2px',
     m: '4px 4px',
     l: '6px 6px',
-    text: '4px 4px 2px rgba(150, 150, 150, 1)',
+}
+
+const textShadows = {
+    m: '4px 4px 2px rgba(150, 150, 150, 1)',
 }
 
 export default {
@@ -108,5 +111,6 @@ export default {
     widths,
     heights,
     radii,
-    shadows,
+    boxShadows,
+    textShadows,
 };

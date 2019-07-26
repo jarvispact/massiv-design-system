@@ -32,7 +32,7 @@ const iconPropertyConfig = [
         cssProperty: 'text-shadow',
         componentProperty: 'textShadow',
         scopedProperty: 'massivTextShadow',
-        themeProperty: 'shadows',
+        themeProperty: 'textShadows',
         propertyType,
         defaultProperty,
     },

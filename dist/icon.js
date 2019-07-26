@@ -92,7 +92,7 @@ var iconPropertyConfig = [{
   cssProperty: 'text-shadow',
   componentProperty: 'textShadow',
   scopedProperty: 'massivTextShadow',
-  themeProperty: 'shadows',
+  themeProperty: 'textShadows',
   propertyType: propertyType,
   defaultProperty: defaultProperty
 }];
