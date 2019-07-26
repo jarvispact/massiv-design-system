@@ -16,8 +16,8 @@ const defaultWrapperProps = {
     borderRadius: 's',
 };
 
-const defaultTextProps = (onClose) => ({
-    pr: onClose ? '5px' : undefined,
+const defaultTextProps = (onDelete) => ({
+    pr: onDelete ? '5px' : undefined,
     scale: 'xs',
 });
 
@@ -27,11 +27,11 @@ const defaultIconProps = {
     scale: 'xs',
 };
 
-const Tag = ({ name, children, onClose, wrapperProps, textProps, iconProps }) => (
+const Tag = ({ name, children, onDelete, wrapperProps, textProps, iconProps }) => (
     <Flex {...defaultWrapperProps} {...wrapperProps}>
-        <Text {...defaultTextProps(onClose)} {...textProps}>{name || children}</Text>
-        {onClose && (
-            <Button bg="transparent" p="0" onClick={onClose}>
+        <Text {...defaultTextProps(onDelete)} {...textProps}>{name || children}</Text>
+        {onDelete && (
+            <Button bg="transparent" p="0" onClick={onDelete}>
                 <Icon {...defaultIconProps} {...iconProps} />
             </Button>
         )}
@@ -41,7 +41,7 @@ const Tag = ({ name, children, onClose, wrapperProps, textProps, iconProps }) =>
 Tag.propTypes = {
     name: string,
     children: node,
-    onClose: func,
+    onDelete: func,
     wrapperProps: shape({}),
     textProps: shape({}),
     iconProps: shape({}),
@@ -50,10 +50,10 @@ Tag.propTypes = {
 Tag.defaultProps = {
     name: undefined,
     children: undefined,
-    onClose: undefined,
-    wrapperProps: defaultWrapperProps,
-    textProps: defaultTextProps,
-    iconProps: defaultIconProps,
+    onDelete: undefined,
+    wrapperProps: {},
+    textProps: {},
+    iconProps: {},
 };
 
 export default Tag;

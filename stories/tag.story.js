@@ -8,6 +8,6 @@ import Tag from '../src/tag';
 storiesOf('Tag', module)
     .add('Tag', () => (
         <Box p="m">
-            <Tag name="some tag bla foo" onClose={() => console.log('close clicked')} />
+            <Tag name="some tag bla foo" onDelete={() => console.log('close clicked')} />
         </Box>
     ));

@@ -32,9 +32,9 @@ var defaultWrapperProps = {
   borderRadius: 's'
 };
 
-var defaultTextProps = function defaultTextProps(onClose) {
+var defaultTextProps = function defaultTextProps(onDelete) {
   return {
-    pr: onClose ? '5px' : undefined,
+    pr: onDelete ? '5px' : undefined,
     scale: 'xs'
   };
 };
@@ -48,21 +48,21 @@ var defaultIconProps = {
 var Tag = function Tag(_ref) {
   var name = _ref.name,
       children = _ref.children,
-      onClose = _ref.onClose,
+      onDelete = _ref.onDelete,
       wrapperProps = _ref.wrapperProps,
       textProps = _ref.textProps,
       iconProps = _ref.iconProps;
-  return _react["default"].createElement(_flex["default"], _extends({}, defaultWrapperProps, wrapperProps), _react["default"].createElement(_text["default"], _extends({}, defaultTextProps(onClose), textProps), name || children), onClose && _react["default"].createElement(_button["default"], {
+  return _react["default"].createElement(_flex["default"], _extends({}, defaultWrapperProps, wrapperProps), _react["default"].createElement(_text["default"], _extends({}, defaultTextProps(onDelete), textProps), name || children), onDelete && _react["default"].createElement(_button["default"], {
     bg: "transparent",
     p: "0",
-    onClick: onClose
+    onClick: onDelete
   }, _react["default"].createElement(_icon["default"], _extends({}, defaultIconProps, iconProps))));
 };
 
 Tag.propTypes = {
   name: _propTypes.string,
   children: _propTypes.node,
-  onClose: _propTypes.func,
+  onDelete: _propTypes.func,
   wrapperProps: (0, _propTypes.shape)({}),
   textProps: (0, _propTypes.shape)({}),
   iconProps: (0, _propTypes.shape)({})
@@ -70,10 +70,10 @@ Tag.propTypes = {
 Tag.defaultProps = {
   name: undefined,
   children: undefined,
-  onClose: undefined,
-  wrapperProps: defaultWrapperProps,
-  textProps: defaultTextProps,
-  iconProps: defaultIconProps
+  onDelete: undefined,
+  wrapperProps: {},
+  textProps: {},
+  iconProps: {}
 };
 var _default = Tag;
 exports["default"] = _default;
