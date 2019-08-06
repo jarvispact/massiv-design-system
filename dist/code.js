@@ -69,6 +69,11 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_positionPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_displayPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_widthPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_heightPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_borderPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_overflowPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_boxShadowPropertyConfig["default"])));
 (0, _setProperty["default"])('overflow', 'defaultProperty', 'auto', propertyConfig);
+(0, _setProperty["default"])('width', 'defaultProperty', '100%', propertyConfig);
+(0, _setProperty["default"])('border-radius', 'defaultProperty', '3px', propertyConfig);
+(0, _setProperty["default"])('box-shadow', 'defaultProperty', 'inset 0px 0px 5px 1px rgba(0,0,0,0.41)', propertyConfig);
+(0, _setProperty["default"])('background-color', 'defaultProperty', 'white', propertyConfig);
+(0, _setProperty["default"])('padding', 'defaultProperty', 's', propertyConfig);
 
 var StyledPre = _styledComponents["default"].pre(_templateObject(), (0, _buildCss["default"])(propertyConfig));
 
@@ -97,7 +102,7 @@ var Code = function Code(_props) {
 
 var defaultPropTypes = {
   propTypes: {
-    children: _propTypes.node
+    children: (0, _propTypes.shape)({})
   },
   defaultProps: {
     children: undefined

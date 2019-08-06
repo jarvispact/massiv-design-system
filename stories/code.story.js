@@ -36,6 +36,6 @@ const data = {
 storiesOf('Code', module)
     .add('Code', () => (
         <Box p="l" width="300px">
-            <Code p="l" bg="gray300">{str}</Code>
+            <Code>{data}</Code>
         </Box>
     ));

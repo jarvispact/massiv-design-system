@@ -1,5 +1,5 @@
 import React from 'react';
-import { node } from 'prop-types';
+import { shape } from 'prop-types';
 import styled from 'styled-components';
 import buildCss from '../utils/build-css';
 import positionPropertyConfig from '../utils/position-property-config';
@@ -29,6 +29,11 @@ const propertyConfig = [
 ];
 
 setProperty('overflow', 'defaultProperty', 'auto', propertyConfig);
+setProperty('width', 'defaultProperty', '100%', propertyConfig);
+setProperty('border-radius', 'defaultProperty', '3px', propertyConfig);
+setProperty('box-shadow', 'defaultProperty', 'inset 0px 0px 5px 1px rgba(0,0,0,0.41)', propertyConfig);
+setProperty('background-color', 'defaultProperty', 'white', propertyConfig);
+setProperty('padding', 'defaultProperty', 's', propertyConfig);
 
 const StyledPre = styled.pre`
     ${buildCss(propertyConfig)}
@@ -58,7 +63,7 @@ const Code = (_props) => {
 };
 
 const defaultPropTypes = {
-    propTypes: { children: node },
+    propTypes: { children: shape({}) },
     defaultProps: { children: undefined },
 };
 
