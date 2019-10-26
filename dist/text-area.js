@@ -37,6 +37,8 @@ var _clone = _interopRequireDefault(require("../utils/clone"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
@@ -79,13 +81,15 @@ var StyledTextArea = _styledComponents["default"].textarea(_templateObject(), fu
   return props.theme.fonts.textarea.verticalAlign;
 }, (0, _buildCss["default"])(propertyConfig));
 
-var TextArea = function TextArea(_props) {
+var TextArea = _react["default"].forwardRef(function (_props, ref) {
   var children = _props.children,
       props = _objectWithoutProperties(_props, ["children"]);
 
   var scopedProps = (0, _buildScopedProps["default"])(propertyConfig, props);
-  return _react["default"].createElement(StyledTextArea, scopedProps, children);
-};
+  return _react["default"].createElement(StyledTextArea, _extends({
+    ref: ref
+  }, scopedProps), children);
+});
 
 var defaultPropTypes = {
   propTypes: {
