@@ -51,18 +51,17 @@ const getCursor = (props) => {
 };
 
 const StyledButton = styled.button`
-    &:focus { outline: 0; }
     cursor: ${getCursor};
     opacity: ${props => props.disabled && '0.5'};
     font-family: ${props => props.theme.fonts.button.family};
     ${buildCss(propertyConfig)}
 `;
 
-const Button = (_props) => {
+const Button = React.forwardRef((_props, ref) => {
     const { children, ...props } = _props;
     const scopedProps = buildScopedProps(propertyConfig, props);
-    return (<StyledButton {...scopedProps}>{scopedProps.massivLoading ? <Icon loading /> : children}</StyledButton>);
-};
+    return (<StyledButton ref={ref} {...scopedProps}>{scopedProps.massivLoading ? <Icon loading /> : children}</StyledButton>);
+});
 
 const defaultPropTypes = {
     propTypes: {

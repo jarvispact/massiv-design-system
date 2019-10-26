@@ -38,11 +38,11 @@ const StyledInput = styled.input`
     ${buildCss(propertyConfig)}
 `;
 
-const Input = (_props) => {
+const Input = React.forwardRef((_props, ref) => {
     const { children, ...props } = _props;
     const scopedProps = buildScopedProps(propertyConfig, props);
-    return (<StyledInput {...scopedProps}>{children}</StyledInput>);
-};
+    return (<StyledInput ref={ref} {...scopedProps}>{children}</StyledInput>);
+});
 
 const defaultPropTypes = {
     propTypes: {

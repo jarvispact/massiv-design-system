@@ -39,11 +39,11 @@ const StyledTextArea = styled.textarea`
     ${buildCss(propertyConfig)}
 `;
 
-const TextArea = (_props) => {
+const TextArea = React.forwardRef((_props, ref) => {
     const { children, ...props } = _props;
     const scopedProps = buildScopedProps(propertyConfig, props);
-    return (<StyledTextArea {...scopedProps}>{children}</StyledTextArea>);
-};
+    return (<StyledTextArea ref={ref} {...scopedProps}>{children}</StyledTextArea>);
+});
 
 const defaultPropTypes = {
     propTypes: {
