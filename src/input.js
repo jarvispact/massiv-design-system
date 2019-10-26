@@ -31,7 +31,6 @@ setProperty('border-radius', 'defaultProperty', '2px', propertyConfig);
 setProperty('padding', 'defaultProperty', '4px', propertyConfig);
 
 const StyledInput = styled.input`
-    &:focus { outline: 0; }
     cursor: ${props => (props.disabled && 'not-allowed')};
     opacity: ${props => props.disabled && '0.5'};
     font-family: ${props => props.theme.fonts.input.family};

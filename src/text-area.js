@@ -31,7 +31,6 @@ setProperty('border-radius', 'defaultProperty', '2px', propertyConfig);
 setProperty('padding', 'defaultProperty', '4px', propertyConfig);
 
 const StyledTextArea = styled.textarea`
-    &:focus { outline: 0; }
     resize: none;
     cursor: ${props => (props.disabled && 'not-allowed')};
     opacity: ${props => props.disabled && '0.5'};
