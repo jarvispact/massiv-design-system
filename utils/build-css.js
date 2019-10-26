@@ -34,7 +34,7 @@ export default (propertyConfigList) => (props) => {
     const cssArray = [];
 
     listWithValues.forEach((configObj) => {
-        const value = getValue(configObj, 0, props);
+        const value = getValue(configObj, 0, props) || configObj.defaultProperty;
         if (value && configObj.cssProperty) cssArray.push(`${configObj.cssProperty}: ${value};`);
     });
 
@@ -47,7 +47,7 @@ export default (propertyConfigList) => (props) => {
         listWithValues.forEach((configObj) => {
             const valueIndex = breakpointIndex + 1;
             if (configObj.values[valueIndex]) {
-                const value = getValue(configObj, valueIndex, props);
+                const value = getValue(configObj, valueIndex, props) || configObj.defaultProperty;
                 if (value && configObj.cssProperty) cssArrayForMediaQueryBlock.push(`${configObj.cssProperty}: ${value};`);
             }
         });
