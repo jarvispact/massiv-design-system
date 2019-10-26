@@ -1,8 +1,11 @@
 import { css } from 'styled-components';
 import path from './path';
 
-const addValuesToList = (list, props) => list.map(configObj => Object.assign({}, configObj, {
-    values: Array.isArray(props[configObj.scopedProperty]) ? props[configObj.scopedProperty] : [props[configObj.scopedProperty]],
+const addValuesToList = (list, props) => list.map(configObj => ({
+    ...configObj,
+    values: Array.isArray(props[configObj.scopedProperty])
+        ? props[configObj.scopedProperty]
+        : [props[configObj.scopedProperty]],
 }));
 
 const hasNoMediaQueries = list => list.every(configObj => configObj.values.length < 2);
