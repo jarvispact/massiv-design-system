@@ -6,7 +6,7 @@ const defaultProperty = undefined;
 export default ({ type } = {}) => [
     {
         cssProperty: 'font-size',
-        componentProperty: 'scale',
+        componentProperty: 'fontSize',
         scopedProperty: 'massivFontSize',
         themeProperty: 'fonts.scales',
         propertyType,
