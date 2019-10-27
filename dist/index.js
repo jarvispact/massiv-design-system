@@ -27,6 +27,12 @@ Object.defineProperty(exports, "Col", {
     return _col["default"];
   }
 });
+Object.defineProperty(exports, "defaultTheme", {
+  enumerable: true,
+  get: function get() {
+    return _defaultTheme["default"];
+  }
+});
 Object.defineProperty(exports, "Flex", {
   enumerable: true,
   get: function get() {
@@ -203,6 +209,8 @@ var _button = _interopRequireDefault(require("./button"));
 var _code = _interopRequireDefault(require("./code"));
 
 var _col = _interopRequireDefault(require("./col"));
+
+var _defaultTheme = _interopRequireDefault(require("./default-theme"));
 
 var _flex = _interopRequireDefault(require("./flex"));
 

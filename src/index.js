@@ -2,6 +2,7 @@ export { default as Box } from './box';
 export { default as Button } from './button';
 export { default as Code } from './code';
 export { default as Col } from './col';
+export { default as defaultTheme } from './default-theme';
 export { default as Flex } from './flex';
 export { default as GlobalStyle } from './global-style';
 export { default as H1 } from './h1';

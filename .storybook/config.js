@@ -11,6 +11,7 @@ const themes = {
 };
 
 const loadStories = () => {
+    require('../stories/color-palette.story.js');
     require('../stories/box.story.js');
     require('../stories/button.story.js');
     require('../stories/code.story.js');
