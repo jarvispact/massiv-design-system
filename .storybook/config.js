@@ -12,18 +12,19 @@ const themes = {
 
 const loadStories = () => {
     require('../stories/color-palette.story.js');
-    require('../stories/box.story.js');
-    require('../stories/button.story.js');
-    require('../stories/code.story.js');
-    require('../stories/flex.story.js');
-    require('../stories/fonts.story.js');
-    require('../stories/icon.story.js');
-    require('../stories/image.story.js');
-    require('../stories/input.story.js');
-    require('../stories/table.story.js');
-    require('../stories/tag.story.js');
-    require('../stories/responsive-grid.story.js');
-    require('../stories/text-area.story.js');
+    require('../stories/input-field.story.js');
+    // require('../stories/box.story.js');
+    // require('../stories/button.story.js');
+    // require('../stories/code.story.js');
+    // require('../stories/flex.story.js');
+    // require('../stories/fonts.story.js');
+    // require('../stories/icon.story.js');
+    // require('../stories/image.story.js');
+    // require('../stories/input.story.js');
+    // require('../stories/table.story.js');
+    // require('../stories/tag.story.js');
+    // require('../stories/responsive-grid.story.js');
+    // require('../stories/text-area.story.js');
 }
 
 const GlobalDecorator = storyFn => (

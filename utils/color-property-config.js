@@ -21,4 +21,12 @@ export default [
         propertyType,
         defaultProperty,
     },
+    {
+        cssProperty: 'outline-color',
+        componentProperty: 'outlineColor',
+        scopedProperty: 'massivOutlineColor',
+        themeProperty,
+        propertyType,
+        defaultProperty,
+    },
 ];

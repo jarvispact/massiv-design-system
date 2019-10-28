@@ -45,8 +45,8 @@ var fonts = {
     loadingIcon: 'settings'
   },
   scales: {
-    xxs: '0.5rem',
-    xs: '0.6rem',
+    xxs: '0.6rem',
+    xs: '0.7rem',
     s: '0.8rem',
     m: '1rem',
     l: '1.2rem',
@@ -102,10 +102,35 @@ var secondary = {
   secondary500: secondary500,
   secondary700: secondary700
 };
+var gray100 = '#f5f5f5';
+var gray200 = '#eeeeee';
+var gray300 = '#e0e0e0';
+var gray350 = '#d6d6d6';
+var gray400 = '#bdbdbd';
+var gray500 = '#9e9e9e';
+var gray600 = '#757575';
+var gray700 = '#616161';
+var gray800 = '#424242';
+var gray850 = '#303030';
+var gray900 = '#212121';
+var gray = {
+  gray: gray500,
+  gray100: gray100,
+  gray200: gray200,
+  gray300: gray300,
+  gray350: gray350,
+  gray400: gray400,
+  gray500: gray500,
+  gray600: gray600,
+  gray700: gray700,
+  gray800: gray800,
+  gray850: gray850,
+  gray900: gray900
+};
 
 var colors = _objectSpread({
   white: '#FFFFFF'
-}, error, {}, warning, {}, success, {}, info, {}, primary, {}, secondary);
+}, error, {}, warning, {}, success, {}, info, {}, primary, {}, secondary, {}, gray);
 
 var spacing = {
   xxs: '0.4rem',

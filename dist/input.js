@@ -69,7 +69,9 @@ var fontPropertyConfig = (0, _createFontPropertyConfig["default"])({
 var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_widthPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_heightPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_borderPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(fontPropertyConfig)), _toConsumableArray((0, _clone["default"])(_boxShadowPropertyConfig["default"])));
 (0, _setProperty["default"])('border-style', 'defaultProperty', 'none', propertyConfig);
 (0, _setProperty["default"])('border-radius', 'defaultProperty', '2px', propertyConfig);
-(0, _setProperty["default"])('padding', 'defaultProperty', '4px', propertyConfig);
+(0, _setProperty["default"])('padding', 'defaultProperty', '6px', propertyConfig);
+(0, _setProperty["default"])('font-size', 'defaultProperty', '1rem', propertyConfig);
+(0, _setProperty["default"])('outline-color', 'defaultProperty', 'info', propertyConfig);
 
 var StyledInput = _styledComponents["default"].input(_templateObject(), function (props) {
   return props.disabled && 'not-allowed';

@@ -15,7 +15,7 @@ const Wrapper = ({ children }) => (
 const SectionWrapper = ({ heading, children }) => (
     <>
         <H2 mt="l" mb="s" ml="s">{heading}</H2>
-        <Flex justifyContent="center">
+        <Flex>
             {children}
         </Flex>
     </>
@@ -32,7 +32,7 @@ const ColorBox = ({ token, colorCode }) => (
 );
 
 storiesOf('Color Palette', module)
-    .add('Error', () => (
+    .add('Color Palette', () => (
         <Wrapper>
             <SectionWrapper heading="Primary">
                 <ColorBox token="primary500" colorCode={theme.colors.primary500} />

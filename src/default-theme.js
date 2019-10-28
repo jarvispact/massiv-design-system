@@ -26,8 +26,8 @@ const fonts = {
         loadingIcon: 'settings',
     },
     scales: {
-        xxs: '0.5rem',
-        xs: '0.6rem',
+        xxs: '0.6rem',
+        xs: '0.7rem',
         s: '0.8rem',
         m: '1rem',
         l: '1.2rem',
@@ -96,6 +96,33 @@ const secondary = {
     secondary700,
 };
 
+const gray100 = '#f5f5f5';
+const gray200 = '#eeeeee';
+const gray300 = '#e0e0e0';
+const gray350 = '#d6d6d6';
+const gray400 = '#bdbdbd';
+const gray500 = '#9e9e9e';
+const gray600 = '#757575';
+const gray700 = '#616161';
+const gray800 = '#424242';
+const gray850 = '#303030';
+const gray900 = '#212121';
+
+const gray = {
+    gray: gray500,
+    gray100,
+    gray200,
+    gray300,
+    gray350,
+    gray400,
+    gray500,
+    gray600,
+    gray700,
+    gray800,
+    gray850,
+    gray900,
+};
+
 const colors = {
     white: '#FFFFFF',
     ...error,
@@ -104,6 +131,7 @@ const colors = {
     ...info,
     ...primary,
     ...secondary,
+    ...gray,
 };
 
 const spacing = {

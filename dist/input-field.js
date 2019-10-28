@@ -28,31 +28,43 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 var defaultWrapperProps = {
-  mb: 'm',
-  width: '100%'
+  mb: 'm'
 };
 var defaultLabelProps = {
-  color: 'black'
+  display: 'block',
+  pb: '2px',
+  color: 'gray700'
 };
 var defaultInputProps = {
-  width: '100%',
   bg: 'white',
   color: 'black'
 };
 var defaultHintProps = {
-  pl: '5px',
-  scale: 'xs',
-  color: 'gray300'
+  display: 'block',
+  pl: '3px',
+  pt: '1px',
+  fontSize: 'xs',
+  color: 'info'
 };
 var defaultWarningProps = {
-  pl: '5px',
-  scale: 'xs',
+  display: 'block',
+  pl: '3px',
+  pt: '1px',
+  fontSize: 'xs',
   color: 'warning'
 };
 var defaultErrorProps = {
-  pl: '5px',
-  scale: 'xs',
+  display: 'block',
+  pl: '3px',
+  pt: '1px',
+  fontSize: 'xs',
   color: 'error'
+};
+
+var getOutlineColor = function getOutlineColor(warning, error) {
+  if (warning) return 'warning';
+  if (error) return 'error';
+  return undefined;
 };
 
 var InputField = function InputField(_ref) {
@@ -83,7 +95,8 @@ var InputField = function InputField(_ref) {
     value: value,
     onChange: onChange,
     onBlur: onBlur,
-    disabled: disabled
+    disabled: disabled,
+    outlineColor: getOutlineColor(warning, error)
   }, defaultInputProps, others)), hint && !warning && !error && _react["default"].createElement(_text["default"], _extends({}, defaultHintProps, hintProps), _react["default"].createElement(_icon["default"], {
     name: "info"
   }), ' ', hint), warning && !error && _react["default"].createElement(_text["default"], _extends({}, defaultWarningProps, warningProps), _react["default"].createElement(_icon["default"], {
@@ -99,7 +112,7 @@ InputField.propTypes = {
   label: _propTypes.string,
   type: _propTypes.string,
   value: (0, _propTypes.oneOfType)([_propTypes.array, _propTypes.object, _propTypes.string, _propTypes.number, _propTypes.bool]),
-  onChange: _propTypes.func.isRequired,
+  onChange: _propTypes.func,
   onBlur: _propTypes.func,
   disabled: _propTypes.bool,
   hint: _propTypes.string,
@@ -115,7 +128,7 @@ InputField.defaultProps = {
   id: undefined,
   label: undefined,
   type: 'text',
-  value: '',
+  value: undefined,
   onBlur: undefined,
   disabled: undefined,
   hint: undefined,

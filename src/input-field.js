@@ -8,35 +8,47 @@ import Icon from './icon';
 
 const defaultWrapperProps = {
     mb: 'm',
-    width: '100%',
 };
 
 const defaultLabelProps = {
-    color: 'black',
+    display: 'block',
+    pb: '2px',
+    color: 'gray700',
 };
 
 const defaultInputProps = {
-    width: '100%',
     bg: 'white',
     color: 'black',
 };
 
 const defaultHintProps = {
-    pl: '5px',
-    scale: 'xs',
-    color: 'gray300',
+    display: 'block',
+    pl: '3px',
+    pt: '1px',
+    fontSize: 'xs',
+    color: 'info',
 };
 
 const defaultWarningProps = {
-    pl: '5px',
-    scale: 'xs',
+    display: 'block',
+    pl: '3px',
+    pt: '1px',
+    fontSize: 'xs',
     color: 'warning',
 };
 
 const defaultErrorProps = {
-    pl: '5px',
-    scale: 'xs',
+    display: 'block',
+    pl: '3px',
+    pt: '1px',
+    fontSize: 'xs',
     color: 'error',
+};
+
+const getOutlineColor = (warning, error) => {
+    if (warning) return 'warning';
+    if (error) return 'error';
+    return undefined;
 };
 
 const InputField = ({
@@ -72,6 +84,7 @@ const InputField = ({
             onChange={onChange}
             onBlur={onBlur}
             disabled={disabled}
+            outlineColor={getOutlineColor(warning, error)}
             {...defaultInputProps}
             {...others}
         />
@@ -105,7 +118,7 @@ InputField.propTypes = {
     label: string,
     type: string,
     value: oneOfType([array, object, string, number, bool]),
-    onChange: func.isRequired,
+    onChange: func,
     onBlur: func,
     disabled: bool,
     hint: string,
@@ -122,7 +135,7 @@ InputField.defaultProps = {
     id: undefined,
     label: undefined,
     type: 'text',
-    value: '',
+    value: undefined,
     onBlur: undefined,
     disabled: undefined,
     hint: undefined,

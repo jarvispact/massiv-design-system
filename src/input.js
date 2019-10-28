@@ -28,7 +28,9 @@ const propertyConfig = [
 
 setProperty('border-style', 'defaultProperty', 'none', propertyConfig);
 setProperty('border-radius', 'defaultProperty', '2px', propertyConfig);
-setProperty('padding', 'defaultProperty', '4px', propertyConfig);
+setProperty('padding', 'defaultProperty', '6px', propertyConfig);
+setProperty('font-size', 'defaultProperty', '1rem', propertyConfig);
+setProperty('outline-color', 'defaultProperty', 'info', propertyConfig);
 
 const StyledInput = styled.input`
     cursor: ${props => (props.disabled && 'not-allowed')};
