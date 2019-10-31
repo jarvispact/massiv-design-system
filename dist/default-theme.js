@@ -60,33 +60,49 @@ var fonts = {
     l: '0.3rem'
   }
 };
+var error300 = '#ff9696';
 var error500 = '#ff4444';
 var error700 = '#cc0000';
+var error900 = '#a30000';
 var error = {
   error: error500,
+  error300: error300,
   error500: error500,
-  error700: error700
+  error700: error700,
+  error900: error900
 };
+var warning300 = '#ffda91';
 var warning500 = '#ffbb33';
 var warning700 = '#ff8800';
+var warning900 = '#d17000';
 var warning = {
   warning: warning500,
+  warning300: warning300,
   warning500: warning500,
-  warning700: warning700
+  warning700: warning700,
+  warning900: warning900
 };
+var success300 = '#54f796';
 var success500 = '#00C851';
 var success700 = '#007e33';
+var success900 = '#005c25';
 var success = {
   success: success500,
+  success300: success300,
   success500: success500,
-  success700: success700
+  success700: success700,
+  success900: success900
 };
+var info300 = '#79d5f7';
 var info500 = '#33b5e5';
 var info700 = '#0099cc';
+var info900 = '#007aa3';
 var info = {
   info: info500,
+  info300: info300,
   info500: info500,
-  info700: info700
+  info700: info700,
+  info900: info900
 };
 var primary500 = '#4285f4';
 var primary700 = '#0d47a1';

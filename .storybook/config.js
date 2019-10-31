@@ -13,6 +13,9 @@ const themes = {
 const loadStories = () => {
     require('../stories/color-palette.story.js');
     require('../stories/input-field.story.js');
+    require('../stories/button.story.js');
+    require('../stories/form.story.js');
+    require('../stories/alert.story.js');
     // require('../stories/box.story.js');
     // require('../stories/button.story.js');
     // require('../stories/code.story.js');
@@ -22,7 +25,7 @@ const loadStories = () => {
     // require('../stories/image.story.js');
     // require('../stories/input.story.js');
     // require('../stories/table.story.js');
-    // require('../stories/tag.story.js');
+    require('../stories/tag.story.js');
     // require('../stories/responsive-grid.story.js');
     // require('../stories/text-area.story.js');
 }

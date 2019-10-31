@@ -79,7 +79,7 @@ var propertyType = _propTypes2.arrayOfStringsOrString;
 var defaultProperty = undefined;
 var iconPropertyConfig = [{
   cssProperty: 'font-size',
-  componentProperty: 'scale',
+  componentProperty: 'fontSize',
   scopedProperty: 'massivFontSize',
   themeProperty: 'fonts.scales',
   propertyType: propertyType,
@@ -103,7 +103,6 @@ var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_colorP
 var getCursor = function getCursor(props) {
   if (props.massivLoading) return 'progress';
   if (props.disabled) return 'not-allowed';
-  if (props.onClick) return 'pointer';
   return undefined;
 };
 
@@ -130,7 +129,6 @@ var Icon = function Icon(_props) {
       props = _objectWithoutProperties(_props, ["children", "theme", "name"]);
 
   var scopedProps = (0, _buildScopedProps["default"])(propertyConfig, props);
-  if (scopedProps.onClick && scopedProps.disabled) scopedProps.onClick = undefined;
   return _react["default"].createElement(StyledIcon, scopedProps, scopedProps.massivLoading ? theme.fonts.icon.loadingIcon : name || children);
 };
 

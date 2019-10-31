@@ -42,7 +42,9 @@ const propertyConfig = [
 
 setProperty('border-style', 'defaultProperty', 'none', propertyConfig);
 setProperty('border-radius', 'defaultProperty', '2px', propertyConfig);
-setProperty('padding', 'defaultProperty', '4px 8px', propertyConfig);
+setProperty('padding', 'defaultProperty', '6px 12px', propertyConfig);
+setProperty('font-size', 'defaultProperty', '1rem', propertyConfig);
+setProperty('outline-color', 'defaultProperty', 'info', propertyConfig);
 
 const getCursor = (props) => {
     if (props.massivLoading) return 'progress';

@@ -1,62 +1,54 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { text, array, boolean } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 import Box from '../src/box';
-import Button from '../src/button';
+import H3 from '../src/h3';
+import Icon from '../src/icon';
+import { PrimaryButton, SecondaryButton, InvisibleButton } from '../src';
+
+// eslint-disable-next-line react/prop-types
+const Wrapper = ({ children }) => (
+    <Box m="m">
+        {children}
+    </Box>
+);
+
+// eslint-disable-next-line react/prop-types
+const SectionWrapper = ({ heading, children }) => (
+    <>
+        <H3 mt="2.5rem" mb="s" ml="s">{heading}</H3>
+        <Box ml="s">
+            {children}
+        </Box>
+    </>
+);
 
 storiesOf('Button', module)
     .add('Button', () => (
-        <Box p="m">
-            <Button
-                type={text('type', undefined)}
-                onClick={(e) => console.log('click', e)}
-                disabled={boolean('disabled', false)}
-                loading={boolean('loading', false)}
-                display={array('display', [])}
-                fontSize={array('fontSize', [])}
-                fontWeight={array('fontWeight', [])}
-                letterSpacing={array('letterSpacing', [])}
-                width={array('width', [])}
-                height={array('height', [])}
-                minWidth={array('minWidth', [])}
-                minHeight={array('minHeight', [])}
-                maxWidth={array('maxWidth', [])}
-                maxHeight={array('maxHeight', [])}
-                p={array('p', [])}
-                pt={array('pt', [])}
-                pl={array('pl', [])}
-                pb={array('pb', [])}
-                pr={array('pr', [])}
-                m={array('m', [])}
-                mt={array('mt', [])}
-                ml={array('ml', [])}
-                mb={array('mb', [])}
-                mr={array('mr', [])}
-                color={array('color', [])}
-                bg={array('bg', [])}
-                borderStyle={array('borderStyle', [])}
-                borderWidth={array('borderWidth', [])}
-                borderColor={array('borderColor', [])}
-                borderRadius={array('borderRadius', [])}
-                borderTopStyle={array('borderTopStyle', [])}
-                borderTopWidth={array('borderTopWidth', [])}
-                borderTopColor={array('borderTopColor', [])}
-                borderBottomStyle={array('borderBottomStyle', [])}
-                borderBottomWidth={array('borderBottomWidth', [])}
-                borderBottomColor={array('borderBottomColor', [])}
-                borderLeftStyle={array('borderLeftStyle', [])}
-                borderLeftWidth={array('borderLeftWidth', [])}
-                borderLeftColor={array('borderLeftColor', [])}
-                borderRightStyle={array('borderRightStyle', [])}
-                borderRightWidth={array('borderRightWidth', [])}
-                borderRightColor={array('borderRightColor', [])}
-                borderTopLeftRadius={array('borderTopLeftRadius', [])}
-                borderTopRightRadius={array('borderTopRightRadius', [])}
-                borderBottomLeftRadius={array('borderBottomLeftRadius', [])}
-                borderBottomRightRadius={array('borderBottomRightRadius', [])}
-                boxShadow={array('boxShadow', [])}
-            >
-                Button
-            </Button>
-        </Box>
+        <Wrapper>
+            <SectionWrapper heading="Primary">
+                <PrimaryButton onClick={action('click')}>Primary Button</PrimaryButton>
+                <PrimaryButton disabled ml="0.5rem">Disabled Primary</PrimaryButton>
+                <PrimaryButton ml="0.5rem">
+                    <Icon name="settings" />
+                    {' '}
+primary
+                </PrimaryButton>
+                <PrimaryButton ml="0.5rem"><Icon name="settings" /></PrimaryButton>
+            </SectionWrapper>
+            <SectionWrapper heading="Secondary Button">
+                <SecondaryButton>Secondary Button</SecondaryButton>
+                <SecondaryButton disabled ml="0.5rem">Disabled Secondary</SecondaryButton>
+                <SecondaryButton ml="0.5rem">
+                    <Icon name="settings" />
+                    {' '}
+SECONDARY
+                </SecondaryButton>
+                <SecondaryButton ml="0.5rem"><Icon name="settings" /></SecondaryButton>
+            </SectionWrapper>
+            <SectionWrapper heading="Invisible Button">
+                <InvisibleButton><Icon name="settings" fontSize="xxl" /></InvisibleButton>
+                <InvisibleButton disabled ml="0.5rem"><Icon name="settings" fontSize="xxl" /></InvisibleButton>
+            </SectionWrapper>
+        </Wrapper>
     ));

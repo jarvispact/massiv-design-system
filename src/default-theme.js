@@ -42,40 +42,56 @@ const fonts = {
     },
 };
 
+const error300 = '#ff9696';
 const error500 = '#ff4444';
 const error700 = '#cc0000';
+const error900 = '#a30000';
 
 const error = {
     error: error500,
+    error300,
     error500,
     error700,
+    error900,
 };
 
+const warning300 = '#ffda91';
 const warning500 = '#ffbb33';
 const warning700 = '#ff8800';
+const warning900 = '#d17000';
 
 const warning = {
     warning: warning500,
+    warning300,
     warning500,
     warning700,
+    warning900,
 };
 
+const success300 = '#54f796';
 const success500 = '#00C851';
 const success700 = '#007e33';
+const success900 = '#005c25';
 
 const success = {
     success: success500,
+    success300,
     success500,
     success700,
-}
+    success900,
+};
 
+const info300 = '#79d5f7';
 const info500 = '#33b5e5';
 const info700 = '#0099cc';
+const info900 = '#007aa3';
 
 const info = {
     info: info500,
+    info300,
     info500,
     info700,
+    info900,
 };
 
 const primary500 = '#4285f4';
@@ -142,7 +158,7 @@ const spacing = {
     l: '1.2rem',
     xl: '1.4rem',
     xxl: '1.6rem',
-}
+};
 
 const breakpoints = [
     '450px',
@@ -166,11 +182,11 @@ const boxShadows = {
     s: '2px 2px',
     m: '4px 4px',
     l: '6px 6px',
-}
+};
 
 const textShadows = {
     m: '4px 4px 2px rgba(150, 150, 150, 1)',
-}
+};
 
 export default {
     breakpoints,

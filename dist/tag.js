@@ -13,7 +13,7 @@ var _flex = _interopRequireDefault(require("./flex"));
 
 var _text = _interopRequireDefault(require("./text"));
 
-var _button = _interopRequireDefault(require("./button"));
+var _invisibleButton = _interopRequireDefault(require("./invisible-button"));
 
 var _icon = _interopRequireDefault(require("./icon"));
 
@@ -24,25 +24,22 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 var defaultWrapperProps = {
   inline: true,
   alignItems: 'center',
+  justifyContent: 'center',
   bg: 'gray300',
-  pl: '5px',
-  pr: '5px',
-  pt: '2px',
-  pb: '2px',
-  borderRadius: 's'
+  p: '5px 3px 5px 3px',
+  borderRadius: '2px'
 };
 
 var defaultTextProps = function defaultTextProps(onDelete) {
   return {
-    pr: onDelete ? '5px' : undefined,
-    scale: 'xs'
+    pr: onDelete ? '10px' : undefined,
+    fontSize: 'xs'
   };
 };
 
 var defaultIconProps = {
   name: 'clear',
-  pl: '5px',
-  scale: 'xs'
+  fontSize: 'xs'
 };
 
 var Tag = function Tag(_ref) {
@@ -52,9 +49,8 @@ var Tag = function Tag(_ref) {
       wrapperProps = _ref.wrapperProps,
       textProps = _ref.textProps,
       iconProps = _ref.iconProps;
-  return _react["default"].createElement(_flex["default"], _extends({}, defaultWrapperProps, wrapperProps), _react["default"].createElement(_text["default"], _extends({}, defaultTextProps(onDelete), textProps), name || children), onDelete && _react["default"].createElement(_button["default"], {
-    bg: "transparent",
-    p: "0",
+  return _react["default"].createElement(_flex["default"], _extends({}, defaultWrapperProps, wrapperProps), _react["default"].createElement(_text["default"], _extends({}, defaultTextProps(onDelete), textProps), name || children), onDelete && _react["default"].createElement(_invisibleButton["default"], {
+    fontSize: "13px",
     onClick: onDelete
   }, _react["default"].createElement(_icon["default"], _extends({}, defaultIconProps, iconProps))));
 };

@@ -80,7 +80,9 @@ var buttonPropertyConfig = [{
 var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_widthPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_heightPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_borderPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(fontPropertyConfig)), _toConsumableArray((0, _clone["default"])(_displayPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_boxShadowPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(buttonPropertyConfig)));
 (0, _setProperty["default"])('border-style', 'defaultProperty', 'none', propertyConfig);
 (0, _setProperty["default"])('border-radius', 'defaultProperty', '2px', propertyConfig);
-(0, _setProperty["default"])('padding', 'defaultProperty', '4px 8px', propertyConfig);
+(0, _setProperty["default"])('padding', 'defaultProperty', '6px 12px', propertyConfig);
+(0, _setProperty["default"])('font-size', 'defaultProperty', '1rem', propertyConfig);
+(0, _setProperty["default"])('outline-color', 'defaultProperty', 'info', propertyConfig);
 
 var getCursor = function getCursor(props) {
   if (props.massivLoading) return 'progress';

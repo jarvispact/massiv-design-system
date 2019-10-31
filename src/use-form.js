@@ -6,7 +6,7 @@ const getEmptyInitialValues = (initialValues = {}) => Object.keys(initialValues)
     return acc;
 }, {});
 
-const useForm = ({ initialValues, validate, onSubmit, onSubmitSuccess, onSubmitError }) => {
+const useForm = ({ initialValues, validate, onSubmit, onSubmitSuccess, onSubmitError, validateOnChange = true, validateOnBlur = true }) => {
     const [values, setValues] = useState({ ...initialValues });
     const [warnings, setWarnings] = useState(getEmptyInitialValues(initialValues));
     const [errors, setErrors] = useState(getEmptyInitialValues(initialValues));
@@ -16,21 +16,35 @@ const useForm = ({ initialValues, validate, onSubmit, onSubmitSuccess, onSubmitE
     const formHasErrors = Object.values(errors).some(Boolean);
     const submitDisabled = loading || formHasErrors;
 
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        const newValues = { ...values, [name]: value };
-        const { warnings: newWarnings, errors: newErrors } = validate(newValues);
-        setValues(prevValues => ({ ...prevValues, [name]: value }));
-        setWarnings(prevWarnings => ({ ...prevWarnings, [name]: newWarnings[name] }));
-        setErrors(prevErrors => ({ ...prevErrors, [name]: newErrors[name] }));
+    // TODO: use useCallback hook if bigger forms have performance issues with this
+    // function being created all the time
+    const setValuesFunction = (fieldName, fieldValue, shouldValidate) => (prevValues) => {
+        const newValues = { ...prevValues, [fieldName]: fieldValue };
+
+        if (shouldValidate) {
+            const { warnings: newWarnings, errors: newErrors } = validate(newValues);
+            setWarnings(prevWarnings => ({ ...prevWarnings, [fieldName]: newWarnings[fieldName] }));
+            setErrors(prevErrors => ({ ...prevErrors, [fieldName]: newErrors[fieldName] }));
+        }
+
+        return newValues;
     };
 
-    const handleBlur = async (event) => {
+    const setFieldValue = (fieldName, fieldValue, shouldValidate = false) => {
+        setValues(setValuesFunction(fieldName, fieldValue, shouldValidate));
+    };
+
+    const handleChange = (event) => {
         const { name, value } = event.target;
-        const newValues = { ...values, [name]: value };
-        const { warnings: newWarnings, errors: newErrors } = validate(newValues);
-        setWarnings(prevWarnings => ({ ...prevWarnings, [name]: newWarnings[name] }));
-        setErrors(prevErrors => ({ ...prevErrors, [name]: newErrors[name] }));
+        setValues(setValuesFunction(name, value, validateOnChange));
+    };
+
+    const handleBlur = (event) => {
+        if (validateOnBlur) {
+            const { name, value } = event.target;
+            const newValues = { ...values, [name]: value };
+            setValuesFunction(name, value, true)(newValues);
+        }
     };
 
     const handleSubmit = async () => {
@@ -77,6 +91,8 @@ const useForm = ({ initialValues, validate, onSubmit, onSubmitSuccess, onSubmitE
         handleSubmit,
         submitDisabled,
         formError,
+        setFormError,
+        setFieldValue,
     };
 };
 

@@ -38,7 +38,11 @@ var useForm = function useForm(_ref) {
       validate = _ref.validate,
       onSubmit = _ref.onSubmit,
       onSubmitSuccess = _ref.onSubmitSuccess,
-      onSubmitError = _ref.onSubmitError;
+      onSubmitError = _ref.onSubmitError,
+      _ref$validateOnChange = _ref.validateOnChange,
+      validateOnChange = _ref$validateOnChange === void 0 ? true : _ref$validateOnChange,
+      _ref$validateOnBlur = _ref.validateOnBlur,
+      validateOnBlur = _ref$validateOnBlur === void 0 ? true : _ref$validateOnBlur;
 
   var _useState = (0, _react.useState)(_objectSpread({}, initialValues)),
       _useState2 = _slicedToArray(_useState, 2),
@@ -66,77 +70,66 @@ var useForm = function useForm(_ref) {
       setFormError = _useState10[1];
 
   var formHasErrors = Object.values(errors).some(Boolean);
-  var submitDisabled = loading || formHasErrors;
+  var submitDisabled = loading || formHasErrors; // TODO: use useCallback hook if bigger forms have performance issues with this
+  // function being created all the time
+
+  var setValuesFunction = function setValuesFunction(fieldName, fieldValue, shouldValidate) {
+    return function (prevValues) {
+      var newValues = _objectSpread({}, prevValues, _defineProperty({}, fieldName, fieldValue));
+
+      if (shouldValidate) {
+        var _validate = validate(newValues),
+            newWarnings = _validate.warnings,
+            newErrors = _validate.errors;
+
+        setWarnings(function (prevWarnings) {
+          return _objectSpread({}, prevWarnings, _defineProperty({}, fieldName, newWarnings[fieldName]));
+        });
+        setErrors(function (prevErrors) {
+          return _objectSpread({}, prevErrors, _defineProperty({}, fieldName, newErrors[fieldName]));
+        });
+      }
+
+      return newValues;
+    };
+  };
+
+  var setFieldValue = function setFieldValue(fieldName, fieldValue) {
+    var shouldValidate = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+    setValues(setValuesFunction(fieldName, fieldValue, shouldValidate));
+  };
 
   var handleChange = function handleChange(event) {
     var _event$target = event.target,
         name = _event$target.name,
         value = _event$target.value;
-
-    var newValues = _objectSpread({}, values, _defineProperty({}, name, value));
-
-    var _validate = validate(newValues),
-        newWarnings = _validate.warnings,
-        newErrors = _validate.errors;
-
-    setValues(function (prevValues) {
-      return _objectSpread({}, prevValues, _defineProperty({}, name, value));
-    });
-    setWarnings(function (prevWarnings) {
-      return _objectSpread({}, prevWarnings, _defineProperty({}, name, newWarnings[name]));
-    });
-    setErrors(function (prevErrors) {
-      return _objectSpread({}, prevErrors, _defineProperty({}, name, newErrors[name]));
-    });
+    setValues(setValuesFunction(name, value, validateOnChange));
   };
 
-  var handleBlur =
-  /*#__PURE__*/
-  function () {
-    var _ref2 = _asyncToGenerator(
-    /*#__PURE__*/
-    regeneratorRuntime.mark(function _callee(event) {
-      var _event$target2, name, value, newValues, _validate2, newWarnings, newErrors;
+  var handleBlur = function handleBlur(event) {
+    if (validateOnBlur) {
+      var _event$target2 = event.target,
+          name = _event$target2.name,
+          value = _event$target2.value;
 
-      return regeneratorRuntime.wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              _event$target2 = event.target, name = _event$target2.name, value = _event$target2.value;
-              newValues = _objectSpread({}, values, _defineProperty({}, name, value));
-              _validate2 = validate(newValues), newWarnings = _validate2.warnings, newErrors = _validate2.errors;
-              setWarnings(function (prevWarnings) {
-                return _objectSpread({}, prevWarnings, _defineProperty({}, name, newWarnings[name]));
-              });
-              setErrors(function (prevErrors) {
-                return _objectSpread({}, prevErrors, _defineProperty({}, name, newErrors[name]));
-              });
+      var newValues = _objectSpread({}, values, _defineProperty({}, name, value));
 
-            case 5:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee);
-    }));
-
-    return function handleBlur(_x) {
-      return _ref2.apply(this, arguments);
-    };
-  }();
+      setValuesFunction(name, value, true)(newValues);
+    }
+  };
 
   var handleSubmit =
   /*#__PURE__*/
   function () {
-    var _ref3 = _asyncToGenerator(
+    var _ref2 = _asyncToGenerator(
     /*#__PURE__*/
-    regeneratorRuntime.mark(function _callee2() {
+    regeneratorRuntime.mark(function _callee() {
       var validation, abortSubmit, result;
-      return regeneratorRuntime.wrap(function _callee2$(_context2) {
+      return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
-          switch (_context2.prev = _context2.next) {
+          switch (_context.prev = _context.next) {
             case 0:
-              _context2.prev = 0;
+              _context.prev = 0;
               validation = validate(values);
               Object.keys(validation.errors).forEach(function (key) {
                 setErrors(function (prevErrors) {
@@ -146,44 +139,44 @@ var useForm = function useForm(_ref) {
               abortSubmit = Object.values(validation.errors).some(Boolean);
 
               if (!abortSubmit) {
-                _context2.next = 6;
+                _context.next = 6;
                 break;
               }
 
-              return _context2.abrupt("return");
+              return _context.abrupt("return");
 
             case 6:
               setLoading(true);
-              _context2.next = 9;
+              _context.next = 9;
               return onSubmit(values);
 
             case 9:
-              result = _context2.sent;
+              result = _context.sent;
               setFormError(null);
               setLoading(false);
               if (onSubmitSuccess) onSubmitSuccess(result);
-              return _context2.abrupt("return", result);
+              return _context.abrupt("return", result);
 
             case 16:
-              _context2.prev = 16;
-              _context2.t0 = _context2["catch"](0);
+              _context.prev = 16;
+              _context.t0 = _context["catch"](0);
               console.error('Error while submitting form');
-              console.error(_context2.t0);
-              setFormError(_context2.t0);
+              console.error(_context.t0);
+              setFormError(_context.t0);
               setLoading(false);
-              if (onSubmitError) onSubmitError(_context2.t0);
-              return _context2.abrupt("return", _context2.t0);
+              if (onSubmitError) onSubmitError(_context.t0);
+              return _context.abrupt("return", _context.t0);
 
             case 24:
             case "end":
-              return _context2.stop();
+              return _context.stop();
           }
         }
-      }, _callee2, null, [[0, 16]]);
+      }, _callee, null, [[0, 16]]);
     }));
 
     return function handleSubmit() {
-      return _ref3.apply(this, arguments);
+      return _ref2.apply(this, arguments);
     };
   }();
 
@@ -201,7 +194,9 @@ var useForm = function useForm(_ref) {
     loading: loading,
     handleSubmit: handleSubmit,
     submitDisabled: submitDisabled,
-    formError: formError
+    formError: formError,
+    setFormError: setFormError,
+    setFieldValue: setFieldValue
   };
 };
 

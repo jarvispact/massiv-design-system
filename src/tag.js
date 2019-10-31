@@ -2,38 +2,35 @@ import React from 'react';
 import { string, func, shape, node } from 'prop-types';
 import Flex from './flex';
 import Text from './text';
-import Button from './button';
+import InvisibleButton from './invisible-button';
 import Icon from './icon';
 
 const defaultWrapperProps = {
     inline: true,
     alignItems: 'center',
+    justifyContent: 'center',
     bg: 'gray300',
-    pl: '5px',
-    pr: '5px',
-    pt: '2px',
-    pb: '2px',
-    borderRadius: 's',
+    p: '5px 3px 5px 3px',
+    borderRadius: '2px',
 };
 
 const defaultTextProps = (onDelete) => ({
-    pr: onDelete ? '5px' : undefined,
-    scale: 'xs',
+    pr: onDelete ? '10px' : undefined,
+    fontSize: 'xs',
 });
 
 const defaultIconProps = {
     name: 'clear',
-    pl: '5px',
-    scale: 'xs',
+    fontSize: 'xs',
 };
 
 const Tag = ({ name, children, onDelete, wrapperProps, textProps, iconProps }) => (
     <Flex {...defaultWrapperProps} {...wrapperProps}>
         <Text {...defaultTextProps(onDelete)} {...textProps}>{name || children}</Text>
         {onDelete && (
-            <Button bg="transparent" p="0" onClick={onDelete}>
+            <InvisibleButton fontSize="13px" onClick={onDelete}>
                 <Icon {...defaultIconProps} {...iconProps} />
-            </Button>
+            </InvisibleButton>
         )}
     </Flex>
 );

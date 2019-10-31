@@ -15,7 +15,7 @@ const defaultProperty = undefined;
 const iconPropertyConfig = [
     {
         cssProperty: 'font-size',
-        componentProperty: 'scale',
+        componentProperty: 'fontSize',
         scopedProperty: 'massivFontSize',
         themeProperty: 'fonts.scales',
         propertyType,
@@ -47,7 +47,6 @@ const propertyConfig = [
 const getCursor = (props) => {
     if (props.massivLoading) return 'progress';
     if (props.disabled) return 'not-allowed';
-    if (props.onClick) return 'pointer';
     return undefined;
 };
 
@@ -74,7 +73,6 @@ const StyledIcon = styled.i.attrs(props => ({ className: props.theme.fonts.icon.
 const Icon = (_props) => {
     const { children, theme, name, ...props } = _props;
     const scopedProps = buildScopedProps(propertyConfig, props);
-    if (scopedProps.onClick && scopedProps.disabled) scopedProps.onClick = undefined;
     return (<StyledIcon {...scopedProps}>{scopedProps.massivLoading ? theme.fonts.icon.loadingIcon : name || children}</StyledIcon>);
 };
 

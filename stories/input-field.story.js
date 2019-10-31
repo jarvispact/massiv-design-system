@@ -1,18 +1,17 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Flex from '../src/flex';
 import Box from '../src/box';
-import theme from '../src/default-theme';
 import H3 from '../src/h3';
-import Text from '../src/text';
 import InputField from '../src/input-field';
 
+// eslint-disable-next-line react/prop-types
 const Wrapper = ({ children }) => (
     <Box mb="m">
         {children}
     </Box>
 );
 
+// eslint-disable-next-line react/prop-types
 const SectionWrapper = ({ heading, children }) => (
     <>
         <H3 mt="2.5rem" mb="s" ml="s">{heading}</H3>
@@ -23,7 +22,7 @@ const SectionWrapper = ({ heading, children }) => (
 );
 
 storiesOf('InputField', module)
-    .add('Simple Example', () => (
+    .add('InputField', () => (
         <Wrapper>
             <SectionWrapper heading="Simple Input">
                 <InputField
