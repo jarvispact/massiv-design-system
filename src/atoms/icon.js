@@ -12,6 +12,7 @@ import positionPropertyConfig from '../../utils/position-property-config';
 import displayPropertyConfig from '../../utils/display-property-config';
 import flexChildPropertyConfig from '../../utils/flex-child-property-config';
 import borderPropertyConfig from '../../utils/border-property-config';
+import { arrayOfStringsOrString } from '../../utils/prop-types';
 
 const iconPropertyConfig = [
     {
@@ -19,6 +20,14 @@ const iconPropertyConfig = [
         scopedProperty: 'massivLoading',
         themeProperty: null,
         propertyType: bool,
+        defaultProperty: false,
+    },
+    {
+        cssProperty: 'vertical-align',
+        componentProperty: 'verticalAlign',
+        scopedProperty: 'massivVerticalAlign',
+        themeProperty: null,
+        propertyType: arrayOfStringsOrString,
         defaultProperty: false,
     },
 ];

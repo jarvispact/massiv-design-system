@@ -9,7 +9,6 @@ var _exportNames = {
   GlobalStyle: true,
   InputField: true,
   Row: true,
-  Tag: true,
   TextAreaField: true,
   ThemeContext: true,
   Theme: true,
@@ -44,12 +43,6 @@ Object.defineProperty(exports, "Row", {
   enumerable: true,
   get: function get() {
     return _row["default"];
-  }
-});
-Object.defineProperty(exports, "Tag", {
-  enumerable: true,
-  get: function get() {
-    return _tag["default"];
   }
 });
 Object.defineProperty(exports, "TextAreaField", {
@@ -92,8 +85,6 @@ var _globalStyle = _interopRequireDefault(require("./global-style"));
 var _inputField = _interopRequireDefault(require("./input-field"));
 
 var _row = _interopRequireDefault(require("./row"));
-
-var _tag = _interopRequireDefault(require("./tag"));
 
 var _textAreaField = _interopRequireDefault(require("./text-area-field"));
 
