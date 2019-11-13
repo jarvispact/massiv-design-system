@@ -1,17 +1,17 @@
 import React from 'react';
 import { node, string, func, shape } from 'prop-types';
-import Flex from './atoms/flex';
-import Box from './atoms/box';
-import Text from './atoms/text';
-import Icon from './atoms/icon';
-import InvisibleButton from './atoms/invisible-button';
+import Flex from '../atoms/flex';
+import Box from '../atoms/box';
+import Text from '../atoms/text';
+import Icon from '../atoms/icon';
+import InvisibleButton from '../atoms/invisible-button';
 
-const InfoAlert = ({ text, children, onClose, ...others }) => (
+const SuccessAlert = ({ text, children, onClose, ...others }) => (
     <Flex
-        bg="info300"
+        bg="success300"
         borderStyle="solid"
         borderWidth="1px"
-        borderColor="info700"
+        borderColor="success700"
         p="1.3rem"
         justifyContent="flex-start"
         alignItems="center"
@@ -21,12 +21,12 @@ const InfoAlert = ({ text, children, onClose, ...others }) => (
         {onClose && (
             <Box position="absolute" top="5px" right="5px">
                 <InvisibleButton onClick={onClose}>
-                    <Icon name="close" color="info700" />
+                    <Icon name="close" color="success700" />
                 </InvisibleButton>
             </Box>
         )}
-        <Icon name="info" color="info700" />
-        {(text && !children) && <Text color="info700" pl="1rem">{text}</Text>}
+        <Icon name="check" color="success700" />
+        {(text && !children) && <Text color="success700" pl="1rem">{text}</Text>}
         {(!text && children) && (
             <Box pl="1rem">
                 {children}
@@ -35,18 +35,18 @@ const InfoAlert = ({ text, children, onClose, ...others }) => (
     </Flex>
 );
 
-InfoAlert.propTypes = {
+SuccessAlert.propTypes = {
     text: string,
     children: node,
     onClose: func,
     others: shape({}),
 };
 
-InfoAlert.defaultProps = {
+SuccessAlert.defaultProps = {
     text: undefined,
     children: undefined,
     onClose: undefined,
     others: undefined,
 };
 
-export default InfoAlert;
+export default SuccessAlert;

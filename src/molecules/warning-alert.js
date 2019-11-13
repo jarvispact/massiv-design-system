@@ -1,17 +1,17 @@
 import React from 'react';
 import { node, string, func, shape } from 'prop-types';
-import Flex from './atoms/flex';
-import Box from './atoms/box';
-import Text from './atoms/text';
-import Icon from './atoms/icon';
-import InvisibleButton from './atoms/invisible-button';
+import Flex from '../atoms/flex';
+import Box from '../atoms/box';
+import Text from '../atoms/text';
+import Icon from '../atoms/icon';
+import InvisibleButton from '../atoms/invisible-button';
 
-const SuccessAlert = ({ text, children, onClose, ...others }) => (
+const WarningAlert = ({ text, children, onClose, ...others }) => (
     <Flex
-        bg="success300"
+        bg="warning300"
         borderStyle="solid"
         borderWidth="1px"
-        borderColor="success700"
+        borderColor="warning700"
         p="1.3rem"
         justifyContent="flex-start"
         alignItems="center"
@@ -21,12 +21,12 @@ const SuccessAlert = ({ text, children, onClose, ...others }) => (
         {onClose && (
             <Box position="absolute" top="5px" right="5px">
                 <InvisibleButton onClick={onClose}>
-                    <Icon name="close" color="success700" />
+                    <Icon name="close" color="warning700" />
                 </InvisibleButton>
             </Box>
         )}
-        <Icon name="check" color="success700" />
-        {(text && !children) && <Text color="success700" pl="1rem">{text}</Text>}
+        <Icon name="warning" color="warning700" />
+        {(text && !children) && <Text color="warning700" pl="1rem">{text}</Text>}
         {(!text && children) && (
             <Box pl="1rem">
                 {children}
@@ -35,18 +35,18 @@ const SuccessAlert = ({ text, children, onClose, ...others }) => (
     </Flex>
 );
 
-SuccessAlert.propTypes = {
+WarningAlert.propTypes = {
     text: string,
     children: node,
     onClose: func,
     others: shape({}),
 };
 
-SuccessAlert.defaultProps = {
+WarningAlert.defaultProps = {
     text: undefined,
     children: undefined,
     onClose: undefined,
     others: undefined,
 };
 
-export default SuccessAlert;
+export default WarningAlert;

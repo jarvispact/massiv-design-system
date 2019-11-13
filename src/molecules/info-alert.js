@@ -1,17 +1,17 @@
 import React from 'react';
 import { node, string, func, shape } from 'prop-types';
-import Flex from './atoms/flex';
-import Box from './atoms/box';
-import Text from './atoms/text';
-import Icon from './atoms/icon';
-import InvisibleButton from './atoms/invisible-button';
+import Flex from '../atoms/flex';
+import Box from '../atoms/box';
+import Text from '../atoms/text';
+import Icon from '../atoms/icon';
+import InvisibleButton from '../atoms/invisible-button';
 
-const WarningAlert = ({ text, children, onClose, ...others }) => (
+const InfoAlert = ({ text, children, onClose, ...others }) => (
     <Flex
-        bg="warning300"
+        bg="info300"
         borderStyle="solid"
         borderWidth="1px"
-        borderColor="warning700"
+        borderColor="info700"
         p="1.3rem"
         justifyContent="flex-start"
         alignItems="center"
@@ -21,12 +21,12 @@ const WarningAlert = ({ text, children, onClose, ...others }) => (
         {onClose && (
             <Box position="absolute" top="5px" right="5px">
                 <InvisibleButton onClick={onClose}>
-                    <Icon name="close" color="warning700" />
+                    <Icon name="close" color="info700" />
                 </InvisibleButton>
             </Box>
         )}
-        <Icon name="warning" color="warning700" />
-        {(text && !children) && <Text color="warning700" pl="1rem">{text}</Text>}
+        <Icon name="info" color="info700" />
+        {(text && !children) && <Text color="info700" pl="1rem">{text}</Text>}
         {(!text && children) && (
             <Box pl="1rem">
                 {children}
@@ -35,18 +35,18 @@ const WarningAlert = ({ text, children, onClose, ...others }) => (
     </Flex>
 );
 
-WarningAlert.propTypes = {
+InfoAlert.propTypes = {
     text: string,
     children: node,
     onClose: func,
     others: shape({}),
 };
 
-WarningAlert.defaultProps = {
+InfoAlert.defaultProps = {
     text: undefined,
     children: undefined,
     onClose: undefined,
     others: undefined,
 };
 
-export default WarningAlert;
+export default InfoAlert;

@@ -3,10 +3,10 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import Box from '../src/atoms/box';
 import Text from '../src/atoms/text';
-import ErrorAlert from '../src/error-alert';
-import WarningAlert from '../src/warning-alert';
-import InfoAlert from '../src/info-alert';
-import SuccessAlert from '../src/success-alert';
+import ErrorAlert from '../src/molecules/error-alert';
+import WarningAlert from '../src/molecules/warning-alert';
+import InfoAlert from '../src/molecules/info-alert';
+import SuccessAlert from '../src/molecules/success-alert';
 
 // eslint-disable-next-line react/prop-types
 const Wrapper = ({ children }) => (
