@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -rf ./dist",
     "build": "babel src --out-dir dist --ignore '**/*.story.js'",
-    "git-add-dist": "git add ./dist/*.js",
+    "git-add-dist": "git add ./dist/**/*.js",
     "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "pre-commit": [
