@@ -15,8 +15,8 @@ import Icon from '../src/icon';
 storiesOf('Text', module)
     .add('H1', () => (
         <H1
-            weight={array('weight', [])}
-            scale={array('scale', [])}
+            fontWeight={array('fontWeight', [])}
+            fontSize={array('fontSize', [])}
             color={array('color', [])}
             letterSpacing={array('letterSpacing', [])}
         >
@@ -25,8 +25,8 @@ storiesOf('Text', module)
     ))
     .add('H1 with Icon', () => (
         <H1
-            weight={array('weight', [])}
-            scale={array('scale', [])}
+            fontWeight={array('fontWeight', [])}
+            fontSize={array('fontSize', [])}
             color={array('color', [])}
             letterSpacing={array('letterSpacing', [])}
         >
@@ -37,8 +37,8 @@ storiesOf('Text', module)
     ))
     .add('H2', () => (
         <H2
-            weight={array('weight', [])}
-            scale={array('scale', [])}
+            fontWeight={array('fontWeight', [])}
+            fontSize={array('fontSize', [])}
             color={array('color', [])}
             letterSpacing={array('letterSpacing', [])}
         >
@@ -47,8 +47,8 @@ storiesOf('Text', module)
     ))
     .add('H2 with Icon', () => (
         <H2
-            weight={array('weight', [])}
-            scale={array('scale', [])}
+            fontWeight={array('fontWeight', [])}
+            fontSize={array('fontSize', [])}
             color={array('color', [])}
             letterSpacing={array('letterSpacing', [])}
         >
@@ -59,8 +59,8 @@ storiesOf('Text', module)
     ))
     .add('H3', () => (
         <H3
-            weight={array('weight', [])}
-            scale={array('scale', [])}
+            fontWeight={array('fontWeight', [])}
+            fontSize={array('fontSize', [])}
             color={array('color', [])}
             letterSpacing={array('letterSpacing', [])}
         >
@@ -69,8 +69,8 @@ storiesOf('Text', module)
     ))
     .add('H4', () => (
         <H4
-            weight={array('weight', [])}
-            scale={array('scale', [])}
+            fontWeight={array('fontWeight', [])}
+            fontSize={array('fontSize', [])}
             color={array('color', [])}
             letterSpacing={array('letterSpacing', [])}
         >
@@ -79,8 +79,8 @@ storiesOf('Text', module)
     ))
     .add('H5', () => (
         <H5
-            weight={array('weight', [])}
-            scale={array('scale', [])}
+            fontWeight={array('fontWeight', [])}
+            fontSize={array('fontSize', [])}
             color={array('color', [])}
             letterSpacing={array('letterSpacing', [])}
         >
@@ -89,8 +89,8 @@ storiesOf('Text', module)
     ))
     .add('H6', () => (
         <H6
-            weight={array('weight', [])}
-            scale={array('scale', [])}
+            fontWeight={array('fontWeight', [])}
+            fontSize={array('fontSize', [])}
             color={array('color', [])}
             letterSpacing={array('letterSpacing', [])}
         >
@@ -99,8 +99,8 @@ storiesOf('Text', module)
     ))
     .add('Text', () => (
         <Text
-            weight={array('weight', [])}
-            scale={array('scale', [])}
+            fontWeight={array('fontWeight', [])}
+            fontSize={array('fontSize', [])}
             color={array('color', [])}
             letterSpacing={array('letterSpacing', [])}
         >
@@ -109,8 +109,8 @@ storiesOf('Text', module)
     ))
     .add('Text with Icon embedded', () => (
         <Text
-            weight={array('weight', [])}
-            scale={array('scale', [])}
+            fontWeight={array('fontWeight', [])}
+            fontSize={array('fontSize', [])}
             color={array('color', [])}
             letterSpacing={array('letterSpacing', [])}
         >
@@ -123,8 +123,8 @@ storiesOf('Text', module)
         <>
             <Icon pr="s" name="donut_large" />
             <Text
-                weight={array('weight', [])}
-                scale={array('scale', [])}
+                fontWeight={array('fontWeight', [])}
+                fontSize={array('fontSize', [])}
                 color={array('color', [])}
                 letterSpacing={array('letterSpacing', [])}
             >
@@ -135,8 +135,8 @@ storiesOf('Text', module)
     .add('Text with Icon aside 2', () => (
         <>
             <Text
-                weight={array('weight', [])}
-                scale={array('scale', [])}
+                fontWeight={array('fontWeight', [])}
+                fontSize={array('fontSize', [])}
                 color={array('color', [])}
                 letterSpacing={array('letterSpacing', [])}
             >
@@ -147,8 +147,8 @@ storiesOf('Text', module)
     ))
     .add('Link', () => (
         <Link
-            weight={array('weight', [])}
-            scale={array('scale', [])}
+            fontWeight={array('fontWeight', [])}
+            fontSize={array('fontSize', [])}
             color={array('color', [])}
             letterSpacing={array('letterSpacing', [])}
             href={text('href', 'https://jarvispact.com')}
@@ -158,8 +158,8 @@ storiesOf('Text', module)
     ))
     .add('Label', () => (
         <Label
-            weight={array('weight', [])}
-            scale={array('scale', [])}
+            fontWeight={array('fontWeight', [])}
+            fontSize={array('fontSize', [])}
             color={array('color', [])}
             letterSpacing={array('letterSpacing', [])}
         >

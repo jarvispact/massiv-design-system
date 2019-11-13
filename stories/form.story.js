@@ -6,15 +6,21 @@ import Flex from '../src/flex';
 import Box from '../src/box';
 import ErrorAlert from '../src/error-alert';
 import { InputField, PrimaryButton, SecondaryButton, useForm, Row, Col } from '../src';
+import Select from '../src/select';
+
+const options = [
+    { value: '', label: 'Bitte auswählen' },
+    { value: '1', label: 'one' },
+    { value: '2', label: 'two' },
+    { value: '3', label: 'three' },
+];
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 const Wrapper = ({ children }) => (
-    <Box height="100vh">
-        <Flex justifyContent="center" alignItems="center" height="100%">
-            {children}
-        </Flex>
-    </Box>
+    <Flex justifyContent="center" alignItems="center" mt="m">
+        {children}
+    </Flex>
 );
 
 const Form = ({ form }) => (
@@ -52,6 +58,13 @@ const Form = ({ form }) => (
             onBlur={form.handleBlur}
             width="100%"
         />
+        <Select
+            name="type"
+            options={options}
+            value={form.values.type}
+            onChange={form.handleChange}
+            buttonProps={{ width: '100%', mb: 's' }}
+        />
         <Row gutter="5px">
             <Col span={[12, 6]}>
                 <SecondaryButton
@@ -76,7 +89,7 @@ const Form = ({ form }) => (
     </Box>
 );
 
-const initialValues = { email: '', password: '' };
+const initialValues = { email: '', password: '', type: '' };
 
 const validateSuccessForm = ({ email, password }) => {
     const errors = {};
