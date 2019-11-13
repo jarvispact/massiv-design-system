@@ -11,7 +11,7 @@ const WarningAlert = ({ text, children, onClose, ...others }) => (
         bg="warning300"
         borderStyle="solid"
         borderWidth="1px"
-        borderColor="warning900"
+        borderColor="warning700"
         p="1.3rem"
         justifyContent="flex-start"
         alignItems="center"
@@ -21,12 +21,12 @@ const WarningAlert = ({ text, children, onClose, ...others }) => (
         {onClose && (
             <Box position="absolute" top="5px" right="5px">
                 <InvisibleButton onClick={onClose}>
-                    <Icon name="close" color="warning900" />
+                    <Icon name="close" color="warning700" />
                 </InvisibleButton>
             </Box>
         )}
-        <Icon name="warning" color="warning900" />
-        {(text && !children) && <Text color="warning900" pl="1rem">{text}</Text>}
+        <Icon name="warning" color="warning700" />
+        {(text && !children) && <Text color="warning700" pl="1rem">{text}</Text>}
         {(!text && children) && (
             <Box pl="1rem">
                 {children}

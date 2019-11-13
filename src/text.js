@@ -4,28 +4,36 @@ import styled from 'styled-components';
 import buildCss from '../utils/build-css';
 import buildScopedProps from '../utils/build-scoped-props';
 import buildPropTypes from '../utils/build-prop-types';
-import createFontPropertyConfig from '../utils/create-font-property-config';
+import fontPropertyConfig from '../utils/font-property-config';
 import spacingPropertyConfig from '../utils/spacing-property-config';
 import overflowPropertyConfig from '../utils/overflow-property-config';
 import displayPropertyConfig from '../utils/display-property-config';
 import colorPropertyConfig from '../utils/color-property-config';
 import borderPropertyConfig from '../utils/border-property-config';
 import clone from '../utils/clone';
-
-const fontPropertyConfig = createFontPropertyConfig({ type: 'text' });
+import flexChildPropertyConfig from '../utils/flex-child-property-config';
+import positionPropertyConfig from '../utils/position-property-config';
+import widthPropertyConfig from '../utils/width-property-config';
+import heightPropertyConfig from '../utils/height-property-config';
 
 const propertyConfig = [
-    ...clone(spacingPropertyConfig),
     ...clone(fontPropertyConfig),
-    ...clone(overflowPropertyConfig),
+    ...clone(positionPropertyConfig),
     ...clone(displayPropertyConfig),
+    ...clone(spacingPropertyConfig),
+    ...clone(widthPropertyConfig),
+    ...clone(heightPropertyConfig),
+    ...clone(flexChildPropertyConfig),
     ...clone(colorPropertyConfig),
     ...clone(borderPropertyConfig),
+    ...clone(overflowPropertyConfig),
 ];
 
-const StyledText = styled.span`
-    font-family: ${props => props.theme.fonts.text.family};
-    vertical-align: ${props => props.theme.fonts.text.verticalAlign};
+const StyledText = styled.p`
+    display: block;
+    font-family: ${props => props.theme.fontFamilies[props.as] || props.theme.fontFamilies.default};
+    font-size: ${props => props.theme.fontSizes[props.as || props.fontSize] || props.theme.fontSizes.m};
+    line-height: ${props => props.theme.lineHeights[props.as || props.lineHeight] || props.theme.lineHeights.m};
     ${buildCss(propertyConfig)}
 `;
 

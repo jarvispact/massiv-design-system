@@ -37,7 +37,7 @@ var ErrorAlert = function ErrorAlert(_ref) {
     bg: "error300",
     borderStyle: "solid",
     borderWidth: "1px",
-    borderColor: "error900",
+    borderColor: "error700",
     p: "1.3rem",
     justifyContent: "flex-start",
     alignItems: "center",
@@ -50,12 +50,12 @@ var ErrorAlert = function ErrorAlert(_ref) {
     onClick: onClose
   }, _react["default"].createElement(_icon["default"], {
     name: "close",
-    color: "error900"
+    color: "error700"
   }))), _react["default"].createElement(_icon["default"], {
     name: "error",
-    color: "error900"
+    color: "error700"
   }), text && !children && _react["default"].createElement(_text["default"], {
-    color: "error900",
+    color: "error700",
     pl: "1rem"
   }, text), !text && children && _react["default"].createElement(_box["default"], {
     pl: "1rem"

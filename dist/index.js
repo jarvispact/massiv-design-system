@@ -45,42 +45,6 @@ Object.defineProperty(exports, "GlobalStyle", {
     return _globalStyle["default"];
   }
 });
-Object.defineProperty(exports, "H1", {
-  enumerable: true,
-  get: function get() {
-    return _h["default"];
-  }
-});
-Object.defineProperty(exports, "H2", {
-  enumerable: true,
-  get: function get() {
-    return _h2["default"];
-  }
-});
-Object.defineProperty(exports, "H3", {
-  enumerable: true,
-  get: function get() {
-    return _h3["default"];
-  }
-});
-Object.defineProperty(exports, "H4", {
-  enumerable: true,
-  get: function get() {
-    return _h4["default"];
-  }
-});
-Object.defineProperty(exports, "H5", {
-  enumerable: true,
-  get: function get() {
-    return _h5["default"];
-  }
-});
-Object.defineProperty(exports, "H6", {
-  enumerable: true,
-  get: function get() {
-    return _h6["default"];
-  }
-});
 Object.defineProperty(exports, "Icon", {
   enumerable: true,
   get: function get() {
@@ -115,18 +79,6 @@ Object.defineProperty(exports, "InvisibleButton", {
   enumerable: true,
   get: function get() {
     return _invisibleButton["default"];
-  }
-});
-Object.defineProperty(exports, "Label", {
-  enumerable: true,
-  get: function get() {
-    return _label["default"];
-  }
-});
-Object.defineProperty(exports, "Link", {
-  enumerable: true,
-  get: function get() {
-    return _link["default"];
   }
 });
 Object.defineProperty(exports, "PrimaryButton", {
@@ -258,18 +210,6 @@ var _flex = _interopRequireDefault(require("./flex"));
 
 var _globalStyle = _interopRequireDefault(require("./global-style"));
 
-var _h = _interopRequireDefault(require("./h1"));
-
-var _h2 = _interopRequireDefault(require("./h2"));
-
-var _h3 = _interopRequireDefault(require("./h3"));
-
-var _h4 = _interopRequireDefault(require("./h4"));
-
-var _h5 = _interopRequireDefault(require("./h5"));
-
-var _h6 = _interopRequireDefault(require("./h6"));
-
 var _icon = _interopRequireDefault(require("./icon"));
 
 var _image = _interopRequireDefault(require("./image"));
@@ -281,10 +221,6 @@ var _inputField = _interopRequireDefault(require("./input-field"));
 var _input = _interopRequireDefault(require("./input"));
 
 var _invisibleButton = _interopRequireDefault(require("./invisible-button"));
-
-var _label = _interopRequireDefault(require("./label"));
-
-var _link = _interopRequireDefault(require("./link"));
 
 var _primaryButton = _interopRequireDefault(require("./primary-button"));
 

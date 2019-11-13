@@ -13,6 +13,7 @@ const defaultButtonProps = {
 };
 
 const defaultIconProps = {
+    color: 'gray600',
     fontSize: 'xl',
 };
 
@@ -40,7 +41,6 @@ const getDropdownDefaultProps = (position) => ({
     top: `${position.top}px`,
     left: `${position.left}px`,
     width: `${position.width}px`,
-    clipPath: 'polygon(80% 16%, 90% 0, 100% 16%, 100% 100%, 80% 100%, 20% 100%, 0 100%, 0 14%);',
 });
 
 const Select = ({ options, name, value, onChange, buttonProps, iconProps, dropdownProps }) => {

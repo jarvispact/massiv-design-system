@@ -37,7 +37,7 @@ var WarningAlert = function WarningAlert(_ref) {
     bg: "warning300",
     borderStyle: "solid",
     borderWidth: "1px",
-    borderColor: "warning900",
+    borderColor: "warning700",
     p: "1.3rem",
     justifyContent: "flex-start",
     alignItems: "center",
@@ -50,12 +50,12 @@ var WarningAlert = function WarningAlert(_ref) {
     onClick: onClose
   }, _react["default"].createElement(_icon["default"], {
     name: "close",
-    color: "warning900"
+    color: "warning700"
   }))), _react["default"].createElement(_icon["default"], {
     name: "warning",
-    color: "warning900"
+    color: "warning700"
   }), text && !children && _react["default"].createElement(_text["default"], {
-    color: "warning900",
+    color: "warning700",
     pl: "1rem"
   }, text), !text && children && _react["default"].createElement(_box["default"], {
     pl: "1rem"

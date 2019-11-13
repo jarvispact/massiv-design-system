@@ -11,7 +11,7 @@ const ErrorAlert = ({ text, children, onClose, ...others }) => (
         bg="error300"
         borderStyle="solid"
         borderWidth="1px"
-        borderColor="error900"
+        borderColor="error700"
         p="1.3rem"
         justifyContent="flex-start"
         alignItems="center"
@@ -21,12 +21,12 @@ const ErrorAlert = ({ text, children, onClose, ...others }) => (
         {onClose && (
             <Box position="absolute" top="5px" right="5px">
                 <InvisibleButton onClick={onClose}>
-                    <Icon name="close" color="error900" />
+                    <Icon name="close" color="error700" />
                 </InvisibleButton>
             </Box>
         )}
-        <Icon name="error" color="error900" />
-        {(text && !children) && <Text color="error900" pl="1rem">{text}</Text>}
+        <Icon name="error" color="error700" />
+        {(text && !children) && <Text color="error700" pl="1rem">{text}</Text>}
         {(!text && children) && (
             <Box pl="1rem">
                 {children}

@@ -11,98 +11,41 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var sharedFontHeadingConfig = {
-  family: '"Josefin Slab", serif',
-  weights: {
-    s: '300',
-    m: '400',
-    l: '700'
-  }
-};
-var sharedFontTextConfig = {
-  family: '"Nunito", sans-serif',
-  weights: {
-    s: '200',
-    m: '400',
-    l: '700'
-  }
-};
-var fonts = {
-  h1: sharedFontHeadingConfig,
-  h2: sharedFontHeadingConfig,
-  h3: sharedFontHeadingConfig,
-  h4: sharedFontHeadingConfig,
-  h5: sharedFontHeadingConfig,
-  h6: sharedFontHeadingConfig,
-  text: sharedFontTextConfig,
-  link: sharedFontTextConfig,
-  label: sharedFontTextConfig,
-  input: sharedFontTextConfig,
-  textarea: sharedFontTextConfig,
-  button: sharedFontTextConfig,
-  icon: {
-    className: 'material-icons',
-    loadingIcon: 'settings'
-  },
-  scales: {
-    xxs: '0.6rem',
-    xs: '0.7rem',
-    s: '0.8rem',
-    m: '1rem',
-    l: '1.2rem',
-    xl: '1.5rem',
-    xxl: '2rem',
-    xxxl: '2.5rem'
-  },
-  letterSpacings: {
-    s: '0.1rem',
-    m: '0.2rem',
-    l: '0.3rem'
-  }
-};
-var error300 = '#ff9696';
+var error300 = '#ffa8a8';
 var error500 = '#ff4444';
 var error700 = '#cc0000';
-var error900 = '#a30000';
 var error = {
   error: error500,
   error300: error300,
   error500: error500,
-  error700: error700,
-  error900: error900
+  error700: error700
 };
 var warning300 = '#ffda91';
 var warning500 = '#ffbb33';
-var warning700 = '#ff8800';
-var warning900 = '#d17000';
+var warning700 = '#d17000';
 var warning = {
   warning: warning500,
   warning300: warning300,
   warning500: warning500,
-  warning700: warning700,
-  warning900: warning900
+  warning700: warning700
 };
 var success300 = '#54f796';
 var success500 = '#00C851';
-var success700 = '#007e33';
-var success900 = '#005c25';
+var success700 = '#005c25';
 var success = {
   success: success500,
   success300: success300,
   success500: success500,
-  success700: success700,
-  success900: success900
+  success700: success700
 };
 var info300 = '#79d5f7';
 var info500 = '#33b5e5';
-var info700 = '#0099cc';
-var info900 = '#007aa3';
+var info700 = '#007aa3';
 var info = {
   info: info500,
   info300: info300,
   info500: info500,
-  info700: info700,
-  info900: info900
+  info700: info700
 };
 var primary500 = '#4285f4';
 var primary700 = '#0d47a1';
@@ -170,18 +113,68 @@ var boxShadows = {
   m: '4px 4px',
   l: '6px 6px'
 };
-var textShadows = {
-  m: '4px 4px 2px rgba(150, 150, 150, 1)'
-};
 var _default = {
   breakpoints: breakpoints,
-  fonts: fonts,
+  fontFamilies: {
+    "default": '"Nunito", sans-serif',
+    h1: '"Nunito", sans-serif',
+    h2: '"Nunito", sans-serif',
+    h3: '"Nunito", sans-serif',
+    h4: '"Nunito", sans-serif',
+    h5: '"Nunito", sans-serif',
+    h6: '"Nunito", sans-serif',
+    button: '"Nunito", sans-serif',
+    input: '"Nunito", sans-serif',
+    textarea: '"Nunito", sans-serif'
+  },
+  fontWeights: {
+    s: '200',
+    m: '400',
+    l: '700'
+  },
+  fontSizes: {
+    xs: '10px',
+    s: '12px',
+    m: '16px',
+    l: '20px',
+    xl: '28px',
+    h1: '32px',
+    h2: '30px',
+    h3: '28px',
+    h4: '26px',
+    h5: '24px',
+    h6: '22px'
+  },
+  lineHeights: {
+    xs: '8px',
+    s: '8px',
+    m: '14px',
+    l: '16px',
+    xl: '22px',
+    h1: '26px',
+    h2: '24px',
+    h3: '22px',
+    h4: '20px',
+    h5: '18px',
+    h6: '16px'
+  },
+  letterSpacings: {
+    s: '-0.5px',
+    m: '0px',
+    l: '1px'
+  },
+  textShadows: {
+    m: '4px 4px 2px rgba(150, 150, 150, 1)'
+  },
+  icons: {
+    className: 'material-icons',
+    loadingIcon: 'settings'
+  },
   colors: colors,
   spacing: spacing,
   widths: widths,
   heights: heights,
   radii: radii,
-  boxShadows: boxShadows,
-  textShadows: textShadows
+  boxShadows: boxShadows
 };
 exports["default"] = _default;

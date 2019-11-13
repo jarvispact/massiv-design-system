@@ -13,8 +13,6 @@ var _box = _interopRequireDefault(require("./box"));
 
 var _text = _interopRequireDefault(require("./text"));
 
-var _label = _interopRequireDefault(require("./label"));
-
 var _textArea = _interopRequireDefault(require("./text-area"));
 
 var _icon = _interopRequireDefault(require("./icon"));
@@ -32,12 +30,11 @@ var defaultWrapperProps = {
   width: '100%'
 };
 var defaultLabelProps = {
-  color: 'black'
+  color: 'gray700'
 };
 var defaultTextAreaProps = {
   width: '100%',
-  bg: 'white',
-  color: 'black'
+  bg: 'white'
 };
 var defaultHintProps = {
   pl: '5px',
@@ -74,7 +71,8 @@ var TextAreaField = function TextAreaField(_ref) {
       errorProps = _ref.errorProps,
       others = _objectWithoutProperties(_ref, ["id", "name", "label", "type", "value", "onChange", "onBlur", "disabled", "hint", "warning", "error", "wrapperProps", "labelProps", "hintProps", "warningProps", "errorProps"]);
 
-  return _react["default"].createElement(_box["default"], _extends({}, defaultWrapperProps, wrapperProps), label && _react["default"].createElement(_label["default"], _extends({
+  return _react["default"].createElement(_box["default"], _extends({}, defaultWrapperProps, wrapperProps), label && _react["default"].createElement(_text["default"], _extends({
+    as: "label",
     htmlFor: id || name
   }, defaultLabelProps, labelProps), label), _react["default"].createElement(_textArea["default"], _extends({
     rows: "6",

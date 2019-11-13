@@ -41,6 +41,7 @@ var defaultButtonProps = {
   minWidth: '200px'
 };
 var defaultIconProps = {
+  color: 'gray600',
   fontSize: 'xl'
 };
 var lastScrollY = 0;
@@ -70,8 +71,7 @@ var getDropdownDefaultProps = function getDropdownDefaultProps(position) {
     position: 'absolute',
     top: "".concat(position.top, "px"),
     left: "".concat(position.left, "px"),
-    width: "".concat(position.width, "px"),
-    clipPath: 'polygon(80% 16%, 90% 0, 100% 16%, 100% 100%, 80% 100%, 20% 100%, 0 100%, 0 14%);'
+    width: "".concat(position.width, "px")
   };
 };
 

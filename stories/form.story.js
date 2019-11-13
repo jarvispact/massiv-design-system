@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions';
 import Flex from '../src/flex';
 import Box from '../src/box';
 import ErrorAlert from '../src/error-alert';
-import { InputField, PrimaryButton, SecondaryButton, useForm, Row, Col } from '../src';
+import { InputField, PrimaryButton, SecondaryButton, useForm, Row, Col, Input, TextAreaField } from '../src';
 import Select from '../src/select';
 
 const options = [
@@ -54,6 +54,16 @@ const Form = ({ form }) => (
             value={form.values.password}
             warning={form.warnings.password}
             error={form.errors.password}
+            onChange={form.handleChange}
+            onBlur={form.handleBlur}
+            width="100%"
+        />
+        <TextAreaField
+            label="Info"
+            name="info"
+            value={form.values.info}
+            warning={form.warnings.info}
+            error={form.errors.info}
             onChange={form.handleChange}
             onBlur={form.handleBlur}
             width="100%"
@@ -172,5 +182,11 @@ storiesOf('Form', module)
     .add('Responsive Form (Error)', () => (
         <Wrapper>
             <ErrorForm onSubmit={error} />
+        </Wrapper>
+    ))
+    .add('Inline', () => (
+        <Wrapper>
+            <Input />
+            <PrimaryButton>Submit</PrimaryButton>
         </Wrapper>
     ));

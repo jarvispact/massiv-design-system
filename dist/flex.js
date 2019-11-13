@@ -39,6 +39,10 @@ var _boxShadowPropertyConfig = _interopRequireDefault(require("../utils/box-shad
 
 var _clone = _interopRequireDefault(require("../utils/clone"));
 
+var _flexChildPropertyConfig = _interopRequireDefault(require("../utils/flex-child-property-config"));
+
+var _fontPropertyConfig = _interopRequireDefault(require("../utils/font-property-config"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
@@ -110,15 +114,8 @@ var flexPropertyConfig = [{
   themeProperty: themeProperty,
   propertyType: propertyType,
   defaultProperty: defaultProperty
-}, {
-  cssProperty: 'text-align',
-  componentProperty: 'textAlign',
-  scopedProperty: 'massivTextAlign',
-  themeProperty: themeProperty,
-  propertyType: propertyType,
-  defaultProperty: defaultProperty
 }];
-var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_positionPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_displayPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_widthPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_heightPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_borderPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_overflowPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_boxShadowPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(flexPropertyConfig)));
+var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_positionPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_displayPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_widthPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_heightPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_flexChildPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_borderPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_overflowPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_boxShadowPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_fontPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(flexPropertyConfig)));
 
 var StyledFlex = _styledComponents["default"].div(_templateObject(), function (props) {
   return props.inline ? 'inline-flex' : 'flex';

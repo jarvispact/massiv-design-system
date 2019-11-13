@@ -15,14 +15,6 @@ const GlobalStyle = createGlobalStyle`
         font-weight: normal;
     }
 
-    ol, ul {
-        list-style: none;
-    }
-
-    a {
-        text-decoration: none;
-    }
-
     img {
         max-width: 100%;
         height: auto;

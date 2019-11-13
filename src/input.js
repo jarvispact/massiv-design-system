@@ -9,14 +9,18 @@ import spacingPropertyConfig from '../utils/spacing-property-config';
 import widthPropertyConfig from '../utils/width-property-config';
 import heightPropertyConfig from '../utils/height-property-config';
 import borderPropertyConfig from '../utils/border-property-config';
-import createFontPropertyConfig from '../utils/create-font-property-config';
+import fontPropertyConfig from '../utils/font-property-config';
 import boxShadowPropertyConfig from '../utils/box-shadow-property-config';
+import positionPropertyConfig from '../utils/position-property-config';
+import flexChildPropertyConfig from '../utils/flex-child-property-config';
+import displayPropertyConfig from '../utils/display-property-config';
 import setProperty from '../utils/set-property';
 import clone from '../utils/clone';
 
-const fontPropertyConfig = createFontPropertyConfig({ type: 'input' });
-
 const propertyConfig = [
+    ...clone(positionPropertyConfig),
+    ...clone(flexChildPropertyConfig),
+    ...clone(displayPropertyConfig),
     ...clone(colorPropertyConfig),
     ...clone(spacingPropertyConfig),
     ...clone(widthPropertyConfig),
@@ -29,14 +33,14 @@ const propertyConfig = [
 setProperty('border-style', 'defaultProperty', 'none', propertyConfig);
 setProperty('border-radius', 'defaultProperty', '2px', propertyConfig);
 setProperty('padding', 'defaultProperty', '6px', propertyConfig);
-setProperty('font-size', 'defaultProperty', '1rem', propertyConfig);
+setProperty('font-size', 'defaultProperty', '16px', propertyConfig);
+setProperty('line-height', 'defaultProperty', '14px', propertyConfig);
 setProperty('outline-color', 'defaultProperty', 'info', propertyConfig);
 
 const StyledInput = styled.input`
     cursor: ${props => (props.disabled && 'not-allowed')};
     opacity: ${props => props.disabled && '0.5'};
-    font-family: ${props => props.theme.fonts.input.family};
-    vertical-align: ${props => props.theme.fonts.input.verticalAlign};
+    font-family: ${props => props.theme.fontFamilies.input || props.theme.fontFamilies.default};
     ${buildCss(propertyConfig)}
 `;
 

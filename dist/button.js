@@ -29,9 +29,13 @@ var _borderPropertyConfig = _interopRequireDefault(require("../utils/border-prop
 
 var _displayPropertyConfig = _interopRequireDefault(require("../utils/display-property-config"));
 
-var _createFontPropertyConfig = _interopRequireDefault(require("../utils/create-font-property-config"));
+var _fontPropertyConfig = _interopRequireDefault(require("../utils/font-property-config"));
 
 var _boxShadowPropertyConfig = _interopRequireDefault(require("../utils/box-shadow-property-config"));
+
+var _positionPropertyConfig = _interopRequireDefault(require("../utils/position-property-config"));
+
+var _flexChildPropertyConfig = _interopRequireDefault(require("../utils/flex-child-property-config"));
 
 var _setProperty = _interopRequireDefault(require("../utils/set-property"));
 
@@ -67,9 +71,6 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-var fontPropertyConfig = (0, _createFontPropertyConfig["default"])({
-  type: 'button'
-});
 var buttonPropertyConfig = [{
   componentProperty: 'loading',
   scopedProperty: 'massivLoading',
@@ -77,11 +78,12 @@ var buttonPropertyConfig = [{
   propertyType: _propTypes.bool,
   defaultProperty: false
 }];
-var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_widthPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_heightPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_borderPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(fontPropertyConfig)), _toConsumableArray((0, _clone["default"])(_displayPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_boxShadowPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(buttonPropertyConfig)));
+var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_positionPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_flexChildPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_widthPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_heightPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_borderPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_fontPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_displayPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_boxShadowPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(buttonPropertyConfig)));
 (0, _setProperty["default"])('border-style', 'defaultProperty', 'none', propertyConfig);
 (0, _setProperty["default"])('border-radius', 'defaultProperty', '2px', propertyConfig);
-(0, _setProperty["default"])('padding', 'defaultProperty', '6px 12px', propertyConfig);
-(0, _setProperty["default"])('font-size', 'defaultProperty', '1rem', propertyConfig);
+(0, _setProperty["default"])('padding', 'defaultProperty', '9px 12px', propertyConfig);
+(0, _setProperty["default"])('font-size', 'defaultProperty', '16px', propertyConfig);
+(0, _setProperty["default"])('line-height', 'defaultProperty', '14px', propertyConfig);
 (0, _setProperty["default"])('outline-color', 'defaultProperty', 'info', propertyConfig);
 
 var getCursor = function getCursor(props) {
@@ -93,7 +95,7 @@ var getCursor = function getCursor(props) {
 var StyledButton = _styledComponents["default"].button(_templateObject(), getCursor, function (props) {
   return props.disabled && '0.5';
 }, function (props) {
-  return props.theme.fonts.button.family;
+  return props.theme.fontFamilies.button || props.theme.fontFamilies["default"];
 }, (0, _buildCss["default"])(propertyConfig));
 
 var Button = _react["default"].forwardRef(function (_props, ref) {

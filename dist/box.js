@@ -33,13 +33,13 @@ var _overflowPropertyConfig = _interopRequireDefault(require("../utils/overflow-
 
 var _boxShadowPropertyConfig = _interopRequireDefault(require("../utils/box-shadow-property-config"));
 
-var _propTypes2 = require("../utils/prop-types");
-
 var _buildScopedProps = _interopRequireDefault(require("../utils/build-scoped-props"));
 
 var _buildPropTypes2 = _interopRequireDefault(require("../utils/build-prop-types"));
 
 var _clone = _interopRequireDefault(require("../utils/clone"));
+
+var _fontPropertyConfig = _interopRequireDefault(require("../utils/font-property-config"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -67,18 +67,7 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-var themeProperty = null;
-var propertyType = _propTypes2.arrayOfStringsOrString;
-var defaultProperty = undefined;
-var boxPropertyConfig = [{
-  cssProperty: 'text-align',
-  componentProperty: 'textAlign',
-  scopedProperty: 'massivTextAlign',
-  themeProperty: themeProperty,
-  propertyType: propertyType,
-  defaultProperty: defaultProperty
-}];
-var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_positionPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_displayPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_widthPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_heightPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_flexChildPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_borderPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_overflowPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_boxShadowPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(boxPropertyConfig)));
+var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_positionPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_displayPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_widthPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_heightPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_flexChildPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_borderPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_overflowPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_boxShadowPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_fontPropertyConfig["default"])));
 
 var StyledBox = _styledComponents["default"].div(_templateObject(), (0, _buildCss["default"])(propertyConfig));
 

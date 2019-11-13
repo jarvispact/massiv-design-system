@@ -11,7 +11,7 @@ const InfoAlert = ({ text, children, onClose, ...others }) => (
         bg="info300"
         borderStyle="solid"
         borderWidth="1px"
-        borderColor="info900"
+        borderColor="info700"
         p="1.3rem"
         justifyContent="flex-start"
         alignItems="center"
@@ -21,12 +21,12 @@ const InfoAlert = ({ text, children, onClose, ...others }) => (
         {onClose && (
             <Box position="absolute" top="5px" right="5px">
                 <InvisibleButton onClick={onClose}>
-                    <Icon name="close" color="info900" />
+                    <Icon name="close" color="info700" />
                 </InvisibleButton>
             </Box>
         )}
-        <Icon name="info" color="info900" />
-        {(text && !children) && <Text color="info900" pl="1rem">{text}</Text>}
+        <Icon name="info" color="info700" />
+        {(text && !children) && <Text color="info700" pl="1rem">{text}</Text>}
         {(!text && children) && (
             <Box pl="1rem">
                 {children}

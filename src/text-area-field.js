@@ -2,7 +2,6 @@ import React from 'react';
 import { string, bool, oneOfType, number, object, array, func, shape } from 'prop-types';
 import Box from './box';
 import Text from './text';
-import Label from './label';
 import TextArea from './text-area';
 import Icon from './icon';
 
@@ -12,13 +11,12 @@ const defaultWrapperProps = {
 };
 
 const defaultLabelProps = {
-    color: 'black',
+    color: 'gray700',
 };
 
 const defaultTextAreaProps = {
     width: '100%',
     bg: 'white',
-    color: 'black',
 };
 
 const defaultHintProps = {
@@ -60,9 +58,9 @@ const TextAreaField = ({
 }) => (
     <Box {...defaultWrapperProps} {...wrapperProps}>
         {label && (
-            <Label htmlFor={id || name} {...defaultLabelProps} {...labelProps}>
+            <Text as="label" htmlFor={id || name} {...defaultLabelProps} {...labelProps}>
                 {label}
-            </Label>
+            </Text>
         )}
         <TextArea
             rows="6"

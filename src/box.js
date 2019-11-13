@@ -12,25 +12,10 @@ import colorPropertyConfig from '../utils/color-property-config';
 import borderPropertyConfig from '../utils/border-property-config';
 import overflowPropertyConfig from '../utils/overflow-property-config';
 import boxShadowPropertyConfig from '../utils/box-shadow-property-config';
-import { arrayOfStringsOrString } from '../utils/prop-types';
 import buildScopedProps from '../utils/build-scoped-props';
 import buildPropTypes from '../utils/build-prop-types';
 import clone from '../utils/clone';
-
-const themeProperty = null;
-const propertyType = arrayOfStringsOrString;
-const defaultProperty = undefined;
-
-const boxPropertyConfig = [
-    {
-        cssProperty: 'text-align',
-        componentProperty: 'textAlign',
-        scopedProperty: 'massivTextAlign',
-        themeProperty,
-        propertyType,
-        defaultProperty,
-    },
-];
+import fontPropertyConfig from '../utils/font-property-config';
 
 const propertyConfig = [
     ...clone(positionPropertyConfig),
@@ -43,7 +28,7 @@ const propertyConfig = [
     ...clone(borderPropertyConfig),
     ...clone(overflowPropertyConfig),
     ...clone(boxShadowPropertyConfig),
-    ...clone(boxPropertyConfig),
+    ...clone(fontPropertyConfig),
 ];
 
 const StyledBox = styled.div`

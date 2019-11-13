@@ -17,7 +17,7 @@ var _buildScopedProps = _interopRequireDefault(require("../utils/build-scoped-pr
 
 var _buildPropTypes2 = _interopRequireDefault(require("../utils/build-prop-types"));
 
-var _createFontPropertyConfig = _interopRequireDefault(require("../utils/create-font-property-config"));
+var _fontPropertyConfig = _interopRequireDefault(require("../utils/font-property-config"));
 
 var _spacingPropertyConfig = _interopRequireDefault(require("../utils/spacing-property-config"));
 
@@ -31,6 +31,14 @@ var _borderPropertyConfig = _interopRequireDefault(require("../utils/border-prop
 
 var _clone = _interopRequireDefault(require("../utils/clone"));
 
+var _flexChildPropertyConfig = _interopRequireDefault(require("../utils/flex-child-property-config"));
+
+var _positionPropertyConfig = _interopRequireDefault(require("../utils/position-property-config"));
+
+var _widthPropertyConfig = _interopRequireDefault(require("../utils/width-property-config"));
+
+var _heightPropertyConfig = _interopRequireDefault(require("../utils/height-property-config"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
@@ -38,7 +46,7 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    font-family: ", ";\n    vertical-align: ", ";\n    ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n    display: block;\n    font-family: ", ";\n    font-size: ", ";\n    line-height: ", ";\n    ", "\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -57,15 +65,14 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-var fontPropertyConfig = (0, _createFontPropertyConfig["default"])({
-  type: 'text'
-});
-var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(fontPropertyConfig)), _toConsumableArray((0, _clone["default"])(_overflowPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_displayPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_borderPropertyConfig["default"])));
+var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_fontPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_positionPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_displayPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_widthPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_heightPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_flexChildPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_borderPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_overflowPropertyConfig["default"])));
 
-var StyledText = _styledComponents["default"].span(_templateObject(), function (props) {
-  return props.theme.fonts.text.family;
+var StyledText = _styledComponents["default"].p(_templateObject(), function (props) {
+  return props.theme.fontFamilies[props.as] || props.theme.fontFamilies["default"];
 }, function (props) {
-  return props.theme.fonts.text.verticalAlign;
+  return props.theme.fontSizes[props.as || props.fontSize] || props.theme.fontSizes.m;
+}, function (props) {
+  return props.theme.lineHeights[props.as || props.lineHeight] || props.theme.lineHeights.m;
 }, (0, _buildCss["default"])(propertyConfig));
 
 var Text = function Text(_props) {

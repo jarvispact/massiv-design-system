@@ -21,4 +21,20 @@ export default [
         propertyType,
         defaultProperty,
     },
+    {
+        cssProperty: 'list-style',
+        componentProperty: 'listStyle',
+        scopedProperty: 'massivListStyle',
+        themeProperty,
+        propertyType,
+        defaultProperty,
+    },
+    {
+        cssProperty: 'text-decoration',
+        componentProperty: 'textDecoration',
+        scopedProperty: 'massivTextDecoration',
+        themeProperty,
+        propertyType,
+        defaultProperty,
+    },
 ];

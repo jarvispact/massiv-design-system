@@ -37,7 +37,7 @@ var SuccessAlert = function SuccessAlert(_ref) {
     bg: "success300",
     borderStyle: "solid",
     borderWidth: "1px",
-    borderColor: "success900",
+    borderColor: "success700",
     p: "1.3rem",
     justifyContent: "flex-start",
     alignItems: "center",
@@ -50,12 +50,12 @@ var SuccessAlert = function SuccessAlert(_ref) {
     onClick: onClose
   }, _react["default"].createElement(_icon["default"], {
     name: "close",
-    color: "success900"
+    color: "success700"
   }))), _react["default"].createElement(_icon["default"], {
     name: "check",
-    color: "success900"
+    color: "success700"
   }), text && !children && _react["default"].createElement(_text["default"], {
-    color: "success900",
+    color: "success700",
     pl: "1rem"
   }, text), !text && children && _react["default"].createElement(_box["default"], {
     pl: "1rem"

@@ -2,7 +2,6 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import Box from '../src/box';
-import H3 from '../src/h3';
 import Text from '../src/text';
 import ErrorAlert from '../src/error-alert';
 import WarningAlert from '../src/warning-alert';
@@ -19,7 +18,7 @@ const Wrapper = ({ children }) => (
 // eslint-disable-next-line react/prop-types
 const SectionWrapper = ({ heading, children }) => (
     <>
-        <H3 mt="2.5rem" mb="s" ml="s">{heading}</H3>
+        <Text as="h3" mt="2.5rem" mb="s" ml="s">{heading}</Text>
         <Box ml="s">
             {children}
         </Box>
@@ -37,12 +36,12 @@ storiesOf('Alert', module)
             </SectionWrapper>
             <SectionWrapper heading="with children component">
                 <ErrorAlert onClose={action('onClose')}>
-                    <H3 color="error900">A custom Component with a List</H3>
-                    <ul style={{ paddingLeft: '20px', paddingTop: '10px' }}>
-                        <li><Text color="error900">one</Text></li>
-                        <li><Text color="error900">two</Text></li>
-                        <li><Text color="error900">three</Text></li>
-                    </ul>
+                    <Text as="h6" color="error700">A custom Component with a List</Text>
+                    <Box as="ul" pl="20px" pt="10px">
+                        <Text as="li" color="error700">one</Text>
+                        <Text as="li" color="error700">two</Text>
+                        <Text as="li" color="error700">three</Text>
+                    </Box>
                 </ErrorAlert>
             </SectionWrapper>
         </Wrapper>
@@ -57,12 +56,12 @@ storiesOf('Alert', module)
             </SectionWrapper>
             <SectionWrapper heading="with children component">
                 <WarningAlert onClose={action('onClose')}>
-                    <H3 color="warning900">A custom Component with a List</H3>
-                    <ul style={{ paddingLeft: '20px', paddingTop: '10px' }}>
-                        <li><Text color="warning900">one</Text></li>
-                        <li><Text color="warning900">two</Text></li>
-                        <li><Text color="warning900">three</Text></li>
-                    </ul>
+                    <Text as="h6" color="warning700">A custom Component with a List</Text>
+                    <Box as="ul" pl="20px" pt="10px">
+                        <Text as="li" color="warning700">one</Text>
+                        <Text as="li" color="warning700">two</Text>
+                        <Text as="li" color="warning700">three</Text>
+                    </Box>
                 </WarningAlert>
             </SectionWrapper>
         </Wrapper>
@@ -77,12 +76,12 @@ storiesOf('Alert', module)
             </SectionWrapper>
             <SectionWrapper heading="with children component">
                 <InfoAlert onClose={action('onClose')}>
-                    <H3 color="info900">A custom Component with a List</H3>
-                    <ul style={{ paddingLeft: '20px', paddingTop: '10px' }}>
-                        <li><Text color="info900">one</Text></li>
-                        <li><Text color="info900">two</Text></li>
-                        <li><Text color="info900">three</Text></li>
-                    </ul>
+                    <Text as="h6" color="info700">A custom Component with a List</Text>
+                    <Box as="ul" pl="20px" pt="10px">
+                        <Text as="li" color="info700">one</Text>
+                        <Text as="li" color="info700">two</Text>
+                        <Text as="li" color="info700">three</Text>
+                    </Box>
                 </InfoAlert>
             </SectionWrapper>
         </Wrapper>
@@ -97,12 +96,12 @@ storiesOf('Alert', module)
             </SectionWrapper>
             <SectionWrapper heading="with children component">
                 <SuccessAlert onClose={action('onClose')}>
-                    <H3 color="success900">A custom Component with a List</H3>
-                    <ul style={{ paddingLeft: '20px', paddingTop: '10px' }}>
-                        <li><Text color="success900">one</Text></li>
-                        <li><Text color="success900">two</Text></li>
-                        <li><Text color="success900">three</Text></li>
-                    </ul>
+                    <Text as="h6" color="success700">A custom Component with a List</Text>
+                    <Box as="ul" pl="20px" pt="10px">
+                        <Text as="li" color="success700">one</Text>
+                        <Text as="li" color="success700">two</Text>
+                        <Text as="li" color="success700">three</Text>
+                    </Box>
                 </SuccessAlert>
             </SectionWrapper>
         </Wrapper>

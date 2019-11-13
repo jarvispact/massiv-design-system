@@ -15,6 +15,8 @@ import borderPropertyConfig from '../utils/border-property-config';
 import overflowPropertyConfig from '../utils/overflow-property-config';
 import boxShadowPropertyConfig from '../utils/box-shadow-property-config';
 import clone from '../utils/clone';
+import flexChildPropertyConfig from '../utils/flex-child-property-config';
+import fontPropertyConfig from '../utils/font-property-config';
 
 const themeProperty = null;
 const propertyType = arrayOfStringsOrString;
@@ -69,14 +71,6 @@ const flexPropertyConfig = [
         propertyType,
         defaultProperty,
     },
-    {
-        cssProperty: 'text-align',
-        componentProperty: 'textAlign',
-        scopedProperty: 'massivTextAlign',
-        themeProperty,
-        propertyType,
-        defaultProperty,
-    },
 ];
 
 const propertyConfig = [
@@ -85,10 +79,12 @@ const propertyConfig = [
     ...clone(spacingPropertyConfig),
     ...clone(widthPropertyConfig),
     ...clone(heightPropertyConfig),
+    ...clone(flexChildPropertyConfig),
     ...clone(colorPropertyConfig),
     ...clone(borderPropertyConfig),
     ...clone(overflowPropertyConfig),
     ...clone(boxShadowPropertyConfig),
+    ...clone(fontPropertyConfig),
     ...clone(flexPropertyConfig),
 ];
 

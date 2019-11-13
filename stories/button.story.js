@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import Box from '../src/box';
-import H3 from '../src/h3';
+import Text from '../src/text';
 import Icon from '../src/icon';
 import { PrimaryButton, SecondaryButton, InvisibleButton } from '../src';
 
@@ -16,7 +16,7 @@ const Wrapper = ({ children }) => (
 // eslint-disable-next-line react/prop-types
 const SectionWrapper = ({ heading, children }) => (
     <>
-        <H3 mt="2.5rem" mb="s" ml="s">{heading}</H3>
+        <Text as="h3" mt="2.5rem" mb="s" ml="s">{heading}</Text>
         <Box ml="s">
             {children}
         </Box>

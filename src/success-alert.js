@@ -11,7 +11,7 @@ const SuccessAlert = ({ text, children, onClose, ...others }) => (
         bg="success300"
         borderStyle="solid"
         borderWidth="1px"
-        borderColor="success900"
+        borderColor="success700"
         p="1.3rem"
         justifyContent="flex-start"
         alignItems="center"
@@ -21,12 +21,12 @@ const SuccessAlert = ({ text, children, onClose, ...others }) => (
         {onClose && (
             <Box position="absolute" top="5px" right="5px">
                 <InvisibleButton onClick={onClose}>
-                    <Icon name="close" color="success900" />
+                    <Icon name="close" color="success700" />
                 </InvisibleButton>
             </Box>
         )}
-        <Icon name="check" color="success900" />
-        {(text && !children) && <Text color="success900" pl="1rem">{text}</Text>}
+        <Icon name="check" color="success700" />
+        {(text && !children) && <Text color="success700" pl="1rem">{text}</Text>}
         {(!text && children) && (
             <Box pl="1rem">
                 {children}

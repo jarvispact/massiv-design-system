@@ -1,97 +1,45 @@
-const sharedFontHeadingConfig = {
-    family: '"Josefin Slab", serif',
-    weights: { s: '300', m: '400', l: '700' },
-};
-
-const sharedFontTextConfig = {
-    family: '"Nunito", sans-serif',
-    weights: { s: '200', m: '400', l: '700' },
-};
-
-const fonts = {
-    h1: sharedFontHeadingConfig,
-    h2: sharedFontHeadingConfig,
-    h3: sharedFontHeadingConfig,
-    h4: sharedFontHeadingConfig,
-    h5: sharedFontHeadingConfig,
-    h6: sharedFontHeadingConfig,
-    text: sharedFontTextConfig,
-    link: sharedFontTextConfig,
-    label: sharedFontTextConfig,
-    input: sharedFontTextConfig,
-    textarea: sharedFontTextConfig,
-    button: sharedFontTextConfig,
-    icon: {
-        className: 'material-icons',
-        loadingIcon: 'settings',
-    },
-    scales: {
-        xxs: '0.6rem',
-        xs: '0.7rem',
-        s: '0.8rem',
-        m: '1rem',
-        l: '1.2rem',
-        xl: '1.5rem',
-        xxl: '2rem',
-        xxxl: '2.5rem',
-    },
-    letterSpacings: {
-        s: '0.1rem',
-        m: '0.2rem',
-        l: '0.3rem',
-    },
-};
-
-const error300 = '#ff9696';
+const error300 = '#ffa8a8';
 const error500 = '#ff4444';
 const error700 = '#cc0000';
-const error900 = '#a30000';
 
 const error = {
     error: error500,
     error300,
     error500,
     error700,
-    error900,
 };
 
 const warning300 = '#ffda91';
 const warning500 = '#ffbb33';
-const warning700 = '#ff8800';
-const warning900 = '#d17000';
+const warning700 = '#d17000';
 
 const warning = {
     warning: warning500,
     warning300,
     warning500,
     warning700,
-    warning900,
 };
 
 const success300 = '#54f796';
 const success500 = '#00C851';
-const success700 = '#007e33';
-const success900 = '#005c25';
+const success700 = '#005c25';
 
 const success = {
     success: success500,
     success300,
     success500,
     success700,
-    success900,
 };
 
 const info300 = '#79d5f7';
 const info500 = '#33b5e5';
-const info700 = '#0099cc';
-const info900 = '#007aa3';
+const info700 = '#007aa3';
 
 const info = {
     info: info500,
     info300,
     info500,
     info700,
-    info900,
 };
 
 const primary500 = '#4285f4';
@@ -184,18 +132,67 @@ const boxShadows = {
     l: '6px 6px',
 };
 
-const textShadows = {
-    m: '4px 4px 2px rgba(150, 150, 150, 1)',
-};
-
 export default {
     breakpoints,
-    fonts,
+    fontFamilies: {
+        default: '"Nunito", sans-serif',
+        h1: '"Nunito", sans-serif',
+        h2: '"Nunito", sans-serif',
+        h3: '"Nunito", sans-serif',
+        h4: '"Nunito", sans-serif',
+        h5: '"Nunito", sans-serif',
+        h6: '"Nunito", sans-serif',
+        button: '"Nunito", sans-serif',
+        input: '"Nunito", sans-serif',
+        textarea: '"Nunito", sans-serif',
+    },
+    fontWeights: {
+        s: '200',
+        m: '400',
+        l: '700',
+    },
+    fontSizes: {
+        xs: '10px',
+        s: '12px',
+        m: '16px',
+        l: '20px',
+        xl: '28px',
+        h1: '32px',
+        h2: '30px',
+        h3: '28px',
+        h4: '26px',
+        h5: '24px',
+        h6: '22px',
+    },
+    lineHeights: {
+        xs: '8px',
+        s: '8px',
+        m: '14px',
+        l: '16px',
+        xl: '22px',
+        h1: '26px',
+        h2: '24px',
+        h3: '22px',
+        h4: '20px',
+        h5: '18px',
+        h6: '16px',
+    },
+    letterSpacings: {
+        s: '-0.5px',
+        m: '0px',
+        l: '1px',
+    },
+    textShadows: {
+        m: '4px 4px 2px rgba(150, 150, 150, 1)',
+    },
+    icons: {
+        className: 'material-icons',
+        loadingIcon: 'settings',
+    },
     colors,
     spacing,
     widths,
     heights,
     radii,
     boxShadows,
-    textShadows,
 };

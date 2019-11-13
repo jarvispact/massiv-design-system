@@ -3,12 +3,20 @@ import { arrayOfStringsOrString } from './prop-types';
 const propertyType = arrayOfStringsOrString;
 const defaultProperty = undefined;
 
-export default ({ type } = {}) => [
+export default [
     {
         cssProperty: 'font-size',
         componentProperty: 'fontSize',
         scopedProperty: 'massivFontSize',
-        themeProperty: 'fonts.scales',
+        themeProperty: 'fontSizes',
+        propertyType,
+        defaultProperty,
+    },
+    {
+        cssProperty: 'line-height',
+        componentProperty: 'lineHeight',
+        scopedProperty: 'massivLineHeight',
+        themeProperty: 'lineHeights',
         propertyType,
         defaultProperty,
     },
@@ -16,7 +24,7 @@ export default ({ type } = {}) => [
         cssProperty: 'font-weight',
         componentProperty: 'fontWeight',
         scopedProperty: 'massivFontWeight',
-        themeProperty: `fonts.${type}.weights`,
+        themeProperty: 'fontWeights',
         propertyType,
         defaultProperty,
     },
@@ -24,7 +32,7 @@ export default ({ type } = {}) => [
         cssProperty: 'letter-spacing',
         componentProperty: 'letterSpacing',
         scopedProperty: 'massivLetterSpacing',
-        themeProperty: 'fonts.letterSpacings',
+        themeProperty: 'letterSpacings',
         propertyType,
         defaultProperty,
     },
@@ -48,7 +56,7 @@ export default ({ type } = {}) => [
         cssProperty: 'white-space',
         componentProperty: 'whiteSpace',
         scopedProperty: 'massivWhiteSpace',
-        themeProperty: 'fonts.whiteSpacings',
+        themeProperty: null,
         propertyType,
         defaultProperty,
     },

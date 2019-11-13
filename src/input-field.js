@@ -2,7 +2,6 @@ import React from 'react';
 import { string, bool, oneOfType, number, object, array, func, shape } from 'prop-types';
 import Box from './box';
 import Text from './text';
-import Label from './label';
 import Input from './input';
 import Icon from './icon';
 
@@ -11,7 +10,6 @@ const defaultWrapperProps = {
 };
 
 const defaultLabelProps = {
-    display: 'block',
     pb: '2px',
     color: 'gray700',
 };
@@ -22,26 +20,26 @@ const defaultInputProps = {
 };
 
 const defaultHintProps = {
-    display: 'block',
     pl: '3px',
     pt: '1px',
     fontSize: 'xs',
+    lineHeight: 'xs',
     color: 'info',
 };
 
 const defaultWarningProps = {
-    display: 'block',
     pl: '3px',
     pt: '1px',
     fontSize: 'xs',
+    lineHeight: 'xs',
     color: 'warning',
 };
 
 const defaultErrorProps = {
-    display: 'block',
     pl: '3px',
     pt: '1px',
     fontSize: 'xs',
+    lineHeight: 'xs',
     color: 'error',
 };
 
@@ -72,9 +70,9 @@ const InputField = ({
 }) => (
     <Box {...defaultWrapperProps} {...wrapperProps}>
         {label && (
-            <Label htmlFor={id || name} {...defaultLabelProps} {...labelProps}>
+            <Text as="label" htmlFor={id || name} {...defaultLabelProps} {...labelProps}>
                 {label}
-            </Label>
+            </Text>
         )}
         <Input
             id={id || name}
@@ -136,6 +134,7 @@ InputField.defaultProps = {
     label: undefined,
     type: 'text',
     value: undefined,
+    onChange: undefined,
     onBlur: undefined,
     disabled: undefined,
     hint: undefined,

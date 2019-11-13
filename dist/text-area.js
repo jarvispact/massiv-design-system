@@ -27,9 +27,15 @@ var _heightPropertyConfig = _interopRequireDefault(require("../utils/height-prop
 
 var _borderPropertyConfig = _interopRequireDefault(require("../utils/border-property-config"));
 
-var _createFontPropertyConfig = _interopRequireDefault(require("../utils/create-font-property-config"));
+var _fontPropertyConfig = _interopRequireDefault(require("../utils/font-property-config"));
 
 var _boxShadowPropertyConfig = _interopRequireDefault(require("../utils/box-shadow-property-config"));
+
+var _positionPropertyConfig = _interopRequireDefault(require("../utils/position-property-config"));
+
+var _flexChildPropertyConfig = _interopRequireDefault(require("../utils/flex-child-property-config"));
+
+var _displayPropertyConfig = _interopRequireDefault(require("../utils/display-property-config"));
 
 var _setProperty = _interopRequireDefault(require("../utils/set-property"));
 
@@ -44,7 +50,7 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    resize: none;\n    cursor: ", ";\n    opacity: ", ";\n    font-family: ", ";\n    vertical-align: ", ";\n    ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n    resize: none;\n    cursor: ", ";\n    opacity: ", ";\n    font-family: ", ";\n    ", "\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -63,22 +69,19 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-var fontPropertyConfig = (0, _createFontPropertyConfig["default"])({
-  type: 'textarea'
-});
-var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_widthPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_heightPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_borderPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(fontPropertyConfig)), _toConsumableArray((0, _clone["default"])(_boxShadowPropertyConfig["default"])));
+var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_positionPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_flexChildPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_displayPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_widthPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_heightPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_borderPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_fontPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_boxShadowPropertyConfig["default"])));
 (0, _setProperty["default"])('border-style', 'defaultProperty', 'none', propertyConfig);
 (0, _setProperty["default"])('border-radius', 'defaultProperty', '2px', propertyConfig);
-(0, _setProperty["default"])('padding', 'defaultProperty', '4px', propertyConfig);
+(0, _setProperty["default"])('padding', 'defaultProperty', '6px', propertyConfig);
+(0, _setProperty["default"])('outline-color', 'defaultProperty', 'info', propertyConfig);
+(0, _setProperty["default"])('font-size', 'defaultProperty', '16px', propertyConfig);
 
 var StyledTextArea = _styledComponents["default"].textarea(_templateObject(), function (props) {
   return props.disabled && 'not-allowed';
 }, function (props) {
   return props.disabled && '0.5';
 }, function (props) {
-  return props.theme.fonts.textarea.family;
-}, function (props) {
-  return props.theme.fonts.textarea.verticalAlign;
+  return props.theme.fontFamilies.textarea || props.theme.fontFamilies["default"];
 }, (0, _buildCss["default"])(propertyConfig));
 
 var TextArea = _react["default"].forwardRef(function (_props, ref) {

@@ -10,13 +10,13 @@ import heightPropertyConfig from '../utils/height-property-config';
 import colorPropertyConfig from '../utils/color-property-config';
 import borderPropertyConfig from '../utils/border-property-config';
 import displayPropertyConfig from '../utils/display-property-config';
-import createFontPropertyConfig from '../utils/create-font-property-config';
+import fontPropertyConfig from '../utils/font-property-config';
 import boxShadowPropertyConfig from '../utils/box-shadow-property-config';
+import positionPropertyConfig from '../utils/position-property-config';
+import flexChildPropertyConfig from '../utils/flex-child-property-config';
 import setProperty from '../utils/set-property';
 import clone from '../utils/clone';
 import Icon from './icon';
-
-const fontPropertyConfig = createFontPropertyConfig({ type: 'button' });
 
 const buttonPropertyConfig = [
     {
@@ -29,6 +29,8 @@ const buttonPropertyConfig = [
 ];
 
 const propertyConfig = [
+    ...clone(positionPropertyConfig),
+    ...clone(flexChildPropertyConfig),
     ...clone(colorPropertyConfig),
     ...clone(spacingPropertyConfig),
     ...clone(widthPropertyConfig),
@@ -42,8 +44,9 @@ const propertyConfig = [
 
 setProperty('border-style', 'defaultProperty', 'none', propertyConfig);
 setProperty('border-radius', 'defaultProperty', '2px', propertyConfig);
-setProperty('padding', 'defaultProperty', '6px 12px', propertyConfig);
-setProperty('font-size', 'defaultProperty', '1rem', propertyConfig);
+setProperty('padding', 'defaultProperty', '9px 12px', propertyConfig);
+setProperty('font-size', 'defaultProperty', '16px', propertyConfig);
+setProperty('line-height', 'defaultProperty', '14px', propertyConfig);
 setProperty('outline-color', 'defaultProperty', 'info', propertyConfig);
 
 const getCursor = (props) => {
@@ -55,7 +58,7 @@ const getCursor = (props) => {
 const StyledButton = styled.button`
     cursor: ${getCursor};
     opacity: ${props => props.disabled && '0.5'};
-    font-family: ${props => props.theme.fonts.button.family};
+    font-family: ${props => props.theme.fontFamilies.button || props.theme.fontFamilies.default};
     ${buildCss(propertyConfig)}
 `;
 

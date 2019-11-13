@@ -13,8 +13,6 @@ var _box = _interopRequireDefault(require("./box"));
 
 var _text = _interopRequireDefault(require("./text"));
 
-var _label = _interopRequireDefault(require("./label"));
-
 var _input = _interopRequireDefault(require("./input"));
 
 var _icon = _interopRequireDefault(require("./icon"));
@@ -31,7 +29,6 @@ var defaultWrapperProps = {
   mb: 'm'
 };
 var defaultLabelProps = {
-  display: 'block',
   pb: '2px',
   color: 'gray700'
 };
@@ -40,24 +37,24 @@ var defaultInputProps = {
   color: 'black'
 };
 var defaultHintProps = {
-  display: 'block',
   pl: '3px',
   pt: '1px',
   fontSize: 'xs',
+  lineHeight: 'xs',
   color: 'info'
 };
 var defaultWarningProps = {
-  display: 'block',
   pl: '3px',
   pt: '1px',
   fontSize: 'xs',
+  lineHeight: 'xs',
   color: 'warning'
 };
 var defaultErrorProps = {
-  display: 'block',
   pl: '3px',
   pt: '1px',
   fontSize: 'xs',
+  lineHeight: 'xs',
   color: 'error'
 };
 
@@ -86,7 +83,8 @@ var InputField = function InputField(_ref) {
       errorProps = _ref.errorProps,
       others = _objectWithoutProperties(_ref, ["id", "name", "label", "type", "value", "onChange", "onBlur", "disabled", "hint", "warning", "error", "wrapperProps", "labelProps", "hintProps", "warningProps", "errorProps"]);
 
-  return _react["default"].createElement(_box["default"], _extends({}, defaultWrapperProps, wrapperProps), label && _react["default"].createElement(_label["default"], _extends({
+  return _react["default"].createElement(_box["default"], _extends({}, defaultWrapperProps, wrapperProps), label && _react["default"].createElement(_text["default"], _extends({
+    as: "label",
     htmlFor: id || name
   }, defaultLabelProps, labelProps), label), _react["default"].createElement(_input["default"], _extends({
     id: id || name,
@@ -129,6 +127,7 @@ InputField.defaultProps = {
   label: undefined,
   type: 'text',
   value: undefined,
+  onChange: undefined,
   onBlur: undefined,
   disabled: undefined,
   hint: undefined,

@@ -37,7 +37,7 @@ var InfoAlert = function InfoAlert(_ref) {
     bg: "info300",
     borderStyle: "solid",
     borderWidth: "1px",
-    borderColor: "info900",
+    borderColor: "info700",
     p: "1.3rem",
     justifyContent: "flex-start",
     alignItems: "center",
@@ -50,12 +50,12 @@ var InfoAlert = function InfoAlert(_ref) {
     onClick: onClose
   }, _react["default"].createElement(_icon["default"], {
     name: "close",
-    color: "info900"
+    color: "info700"
   }))), _react["default"].createElement(_icon["default"], {
     name: "info",
-    color: "info900"
+    color: "info700"
   }), text && !children && _react["default"].createElement(_text["default"], {
-    color: "info900",
+    color: "info700",
     pl: "1rem"
   }, text), !text && children && _react["default"].createElement(_box["default"], {
     pl: "1rem"
