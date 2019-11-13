@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import Box from '../src/box';
-import Text from '../src/text';
+import Box from '../src/atoms/box';
+import Text from '../src/atoms/text';
 import ErrorAlert from '../src/error-alert';
 import WarningAlert from '../src/warning-alert';
 import InfoAlert from '../src/info-alert';

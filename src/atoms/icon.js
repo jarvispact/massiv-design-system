@@ -1,17 +1,17 @@
 import React from 'react';
 import { node, bool, string } from 'prop-types';
 import styled, { keyframes, css, withTheme } from 'styled-components';
-import buildCss from '../utils/build-css';
-import buildScopedProps from '../utils/build-scoped-props';
-import buildPropTypes from '../utils/build-prop-types';
-import colorPropertyConfig from '../utils/color-property-config';
-import spacingPropertyConfig from '../utils/spacing-property-config';
-import clone from '../utils/clone';
-import fontPropertyConfig from '../utils/font-property-config';
-import positionPropertyConfig from '../utils/position-property-config';
-import displayPropertyConfig from '../utils/display-property-config';
-import flexChildPropertyConfig from '../utils/flex-child-property-config';
-import borderPropertyConfig from '../utils/border-property-config';
+import buildCss from '../../utils/build-css';
+import buildScopedProps from '../../utils/build-scoped-props';
+import buildPropTypes from '../../utils/build-prop-types';
+import colorPropertyConfig from '../../utils/color-property-config';
+import spacingPropertyConfig from '../../utils/spacing-property-config';
+import clone from '../../utils/clone';
+import fontPropertyConfig from '../../utils/font-property-config';
+import positionPropertyConfig from '../../utils/position-property-config';
+import displayPropertyConfig from '../../utils/display-property-config';
+import flexChildPropertyConfig from '../../utils/flex-child-property-config';
+import borderPropertyConfig from '../../utils/border-property-config';
 
 const iconPropertyConfig = [
     {

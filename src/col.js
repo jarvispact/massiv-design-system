@@ -1,7 +1,7 @@
 import React from 'react';
 import { shape, string, node, oneOfType, arrayOf, number } from 'prop-types';
 import { withTheme } from 'styled-components';
-import Box from './box';
+import Box from './atoms/box';
 
 // if only one gutter value is passed we assume that it should be used for all breakpoints
 // if more than one value is passed we try to match it with the index of the passed span values

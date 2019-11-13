@@ -1,10 +1,10 @@
 import React from 'react';
 import { node, string, func, shape } from 'prop-types';
-import Flex from './flex';
-import Box from './box';
-import Text from './text';
-import Icon from './icon';
-import InvisibleButton from './invisible-button';
+import Flex from './atoms/flex';
+import Box from './atoms/box';
+import Text from './atoms/text';
+import Icon from './atoms/icon';
+import InvisibleButton from './atoms/invisible-button';
 
 const WarningAlert = ({ text, children, onClose, ...others }) => (
     <Flex

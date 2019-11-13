@@ -1,9 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Flex from '../src/flex';
-import Box from '../src/box';
+import Flex from '../src/atoms/flex';
+import Box from '../src/atoms/box';
 import theme from '../src/default-theme';
-import Text from '../src/text';
+import Text from '../src/atoms/text';
 
 // eslint-disable-next-line react/prop-types
 const Wrapper = ({ children }) => (

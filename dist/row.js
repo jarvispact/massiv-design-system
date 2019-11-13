@@ -9,7 +9,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _propTypes = require("prop-types");
 
-var _flex = _interopRequireDefault(require("./flex"));
+var _flex = _interopRequireDefault(require("./atoms/flex"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 

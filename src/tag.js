@@ -1,9 +1,9 @@
 import React from 'react';
 import { string, func, shape, node } from 'prop-types';
-import Flex from './flex';
-import Text from './text';
-import InvisibleButton from './invisible-button';
-import Icon from './icon';
+import Flex from './atoms/flex';
+import Text from './atoms/text';
+import InvisibleButton from './atoms/invisible-button';
+import Icon from './atoms/icon';
 
 const defaultWrapperProps = {
     inline: true,

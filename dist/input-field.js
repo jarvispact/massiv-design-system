@@ -9,13 +9,13 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = require("prop-types");
 
-var _box = _interopRequireDefault(require("./box"));
+var _box = _interopRequireDefault(require("./atoms/box"));
 
-var _text = _interopRequireDefault(require("./text"));
+var _text = _interopRequireDefault(require("./atoms/text"));
 
-var _input = _interopRequireDefault(require("./input"));
+var _input = _interopRequireDefault(require("./atoms/input"));
 
-var _icon = _interopRequireDefault(require("./icon"));
+var _icon = _interopRequireDefault(require("./atoms/icon"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 

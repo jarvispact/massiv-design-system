@@ -1,9 +1,9 @@
 import React from 'react';
 import { string, bool, oneOfType, number, object, array, func, shape } from 'prop-types';
-import Box from './box';
-import Text from './text';
-import Input from './input';
-import Icon from './icon';
+import Box from './atoms/box';
+import Text from './atoms/text';
+import Input from './atoms/input';
+import Icon from './atoms/icon';
 
 const defaultWrapperProps = {
     mb: 'm',

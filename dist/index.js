@@ -3,18 +3,23 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-Object.defineProperty(exports, "Box", {
-  enumerable: true,
-  get: function get() {
-    return _box["default"];
-  }
-});
-Object.defineProperty(exports, "Button", {
-  enumerable: true,
-  get: function get() {
-    return _button["default"];
-  }
-});
+var _exportNames = {
+  Col: true,
+  defaultTheme: true,
+  ErrorAlert: true,
+  GlobalStyle: true,
+  InfoAlert: true,
+  InputField: true,
+  Row: true,
+  SuccessAlert: true,
+  Tag: true,
+  TextAreaField: true,
+  ThemeContext: true,
+  Theme: true,
+  useForm: true,
+  WarningAlert: true,
+  withTheme: true
+};
 Object.defineProperty(exports, "Col", {
   enumerable: true,
   get: function get() {
@@ -33,28 +38,10 @@ Object.defineProperty(exports, "ErrorAlert", {
     return _errorAlert["default"];
   }
 });
-Object.defineProperty(exports, "Flex", {
-  enumerable: true,
-  get: function get() {
-    return _flex["default"];
-  }
-});
 Object.defineProperty(exports, "GlobalStyle", {
   enumerable: true,
   get: function get() {
     return _globalStyle["default"];
-  }
-});
-Object.defineProperty(exports, "Icon", {
-  enumerable: true,
-  get: function get() {
-    return _icon["default"];
-  }
-});
-Object.defineProperty(exports, "Image", {
-  enumerable: true,
-  get: function get() {
-    return _image["default"];
   }
 });
 Object.defineProperty(exports, "InfoAlert", {
@@ -69,34 +56,10 @@ Object.defineProperty(exports, "InputField", {
     return _inputField["default"];
   }
 });
-Object.defineProperty(exports, "Input", {
-  enumerable: true,
-  get: function get() {
-    return _input["default"];
-  }
-});
-Object.defineProperty(exports, "InvisibleButton", {
-  enumerable: true,
-  get: function get() {
-    return _invisibleButton["default"];
-  }
-});
-Object.defineProperty(exports, "PrimaryButton", {
-  enumerable: true,
-  get: function get() {
-    return _primaryButton["default"];
-  }
-});
 Object.defineProperty(exports, "Row", {
   enumerable: true,
   get: function get() {
     return _row["default"];
-  }
-});
-Object.defineProperty(exports, "SecondaryButton", {
-  enumerable: true,
-  get: function get() {
-    return _secondaryButton["default"];
   }
 });
 Object.defineProperty(exports, "SuccessAlert", {
@@ -105,58 +68,16 @@ Object.defineProperty(exports, "SuccessAlert", {
     return _successAlert["default"];
   }
 });
-Object.defineProperty(exports, "TableBody", {
-  enumerable: true,
-  get: function get() {
-    return _tableBody["default"];
-  }
-});
-Object.defineProperty(exports, "TableHeader", {
-  enumerable: true,
-  get: function get() {
-    return _tableHeader["default"];
-  }
-});
-Object.defineProperty(exports, "Table", {
-  enumerable: true,
-  get: function get() {
-    return _table["default"];
-  }
-});
 Object.defineProperty(exports, "Tag", {
   enumerable: true,
   get: function get() {
     return _tag["default"];
   }
 });
-Object.defineProperty(exports, "TD", {
-  enumerable: true,
-  get: function get() {
-    return _td["default"];
-  }
-});
 Object.defineProperty(exports, "TextAreaField", {
   enumerable: true,
   get: function get() {
     return _textAreaField["default"];
-  }
-});
-Object.defineProperty(exports, "TextArea", {
-  enumerable: true,
-  get: function get() {
-    return _textArea["default"];
-  }
-});
-Object.defineProperty(exports, "Text", {
-  enumerable: true,
-  get: function get() {
-    return _text["default"];
-  }
-});
-Object.defineProperty(exports, "TH", {
-  enumerable: true,
-  get: function get() {
-    return _th["default"];
   }
 });
 Object.defineProperty(exports, "ThemeContext", {
@@ -169,12 +90,6 @@ Object.defineProperty(exports, "Theme", {
   enumerable: true,
   get: function get() {
     return _theme["default"];
-  }
-});
-Object.defineProperty(exports, "TR", {
-  enumerable: true,
-  get: function get() {
-    return _tr["default"];
   }
 });
 Object.defineProperty(exports, "useForm", {
@@ -196,68 +111,47 @@ Object.defineProperty(exports, "withTheme", {
   }
 });
 
-var _box = _interopRequireDefault(require("./box"));
-
-var _button = _interopRequireDefault(require("./button"));
-
 var _col = _interopRequireDefault(require("./col"));
 
 var _defaultTheme = _interopRequireDefault(require("./default-theme"));
 
 var _errorAlert = _interopRequireDefault(require("./error-alert"));
 
-var _flex = _interopRequireDefault(require("./flex"));
-
 var _globalStyle = _interopRequireDefault(require("./global-style"));
-
-var _icon = _interopRequireDefault(require("./icon"));
-
-var _image = _interopRequireDefault(require("./image"));
 
 var _infoAlert = _interopRequireDefault(require("./info-alert"));
 
 var _inputField = _interopRequireDefault(require("./input-field"));
 
-var _input = _interopRequireDefault(require("./input"));
-
-var _invisibleButton = _interopRequireDefault(require("./invisible-button"));
-
-var _primaryButton = _interopRequireDefault(require("./primary-button"));
-
 var _row = _interopRequireDefault(require("./row"));
-
-var _secondaryButton = _interopRequireDefault(require("./secondary-button"));
 
 var _successAlert = _interopRequireDefault(require("./success-alert"));
 
-var _tableBody = _interopRequireDefault(require("./table-body"));
-
-var _tableHeader = _interopRequireDefault(require("./table-header"));
-
-var _table = _interopRequireDefault(require("./table"));
-
 var _tag = _interopRequireDefault(require("./tag"));
 
-var _td = _interopRequireDefault(require("./td"));
-
 var _textAreaField = _interopRequireDefault(require("./text-area-field"));
-
-var _textArea = _interopRequireDefault(require("./text-area"));
-
-var _text = _interopRequireDefault(require("./text"));
-
-var _th = _interopRequireDefault(require("./th"));
 
 var _themeContext = _interopRequireDefault(require("./theme-context"));
 
 var _theme = _interopRequireDefault(require("./theme"));
-
-var _tr = _interopRequireDefault(require("./tr"));
 
 var _useForm = _interopRequireDefault(require("./use-form"));
 
 var _warningAlert = _interopRequireDefault(require("./warning-alert"));
 
 var _withTheme = _interopRequireDefault(require("./with-theme"));
+
+var _atoms = require("./atoms");
+
+Object.keys(_atoms).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _atoms[key];
+    }
+  });
+});
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
