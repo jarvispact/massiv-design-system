@@ -9,7 +9,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = require("prop-types");
 
-var _box = _interopRequireDefault(require("./atoms/box"));
+var _stack = _interopRequireDefault(require("./layout/stack"));
 
 var _text = _interopRequireDefault(require("./atoms/text"));
 
@@ -26,33 +26,26 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 var defaultWrapperProps = {
-  mb: 'm'
+  mb: 'm',
+  spacing: 'xs'
 };
 var defaultLabelProps = {
-  pb: '2px',
   color: 'gray700'
 };
 var defaultInputProps = {
-  bg: 'white',
-  color: 'black'
+  bg: 'white'
 };
 var defaultHintProps = {
-  pl: '3px',
-  pt: '1px',
   fontSize: 'xs',
   lineHeight: 'xs',
   color: 'info'
 };
 var defaultWarningProps = {
-  pl: '3px',
-  pt: '1px',
   fontSize: 'xs',
   lineHeight: 'xs',
   color: 'warning'
 };
 var defaultErrorProps = {
-  pl: '3px',
-  pt: '1px',
   fontSize: 'xs',
   lineHeight: 'xs',
   color: 'error'
@@ -83,7 +76,7 @@ var InputField = function InputField(_ref) {
       errorProps = _ref.errorProps,
       others = _objectWithoutProperties(_ref, ["id", "name", "label", "type", "value", "onChange", "onBlur", "disabled", "hint", "warning", "error", "wrapperProps", "labelProps", "hintProps", "warningProps", "errorProps"]);
 
-  return _react["default"].createElement(_box["default"], _extends({}, defaultWrapperProps, wrapperProps), label && _react["default"].createElement(_text["default"], _extends({
+  return _react["default"].createElement(_stack["default"], _extends({}, defaultWrapperProps, wrapperProps), label && _react["default"].createElement(_text["default"], _extends({
     as: "label",
     htmlFor: id || name
   }, defaultLabelProps, labelProps), label), _react["default"].createElement(_input["default"], _extends({
@@ -133,11 +126,11 @@ InputField.defaultProps = {
   hint: undefined,
   warning: undefined,
   error: undefined,
-  wrapperProps: {},
-  labelProps: {},
-  hintProps: {},
-  warningProps: {},
-  errorProps: {}
+  wrapperProps: undefined,
+  labelProps: undefined,
+  hintProps: undefined,
+  warningProps: undefined,
+  errorProps: undefined
 };
 var _default = InputField;
 exports["default"] = _default;

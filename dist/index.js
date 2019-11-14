@@ -122,4 +122,17 @@ Object.keys(_molecules).forEach(function (key) {
   });
 });
 
+var _layout = require("./layout");
+
+Object.keys(_layout).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _layout[key];
+    }
+  });
+});
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }

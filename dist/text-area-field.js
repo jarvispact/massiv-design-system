@@ -9,7 +9,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = require("prop-types");
 
-var _box = _interopRequireDefault(require("./atoms/box"));
+var _stack = _interopRequireDefault(require("./layout/stack"));
 
 var _text = _interopRequireDefault(require("./atoms/text"));
 
@@ -27,36 +27,40 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 var defaultWrapperProps = {
   mb: 'm',
-  width: '100%'
+  spacing: 'xs'
 };
 var defaultLabelProps = {
   color: 'gray700'
 };
 var defaultTextAreaProps = {
-  width: '100%',
   bg: 'white'
 };
 var defaultHintProps = {
-  pl: '5px',
-  scale: 'xs',
-  color: 'gray300'
+  fontSize: 'xs',
+  lineHeight: 'xs',
+  color: 'info'
 };
 var defaultWarningProps = {
-  pl: '5px',
-  scale: 'xs',
+  fontSize: 'xs',
+  lineHeight: 'xs',
   color: 'warning'
 };
 var defaultErrorProps = {
-  pl: '5px',
-  scale: 'xs',
+  fontSize: 'xs',
+  lineHeight: 'xs',
   color: 'error'
+};
+
+var getOutlineColor = function getOutlineColor(warning, error) {
+  if (warning) return 'warning';
+  if (error) return 'error';
+  return undefined;
 };
 
 var TextAreaField = function TextAreaField(_ref) {
   var id = _ref.id,
       name = _ref.name,
       label = _ref.label,
-      type = _ref.type,
       value = _ref.value,
       onChange = _ref.onChange,
       onBlur = _ref.onBlur,
@@ -69,20 +73,20 @@ var TextAreaField = function TextAreaField(_ref) {
       hintProps = _ref.hintProps,
       warningProps = _ref.warningProps,
       errorProps = _ref.errorProps,
-      others = _objectWithoutProperties(_ref, ["id", "name", "label", "type", "value", "onChange", "onBlur", "disabled", "hint", "warning", "error", "wrapperProps", "labelProps", "hintProps", "warningProps", "errorProps"]);
+      others = _objectWithoutProperties(_ref, ["id", "name", "label", "value", "onChange", "onBlur", "disabled", "hint", "warning", "error", "wrapperProps", "labelProps", "hintProps", "warningProps", "errorProps"]);
 
-  return _react["default"].createElement(_box["default"], _extends({}, defaultWrapperProps, wrapperProps), label && _react["default"].createElement(_text["default"], _extends({
+  return _react["default"].createElement(_stack["default"], _extends({}, defaultWrapperProps, wrapperProps), label && _react["default"].createElement(_text["default"], _extends({
     as: "label",
     htmlFor: id || name
   }, defaultLabelProps, labelProps), label), _react["default"].createElement(_textArea["default"], _extends({
     rows: "6",
     id: id || name,
     name: name,
-    type: type,
     value: value,
     onChange: onChange,
     onBlur: onBlur,
-    disabled: disabled
+    disabled: disabled,
+    outlineColor: getOutlineColor(warning, error)
   }, defaultTextAreaProps, others)), hint && !warning && !error && _react["default"].createElement(_text["default"], _extends({}, defaultHintProps, hintProps), _react["default"].createElement(_icon["default"], {
     name: "info"
   }), ' ', hint), warning && !error && _react["default"].createElement(_text["default"], _extends({}, defaultWarningProps, warningProps), _react["default"].createElement(_icon["default"], {
@@ -96,7 +100,6 @@ TextAreaField.propTypes = {
   id: _propTypes.string,
   name: _propTypes.string.isRequired,
   label: _propTypes.string,
-  type: _propTypes.string,
   value: (0, _propTypes.oneOfType)([_propTypes.array, _propTypes.object, _propTypes.string, _propTypes.number, _propTypes.bool]),
   onChange: _propTypes.func.isRequired,
   onBlur: _propTypes.func,
@@ -113,18 +116,17 @@ TextAreaField.propTypes = {
 TextAreaField.defaultProps = {
   id: undefined,
   label: undefined,
-  type: 'text',
   value: '',
   onBlur: undefined,
   disabled: undefined,
   hint: undefined,
   warning: undefined,
   error: undefined,
-  wrapperProps: {},
-  labelProps: {},
-  hintProps: {},
-  warningProps: {},
-  errorProps: {}
+  wrapperProps: undefined,
+  labelProps: undefined,
+  hintProps: undefined,
+  warningProps: undefined,
+  errorProps: undefined
 };
 var _default = TextAreaField;
 exports["default"] = _default;

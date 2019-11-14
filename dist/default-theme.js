@@ -92,13 +92,11 @@ var colors = _objectSpread({
 }, error, {}, warning, {}, success, {}, info, {}, primary, {}, secondary, {}, gray);
 
 var spacing = {
-  xxs: '0.4rem',
-  xs: '0.6rem',
-  s: '0.8rem',
-  m: '1rem',
-  l: '1.2rem',
-  xl: '1.4rem',
-  xxl: '1.6rem'
+  xs: '4px',
+  s: '12px',
+  m: '20px',
+  l: '28px',
+  xl: '36px'
 };
 var breakpoints = ['450px', '650px', '900px', '1200px', '1600px'];
 var widths = {};
@@ -133,8 +131,8 @@ var _default = {
     l: '700'
   },
   fontSizes: {
-    xs: '10px',
-    s: '12px',
+    xs: '11px',
+    s: '13px',
     m: '16px',
     l: '20px',
     xl: '28px',
@@ -147,7 +145,7 @@ var _default = {
   },
   lineHeights: {
     xs: '8px',
-    s: '8px',
+    s: '9px',
     m: '14px',
     l: '16px',
     xl: '22px',
