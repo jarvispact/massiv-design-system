@@ -41,6 +41,7 @@ const getDropdownDefaultProps = (position) => ({
     top: `${position.top}px`,
     left: `${position.left}px`,
     width: `${position.width}px`,
+    zIndex: '100',
 });
 
 const Select = ({ options, name, value, onChange, buttonProps, iconProps, dropdownProps }) => {
@@ -87,7 +88,7 @@ const Select = ({ options, name, value, onChange, buttonProps, iconProps, dropdo
             window.removeEventListener('resize', handleResize);
             document.removeEventListener('click', handleClickOutSide);
         };
-    }, []);
+    }, [buttonRef.current]);
 
     useLayoutEffect(() => {
         setDropdownDimensions(getDropdownDimensionsForRef(buttonRef));

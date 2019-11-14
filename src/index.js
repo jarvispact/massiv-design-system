@@ -11,3 +11,4 @@ export { default as withTheme } from './with-theme';
 
 export * from './atoms';
 export * from './molecules';
+export * from './layout';

@@ -75,6 +75,7 @@ var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_positi
 (0, _setProperty["default"])('padding', 'defaultProperty', '6px', propertyConfig);
 (0, _setProperty["default"])('outline-color', 'defaultProperty', 'info', propertyConfig);
 (0, _setProperty["default"])('font-size', 'defaultProperty', '16px', propertyConfig);
+(0, _setProperty["default"])('vertical-align', 'defaultProperty', 'top', propertyConfig);
 
 var StyledTextArea = _styledComponents["default"].textarea(_templateObject(), function (props) {
   return props.disabled && 'not-allowed';

@@ -85,4 +85,13 @@ export default [
         propertyType,
         defaultProperty,
     },
+    // used in layout components like stack or inline
+    // to prevent that styled-components will write 'spacing' to the dom
+    {
+        componentProperty: 'spacing',
+        scopedProperty: 'massivSpacing',
+        themeProperty,
+        propertyType,
+        defaultProperty,
+    },
 ];

@@ -1,6 +1,5 @@
 import React from 'react';
 import { addDecorator, configure } from '@storybook/react';
-import { withKnobs } from '@storybook/addon-knobs';
 import Theme from '../src/theme';
 import GlobalStyle from '../src/global-style';
 import theme from './theme';
@@ -16,7 +15,7 @@ const loadStories = () => {
     require('../stories/color-palette.story.js');
     // require('../stories/button.story.js');
     // require('../stories/input-field.story.js');
-    // require('../stories/form.story.js');
+    require('../stories/form.story.js');
     require('../stories/alert.story.js');
     // require('../stories/select.story.js');
     // require('../stories/box.story.js');
@@ -43,5 +42,4 @@ const GlobalDecorator = storyFn => (
 );
 
 addDecorator(GlobalDecorator);
-addDecorator(withKnobs);
 configure(loadStories, module);

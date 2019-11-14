@@ -1,43 +1,36 @@
 import React from 'react';
 import { string, bool, oneOfType, number, object, array, func, shape } from 'prop-types';
-import Box from './atoms/box';
+import Stack from './layout/stack';
 import Text from './atoms/text';
 import Input from './atoms/input';
 import Icon from './atoms/icon';
 
 const defaultWrapperProps = {
     mb: 'm',
+    spacing: 'xs',
 };
 
 const defaultLabelProps = {
-    pb: '2px',
     color: 'gray700',
 };
 
 const defaultInputProps = {
     bg: 'white',
-    color: 'black',
 };
 
 const defaultHintProps = {
-    pl: '3px',
-    pt: '1px',
     fontSize: 'xs',
     lineHeight: 'xs',
     color: 'info',
 };
 
 const defaultWarningProps = {
-    pl: '3px',
-    pt: '1px',
     fontSize: 'xs',
     lineHeight: 'xs',
     color: 'warning',
 };
 
 const defaultErrorProps = {
-    pl: '3px',
-    pt: '1px',
     fontSize: 'xs',
     lineHeight: 'xs',
     color: 'error',
@@ -68,7 +61,7 @@ const InputField = ({
     errorProps,
     ...others
 }) => (
-    <Box {...defaultWrapperProps} {...wrapperProps}>
+    <Stack {...defaultWrapperProps} {...wrapperProps}>
         {label && (
             <Text as="label" htmlFor={id || name} {...defaultLabelProps} {...labelProps}>
                 {label}
@@ -107,7 +100,7 @@ const InputField = ({
                 {error}
             </Text>
         )}
-    </Box>
+    </Stack>
 );
 
 InputField.propTypes = {
@@ -140,11 +133,11 @@ InputField.defaultProps = {
     hint: undefined,
     warning: undefined,
     error: undefined,
-    wrapperProps: {},
-    labelProps: {},
-    hintProps: {},
-    warningProps: {},
-    errorProps: {},
+    wrapperProps: undefined,
+    labelProps: undefined,
+    hintProps: undefined,
+    warningProps: undefined,
+    errorProps: undefined,
 };
 
 export default InputField;

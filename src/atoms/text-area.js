@@ -35,6 +35,7 @@ setProperty('border-radius', 'defaultProperty', '2px', propertyConfig);
 setProperty('padding', 'defaultProperty', '6px', propertyConfig);
 setProperty('outline-color', 'defaultProperty', 'info', propertyConfig);
 setProperty('font-size', 'defaultProperty', '16px', propertyConfig);
+setProperty('vertical-align', 'defaultProperty', 'top', propertyConfig);
 
 const StyledTextArea = styled.textarea`
     resize: none;

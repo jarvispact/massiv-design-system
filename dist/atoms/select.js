@@ -71,7 +71,8 @@ var getDropdownDefaultProps = function getDropdownDefaultProps(position) {
     position: 'absolute',
     top: "".concat(position.top, "px"),
     left: "".concat(position.left, "px"),
-    width: "".concat(position.width, "px")
+    width: "".concat(position.width, "px"),
+    zIndex: '100'
   };
 };
 
@@ -136,7 +137,7 @@ var Select = function Select(_ref) {
       window.removeEventListener('resize', handleResize);
       document.removeEventListener('click', handleClickOutSide);
     };
-  }, []);
+  }, [buttonRef.current]);
   (0, _react.useLayoutEffect)(function () {
     setDropdownDimensions(getDropdownDimensionsForRef(buttonRef));
   }, [buttonRef.current]);

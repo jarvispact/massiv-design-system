@@ -68,4 +68,12 @@ export default [
         propertyType,
         defaultProperty,
     },
+    {
+        cssProperty: 'vertical-align',
+        componentProperty: 'verticalAlign',
+        scopedProperty: 'massivVerticalAlign',
+        themeProperty: null,
+        propertyType,
+        defaultProperty,
+    },
 ];

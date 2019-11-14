@@ -2,11 +2,12 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import Flex from '../src/flex';
-import Box from '../src/box';
-import ErrorAlert from '../src/error-alert';
+import Flex from '../src/atoms/flex';
+import Box from '../src/atoms/box';
+import ErrorAlert from '../src/molecules/error-alert';
 import { InputField, PrimaryButton, SecondaryButton, useForm, Row, Col, Input, TextAreaField } from '../src';
-import Select from '../src/select';
+import Select from '../src/atoms/select';
+import Inline from '../src/layout/inline';
 
 const options = [
     { value: '', label: 'Bitte auswählen' },
@@ -18,7 +19,7 @@ const options = [
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 const Wrapper = ({ children }) => (
-    <Flex justifyContent="center" alignItems="center" mt="m">
+    <Flex justifyContent="center" alignItems="center" mt="xl">
         {children}
     </Flex>
 );
@@ -99,9 +100,9 @@ const Form = ({ form }) => (
     </Box>
 );
 
-const initialValues = { email: '', password: '', type: '' };
+const initialValues = { email: '', password: '', type: '', info: '' };
 
-const validateSuccessForm = ({ email, password }) => {
+const validateSuccessForm = ({ email, password, info }) => {
     const errors = {};
     const warnings = {};
 
@@ -110,6 +111,8 @@ const validateSuccessForm = ({ email, password }) => {
 
     if (!password) errors.password = 'Password is required';
     if (password && password.length < 5) warnings.password = 'Password min length is 5 characters';
+
+    if (!info) warnings.info = 'You should enter a info';
 
     return { errors, warnings };
 };
@@ -186,7 +189,9 @@ storiesOf('Form', module)
     ))
     .add('Inline', () => (
         <Wrapper>
-            <Input />
-            <PrimaryButton>Submit</PrimaryButton>
+            <Inline>
+                <Input />
+                <PrimaryButton onClick={action('submit')}>Submit</PrimaryButton>
+            </Inline>
         </Wrapper>
     ));

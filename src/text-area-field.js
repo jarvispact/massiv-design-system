@@ -1,13 +1,13 @@
 import React from 'react';
 import { string, bool, oneOfType, number, object, array, func, shape } from 'prop-types';
-import Box from './atoms/box';
+import Stack from './layout/stack';
 import Text from './atoms/text';
 import TextArea from './atoms/text-area';
 import Icon from './atoms/icon';
 
 const defaultWrapperProps = {
     mb: 'm',
-    width: '100%',
+    spacing: 'xs',
 };
 
 const defaultLabelProps = {
@@ -15,33 +15,37 @@ const defaultLabelProps = {
 };
 
 const defaultTextAreaProps = {
-    width: '100%',
     bg: 'white',
 };
 
 const defaultHintProps = {
-    pl: '5px',
-    scale: 'xs',
-    color: 'gray300',
+    fontSize: 'xs',
+    lineHeight: 'xs',
+    color: 'info',
 };
 
 const defaultWarningProps = {
-    pl: '5px',
-    scale: 'xs',
+    fontSize: 'xs',
+    lineHeight: 'xs',
     color: 'warning',
 };
 
 const defaultErrorProps = {
-    pl: '5px',
-    scale: 'xs',
+    fontSize: 'xs',
+    lineHeight: 'xs',
     color: 'error',
+};
+
+const getOutlineColor = (warning, error) => {
+    if (warning) return 'warning';
+    if (error) return 'error';
+    return undefined;
 };
 
 const TextAreaField = ({
     id,
     name,
     label,
-    type,
     value,
     onChange,
     onBlur,
@@ -56,7 +60,7 @@ const TextAreaField = ({
     errorProps,
     ...others
 }) => (
-    <Box {...defaultWrapperProps} {...wrapperProps}>
+    <Stack {...defaultWrapperProps} {...wrapperProps}>
         {label && (
             <Text as="label" htmlFor={id || name} {...defaultLabelProps} {...labelProps}>
                 {label}
@@ -66,11 +70,11 @@ const TextAreaField = ({
             rows="6"
             id={id || name}
             name={name}
-            type={type}
             value={value}
             onChange={onChange}
             onBlur={onBlur}
             disabled={disabled}
+            outlineColor={getOutlineColor(warning, error)}
             {...defaultTextAreaProps}
             {...others}
         />
@@ -95,14 +99,13 @@ const TextAreaField = ({
                 {error}
             </Text>
         )}
-    </Box>
+    </Stack>
 );
 
 TextAreaField.propTypes = {
     id: string,
     name: string.isRequired,
     label: string,
-    type: string,
     value: oneOfType([array, object, string, number, bool]),
     onChange: func.isRequired,
     onBlur: func,
@@ -120,18 +123,17 @@ TextAreaField.propTypes = {
 TextAreaField.defaultProps = {
     id: undefined,
     label: undefined,
-    type: 'text',
     value: '',
     onBlur: undefined,
     disabled: undefined,
     hint: undefined,
     warning: undefined,
     error: undefined,
-    wrapperProps: {},
-    labelProps: {},
-    hintProps: {},
-    warningProps: {},
-    errorProps: {},
+    wrapperProps: undefined,
+    labelProps: undefined,
+    hintProps: undefined,
+    warningProps: undefined,
+    errorProps: undefined,
 };
 
 export default TextAreaField;
