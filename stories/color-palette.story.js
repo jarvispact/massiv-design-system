@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Flex from '../src/atoms/flex';
 import Box from '../src/atoms/box';
-import theme from '../src/default-theme';
+import theme from '../src/theme/default-theme';
 import Text from '../src/atoms/text';
 
 // eslint-disable-next-line react/prop-types
