@@ -5,7 +5,9 @@ import { action } from '@storybook/addon-actions';
 import Flex from '../src/atoms/flex';
 import Box from '../src/atoms/box';
 import ErrorAlert from '../src/molecules/error-alert';
-import { InputField, PrimaryButton, SecondaryButton, useForm, Row, Col, Input, TextAreaField } from '../src';
+import InputField from '../src/molecules/input-field';
+import TextAreaField from '../src/molecules/text-area-field';
+import { PrimaryButton, SecondaryButton, useForm, Row, Col, Input } from '../src';
 import Select from '../src/atoms/select';
 import Inline from '../src/layout/inline';
 

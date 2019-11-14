@@ -7,9 +7,7 @@ var _exportNames = {
   Col: true,
   defaultTheme: true,
   GlobalStyle: true,
-  InputField: true,
   Row: true,
-  TextAreaField: true,
   ThemeContext: true,
   Theme: true,
   useForm: true,
@@ -33,22 +31,10 @@ Object.defineProperty(exports, "GlobalStyle", {
     return _globalStyle["default"];
   }
 });
-Object.defineProperty(exports, "InputField", {
-  enumerable: true,
-  get: function get() {
-    return _inputField["default"];
-  }
-});
 Object.defineProperty(exports, "Row", {
   enumerable: true,
   get: function get() {
     return _row["default"];
-  }
-});
-Object.defineProperty(exports, "TextAreaField", {
-  enumerable: true,
-  get: function get() {
-    return _textAreaField["default"];
   }
 });
 Object.defineProperty(exports, "ThemeContext", {
@@ -82,11 +68,7 @@ var _defaultTheme = _interopRequireDefault(require("./default-theme"));
 
 var _globalStyle = _interopRequireDefault(require("./global-style"));
 
-var _inputField = _interopRequireDefault(require("./input-field"));
-
 var _row = _interopRequireDefault(require("./row"));
-
-var _textAreaField = _interopRequireDefault(require("./text-area-field"));
 
 var _themeContext = _interopRequireDefault(require("./theme-context"));
 

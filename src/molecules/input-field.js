@@ -1,9 +1,9 @@
 import React from 'react';
 import { string, bool, oneOfType, number, object, array, func, shape } from 'prop-types';
-import Stack from './layout/stack';
-import Text from './atoms/text';
-import TextArea from './atoms/text-area';
-import Icon from './atoms/icon';
+import Stack from '../layout/stack';
+import Text from '../atoms/text';
+import Input from '../atoms/input';
+import Icon from '../atoms/icon';
 
 const defaultWrapperProps = {
     mb: 'm',
@@ -14,7 +14,7 @@ const defaultLabelProps = {
     color: 'gray700',
 };
 
-const defaultTextAreaProps = {
+const defaultInputProps = {
     bg: 'white',
 };
 
@@ -42,10 +42,11 @@ const getOutlineColor = (warning, error) => {
     return undefined;
 };
 
-const TextAreaField = ({
+const InputField = ({
     id,
     name,
     label,
+    type,
     value,
     onChange,
     onBlur,
@@ -66,16 +67,16 @@ const TextAreaField = ({
                 {label}
             </Text>
         )}
-        <TextArea
-            rows="6"
+        <Input
             id={id || name}
             name={name}
+            type={type}
             value={value}
             onChange={onChange}
             onBlur={onBlur}
             disabled={disabled}
             outlineColor={getOutlineColor(warning, error)}
-            {...defaultTextAreaProps}
+            {...defaultInputProps}
             {...others}
         />
         {hint && !warning && !error && (
@@ -102,12 +103,13 @@ const TextAreaField = ({
     </Stack>
 );
 
-TextAreaField.propTypes = {
+InputField.propTypes = {
     id: string,
     name: string.isRequired,
     label: string,
+    type: string,
     value: oneOfType([array, object, string, number, bool]),
-    onChange: func.isRequired,
+    onChange: func,
     onBlur: func,
     disabled: bool,
     hint: string,
@@ -120,10 +122,12 @@ TextAreaField.propTypes = {
     errorProps: shape({}),
 };
 
-TextAreaField.defaultProps = {
+InputField.defaultProps = {
     id: undefined,
     label: undefined,
-    value: '',
+    type: 'text',
+    value: undefined,
+    onChange: undefined,
     onBlur: undefined,
     disabled: undefined,
     hint: undefined,
@@ -136,4 +140,4 @@ TextAreaField.defaultProps = {
     errorProps: undefined,
 };
 
-export default TextAreaField;
+export default InputField;
