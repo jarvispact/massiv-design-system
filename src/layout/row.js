@@ -1,6 +1,6 @@
 import React, { Children, cloneElement } from 'react';
 import { node, string, oneOfType, arrayOf, shape } from 'prop-types';
-import Flex from './atoms/flex';
+import Flex from '../atoms/flex';
 
 const Row = ({ gutter, children, ...others }) => (
     <Flex

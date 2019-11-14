@@ -4,21 +4,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var _exportNames = {
-  Col: true,
   defaultTheme: true,
   GlobalStyle: true,
-  Row: true,
   ThemeContext: true,
   Theme: true,
   useForm: true,
   withTheme: true
 };
-Object.defineProperty(exports, "Col", {
-  enumerable: true,
-  get: function get() {
-    return _col["default"];
-  }
-});
 Object.defineProperty(exports, "defaultTheme", {
   enumerable: true,
   get: function get() {
@@ -29,12 +21,6 @@ Object.defineProperty(exports, "GlobalStyle", {
   enumerable: true,
   get: function get() {
     return _globalStyle["default"];
-  }
-});
-Object.defineProperty(exports, "Row", {
-  enumerable: true,
-  get: function get() {
-    return _row["default"];
   }
 });
 Object.defineProperty(exports, "ThemeContext", {
@@ -62,13 +48,9 @@ Object.defineProperty(exports, "withTheme", {
   }
 });
 
-var _col = _interopRequireDefault(require("./col"));
-
 var _defaultTheme = _interopRequireDefault(require("./default-theme"));
 
 var _globalStyle = _interopRequireDefault(require("./global-style"));
-
-var _row = _interopRequireDefault(require("./row"));
 
 var _themeContext = _interopRequireDefault(require("./theme-context"));
 

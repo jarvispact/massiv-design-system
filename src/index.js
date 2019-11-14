@@ -1,7 +1,5 @@
-export { default as Col } from './col';
 export { default as defaultTheme } from './default-theme';
 export { default as GlobalStyle } from './global-style';
-export { default as Row } from './row';
 export { default as ThemeContext } from './theme-context';
 export { default as Theme } from './theme';
 export { default as useForm } from './use-form';

@@ -11,7 +11,7 @@ var _propTypes = require("prop-types");
 
 var _styledComponents = require("styled-components");
 
-var _box = _interopRequireDefault(require("./atoms/box"));
+var _box = _interopRequireDefault(require("../atoms/box"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
