@@ -14,9 +14,9 @@ import fontPropertyConfig from '../../utils/font-property-config';
 import boxShadowPropertyConfig from '../../utils/box-shadow-property-config';
 import positionPropertyConfig from '../../utils/position-property-config';
 import flexChildPropertyConfig from '../../utils/flex-child-property-config';
+import LoadingIndicator from './loading-indicator';
 import setProperty from '../../utils/set-property';
 import clone from '../../utils/clone';
-import Icon from './icon';
 
 const buttonPropertyConfig = [
     {
@@ -65,7 +65,16 @@ const StyledButton = styled.button`
 const Button = React.forwardRef((_props, ref) => {
     const { children, ...props } = _props;
     const scopedProps = buildScopedProps(propertyConfig, props);
-    return (<StyledButton ref={ref} {...scopedProps}>{scopedProps.massivLoading ? <Icon loading /> : children}</StyledButton>);
+    return (
+        <StyledButton
+            ref={ref}
+            {...scopedProps}
+        >
+            {scopedProps.massivLoading
+                ? <LoadingIndicator color={scopedProps.massivColor} fontSize={scopedProps.fontSize || '16px'} />
+                : children}
+        </StyledButton>
+    );
 });
 
 const defaultPropTypes = {

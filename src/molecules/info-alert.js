@@ -4,7 +4,7 @@ import Flex from '../atoms/flex';
 import Box from '../atoms/box';
 import Text from '../atoms/text';
 import Icon from '../atoms/icon';
-import InvisibleButton from '../atoms/invisible-button';
+import IconButton from '../atoms/icon-button';
 
 const InfoAlert = ({ text, children, onClose, ...others }) => (
     <Flex
@@ -19,11 +19,14 @@ const InfoAlert = ({ text, children, onClose, ...others }) => (
         {...others}
     >
         {onClose && (
-            <Box position="absolute" top="5px" right="5px">
-                <InvisibleButton onClick={onClose}>
-                    <Icon name="close" color="info700" />
-                </InvisibleButton>
-            </Box>
+            <IconButton
+                position="absolute"
+                top="5px"
+                right="5px"
+                onClick={onClose}
+                name="close"
+                color="info700"
+            />
         )}
         <Icon name="info" color="info700" />
         {(text && !children) && <Text color="info700" pl="1rem">{text}</Text>}

@@ -146,13 +146,13 @@ var useForm = function useForm(_ref) {
               return _context.abrupt("return");
 
             case 6:
+              setFormError(null);
               setLoading(true);
-              _context.next = 9;
+              _context.next = 10;
               return onSubmit(values);
 
-            case 9:
+            case 10:
               result = _context.sent;
-              setFormError(null);
               setLoading(false);
               if (onSubmitSuccess) onSubmitSuccess(result);
               return _context.abrupt("return", result);

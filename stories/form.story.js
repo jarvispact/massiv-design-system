@@ -10,6 +10,7 @@ import TextAreaField from '../src/molecules/text-area-field';
 import { PrimaryButton, SecondaryButton, useForm, Row, Col, Input } from '../src';
 import Select from '../src/atoms/select';
 import Inline from '../src/layout/inline';
+import LoadingIndicator from '../src/atoms/loading-indicator';
 
 const options = [
     { value: '', label: 'Bitte auswählen' },
@@ -21,13 +22,18 @@ const options = [
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 const Wrapper = ({ children }) => (
-    <Flex justifyContent="center" alignItems="center" mt="xl">
+    <Flex justifyContent="center" alignItems="center" mt="xl" mb="xl">
         {children}
     </Flex>
 );
 
 const Form = ({ form }) => (
     <Box minWidth={['95%', '95%', '450px']} maxWidth={['95%', '95%', '450px']}>
+        {form.loading && (
+            <Flex justifyContent="center" alignItems="center" p="m">
+                <LoadingIndicator fontSize="45px" color="primary" />
+            </Flex>
+        )}
         {form.formError && (
             <ErrorAlert
                 mb="1rem"
@@ -135,7 +141,7 @@ const success = async (values) => {
 };
 
 const error = async () => {
-    await sleep(1000);
+    await sleep(10000);
     const err = new Error('a server error occured');
     err.code = 'E_INTERNAL';
     throw err;
@@ -187,13 +193,5 @@ storiesOf('Form', module)
     .add('Responsive Form (Error)', () => (
         <Wrapper>
             <ErrorForm onSubmit={error} />
-        </Wrapper>
-    ))
-    .add('Inline', () => (
-        <Wrapper>
-            <Inline>
-                <Input />
-                <PrimaryButton onClick={action('submit')}>Submit</PrimaryButton>
-            </Inline>
         </Wrapper>
     ));

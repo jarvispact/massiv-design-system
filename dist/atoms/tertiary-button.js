@@ -19,23 +19,22 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
-var InvisibleButton = function InvisibleButton(_ref) {
+var TertiaryButton = function TertiaryButton(_ref) {
   var children = _ref.children,
       others = _objectWithoutProperties(_ref, ["children"]);
 
   return _react["default"].createElement(_button["default"], _extends({
-    bg: "transparent",
-    p: "0"
+    bg: "transparent"
   }, others), children);
 };
 
-InvisibleButton.propTypes = {
+TertiaryButton.propTypes = {
   children: _propTypes.node,
   others: (0, _propTypes.shape)({})
 };
-InvisibleButton.defaultProps = {
+TertiaryButton.defaultProps = {
   children: undefined,
   others: undefined
 };
-var _default = InvisibleButton;
+var _default = TertiaryButton;
 exports["default"] = _default;

@@ -58,10 +58,10 @@ const useForm = ({ initialValues, validate, onSubmit, onSubmitSuccess, onSubmitE
             const abortSubmit = Object.values(validation.errors).some(Boolean);
             if (abortSubmit) return;
 
+            setFormError(null);
             setLoading(true);
 
             const result = await onSubmit(values);
-            setFormError(null);
             setLoading(false);
             if (onSubmitSuccess) onSubmitSuccess(result);
             return result;

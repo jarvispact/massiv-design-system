@@ -165,8 +165,7 @@ var _default = {
     m: '4px 4px 2px rgba(150, 150, 150, 1)'
   },
   icons: {
-    className: 'material-icons',
-    loadingIcon: 'settings'
+    className: 'material-icons'
   },
   colors: colors,
   spacing: spacing,

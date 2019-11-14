@@ -185,7 +185,6 @@ export default {
     },
     icons: {
         className: 'material-icons',
-        loadingIcon: 'settings',
     },
     colors,
     spacing,

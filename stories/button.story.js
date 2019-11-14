@@ -1,10 +1,14 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import Box from '../src/box';
-import Text from '../src/text';
-import Icon from '../src/icon';
-import { PrimaryButton, SecondaryButton, InvisibleButton } from '../src';
+import Box from '../src/atoms/box';
+import Text from '../src/atoms/text';
+import Icon from '../src/atoms/icon';
+import PrimaryButton from '../src/atoms/primary-button';
+import SecondaryButton from '../src/atoms/secondary-button';
+import TertiaryButton from '../src/atoms/tertiary-button';
+import IconButton from '../src/atoms/icon-button';
+import Inline from '../src/layout/inline';
 
 // eslint-disable-next-line react/prop-types
 const Wrapper = ({ children }) => (
@@ -27,28 +31,52 @@ storiesOf('Button', module)
     .add('Button', () => (
         <Wrapper>
             <SectionWrapper heading="Primary">
-                <PrimaryButton onClick={action('click')}>Primary Button</PrimaryButton>
-                <PrimaryButton disabled ml="0.5rem">Disabled Primary</PrimaryButton>
-                <PrimaryButton ml="0.5rem">
-                    <Icon name="settings" />
-                    {' '}
-primary
-                </PrimaryButton>
-                <PrimaryButton ml="0.5rem"><Icon name="settings" /></PrimaryButton>
+                <Inline spacing="m">
+                    <PrimaryButton onClick={action('click')}>Primary Button</PrimaryButton>
+                    <PrimaryButton onClick={action('click')} disabled>Primary disabled</PrimaryButton>
+                    <PrimaryButton onClick={action('click')}>
+                        <Icon name="settings" />
+                        {' '}
+                        Primary
+                    </PrimaryButton>
+                    <PrimaryButton onClick={action('click')}>
+                        <Icon name="settings" />
+                    </PrimaryButton>
+                </Inline>
             </SectionWrapper>
-            <SectionWrapper heading="Secondary Button">
-                <SecondaryButton>Secondary Button</SecondaryButton>
-                <SecondaryButton disabled ml="0.5rem">Disabled Secondary</SecondaryButton>
-                <SecondaryButton ml="0.5rem">
-                    <Icon name="settings" />
-                    {' '}
-SECONDARY
-                </SecondaryButton>
-                <SecondaryButton ml="0.5rem"><Icon name="settings" /></SecondaryButton>
+            <SectionWrapper heading="Secondary">
+                <Inline spacing="m">
+                    <SecondaryButton onClick={action('click')}>Secondary Button</SecondaryButton>
+                    <SecondaryButton onClick={action('click')} disabled>Secondary disabled</SecondaryButton>
+                    <SecondaryButton onClick={action('click')}>
+                        <Icon name="settings" />
+                        {' '}
+                        Secondary
+                    </SecondaryButton>
+                    <SecondaryButton onClick={action('click')}>
+                        <Icon name="settings" />
+                    </SecondaryButton>
+                </Inline>
             </SectionWrapper>
-            <SectionWrapper heading="Invisible Button">
-                <InvisibleButton><Icon name="settings" fontSize="xxl" /></InvisibleButton>
-                <InvisibleButton disabled ml="0.5rem"><Icon name="settings" fontSize="xxl" /></InvisibleButton>
+            <SectionWrapper heading="Tertiary">
+                <Inline spacing="m">
+                    <TertiaryButton onClick={action('click')}>Tertiary Button</TertiaryButton>
+                    <TertiaryButton onClick={action('click')} disabled>Tertiary disabled</TertiaryButton>
+                    <TertiaryButton onClick={action('click')}>
+                        <Icon name="settings" />
+                        {' '}
+                        Tertiary
+                    </TertiaryButton>
+                    <TertiaryButton onClick={action('click')}>
+                        <Icon name="settings" />
+                    </TertiaryButton>
+                </Inline>
+            </SectionWrapper>
+            <SectionWrapper heading="IconButton">
+                <Inline spacing="m">
+                    <IconButton onClick={action('click')} name="settings" />
+                    <IconButton onClick={action('click')} disabled name="settings" />
+                </Inline>
             </SectionWrapper>
         </Wrapper>
     ));

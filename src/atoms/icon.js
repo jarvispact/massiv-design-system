@@ -1,6 +1,6 @@
 import React from 'react';
 import { node, bool, string } from 'prop-types';
-import styled, { keyframes, css, withTheme } from 'styled-components';
+import styled, { withTheme } from 'styled-components';
 import buildCss from '../../utils/build-css';
 import buildScopedProps from '../../utils/build-scoped-props';
 import buildPropTypes from '../../utils/build-prop-types';
@@ -28,7 +28,7 @@ const iconPropertyConfig = [
         scopedProperty: 'massivVerticalAlign',
         themeProperty: null,
         propertyType: arrayOfStringsOrString,
-        defaultProperty: false,
+        defaultProperty: undefined,
     },
 ];
 
@@ -49,30 +49,18 @@ const getCursor = (props) => {
     return undefined;
 };
 
-const rotationKeyframes = keyframes`
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-`;
-
 const StyledIcon = styled.i.attrs(props => ({ className: props.theme.icons.className }))`
     display: inline-block;
     vertical-align: ${props => props.theme.icons.verticalAlign || '-16%'};
     cursor: ${getCursor};
     opacity: ${props => props.disabled && '0.5'};
-    ${(props) => {
-        if (props.massivLoading) {
-            return css`
-                animation: ${rotationKeyframes} 0.85s linear infinite;
-            `;
-        }
-    }};
     ${buildCss(propertyConfig)}
 `;
 
 const Icon = (_props) => {
     const { children, theme, name, ...props } = _props;
     const scopedProps = buildScopedProps(propertyConfig, props);
-    return (<StyledIcon {...scopedProps}>{scopedProps.massivLoading ? theme.icons.loadingIcon : name || children}</StyledIcon>);
+    return (<StyledIcon {...scopedProps}>{name || children}</StyledIcon>);
 };
 
 const defaultPropTypes = {

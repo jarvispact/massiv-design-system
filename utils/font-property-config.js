@@ -76,4 +76,12 @@ export default [
         propertyType,
         defaultProperty,
     },
+    {
+        cssProperty: 'text-transform',
+        componentProperty: 'textTransform',
+        scopedProperty: 'massivTextTransform',
+        themeProperty: null,
+        propertyType,
+        defaultProperty,
+    },
 ];

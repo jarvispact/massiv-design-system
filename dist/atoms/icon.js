@@ -45,28 +45,8 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
-function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n                animation: ", " 0.85s linear infinite;\n            "]);
-
-  _templateObject3 = function _templateObject3() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n    display: inline-block;\n    vertical-align: ", ";\n    cursor: ", ";\n    opacity: ", ";\n    ", ";\n    ", "\n"]);
-
-  _templateObject2 = function _templateObject2() {
-    return data;
-  };
-
-  return data;
-}
-
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    from { transform: rotate(0deg); }\n    to { transform: rotate(360deg); }\n"]);
+  var data = _taggedTemplateLiteral(["\n    display: inline-block;\n    vertical-align: ", ";\n    cursor: ", ";\n    opacity: ", ";\n    ", "\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -97,7 +77,7 @@ var iconPropertyConfig = [{
   scopedProperty: 'massivVerticalAlign',
   themeProperty: null,
   propertyType: _propTypes2.arrayOfStringsOrString,
-  defaultProperty: false
+  defaultProperty: undefined
 }];
 var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_positionPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_displayPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_fontPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_borderPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_flexChildPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(iconPropertyConfig)));
 
@@ -107,20 +87,14 @@ var getCursor = function getCursor(props) {
   return undefined;
 };
 
-var rotationKeyframes = (0, _styledComponents.keyframes)(_templateObject());
-
 var StyledIcon = _styledComponents["default"].i.attrs(function (props) {
   return {
     className: props.theme.icons.className
   };
-})(_templateObject2(), function (props) {
+})(_templateObject(), function (props) {
   return props.theme.icons.verticalAlign || '-16%';
 }, getCursor, function (props) {
   return props.disabled && '0.5';
-}, function (props) {
-  if (props.massivLoading) {
-    return (0, _styledComponents.css)(_templateObject3(), rotationKeyframes);
-  }
 }, (0, _buildCss["default"])(propertyConfig));
 
 var Icon = function Icon(_props) {
@@ -130,7 +104,7 @@ var Icon = function Icon(_props) {
       props = _objectWithoutProperties(_props, ["children", "theme", "name"]);
 
   var scopedProps = (0, _buildScopedProps["default"])(propertyConfig, props);
-  return _react["default"].createElement(StyledIcon, scopedProps, scopedProps.massivLoading ? theme.icons.loadingIcon : name || children);
+  return _react["default"].createElement(StyledIcon, scopedProps, name || children);
 };
 
 var defaultPropTypes = {

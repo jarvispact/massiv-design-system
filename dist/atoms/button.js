@@ -37,11 +37,11 @@ var _positionPropertyConfig = _interopRequireDefault(require("../../utils/positi
 
 var _flexChildPropertyConfig = _interopRequireDefault(require("../../utils/flex-child-property-config"));
 
+var _loadingIndicator = _interopRequireDefault(require("./loading-indicator"));
+
 var _setProperty = _interopRequireDefault(require("../../utils/set-property"));
 
 var _clone = _interopRequireDefault(require("../../utils/clone"));
-
-var _icon = _interopRequireDefault(require("./icon"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -105,8 +105,9 @@ var Button = _react["default"].forwardRef(function (_props, ref) {
   var scopedProps = (0, _buildScopedProps["default"])(propertyConfig, props);
   return _react["default"].createElement(StyledButton, _extends({
     ref: ref
-  }, scopedProps), scopedProps.massivLoading ? _react["default"].createElement(_icon["default"], {
-    loading: true
+  }, scopedProps), scopedProps.massivLoading ? _react["default"].createElement(_loadingIndicator["default"], {
+    color: scopedProps.massivColor,
+    fontSize: scopedProps.fontSize || '16px'
   }) : children);
 });
 

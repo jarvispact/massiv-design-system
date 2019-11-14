@@ -17,7 +17,7 @@ var _text = _interopRequireDefault(require("../atoms/text"));
 
 var _icon = _interopRequireDefault(require("../atoms/icon"));
 
-var _invisibleButton = _interopRequireDefault(require("../atoms/invisible-button"));
+var _iconButton = _interopRequireDefault(require("../atoms/icon-button"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -42,16 +42,14 @@ var InfoAlert = function InfoAlert(_ref) {
     justifyContent: "flex-start",
     alignItems: "center",
     position: onClose ? 'relative' : undefined
-  }, others), onClose && _react["default"].createElement(_box["default"], {
+  }, others), onClose && _react["default"].createElement(_iconButton["default"], {
     position: "absolute",
     top: "5px",
-    right: "5px"
-  }, _react["default"].createElement(_invisibleButton["default"], {
-    onClick: onClose
-  }, _react["default"].createElement(_icon["default"], {
+    right: "5px",
+    onClick: onClose,
     name: "close",
     color: "info700"
-  }))), _react["default"].createElement(_icon["default"], {
+  }), _react["default"].createElement(_icon["default"], {
     name: "info",
     color: "info700"
   }), text && !children && _react["default"].createElement(_text["default"], {

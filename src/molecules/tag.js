@@ -2,8 +2,7 @@ import React from 'react';
 import { string, func, shape, node } from 'prop-types';
 import Flex from '../atoms/flex';
 import Text from '../atoms/text';
-import InvisibleButton from '../atoms/invisible-button';
-import Icon from '../atoms/icon';
+import IconButton from '../atoms/icon-button';
 
 const defaultWrapperProps = {
     inline: true,
@@ -20,20 +19,17 @@ const defaultTextProps = (onDelete) => ({
     lineHeight: 'xs',
 });
 
-const defaultIconProps = {
+const defaultIconButtonProps = {
     name: 'clear',
     fontSize: 'xs',
     lineHeight: 'xs',
-    verticalAlign: '0px',
 };
 
-const Tag = ({ name, children, onRemove, wrapperProps, textProps, iconProps }) => (
+const Tag = ({ name, children, onRemove, wrapperProps, textProps, iconButtonProps }) => (
     <Flex {...defaultWrapperProps} {...wrapperProps}>
         <Text {...defaultTextProps(onRemove)} {...textProps}>{name || children}</Text>
         {onRemove && (
-            <InvisibleButton lineHeight="xs" onClick={onRemove}>
-                <Icon {...defaultIconProps} {...iconProps} />
-            </InvisibleButton>
+            <IconButton onClick={onRemove} {...defaultIconButtonProps} {...iconButtonProps} />
         )}
     </Flex>
 );
@@ -44,16 +40,16 @@ Tag.propTypes = {
     onRemove: func,
     wrapperProps: shape({}),
     textProps: shape({}),
-    iconProps: shape({}),
+    iconButtonProps: shape({}),
 };
 
 Tag.defaultProps = {
     name: undefined,
     children: undefined,
     onRemove: undefined,
-    wrapperProps: {},
-    textProps: {},
-    iconProps: {},
+    wrapperProps: undefined,
+    textProps: undefined,
+    iconButtonProps: undefined,
 };
 
 export default Tag;
