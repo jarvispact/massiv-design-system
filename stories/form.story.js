@@ -7,16 +7,36 @@ import Box from '../src/atoms/box';
 import ErrorAlert from '../src/molecules/error-alert';
 import InputField from '../src/molecules/input-field';
 import TextAreaField from '../src/molecules/text-area-field';
-import { PrimaryButton, SecondaryButton, useForm, Row, Col, Input } from '../src';
-import Select from '../src/atoms/select';
-import Inline from '../src/layout/inline';
+import SelectField from '../src/molecules/select-field';
 import LoadingIndicator from '../src/atoms/loading-indicator';
+import PrimaryButton from '../src/atoms/primary-button';
+import SecondaryButton from '../src/atoms/secondary-button';
+import useForm from '../src/hooks/use-form';
+import Row from '../src/layout/row';
+import Col from '../src/layout/col';
 
 const options = [
     { value: '', label: 'Bitte auswählen' },
     { value: '1', label: 'one' },
     { value: '2', label: 'two' },
     { value: '3', label: 'three' },
+    { value: '4', label: 'four' },
+    { value: '5', label: 'five' },
+    { value: '6', label: 'six' },
+    { value: '7', label: 'seven' },
+    { value: '8', label: 'eight' },
+    { value: '9', label: 'nine' },
+    { value: '10', label: 'ten' },
+    { value: '11', label: 'eleven' },
+    { value: '12', label: 'twelve' },
+    { value: '13', label: 'thirteen' },
+    { value: '14', label: 'fourteen' },
+    { value: '15', label: 'fifteen' },
+    { value: '16', label: 'sixteen' },
+    { value: '17', label: 'seventeen' },
+    { value: '18', label: 'eighteen' },
+    { value: '19', label: 'nineteen' },
+    { value: '20', label: 'twenty' },
 ];
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -45,6 +65,7 @@ const Form = ({ form }) => (
             />
         )}
         <InputField
+            autoFocus
             autoComplete="off"
             label="E-Mail"
             name="email"
@@ -77,12 +98,17 @@ const Form = ({ form }) => (
             onBlur={form.handleBlur}
             width="100%"
         />
-        <Select
+        <SelectField
+            label="Typ"
+            defaultLabel="Typ auswählen"
             name="type"
             options={options}
             value={form.values.type}
+            warning={form.warnings.type}
+            error={form.errors.type}
             onChange={form.handleChange}
-            buttonProps={{ width: '100%', mb: 's' }}
+            onBlur={form.handleBlur}
+            buttonProps={{ width: '100%' }}
         />
         <Row gutter="5px">
             <Col span={[12, 6]}>
@@ -110,17 +136,20 @@ const Form = ({ form }) => (
 
 const initialValues = { email: '', password: '', type: '', info: '' };
 
-const validateSuccessForm = ({ email, password, info }) => {
+const validateSuccessForm = ({ email, password, info, type }) => {
     const errors = {};
     const warnings = {};
 
-    if (!email) errors.email = 'Email is required';
-    if (email && !email.includes('@')) errors.email = 'Email needs a @';
+    if (!email) errors.email = 'Die E-Mail Adresse darf nicht leer sein';
+    if (email && !email.includes('@')) errors.email = 'Das Format der E-Mail Adressestimmt nicht';
 
-    if (!password) errors.password = 'Password is required';
-    if (password && password.length < 5) warnings.password = 'Password min length is 5 characters';
+    if (!password) errors.password = 'Das Passwort darf nicht leer sein';
+    if (password && password.length < 5) warnings.password = 'Ein Passwort sollte mindestens 5 Zeichen lang sein';
 
-    if (!info) warnings.info = 'You should enter a info';
+    if (!info) warnings.info = 'Es sollte eine Info eingetragen werden';
+
+    if (!type) errors.type = 'Es muss ein Typ ausgewählt werden';
+    if (type && type === '1') warnings.type = 'Es sollte ventuell eine andere Option ausgewählt werden';
 
     return { errors, warnings };
 };

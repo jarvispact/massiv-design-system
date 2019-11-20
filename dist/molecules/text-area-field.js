@@ -32,9 +32,6 @@ var defaultWrapperProps = {
 var defaultLabelProps = {
   color: 'gray700'
 };
-var defaultTextAreaProps = {
-  bg: 'white'
-};
 var defaultHintProps = {
   fontSize: 'xs',
   lineHeight: 'xs',
@@ -87,7 +84,7 @@ var TextAreaField = function TextAreaField(_ref) {
     onBlur: onBlur,
     disabled: disabled,
     outlineColor: getOutlineColor(warning, error)
-  }, defaultTextAreaProps, others)), hint && !warning && !error && _react["default"].createElement(_text["default"], _extends({}, defaultHintProps, hintProps), _react["default"].createElement(_icon["default"], {
+  }, others)), hint && !warning && !error && _react["default"].createElement(_text["default"], _extends({}, defaultHintProps, hintProps), _react["default"].createElement(_icon["default"], {
     name: "info"
   }), ' ', hint), warning && !error && _react["default"].createElement(_text["default"], _extends({}, defaultWarningProps, warningProps), _react["default"].createElement(_icon["default"], {
     name: "warning"

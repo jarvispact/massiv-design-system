@@ -1,9 +1,9 @@
 import React from 'react';
-import { string, bool, oneOfType, number, object, array, func, shape } from 'prop-types';
+import { string, bool, oneOfType, number, object, array, func, shape, arrayOf } from 'prop-types';
 import Stack from '../layout/stack';
 import Text from '../atoms/text';
-import Input from '../atoms/input';
 import Icon from '../atoms/icon';
+import Select from '../atoms/select';
 
 const defaultWrapperProps = {
     mb: 'm',
@@ -38,11 +38,12 @@ const getOutlineColor = (warning, error) => {
     return undefined;
 };
 
-const InputField = ({
+const SelectField = ({
     id,
     name,
     label,
-    type,
+    defaultLabel,
+    options,
     value,
     onChange,
     onBlur,
@@ -59,20 +60,25 @@ const InputField = ({
 }) => (
     <Stack {...defaultWrapperProps} {...wrapperProps}>
         {label && (
-            <Text as="label" id={`${id || name}-label`} htmlFor={id || name} {...defaultLabelProps} {...labelProps}>
+            <Text as="label" htmlFor={id || name} {...defaultLabelProps} {...labelProps}>
                 {label}
             </Text>
         )}
-        <Input
+        <Select
             id={id || name}
             name={name}
-            type={type}
+            defaultLabel={defaultLabel}
+            options={options}
             value={value}
             onChange={onChange}
             onBlur={onBlur}
             disabled={disabled}
-            outlineColor={getOutlineColor(warning, error)}
-            {...others}
+            buttonProps={{
+                outlineColor: getOutlineColor(warning, error),
+                ...others.buttonProps,
+            }}
+            iconProps={others.iconProps}
+            dropdownProps={others.dropdownProps}
         />
         {hint && !warning && !error && (
             <Text {...defaultHintProps} {...hintProps}>
@@ -98,11 +104,15 @@ const InputField = ({
     </Stack>
 );
 
-InputField.propTypes = {
+SelectField.propTypes = {
     id: string,
     name: string.isRequired,
     label: string,
-    type: string,
+    defaultLabel: string,
+    options: arrayOf(shape({
+        value: string.isRequired,
+        label: string.isRequired,
+    })).isRequired,
     value: oneOfType([array, object, string, number, bool]),
     onChange: func,
     onBlur: func,
@@ -117,10 +127,10 @@ InputField.propTypes = {
     errorProps: shape({}),
 };
 
-InputField.defaultProps = {
+SelectField.defaultProps = {
     id: undefined,
     label: undefined,
-    type: 'text',
+    defaultLabel: undefined,
     value: undefined,
     onChange: undefined,
     onBlur: undefined,
@@ -135,4 +145,4 @@ InputField.defaultProps = {
     errorProps: undefined,
 };
 
-export default InputField;
+export default SelectField;

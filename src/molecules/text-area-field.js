@@ -14,10 +14,6 @@ const defaultLabelProps = {
     color: 'gray700',
 };
 
-const defaultTextAreaProps = {
-    bg: 'white',
-};
-
 const defaultHintProps = {
     fontSize: 'xs',
     lineHeight: 'xs',
@@ -75,7 +71,6 @@ const TextAreaField = ({
             onBlur={onBlur}
             disabled={disabled}
             outlineColor={getOutlineColor(warning, error)}
-            {...defaultTextAreaProps}
             {...others}
         />
         {hint && !warning && !error && (

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useLayoutEffect, useEffect } from 'react';
+import React, { useState, useRef, useLayoutEffect } from 'react';
 import { string, shape, arrayOf, func } from 'prop-types';
 import Text from './text';
 import Icon from './icon';
@@ -6,117 +6,155 @@ import Button from './button';
 import Box from './box';
 import Flex from './flex';
 
-const defaultButtonProps = {
-    bg: 'white',
-    textAlign: 'left',
-    minWidth: '200px',
+const dropdownOffset = 4;
+const getDropdownId = name => `${name}-list`;
+const getItemId = (name, value) => value ? `${name}-${value}` : '';
+
+const scheduleButtonFocusOnDropdownOpen = (buttonRef) => {
+    setTimeout(() => {
+        if (buttonRef.current && buttonRef.current.nextElementSibling) {
+            buttonRef.current.nextElementSibling.firstElementChild.firstElementChild.focus();
+        }
+    }, 100);
 };
 
-const defaultIconProps = {
-    color: 'gray600',
-    fontSize: 'xl',
-};
-
-let lastScrollY = 0;
-let ticking = false;
-
-const getDropdownDimensionsForRef = (ref) => {
-    const { bottom, left, width } = ref.current.getBoundingClientRect();
-
-    return {
-        top: Math.round(bottom + lastScrollY),
-        left: Math.round(left),
-        width: Math.round(width),
-    };
-};
-
-const getDropdownDefaultProps = (position) => ({
-    as: 'ul',
-    mt: '8px',
-    mb: '8px',
-    bg: 'white',
-    borderRadius: '2px',
-    boxShadow: '0px 0px 2px 0px rgba(0,0,0,0.60);',
-    position: 'absolute',
-    top: `${position.top}px`,
-    left: `${position.left}px`,
-    width: `${position.width}px`,
-    zIndex: '100',
-});
-
-const Select = ({ options, name, value, onChange, buttonProps, iconProps, dropdownProps }) => {
-    const [dropDownOpen, setDropDownOpen] = useState(false);
-    const [dropdownDimensions, setDropdownDimensions] = useState(null);
+const Select = ({ options, defaultLabel, name, value, onChange, onBlur, buttonProps, iconProps, dropdownProps }) => {
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [lastScrollY, setLastScrollY] = useState(false);
     const buttonRef = useRef(null);
+    const [buttonBoundingBox, setButtonBoundingBox] = useState(null);
+
+    const toggleDropdown = () => {
+        setDropdownOpen(prev => {
+            if (!prev) scheduleButtonFocusOnDropdownOpen(buttonRef);
+            return !prev;
+        });
+    };
+
+    const handleEscapeKeyPress = (event) => {
+        if (event.key === 'Escape') {
+            setDropdownOpen(false);
+            buttonRef.current.focus();
+            event.preventDefault();
+            event.stopPropagation();
+        }
+    };
+
+    const handleListKeyboardNavigation = (option) => (event) => {
+        if (event.key === ' ') {
+            onChange({ target: { name, value: option.value } });
+        }
+        if (event.key === 'ArrowDown' && event.target.nextElementSibling) {
+            event.target.nextElementSibling.focus();
+        }
+        if (event.key === 'ArrowUp' && event.target.previousElementSibling) {
+            event.target.previousElementSibling.focus();
+        }
+
+        event.preventDefault();
+        event.stopPropagation();
+    };
+
+    const handleItemClick = (option) => () => {
+        onChange({ target: { name, value: option.value } });
+        setDropdownOpen(false);
+        buttonRef.current.focus();
+    };
+
+    const selectedLabel = (options.find(option => option.value === value) || {}).label;
+    const iconName = dropdownOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down';
 
     const handleScroll = () => {
-        lastScrollY = window.scrollY;
+        setLastScrollY(window.scrollY);
+        setButtonBoundingBox(buttonRef.current.getBoundingClientRect());
+    };
 
-        if (!ticking && buttonRef.current) {
-            window.requestAnimationFrame(() => {
-                setDropdownDimensions(getDropdownDimensionsForRef(buttonRef));
-                ticking = false;
-            });
-
-            ticking = true;
+    const handleClickOutside = (event) => {
+        if (dropdownOpen && buttonRef.current && !buttonRef.current.contains(event.target)) {
+            setDropdownOpen(false);
+            buttonRef.current.focus();
         }
     };
-
-    const handleResize = () => {
-        if (!buttonRef.current) return;
-        setDropdownDimensions(getDropdownDimensionsForRef(buttonRef));
-    };
-
-    const handleClickOutSide = (event) => {
-        if (buttonRef.current && !buttonRef.current.contains(event.target)) {
-            setDropDownOpen(false);
-        }
-    };
-
-    const toggleDropDownOpen = () => {
-        if (!buttonRef.current) return;
-        setDropdownDimensions(getDropdownDimensionsForRef(buttonRef));
-        setDropDownOpen(prev => !prev);
-    };
-
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-        window.addEventListener('resize', handleResize);
-        document.addEventListener('click', handleClickOutSide);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-            window.removeEventListener('resize', handleResize);
-            document.removeEventListener('click', handleClickOutSide);
-        };
-    }, [buttonRef.current]);
 
     useLayoutEffect(() => {
-        setDropdownDimensions(getDropdownDimensionsForRef(buttonRef));
-    }, [buttonRef.current]);
+        setButtonBoundingBox(buttonRef.current.getBoundingClientRect());
+        window.addEventListener('scroll', handleScroll);
+        document.addEventListener('click', handleClickOutside);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            document.removeEventListener('click', handleClickOutside);
+        };
+    }, [dropdownOpen]);
 
     return (
         <>
-            <Button ref={buttonRef} onClick={toggleDropDownOpen} {...defaultButtonProps} {...buttonProps}>
-                <Flex justifyContent="space-between">
-                    <Text>{(options.find(option => option.value === value) || {}).label}</Text>
-                    <Icon name="keyboard_arrow_down" {...defaultIconProps} {...iconProps} />
+            <Button
+                id={name}
+                ref={buttonRef}
+                onClick={toggleDropdown}
+                onBlur={() => onBlur({ target: { name, value } })}
+                bg="white"
+                minWidth="200px"
+                aria-label={defaultLabel}
+                aria-haspopup="listbox"
+                aria-expanded={String(dropdownOpen)}
+                {...buttonProps}
+            >
+                <Flex justifyContent="space-between" alignItems="center" aria-hidden="true">
+                    <Text>{selectedLabel || defaultLabel}</Text>
+                    <Icon name={iconName} color="gray800" fontSize="l" {...iconProps} />
                 </Flex>
             </Button>
-            {(dropDownOpen && dropdownDimensions) ? (
-                <Box {...getDropdownDefaultProps(dropdownDimensions)} {...dropdownProps}>
-                    {options.map((option) => (
-                        <Text
-                            as="li"
-                            p="6px"
-                            key={option.value}
-                            color={value === option.value ? 'primary' : undefined}
-                            onClick={() => onChange({ target: { name, value: option.value } })}
-                        >
-                            {option.label}
-                        </Text>
-                    ))}
+            {dropdownOpen && (
+                <Box
+                    position="absolute"
+                    top={`${buttonBoundingBox.bottom + dropdownOffset + lastScrollY}px`}
+                    left={`${buttonBoundingBox.left}px`}
+                    width={`${buttonBoundingBox.width}px`}
+                    bg="white"
+                    maxHeight="250px"
+                    overflow="hidden"
+                    borderRadius="2px"
+                    boxShadow="0px 0px 2px 0px rgba(0,0,0,0.60);"
+                    zIndex="100"
+                    style={{ marginBottom: '10px' }} // HACK: when open dropdown reaches bottom of page
+                >
+                    <Box
+                        as="ul"
+                        id={getDropdownId(name)}
+                        position="relative"
+                        top="0px"
+                        left="0px"
+                        width="100%"
+                        height="100%"
+                        maxHeight="250px"
+                        overflowY="auto"
+                        role="listbox"
+                        tabIndex="-1"
+                        aria-activedescendant={getItemId(name, value)}
+                        onKeyDown={handleEscapeKeyPress}
+                        {...dropdownProps}
+                    >
+                        {options.map((option, idx) => (
+                            <Text
+                                id={getItemId(name, option.value)}
+                                as="li"
+                                p="12px"
+                                role="option"
+                                key={option.value}
+                                color={value === option.value ? 'primary' : undefined}
+                                aria-selected={String(value === option.value)}
+                                tabIndex={idx + 1}
+                                outlineColor="info"
+                                onKeyDown={handleListKeyboardNavigation(option)}
+                                onClick={handleItemClick(option)}
+                            >
+                                {option.label}
+                            </Text>
+                        ))}
+                    </Box>
                 </Box>
-            ) : null}
+            )}
         </>
     );
 };
@@ -126,15 +164,18 @@ Select.propTypes = {
         value: string.isRequired,
         label: string.isRequired,
     })).isRequired,
+    defaultLabel: string.isRequired,
     name: string.isRequired,
     value: string.isRequired,
     onChange: func.isRequired,
+    onBlur: func,
     buttonProps: shape({}),
     iconProps: shape({}),
     dropdownProps: shape({}),
 };
 
 Select.defaultProps = {
+    onBlur: undefined,
     buttonProps: undefined,
     iconProps: undefined,
     dropdownProps: undefined,

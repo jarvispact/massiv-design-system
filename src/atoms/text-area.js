@@ -30,6 +30,7 @@ const propertyConfig = [
     ...clone(boxShadowPropertyConfig),
 ];
 
+setProperty('background-color', 'defaultProperty', 'white', propertyConfig);
 setProperty('border-style', 'defaultProperty', 'none', propertyConfig);
 setProperty('border-radius', 'defaultProperty', '2px', propertyConfig);
 setProperty('padding', 'defaultProperty', '6px', propertyConfig);

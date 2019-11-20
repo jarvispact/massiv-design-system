@@ -35,137 +35,200 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-var defaultButtonProps = {
-  bg: 'white',
-  textAlign: 'left',
-  minWidth: '200px'
-};
-var defaultIconProps = {
-  color: 'gray600',
-  fontSize: 'xl'
-};
-var lastScrollY = 0;
-var ticking = false;
+var dropdownOffset = 4;
 
-var getDropdownDimensionsForRef = function getDropdownDimensionsForRef(ref) {
-  var _ref$current$getBound = ref.current.getBoundingClientRect(),
-      bottom = _ref$current$getBound.bottom,
-      left = _ref$current$getBound.left,
-      width = _ref$current$getBound.width;
-
-  return {
-    top: Math.round(bottom + lastScrollY),
-    left: Math.round(left),
-    width: Math.round(width)
-  };
+var getDropdownId = function getDropdownId(name) {
+  return "".concat(name, "-list");
 };
 
-var getDropdownDefaultProps = function getDropdownDefaultProps(position) {
-  return {
-    as: 'ul',
-    mt: '8px',
-    mb: '8px',
-    bg: 'white',
-    borderRadius: '2px',
-    boxShadow: '0px 0px 2px 0px rgba(0,0,0,0.60);',
-    position: 'absolute',
-    top: "".concat(position.top, "px"),
-    left: "".concat(position.left, "px"),
-    width: "".concat(position.width, "px"),
-    zIndex: '100'
-  };
+var getItemId = function getItemId(name, value) {
+  return value ? "".concat(name, "-").concat(value) : '';
+};
+
+var scheduleButtonFocusOnDropdownOpen = function scheduleButtonFocusOnDropdownOpen(buttonRef) {
+  setTimeout(function () {
+    if (buttonRef.current && buttonRef.current.nextElementSibling) {
+      buttonRef.current.nextElementSibling.firstElementChild.firstElementChild.focus();
+    }
+  }, 100);
 };
 
 var Select = function Select(_ref) {
   var options = _ref.options,
+      defaultLabel = _ref.defaultLabel,
       name = _ref.name,
       value = _ref.value,
       onChange = _ref.onChange,
+      _onBlur = _ref.onBlur,
       buttonProps = _ref.buttonProps,
       iconProps = _ref.iconProps,
       dropdownProps = _ref.dropdownProps;
 
   var _useState = (0, _react.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
-      dropDownOpen = _useState2[0],
-      setDropDownOpen = _useState2[1];
+      dropdownOpen = _useState2[0],
+      setDropdownOpen = _useState2[1];
 
-  var _useState3 = (0, _react.useState)(null),
+  var _useState3 = (0, _react.useState)(false),
       _useState4 = _slicedToArray(_useState3, 2),
-      dropdownDimensions = _useState4[0],
-      setDropdownDimensions = _useState4[1];
+      lastScrollY = _useState4[0],
+      setLastScrollY = _useState4[1];
 
   var buttonRef = (0, _react.useRef)(null);
 
-  var handleScroll = function handleScroll() {
-    lastScrollY = window.scrollY;
+  var _useState5 = (0, _react.useState)(null),
+      _useState6 = _slicedToArray(_useState5, 2),
+      buttonBoundingBox = _useState6[0],
+      setButtonBoundingBox = _useState6[1];
 
-    if (!ticking && buttonRef.current) {
-      window.requestAnimationFrame(function () {
-        setDropdownDimensions(getDropdownDimensionsForRef(buttonRef));
-        ticking = false;
-      });
-      ticking = true;
-    }
-  };
-
-  var handleResize = function handleResize() {
-    if (!buttonRef.current) return;
-    setDropdownDimensions(getDropdownDimensionsForRef(buttonRef));
-  };
-
-  var handleClickOutSide = function handleClickOutSide(event) {
-    if (buttonRef.current && !buttonRef.current.contains(event.target)) {
-      setDropDownOpen(false);
-    }
-  };
-
-  var toggleDropDownOpen = function toggleDropDownOpen() {
-    if (!buttonRef.current) return;
-    setDropdownDimensions(getDropdownDimensionsForRef(buttonRef));
-    setDropDownOpen(function (prev) {
+  var toggleDropdown = function toggleDropdown() {
+    setDropdownOpen(function (prev) {
+      if (!prev) scheduleButtonFocusOnDropdownOpen(buttonRef);
       return !prev;
     });
   };
 
-  (0, _react.useEffect)(function () {
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleResize);
-    document.addEventListener('click', handleClickOutSide);
-    return function () {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleResize);
-      document.removeEventListener('click', handleClickOutSide);
-    };
-  }, [buttonRef.current]);
-  (0, _react.useLayoutEffect)(function () {
-    setDropdownDimensions(getDropdownDimensionsForRef(buttonRef));
-  }, [buttonRef.current]);
-  return _react["default"].createElement(_react["default"].Fragment, null, _react["default"].createElement(_button["default"], _extends({
-    ref: buttonRef,
-    onClick: toggleDropDownOpen
-  }, defaultButtonProps, buttonProps), _react["default"].createElement(_flex["default"], {
-    justifyContent: "space-between"
-  }, _react["default"].createElement(_text["default"], null, (options.find(function (option) {
-    return option.value === value;
-  }) || {}).label), _react["default"].createElement(_icon["default"], _extends({
-    name: "keyboard_arrow_down"
-  }, defaultIconProps, iconProps)))), dropDownOpen && dropdownDimensions ? _react["default"].createElement(_box["default"], _extends({}, getDropdownDefaultProps(dropdownDimensions), dropdownProps), options.map(function (option) {
-    return _react["default"].createElement(_text["default"], {
-      as: "li",
-      p: "6px",
-      key: option.value,
-      color: value === option.value ? 'primary' : undefined,
-      onClick: function onClick() {
-        return onChange({
+  var handleEscapeKeyPress = function handleEscapeKeyPress(event) {
+    if (event.key === 'Escape') {
+      setDropdownOpen(false);
+      buttonRef.current.focus();
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  };
+
+  var handleListKeyboardNavigation = function handleListKeyboardNavigation(option) {
+    return function (event) {
+      if (event.key === ' ') {
+        onChange({
           target: {
             name: name,
             value: option.value
           }
         });
       }
+
+      if (event.key === 'ArrowDown' && event.target.nextElementSibling) {
+        event.target.nextElementSibling.focus();
+      }
+
+      if (event.key === 'ArrowUp' && event.target.previousElementSibling) {
+        event.target.previousElementSibling.focus();
+      }
+
+      event.preventDefault();
+      event.stopPropagation();
+    };
+  };
+
+  var handleItemClick = function handleItemClick(option) {
+    return function () {
+      onChange({
+        target: {
+          name: name,
+          value: option.value
+        }
+      });
+      setDropdownOpen(false);
+      buttonRef.current.focus();
+    };
+  };
+
+  var selectedLabel = (options.find(function (option) {
+    return option.value === value;
+  }) || {}).label;
+  var iconName = dropdownOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down';
+
+  var handleScroll = function handleScroll() {
+    setLastScrollY(window.scrollY);
+    setButtonBoundingBox(buttonRef.current.getBoundingClientRect());
+  };
+
+  var handleClickOutside = function handleClickOutside(event) {
+    if (dropdownOpen && buttonRef.current && !buttonRef.current.contains(event.target)) {
+      setDropdownOpen(false);
+      buttonRef.current.focus();
+    }
+  };
+
+  (0, _react.useLayoutEffect)(function () {
+    setButtonBoundingBox(buttonRef.current.getBoundingClientRect());
+    window.addEventListener('scroll', handleScroll);
+    document.addEventListener('click', handleClickOutside);
+    return function () {
+      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [dropdownOpen]);
+  return _react["default"].createElement(_react["default"].Fragment, null, _react["default"].createElement(_button["default"], _extends({
+    id: name,
+    ref: buttonRef,
+    onClick: toggleDropdown,
+    onBlur: function onBlur() {
+      return _onBlur({
+        target: {
+          name: name,
+          value: value
+        }
+      });
+    },
+    bg: "white",
+    minWidth: "200px",
+    "aria-label": defaultLabel,
+    "aria-haspopup": "listbox",
+    "aria-expanded": String(dropdownOpen)
+  }, buttonProps), _react["default"].createElement(_flex["default"], {
+    justifyContent: "space-between",
+    alignItems: "center",
+    "aria-hidden": "true"
+  }, _react["default"].createElement(_text["default"], null, selectedLabel || defaultLabel), _react["default"].createElement(_icon["default"], _extends({
+    name: iconName,
+    color: "gray800",
+    fontSize: "l"
+  }, iconProps)))), dropdownOpen && _react["default"].createElement(_box["default"], {
+    position: "absolute",
+    top: "".concat(buttonBoundingBox.bottom + dropdownOffset + lastScrollY, "px"),
+    left: "".concat(buttonBoundingBox.left, "px"),
+    width: "".concat(buttonBoundingBox.width, "px"),
+    bg: "white",
+    maxHeight: "250px",
+    overflow: "hidden",
+    borderRadius: "2px",
+    boxShadow: "0px 0px 2px 0px rgba(0,0,0,0.60);",
+    zIndex: "100",
+    style: {
+      marginBottom: '10px'
+    } // HACK: when open dropdown reaches bottom of page
+
+  }, _react["default"].createElement(_box["default"], _extends({
+    as: "ul",
+    id: getDropdownId(name),
+    position: "relative",
+    top: "0px",
+    left: "0px",
+    width: "100%",
+    height: "100%",
+    maxHeight: "250px",
+    overflowY: "auto",
+    role: "listbox",
+    tabIndex: "-1",
+    "aria-activedescendant": getItemId(name, value),
+    onKeyDown: handleEscapeKeyPress
+  }, dropdownProps), options.map(function (option, idx) {
+    return _react["default"].createElement(_text["default"], {
+      id: getItemId(name, option.value),
+      as: "li",
+      p: "12px",
+      role: "option",
+      key: option.value,
+      color: value === option.value ? 'primary' : undefined,
+      "aria-selected": String(value === option.value),
+      tabIndex: idx + 1,
+      outlineColor: "info",
+      onKeyDown: handleListKeyboardNavigation(option),
+      onClick: handleItemClick(option)
     }, option.label);
-  })) : null);
+  }))));
 };
 
 Select.propTypes = {
@@ -173,14 +236,17 @@ Select.propTypes = {
     value: _propTypes.string.isRequired,
     label: _propTypes.string.isRequired
   })).isRequired,
+  defaultLabel: _propTypes.string.isRequired,
   name: _propTypes.string.isRequired,
   value: _propTypes.string.isRequired,
   onChange: _propTypes.func.isRequired,
+  onBlur: _propTypes.func,
   buttonProps: (0, _propTypes.shape)({}),
   iconProps: (0, _propTypes.shape)({}),
   dropdownProps: (0, _propTypes.shape)({})
 };
 Select.defaultProps = {
+  onBlur: undefined,
   buttonProps: undefined,
   iconProps: undefined,
   dropdownProps: undefined
