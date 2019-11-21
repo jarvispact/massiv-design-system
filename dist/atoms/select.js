@@ -55,11 +55,11 @@ var scheduleButtonFocusOnDropdownOpen = function scheduleButtonFocusOnDropdownOp
 
 var Select = function Select(_ref) {
   var options = _ref.options,
-      defaultLabel = _ref.defaultLabel,
       name = _ref.name,
       value = _ref.value,
       onChange = _ref.onChange,
       _onBlur = _ref.onBlur,
+      defaultLabel = _ref.defaultLabel,
       buttonProps = _ref.buttonProps,
       iconProps = _ref.iconProps,
       dropdownProps = _ref.dropdownProps;
@@ -106,18 +106,21 @@ var Select = function Select(_ref) {
             value: option.value
           }
         });
+        event.preventDefault();
+        event.stopPropagation();
       }
 
       if (event.key === 'ArrowDown' && event.target.nextElementSibling) {
         event.target.nextElementSibling.focus();
+        event.preventDefault();
+        event.stopPropagation();
       }
 
       if (event.key === 'ArrowUp' && event.target.previousElementSibling) {
         event.target.previousElementSibling.focus();
+        event.preventDefault();
+        event.stopPropagation();
       }
-
-      event.preventDefault();
-      event.stopPropagation();
     };
   };
 
@@ -134,7 +137,7 @@ var Select = function Select(_ref) {
     };
   };
 
-  var selectedLabel = (options.find(function (option) {
+  var selectedLabel = defaultLabel || (options.find(function (option) {
     return option.value === value;
   }) || {}).label;
   var iconName = dropdownOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down';
@@ -165,7 +168,7 @@ var Select = function Select(_ref) {
     ref: buttonRef,
     onClick: toggleDropdown,
     onBlur: function onBlur() {
-      return _onBlur({
+      if (_onBlur) _onBlur({
         target: {
           name: name,
           value: value
@@ -174,14 +177,14 @@ var Select = function Select(_ref) {
     },
     bg: "white",
     minWidth: "200px",
-    "aria-label": defaultLabel,
+    "aria-label": selectedLabel,
     "aria-haspopup": "listbox",
     "aria-expanded": String(dropdownOpen)
   }, buttonProps), _react["default"].createElement(_flex["default"], {
     justifyContent: "space-between",
     alignItems: "center",
     "aria-hidden": "true"
-  }, _react["default"].createElement(_text["default"], null, selectedLabel || defaultLabel), _react["default"].createElement(_icon["default"], _extends({
+  }, _react["default"].createElement(_text["default"], null, selectedLabel), _react["default"].createElement(_icon["default"], _extends({
     name: iconName,
     color: "gray800",
     fontSize: "l"
@@ -213,7 +216,7 @@ var Select = function Select(_ref) {
     role: "listbox",
     tabIndex: "-1",
     "aria-activedescendant": getItemId(name, value),
-    onKeyDown: handleEscapeKeyPress
+    onKeyUp: handleEscapeKeyPress
   }, dropdownProps), options.map(function (option, idx) {
     return _react["default"].createElement(_text["default"], {
       id: getItemId(name, option.value),
@@ -236,17 +239,18 @@ Select.propTypes = {
     value: _propTypes.string.isRequired,
     label: _propTypes.string.isRequired
   })).isRequired,
-  defaultLabel: _propTypes.string.isRequired,
   name: _propTypes.string.isRequired,
   value: _propTypes.string.isRequired,
   onChange: _propTypes.func.isRequired,
   onBlur: _propTypes.func,
+  defaultLabel: _propTypes.string,
   buttonProps: (0, _propTypes.shape)({}),
   iconProps: (0, _propTypes.shape)({}),
   dropdownProps: (0, _propTypes.shape)({})
 };
 Select.defaultProps = {
   onBlur: undefined,
+  defaultLabel: undefined,
   buttonProps: undefined,
   iconProps: undefined,
   dropdownProps: undefined

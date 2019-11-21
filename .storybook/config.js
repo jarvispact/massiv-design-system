@@ -17,7 +17,7 @@ const loadStories = () => {
     // require('../stories/input-field.story.js');
     require('../stories/form.story.js');
     require('../stories/alert.story.js');
-    // require('../stories/select.story.js');
+    require('../stories/select.story.js');
     // require('../stories/box.story.js');
     require('../stories/button.story.js');
     // require('../stories/code.story.js');

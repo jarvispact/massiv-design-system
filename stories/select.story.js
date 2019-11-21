@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import Box from '../src/box';
-import Select from '../src/select';
+import Box from '../src/atoms/box';
+import Select from '../src/atoms/select';
 
 const options = [
     { value: '', label: 'Bitte auswählen' },
@@ -11,10 +11,14 @@ const options = [
     { value: '3', label: 'three' },
 ];
 
+const Field = () => {
+    const [state, setState] = useState('');
+    return <Select name="select" value={state} onChange={e => setState(e.target.value)} options={options} />;
+};
+
 storiesOf('Select', module)
     .add('Select', () => (
         <Box p="m">
-            <Select name="select" value="" onChange={action('onChange')} options={options}>Click me</Select>
-            <Box>SomeBox</Box>
+            <Field />
         </Box>
     ));

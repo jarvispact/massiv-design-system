@@ -18,7 +18,7 @@ const scheduleButtonFocusOnDropdownOpen = (buttonRef) => {
     }, 100);
 };
 
-const Select = ({ options, defaultLabel, name, value, onChange, onBlur, buttonProps, iconProps, dropdownProps }) => {
+const Select = ({ options, name, value, onChange, onBlur, defaultLabel, buttonProps, iconProps, dropdownProps }) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [lastScrollY, setLastScrollY] = useState(false);
     const buttonRef = useRef(null);
@@ -43,16 +43,19 @@ const Select = ({ options, defaultLabel, name, value, onChange, onBlur, buttonPr
     const handleListKeyboardNavigation = (option) => (event) => {
         if (event.key === ' ') {
             onChange({ target: { name, value: option.value } });
+            event.preventDefault();
+            event.stopPropagation();
         }
         if (event.key === 'ArrowDown' && event.target.nextElementSibling) {
             event.target.nextElementSibling.focus();
+            event.preventDefault();
+            event.stopPropagation();
         }
         if (event.key === 'ArrowUp' && event.target.previousElementSibling) {
             event.target.previousElementSibling.focus();
+            event.preventDefault();
+            event.stopPropagation();
         }
-
-        event.preventDefault();
-        event.stopPropagation();
     };
 
     const handleItemClick = (option) => () => {
@@ -61,7 +64,7 @@ const Select = ({ options, defaultLabel, name, value, onChange, onBlur, buttonPr
         buttonRef.current.focus();
     };
 
-    const selectedLabel = (options.find(option => option.value === value) || {}).label;
+    const selectedLabel = defaultLabel || (options.find(option => option.value === value) || {}).label;
     const iconName = dropdownOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down';
 
     const handleScroll = () => {
@@ -92,16 +95,18 @@ const Select = ({ options, defaultLabel, name, value, onChange, onBlur, buttonPr
                 id={name}
                 ref={buttonRef}
                 onClick={toggleDropdown}
-                onBlur={() => onBlur({ target: { name, value } })}
+                onBlur={() => {
+                    if (onBlur) onBlur({ target: { name, value } });
+                }}
                 bg="white"
                 minWidth="200px"
-                aria-label={defaultLabel}
+                aria-label={selectedLabel}
                 aria-haspopup="listbox"
                 aria-expanded={String(dropdownOpen)}
                 {...buttonProps}
             >
                 <Flex justifyContent="space-between" alignItems="center" aria-hidden="true">
-                    <Text>{selectedLabel || defaultLabel}</Text>
+                    <Text>{selectedLabel}</Text>
                     <Icon name={iconName} color="gray800" fontSize="l" {...iconProps} />
                 </Flex>
             </Button>
@@ -132,7 +137,7 @@ const Select = ({ options, defaultLabel, name, value, onChange, onBlur, buttonPr
                         role="listbox"
                         tabIndex="-1"
                         aria-activedescendant={getItemId(name, value)}
-                        onKeyDown={handleEscapeKeyPress}
+                        onKeyUp={handleEscapeKeyPress}
                         {...dropdownProps}
                     >
                         {options.map((option, idx) => (
@@ -164,11 +169,11 @@ Select.propTypes = {
         value: string.isRequired,
         label: string.isRequired,
     })).isRequired,
-    defaultLabel: string.isRequired,
     name: string.isRequired,
     value: string.isRequired,
     onChange: func.isRequired,
     onBlur: func,
+    defaultLabel: string,
     buttonProps: shape({}),
     iconProps: shape({}),
     dropdownProps: shape({}),
@@ -176,6 +181,7 @@ Select.propTypes = {
 
 Select.defaultProps = {
     onBlur: undefined,
+    defaultLabel: undefined,
     buttonProps: undefined,
     iconProps: undefined,
     dropdownProps: undefined,
