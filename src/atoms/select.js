@@ -64,7 +64,7 @@ const Select = ({ options, name, value, onChange, onBlur, defaultLabel, buttonPr
         buttonRef.current.focus();
     };
 
-    const selectedLabel = defaultLabel || (options.find(option => option.value === value) || {}).label;
+    const selectedLabel = (options.find(option => option.value === value) || {}).label || defaultLabel;
     const iconName = dropdownOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down';
 
     const handleScroll = () => {

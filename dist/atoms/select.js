@@ -137,9 +137,9 @@ var Select = function Select(_ref) {
     };
   };
 
-  var selectedLabel = defaultLabel || (options.find(function (option) {
+  var selectedLabel = (options.find(function (option) {
     return option.value === value;
-  }) || {}).label;
+  }) || {}).label || defaultLabel;
   var iconName = dropdownOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down';
 
   var handleScroll = function handleScroll() {
