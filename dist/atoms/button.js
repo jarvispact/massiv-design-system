@@ -107,7 +107,7 @@ var Button = _react["default"].forwardRef(function (_props, ref) {
     ref: ref
   }, scopedProps), scopedProps.massivLoading ? _react["default"].createElement(_loadingIndicator["default"], {
     color: scopedProps.massivColor,
-    fontSize: scopedProps.fontSize || '16px'
+    fontSize: scopedProps.fontSize || '14px'
   }) : children);
 });
 

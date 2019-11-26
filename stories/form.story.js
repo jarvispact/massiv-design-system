@@ -5,15 +5,16 @@ import { action } from '@storybook/addon-actions';
 import Flex from '../src/atoms/flex';
 import Box from '../src/atoms/box';
 import ErrorAlert from '../src/molecules/error-alert';
-import InputField from '../src/molecules/input-field';
-import TextAreaField from '../src/molecules/text-area-field';
-import SelectField from '../src/molecules/select-field';
 import LoadingIndicator from '../src/atoms/loading-indicator';
 import PrimaryButton from '../src/atoms/primary-button';
 import SecondaryButton from '../src/atoms/secondary-button';
 import useForm from '../src/hooks/use-form';
 import Row from '../src/layout/row';
 import Col from '../src/layout/col';
+import Field from '../src/molecules/field';
+import Input from '../src/atoms/input';
+import TextArea from '../src/atoms/text-area';
+import Select from '../src/atoms/select';
 
 const options = [
     { value: '', label: 'Bitte auswählen' },
@@ -64,52 +65,66 @@ const Form = ({ form }) => (
                 }}
             />
         )}
-        <InputField
-            autoFocus
-            autoComplete="off"
+        <Field
             label="E-Mail"
             name="email"
-            value={form.values.email}
             warning={form.warnings.email}
             error={form.errors.email}
-            onChange={form.handleChange}
-            onBlur={form.handleBlur}
-            width="100%"
-        />
-        <InputField
-            autoComplete="off"
+        >
+            <Input
+                name="email"
+                type="text"
+                value={form.values.email}
+                onChange={form.handleChange}
+                onBlur={form.handleBlur}
+                width="100%"
+            />
+        </Field>
+        <Field
             label="Passwort"
-            type="password"
             name="password"
-            value={form.values.password}
             warning={form.warnings.password}
             error={form.errors.password}
-            onChange={form.handleChange}
-            onBlur={form.handleBlur}
-            width="100%"
-        />
-        <TextAreaField
+        >
+            <Input
+                name="password"
+                type="password"
+                value={form.values.password}
+                onChange={form.handleChange}
+                onBlur={form.handleBlur}
+                width="100%"
+            />
+        </Field>
+        <Field
             label="Info"
             name="info"
-            value={form.values.info}
             warning={form.warnings.info}
             error={form.errors.info}
-            onChange={form.handleChange}
-            onBlur={form.handleBlur}
-            width="100%"
-        />
-        <SelectField
+        >
+            <TextArea
+                name="info"
+                value={form.values.info}
+                onChange={form.handleChange}
+                onBlur={form.handleBlur}
+                width="100%"
+            />
+        </Field>
+        <Field
             label="Typ"
-            defaultLabel="Typ auswählen"
             name="type"
-            options={options}
-            value={form.values.type}
             warning={form.warnings.type}
             error={form.errors.type}
-            onChange={form.handleChange}
-            onBlur={form.handleBlur}
-            buttonProps={{ width: '100%' }}
-        />
+        >
+            <Select
+                defaultLabel="Typ auswählen"
+                name="type"
+                options={options}
+                value={form.values.type}
+                onChange={form.handleChange}
+                onBlur={form.handleBlur}
+                buttonProps={{ width: '100%' }}
+            />
+        </Field>
         <Row gutter="5px">
             <Col span={[12, 6]}>
                 <SecondaryButton

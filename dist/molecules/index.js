@@ -9,6 +9,12 @@ Object.defineProperty(exports, "ErrorAlert", {
     return _errorAlert["default"];
   }
 });
+Object.defineProperty(exports, "Field", {
+  enumerable: true,
+  get: function get() {
+    return _field["default"];
+  }
+});
 Object.defineProperty(exports, "IconButton", {
   enumerable: true,
   get: function get() {
@@ -19,18 +25,6 @@ Object.defineProperty(exports, "InfoAlert", {
   enumerable: true,
   get: function get() {
     return _infoAlert["default"];
-  }
-});
-Object.defineProperty(exports, "InputField", {
-  enumerable: true,
-  get: function get() {
-    return _inputField["default"];
-  }
-});
-Object.defineProperty(exports, "SelectField", {
-  enumerable: true,
-  get: function get() {
-    return _selectField["default"];
   }
 });
 Object.defineProperty(exports, "SuccessAlert", {
@@ -45,12 +39,6 @@ Object.defineProperty(exports, "Tag", {
     return _tag["default"];
   }
 });
-Object.defineProperty(exports, "TextAreaField", {
-  enumerable: true,
-  get: function get() {
-    return _textAreaField["default"];
-  }
-});
 Object.defineProperty(exports, "WarningAlert", {
   enumerable: true,
   get: function get() {
@@ -60,19 +48,15 @@ Object.defineProperty(exports, "WarningAlert", {
 
 var _errorAlert = _interopRequireDefault(require("./error-alert"));
 
+var _field = _interopRequireDefault(require("./field"));
+
 var _iconButton = _interopRequireDefault(require("./icon-button"));
 
 var _infoAlert = _interopRequireDefault(require("./info-alert"));
 
-var _inputField = _interopRequireDefault(require("./input-field"));
-
-var _selectField = _interopRequireDefault(require("./select-field"));
-
 var _successAlert = _interopRequireDefault(require("./success-alert"));
 
 var _tag = _interopRequireDefault(require("./tag"));
-
-var _textAreaField = _interopRequireDefault(require("./text-area-field"));
 
 var _warningAlert = _interopRequireDefault(require("./warning-alert"));
 

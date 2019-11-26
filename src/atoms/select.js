@@ -1,5 +1,5 @@
 import React, { useState, useRef, useLayoutEffect } from 'react';
-import { string, shape, arrayOf, func } from 'prop-types';
+import { string, shape, arrayOf, func, bool } from 'prop-types';
 import Text from './text';
 import Icon from './icon';
 import Button from './button';
@@ -18,7 +18,7 @@ const scheduleButtonFocusOnDropdownOpen = (buttonRef) => {
     }, 100);
 };
 
-const Select = ({ options, name, value, onChange, onBlur, defaultLabel, buttonProps, iconProps, dropdownProps }) => {
+const Select = ({ options, name, value, onChange, onBlur, disabled, defaultLabel, buttonProps, iconProps, dropdownProps }) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [lastScrollY, setLastScrollY] = useState(false);
     const buttonRef = useRef(null);
@@ -98,6 +98,7 @@ const Select = ({ options, name, value, onChange, onBlur, defaultLabel, buttonPr
                 onBlur={() => {
                     if (onBlur) onBlur({ target: { name, value } });
                 }}
+                disabled={disabled}
                 bg="white"
                 minWidth="200px"
                 aria-label={selectedLabel}
@@ -173,6 +174,7 @@ Select.propTypes = {
     value: string.isRequired,
     onChange: func.isRequired,
     onBlur: func,
+    disabled: bool,
     defaultLabel: string,
     buttonProps: shape({}),
     iconProps: shape({}),
@@ -181,6 +183,7 @@ Select.propTypes = {
 
 Select.defaultProps = {
     onBlur: undefined,
+    disabled: undefined,
     defaultLabel: undefined,
     buttonProps: undefined,
     iconProps: undefined,

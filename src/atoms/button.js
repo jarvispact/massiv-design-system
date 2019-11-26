@@ -71,7 +71,7 @@ const Button = React.forwardRef((_props, ref) => {
             {...scopedProps}
         >
             {scopedProps.massivLoading
-                ? <LoadingIndicator color={scopedProps.massivColor} fontSize={scopedProps.fontSize || '16px'} />
+                ? <LoadingIndicator color={scopedProps.massivColor} fontSize={scopedProps.fontSize || '14px'} />
                 : children}
         </StyledButton>
     );

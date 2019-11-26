@@ -59,6 +59,7 @@ var Select = function Select(_ref) {
       value = _ref.value,
       onChange = _ref.onChange,
       _onBlur = _ref.onBlur,
+      disabled = _ref.disabled,
       defaultLabel = _ref.defaultLabel,
       buttonProps = _ref.buttonProps,
       iconProps = _ref.iconProps,
@@ -175,6 +176,7 @@ var Select = function Select(_ref) {
         }
       });
     },
+    disabled: disabled,
     bg: "white",
     minWidth: "200px",
     "aria-label": selectedLabel,
@@ -243,6 +245,7 @@ Select.propTypes = {
   value: _propTypes.string.isRequired,
   onChange: _propTypes.func.isRequired,
   onBlur: _propTypes.func,
+  disabled: _propTypes.bool,
   defaultLabel: _propTypes.string,
   buttonProps: (0, _propTypes.shape)({}),
   iconProps: (0, _propTypes.shape)({}),
@@ -250,6 +253,7 @@ Select.propTypes = {
 };
 Select.defaultProps = {
   onBlur: undefined,
+  disabled: undefined,
   defaultLabel: undefined,
   buttonProps: undefined,
   iconProps: undefined,
