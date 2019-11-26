@@ -1,4 +1,5 @@
 export { default as ErrorAlert } from './error-alert';
+export { default as IconButton } from './icon-button';
 export { default as InfoAlert } from './info-alert';
 export { default as InputField } from './input-field';
 export { default as SelectField } from './select-field';

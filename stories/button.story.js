@@ -7,7 +7,7 @@ import Icon from '../src/atoms/icon';
 import PrimaryButton from '../src/atoms/primary-button';
 import SecondaryButton from '../src/atoms/secondary-button';
 import TertiaryButton from '../src/atoms/tertiary-button';
-import IconButton from '../src/atoms/icon-button';
+import IconButton from '../src/molecules/icon-button';
 import Inline from '../src/layout/inline';
 
 // eslint-disable-next-line react/prop-types

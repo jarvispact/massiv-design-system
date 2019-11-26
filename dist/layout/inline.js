@@ -12,7 +12,7 @@ var _box = _interopRequireDefault(require("../atoms/box"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    * {\n        margin-right: ", ";\n    }\n\n    & :last-child {\n        margin-right: 0px;\n    }\n"]);
+  var data = _taggedTemplateLiteral(["\n    display: inline-block;\n\n    > * {\n        margin-right: ", ";\n    }\n\n    & > :last-child {\n        margin-right: 0px;\n    }\n"]);
 
   _templateObject = function _templateObject() {
     return data;

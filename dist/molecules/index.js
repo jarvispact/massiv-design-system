@@ -9,6 +9,12 @@ Object.defineProperty(exports, "ErrorAlert", {
     return _errorAlert["default"];
   }
 });
+Object.defineProperty(exports, "IconButton", {
+  enumerable: true,
+  get: function get() {
+    return _iconButton["default"];
+  }
+});
 Object.defineProperty(exports, "InfoAlert", {
   enumerable: true,
   get: function get() {
@@ -53,6 +59,8 @@ Object.defineProperty(exports, "WarningAlert", {
 });
 
 var _errorAlert = _interopRequireDefault(require("./error-alert"));
+
+var _iconButton = _interopRequireDefault(require("./icon-button"));
 
 var _infoAlert = _interopRequireDefault(require("./info-alert"));
 

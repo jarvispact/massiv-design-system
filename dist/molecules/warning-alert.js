@@ -17,7 +17,7 @@ var _text = _interopRequireDefault(require("../atoms/text"));
 
 var _icon = _interopRequireDefault(require("../atoms/icon"));
 
-var _iconButton = _interopRequireDefault(require("../atoms/icon-button"));
+var _iconButton = _interopRequireDefault(require("./icon-button"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -44,8 +44,8 @@ var WarningAlert = function WarningAlert(_ref) {
     position: onClose ? 'relative' : undefined
   }, others), onClose && _react["default"].createElement(_iconButton["default"], {
     position: "absolute",
-    top: "5px",
-    right: "5px",
+    top: "10px",
+    right: "10px",
     onClick: onClose,
     name: "close",
     color: "warning700"

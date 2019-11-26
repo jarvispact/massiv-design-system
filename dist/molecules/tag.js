@@ -13,60 +13,56 @@ var _flex = _interopRequireDefault(require("../atoms/flex"));
 
 var _text = _interopRequireDefault(require("../atoms/text"));
 
-var _iconButton = _interopRequireDefault(require("../atoms/icon-button"));
+var _iconButton = _interopRequireDefault(require("./icon-button"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-var defaultWrapperProps = {
-  inline: true,
-  alignItems: 'center',
-  justifyContent: 'center',
-  bg: 'gray300',
-  p: '8px',
-  borderRadius: '2px'
-};
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
-var defaultTextProps = function defaultTextProps(onDelete) {
-  return {
-    pr: onDelete ? '10px' : undefined,
-    fontSize: 'xs',
-    lineHeight: 'xs'
-  };
-};
-
-var defaultIconButtonProps = {
-  name: 'clear',
-  fontSize: 'xs',
-  lineHeight: 'xs'
-};
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 var Tag = function Tag(_ref) {
-  var name = _ref.name,
+  var content = _ref.content,
       children = _ref.children,
       onRemove = _ref.onRemove,
-      wrapperProps = _ref.wrapperProps,
       textProps = _ref.textProps,
-      iconButtonProps = _ref.iconButtonProps;
-  return _react["default"].createElement(_flex["default"], _extends({}, defaultWrapperProps, wrapperProps), _react["default"].createElement(_text["default"], _extends({}, defaultTextProps(onRemove), textProps), name || children), onRemove && _react["default"].createElement(_iconButton["default"], _extends({
+      iconButtonProps = _ref.iconButtonProps,
+      others = _objectWithoutProperties(_ref, ["content", "children", "onRemove", "textProps", "iconButtonProps"]);
+
+  return _react["default"].createElement(_flex["default"], _extends({
+    inline: true,
+    alignItems: "center",
+    justifyContent: "center",
+    bg: "gray300",
+    p: "8px",
+    borderRadius: "2px"
+  }, others), content && !children && _react["default"].createElement(_react["default"].Fragment, null, _react["default"].createElement(_text["default"], _extends({
+    pr: onRemove ? '6px' : undefined,
+    fontSize: "xs",
+    lineHeight: "xs"
+  }, textProps), content), onRemove && _react["default"].createElement(_iconButton["default"], _extends({
+    name: "clear",
+    fontSize: "xs",
+    lineHeight: "xs",
     onClick: onRemove
-  }, defaultIconButtonProps, iconButtonProps)));
+  }, iconButtonProps))), !content && children && children);
 };
 
 Tag.propTypes = {
-  name: _propTypes.string,
+  content: _propTypes.string,
   children: _propTypes.node,
   onRemove: _propTypes.func,
-  wrapperProps: (0, _propTypes.shape)({}),
+  others: (0, _propTypes.shape)({}),
   textProps: (0, _propTypes.shape)({}),
   iconButtonProps: (0, _propTypes.shape)({})
 };
 Tag.defaultProps = {
-  name: undefined,
+  content: undefined,
   children: undefined,
   onRemove: undefined,
-  wrapperProps: undefined,
+  others: undefined,
   textProps: undefined,
   iconButtonProps: undefined
 };

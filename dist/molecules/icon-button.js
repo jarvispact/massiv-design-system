@@ -9,9 +9,9 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = require("prop-types");
 
-var _button = _interopRequireDefault(require("./button"));
+var _tertiaryButton = _interopRequireDefault(require("../atoms/tertiary-button"));
 
-var _icon = _interopRequireDefault(require("./icon"));
+var _icon = _interopRequireDefault(require("../atoms/icon"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -23,21 +23,23 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 var IconButton = function IconButton(_ref) {
   var name = _ref.name,
-      others = _objectWithoutProperties(_ref, ["name"]);
+      iconProps = _ref.iconProps,
+      others = _objectWithoutProperties(_ref, ["name", "iconProps"]);
 
-  return _react["default"].createElement(_button["default"], _extends({
-    bg: "transparent",
-    p: "0"
-  }, others), _react["default"].createElement(_icon["default"], {
+  return _react["default"].createElement(_tertiaryButton["default"], _extends({
+    p: "0px"
+  }, others), _react["default"].createElement(_icon["default"], _extends({
     name: name
-  }));
+  }, iconProps)));
 };
 
 IconButton.propTypes = {
   name: _propTypes.string.isRequired,
+  iconProps: (0, _propTypes.shape)({}),
   others: (0, _propTypes.shape)({})
 };
 IconButton.defaultProps = {
+  iconProps: undefined,
   others: undefined
 };
 var _default = IconButton;

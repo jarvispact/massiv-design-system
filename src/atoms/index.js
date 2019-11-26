@@ -4,7 +4,6 @@ export { default as Flex } from './flex';
 export { default as Icon } from './icon';
 export { default as Image } from './image';
 export { default as Input } from './input';
-export { default as IconButton } from './icon-button';
 export { default as PrimaryButton } from './primary-button';
 export { default as SecondaryButton } from './secondary-button';
 export { default as Select } from './select';

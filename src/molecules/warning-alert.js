@@ -4,7 +4,7 @@ import Flex from '../atoms/flex';
 import Box from '../atoms/box';
 import Text from '../atoms/text';
 import Icon from '../atoms/icon';
-import IconButton from '../atoms/icon-button';
+import IconButton from './icon-button';
 
 const WarningAlert = ({ text, children, onClose, ...others }) => (
     <Flex
@@ -21,8 +21,8 @@ const WarningAlert = ({ text, children, onClose, ...others }) => (
         {onClose && (
             <IconButton
                 position="absolute"
-                top="5px"
-                right="5px"
+                top="10px"
+                right="10px"
                 onClick={onClose}
                 name="close"
                 color="warning700"

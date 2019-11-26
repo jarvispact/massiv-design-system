@@ -6,7 +6,7 @@ const Stack = styled(Box)`
         margin-bottom: ${props => props.theme.spacing[props.spacing] || props.spacing};
     }
 
-    & :last-child {
+    & > :last-child {
         margin-bottom: 0px;
     }
 `;

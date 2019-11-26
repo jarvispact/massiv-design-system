@@ -39,12 +39,6 @@ Object.defineProperty(exports, "Input", {
     return _input["default"];
   }
 });
-Object.defineProperty(exports, "IconButton", {
-  enumerable: true,
-  get: function get() {
-    return _iconButton["default"];
-  }
-});
 Object.defineProperty(exports, "PrimaryButton", {
   enumerable: true,
   get: function get() {
@@ -93,8 +87,6 @@ var _icon = _interopRequireDefault(require("./icon"));
 var _image = _interopRequireDefault(require("./image"));
 
 var _input = _interopRequireDefault(require("./input"));
-
-var _iconButton = _interopRequireDefault(require("./icon-button"));
 
 var _primaryButton = _interopRequireDefault(require("./primary-button"));
 
