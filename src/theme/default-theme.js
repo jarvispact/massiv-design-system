@@ -69,7 +69,6 @@ const gray500 = '#9e9e9e';
 const gray600 = '#757575';
 const gray700 = '#616161';
 const gray800 = '#424242';
-const gray850 = '#303030';
 const gray900 = '#212121';
 
 const gray = {
@@ -83,7 +82,6 @@ const gray = {
     gray600,
     gray700,
     gray800,
-    gray850,
     gray900,
 };
 

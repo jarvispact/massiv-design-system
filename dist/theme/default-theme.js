@@ -70,7 +70,6 @@ var gray500 = '#9e9e9e';
 var gray600 = '#757575';
 var gray700 = '#616161';
 var gray800 = '#424242';
-var gray850 = '#303030';
 var gray900 = '#212121';
 var gray = {
   gray: gray500,
@@ -83,7 +82,6 @@ var gray = {
   gray600: gray600,
   gray700: gray700,
   gray800: gray800,
-  gray850: gray850,
   gray900: gray900
 };
 
