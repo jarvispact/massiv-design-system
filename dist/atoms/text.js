@@ -46,7 +46,7 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    display: block;\n    font-family: ", ";\n    font-size: ", ";\n    line-height: ", ";\n    ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n    display: ", ";\n    font-family: ", ";\n    font-size: ", ";\n    line-height: ", ";\n    ", "\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -68,11 +68,13 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_fontPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_positionPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_displayPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_widthPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_heightPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_flexChildPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_borderPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_overflowPropertyConfig["default"])));
 
 var StyledText = _styledComponents["default"].p(_templateObject(), function (props) {
-  return props.theme.fontFamilies[props.as] || props.theme.fontFamilies["default"];
+  return props.theme.inlineTextHtmlTags.includes(props.as) ? 'inline-block' : 'block';
 }, function (props) {
-  return props.theme.fontSizes[props.as || props.fontSize] || props.theme.fontSizes.m;
+  return props.theme.fontFamilies[props.as] || props.theme.fontFamilies.p;
 }, function (props) {
-  return props.theme.lineHeights[props.as || props.lineHeight] || props.theme.lineHeights.m;
+  return props.theme.fontSizes[props.as || props.fontSize] || props.theme.fontSizes.p;
+}, function (props) {
+  return props.theme.lineHeights[props.as || props.lineHeight] || props.theme.lineHeights.p;
 }, (0, _buildCss["default"])(propertyConfig));
 
 var Text = function Text(_props) {
