@@ -13,7 +13,7 @@ const loadStories = () => {
     require('../stories/typography.story.js');
     // require('../stories/icon.story.js');
     require('../stories/color-palette.story.js');
-    // require('../stories/button.story.js');
+    require('../stories/button.story.js');
     // require('../stories/input-field.story.js');
     // require('../stories/form.story.js');
     // require('../stories/alert.story.js');

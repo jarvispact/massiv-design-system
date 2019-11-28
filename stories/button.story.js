@@ -42,6 +42,7 @@ storiesOf('Button', module)
                     <PrimaryButton onClick={action('click')}>
                         <Icon name="settings" />
                     </PrimaryButton>
+                    <PrimaryButton onClick={action('click')} loading />
                 </Inline>
             </SectionWrapper>
             <SectionWrapper heading="Secondary">
@@ -56,6 +57,7 @@ storiesOf('Button', module)
                     <SecondaryButton onClick={action('click')}>
                         <Icon name="settings" />
                     </SecondaryButton>
+                    <SecondaryButton onClick={action('click')} loading />
                 </Inline>
             </SectionWrapper>
             <SectionWrapper heading="Tertiary">
@@ -70,12 +72,14 @@ storiesOf('Button', module)
                     <TertiaryButton onClick={action('click')}>
                         <Icon name="settings" />
                     </TertiaryButton>
+                    <TertiaryButton onClick={action('click')} loading />
                 </Inline>
             </SectionWrapper>
             <SectionWrapper heading="IconButton">
                 <Inline spacing="m">
                     <IconButton onClick={action('click')} name="settings" />
                     <IconButton onClick={action('click')} disabled name="settings" />
+                    <IconButton onClick={action('click')} loading />
                 </Inline>
             </SectionWrapper>
         </Wrapper>
