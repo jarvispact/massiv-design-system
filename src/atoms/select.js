@@ -108,7 +108,7 @@ const Select = ({ options, name, value, onChange, onBlur, disabled, defaultLabel
             >
                 <Flex justifyContent="space-between" alignItems="center" aria-hidden="true">
                     <Text>{selectedLabel}</Text>
-                    <Icon name={iconName} color="gray800" fontSize="l" {...iconProps} />
+                    <Icon name={iconName} color="gray800" fontSize="l" lineHeight="l" {...iconProps} />
                 </Flex>
             </Button>
             {dropdownOpen && (

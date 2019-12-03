@@ -81,9 +81,7 @@ var buttonPropertyConfig = [{
 var propertyConfig = [].concat(_toConsumableArray((0, _clone["default"])(_positionPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_flexChildPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_colorPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_spacingPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_widthPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_heightPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_borderPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_fontPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_displayPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(_boxShadowPropertyConfig["default"])), _toConsumableArray((0, _clone["default"])(buttonPropertyConfig)));
 (0, _setProperty["default"])('border-style', 'defaultProperty', 'none', propertyConfig);
 (0, _setProperty["default"])('border-radius', 'defaultProperty', '2px', propertyConfig);
-(0, _setProperty["default"])('padding', 'defaultProperty', '9px 12px', propertyConfig);
-(0, _setProperty["default"])('font-size', 'defaultProperty', '16px', propertyConfig);
-(0, _setProperty["default"])('line-height', 'defaultProperty', '14px', propertyConfig);
+(0, _setProperty["default"])('padding', 'defaultProperty', '9px 16px', propertyConfig);
 (0, _setProperty["default"])('outline-color', 'defaultProperty', 'info', propertyConfig);
 
 var getCursor = function getCursor(props) {
@@ -107,7 +105,7 @@ var Button = _react["default"].forwardRef(function (_props, ref) {
     ref: ref
   }, scopedProps), scopedProps.massivLoading ? _react["default"].createElement(_loadingIndicator["default"], {
     color: scopedProps.massivColor,
-    fontSize: scopedProps.fontSize || '14px'
+    fontSize: scopedProps.massivFontSize || '15.5px'
   }) : children);
 });
 

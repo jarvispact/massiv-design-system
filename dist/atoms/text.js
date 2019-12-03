@@ -72,9 +72,9 @@ var StyledText = _styledComponents["default"].p(_templateObject(), function (pro
 }, function (props) {
   return props.theme.fontFamilies[props.as] || props.theme.fontFamilies.p;
 }, function (props) {
-  return props.theme.fontSizes[props.as || props.fontSize] || props.theme.fontSizes.p;
+  return props.theme.fontSizes[props.as] || props.theme.fontSizes.p;
 }, function (props) {
-  return props.theme.lineHeights[props.as || props.lineHeight] || props.theme.lineHeights.p;
+  return props.theme.lineHeights[props.as] || props.theme.lineHeights.p;
 }, (0, _buildCss["default"])(propertyConfig));
 
 var Text = function Text(_props) {

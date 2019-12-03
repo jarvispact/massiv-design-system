@@ -189,7 +189,8 @@ var Select = function Select(_ref) {
   }, _react["default"].createElement(_text["default"], null, selectedLabel), _react["default"].createElement(_icon["default"], _extends({
     name: iconName,
     color: "gray800",
-    fontSize: "l"
+    fontSize: "l",
+    lineHeight: "l"
   }, iconProps)))), dropdownOpen && _react["default"].createElement(_box["default"], {
     position: "absolute",
     top: "".concat(buttonBoundingBox.bottom + dropdownOffset + lastScrollY, "px"),

@@ -32,8 +32,8 @@ const propertyConfig = [
 const StyledText = styled.p`
     display: ${props => props.theme.inlineTextHtmlTags.includes(props.as) ? 'inline-block' : 'block'};
     font-family: ${props => props.theme.fontFamilies[props.as] || props.theme.fontFamilies.p};
-    font-size: ${props => props.theme.fontSizes[props.as || props.fontSize] || props.theme.fontSizes.p};
-    line-height: ${props => props.theme.lineHeights[props.as || props.lineHeight] || props.theme.lineHeights.p};
+    font-size: ${props => props.theme.fontSizes[props.as] || props.theme.fontSizes.p};
+    line-height: ${props => props.theme.lineHeights[props.as] || props.theme.lineHeights.p};
     ${buildCss(propertyConfig)}
 `;
 

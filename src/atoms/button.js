@@ -44,9 +44,7 @@ const propertyConfig = [
 
 setProperty('border-style', 'defaultProperty', 'none', propertyConfig);
 setProperty('border-radius', 'defaultProperty', '2px', propertyConfig);
-setProperty('padding', 'defaultProperty', '9px 12px', propertyConfig);
-setProperty('font-size', 'defaultProperty', '16px', propertyConfig);
-setProperty('line-height', 'defaultProperty', '14px', propertyConfig);
+setProperty('padding', 'defaultProperty', '9px 16px', propertyConfig);
 setProperty('outline-color', 'defaultProperty', 'info', propertyConfig);
 
 const getCursor = (props) => {
@@ -71,7 +69,7 @@ const Button = React.forwardRef((_props, ref) => {
             {...scopedProps}
         >
             {scopedProps.massivLoading
-                ? <LoadingIndicator color={scopedProps.massivColor} fontSize={scopedProps.fontSize || '14px'} />
+                ? <LoadingIndicator color={scopedProps.massivColor} fontSize={scopedProps.massivFontSize || '15.5px'} />
                 : children}
         </StyledButton>
     );

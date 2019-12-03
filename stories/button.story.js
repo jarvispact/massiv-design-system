@@ -31,7 +31,7 @@ storiesOf('Button', module)
     .add('Button', () => (
         <Wrapper>
             <SectionWrapper heading="Primary">
-                <Inline spacing="m">
+                <Inline spacing="s">
                     <PrimaryButton onClick={action('click')}>Primary Button</PrimaryButton>
                     <PrimaryButton onClick={action('click')} disabled>Primary disabled</PrimaryButton>
                     <PrimaryButton onClick={action('click')}>
@@ -46,7 +46,7 @@ storiesOf('Button', module)
                 </Inline>
             </SectionWrapper>
             <SectionWrapper heading="Secondary">
-                <Inline spacing="m">
+                <Inline spacing="s">
                     <SecondaryButton onClick={action('click')}>Secondary Button</SecondaryButton>
                     <SecondaryButton onClick={action('click')} disabled>Secondary disabled</SecondaryButton>
                     <SecondaryButton onClick={action('click')}>
@@ -61,7 +61,7 @@ storiesOf('Button', module)
                 </Inline>
             </SectionWrapper>
             <SectionWrapper heading="Tertiary">
-                <Inline spacing="m">
+                <Inline spacing="s">
                     <TertiaryButton onClick={action('click')}>Tertiary Button</TertiaryButton>
                     <TertiaryButton onClick={action('click')} disabled>Tertiary disabled</TertiaryButton>
                     <TertiaryButton onClick={action('click')}>
@@ -76,10 +76,10 @@ storiesOf('Button', module)
                 </Inline>
             </SectionWrapper>
             <SectionWrapper heading="IconButton">
-                <Inline spacing="m">
+                <Inline spacing="s">
                     <IconButton onClick={action('click')} name="settings" />
                     <IconButton onClick={action('click')} disabled name="settings" />
-                    <IconButton onClick={action('click')} loading />
+                    <IconButton onClick={action('click')} loading name="settings" />
                 </Inline>
             </SectionWrapper>
         </Wrapper>
