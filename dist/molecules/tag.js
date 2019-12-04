@@ -13,7 +13,9 @@ var _flex = _interopRequireDefault(require("../atoms/flex"));
 
 var _text = _interopRequireDefault(require("../atoms/text"));
 
-var _iconButton = _interopRequireDefault(require("./icon-button"));
+var _tertiaryButton = _interopRequireDefault(require("../atoms/tertiary-button"));
+
+var _icon = _interopRequireDefault(require("../atoms/icon"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -27,9 +29,10 @@ var Tag = function Tag(_ref) {
   var content = _ref.content,
       children = _ref.children,
       onRemove = _ref.onRemove,
-      textProps = _ref.textProps,
-      iconButtonProps = _ref.iconButtonProps,
-      others = _objectWithoutProperties(_ref, ["content", "children", "onRemove", "textProps", "iconButtonProps"]);
+      contentProps = _ref.contentProps,
+      removeButtonProps = _ref.removeButtonProps,
+      iconProps = _ref.iconProps,
+      others = _objectWithoutProperties(_ref, ["content", "children", "onRemove", "contentProps", "removeButtonProps", "iconProps"]);
 
   return _react["default"].createElement(_flex["default"], _extends({
     inline: true,
@@ -42,12 +45,14 @@ var Tag = function Tag(_ref) {
     pr: onRemove ? '6px' : undefined,
     fontSize: "xs",
     lineHeight: "xs"
-  }, textProps), content), onRemove && _react["default"].createElement(_iconButton["default"], _extends({
-    name: "clear",
+  }, contentProps), content), onRemove && _react["default"].createElement(_tertiaryButton["default"], _extends({
+    p: "0px",
     fontSize: "xs",
     lineHeight: "xs",
     onClick: onRemove
-  }, iconButtonProps))), !content && children && children);
+  }, removeButtonProps), _react["default"].createElement(_icon["default"], _extends({
+    name: "clear"
+  }, iconProps)))), !content && children && children);
 };
 
 Tag.propTypes = {
@@ -55,16 +60,18 @@ Tag.propTypes = {
   children: _propTypes.node,
   onRemove: _propTypes.func,
   others: (0, _propTypes.shape)({}),
-  textProps: (0, _propTypes.shape)({}),
-  iconButtonProps: (0, _propTypes.shape)({})
+  contentProps: (0, _propTypes.shape)({}),
+  removeButtonProps: (0, _propTypes.shape)({}),
+  iconProps: (0, _propTypes.shape)({})
 };
 Tag.defaultProps = {
   content: undefined,
   children: undefined,
   onRemove: undefined,
   others: undefined,
-  textProps: undefined,
-  iconButtonProps: undefined
+  contentProps: undefined,
+  removeButtonProps: undefined,
+  iconProps: undefined
 };
 var _default = Tag;
 exports["default"] = _default;

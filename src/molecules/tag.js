@@ -2,9 +2,10 @@ import React from 'react';
 import { string, func, shape, node } from 'prop-types';
 import Flex from '../atoms/flex';
 import Text from '../atoms/text';
-import IconButton from './icon-button';
+import TertiaryButton from '../atoms/tertiary-button';
+import Icon from '../atoms/icon';
 
-const Tag = ({ content, children, onRemove, textProps, iconButtonProps, ...others }) => (
+const Tag = ({ content, children, onRemove, contentProps, removeButtonProps, iconProps, ...others }) => (
     <Flex
         inline
         alignItems="center"
@@ -20,18 +21,14 @@ const Tag = ({ content, children, onRemove, textProps, iconButtonProps, ...other
                     pr={onRemove ? '6px' : undefined}
                     fontSize="xs"
                     lineHeight="xs"
-                    {...textProps}
+                    {...contentProps}
                 >
                     {content}
                 </Text>
                 {onRemove && (
-                    <IconButton
-                        name="clear"
-                        fontSize="xs"
-                        lineHeight="xs"
-                        onClick={onRemove}
-                        {...iconButtonProps}
-                    />
+                    <TertiaryButton p="0px" fontSize="xs" lineHeight="xs" onClick={onRemove} {...removeButtonProps}>
+                        <Icon name="clear" {...iconProps} />
+                    </TertiaryButton>
                 )}
             </>
         )}
@@ -44,8 +41,9 @@ Tag.propTypes = {
     children: node,
     onRemove: func,
     others: shape({}),
-    textProps: shape({}),
-    iconButtonProps: shape({}),
+    contentProps: shape({}),
+    removeButtonProps: shape({}),
+    iconProps: shape({}),
 };
 
 Tag.defaultProps = {
@@ -53,8 +51,9 @@ Tag.defaultProps = {
     children: undefined,
     onRemove: undefined,
     others: undefined,
-    textProps: undefined,
-    iconButtonProps: undefined,
+    contentProps: undefined,
+    removeButtonProps: undefined,
+    iconProps: undefined,
 };
 
 export default Tag;

@@ -7,7 +7,7 @@ import Box from '../src/atoms/box';
 import Tag from '../src/molecules/tag';
 import Inline from '../src/layout/inline';
 import Icon from '../src/atoms/icon';
-import IconButton from '../src/molecules/icon-button';
+import TertiaryButton from '../src/atoms/tertiary-button';
 
 const tags = ['0123456789', '9876543210', '0192837465'];
 
@@ -36,7 +36,9 @@ storiesOf('Tag', module)
                 {['label', 'label'].map((tag) => (
                     <Tag key={tag}>
                         <Icon name={tag} pr="15px" />
-                        <IconButton name="clear" onClick={action('remove')} />
+                        <TertiaryButton p="0px" onClick={action('remove')}>
+                            <Icon name="clear" />
+                        </TertiaryButton>
                     </Tag>
                 ))}
             </Inline>

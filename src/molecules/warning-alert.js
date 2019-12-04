@@ -4,7 +4,7 @@ import Flex from '../atoms/flex';
 import Box from '../atoms/box';
 import Text from '../atoms/text';
 import Icon from '../atoms/icon';
-import IconButton from './icon-button';
+import TertiaryButton from '../atoms/tertiary-button';
 
 const WarningAlert = ({ text, children, onClose, ...others }) => (
     <Flex
@@ -19,14 +19,16 @@ const WarningAlert = ({ text, children, onClose, ...others }) => (
         {...others}
     >
         {onClose && (
-            <IconButton
+            <TertiaryButton
                 position="absolute"
-                top="10px"
-                right="10px"
+                top="1px"
+                right="1px"
                 onClick={onClose}
                 name="close"
                 color="warning700"
-            />
+            >
+                <Icon name="close" />
+            </TertiaryButton>
         )}
         <Icon name="warning" color="warning700" />
         {(text && !children) && <Text color="warning700" pl="1rem">{text}</Text>}

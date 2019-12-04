@@ -7,7 +7,6 @@ import Icon from '../src/atoms/icon';
 import PrimaryButton from '../src/atoms/primary-button';
 import SecondaryButton from '../src/atoms/secondary-button';
 import TertiaryButton from '../src/atoms/tertiary-button';
-import IconButton from '../src/molecules/icon-button';
 import Inline from '../src/layout/inline';
 
 // eslint-disable-next-line react/prop-types
@@ -73,13 +72,6 @@ storiesOf('Button', module)
                         <Icon name="settings" />
                     </TertiaryButton>
                     <TertiaryButton onClick={action('click')} loading />
-                </Inline>
-            </SectionWrapper>
-            <SectionWrapper heading="IconButton">
-                <Inline spacing="s">
-                    <IconButton onClick={action('click')} name="settings" />
-                    <IconButton onClick={action('click')} disabled name="settings" />
-                    <IconButton onClick={action('click')} loading name="settings" />
                 </Inline>
             </SectionWrapper>
         </Wrapper>
