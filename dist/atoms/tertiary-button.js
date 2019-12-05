@@ -19,21 +19,31 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
+var getVariantProps = function getVariantProps(variant) {
+  return {
+    color: variant,
+    outlineColor: variant
+  };
+};
+
 var TertiaryButton = function TertiaryButton(_ref) {
   var children = _ref.children,
-      others = _objectWithoutProperties(_ref, ["children"]);
+      variant = _ref.variant,
+      others = _objectWithoutProperties(_ref, ["children", "variant"]);
 
   return _react["default"].createElement(_button["default"], _extends({
     bg: "transparent"
-  }, others), children);
+  }, variant ? getVariantProps(variant) : {}, others), children);
 };
 
 TertiaryButton.propTypes = {
   children: _propTypes.node,
+  variant: (0, _propTypes.oneOf)(['error', 'warning', 'info', 'success']),
   others: (0, _propTypes.shape)({})
 };
 TertiaryButton.defaultProps = {
   children: undefined,
+  variant: undefined,
   others: undefined
 };
 var _default = TertiaryButton;

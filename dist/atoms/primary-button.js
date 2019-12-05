@@ -19,9 +19,18 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
+var getVariantProps = function getVariantProps(variant) {
+  return {
+    bg: variant,
+    borderColor: variant,
+    outlineColor: variant
+  };
+};
+
 var PrimaryButton = function PrimaryButton(_ref) {
   var children = _ref.children,
-      others = _objectWithoutProperties(_ref, ["children"]);
+      variant = _ref.variant,
+      others = _objectWithoutProperties(_ref, ["children", "variant"]);
 
   return _react["default"].createElement(_button["default"], _extends({
     bg: "primary",
@@ -29,15 +38,17 @@ var PrimaryButton = function PrimaryButton(_ref) {
     borderStyle: "solid",
     borderWidth: "1px",
     borderColor: "primary"
-  }, others), children);
+  }, variant ? getVariantProps(variant) : {}, others), children);
 };
 
 PrimaryButton.propTypes = {
   children: _propTypes.node,
+  variant: (0, _propTypes.oneOf)(['error', 'warning', 'info', 'success']),
   others: (0, _propTypes.shape)({})
 };
 PrimaryButton.defaultProps = {
   children: undefined,
+  variant: undefined,
   others: undefined
 };
 var _default = PrimaryButton;
