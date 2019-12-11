@@ -31,17 +31,17 @@ const SectionWrapper = ({ heading, children }) => (
 const PrimaryButtonBlock = ({ variant }) => (
     <Stack spacing="s">
         <Inline spacing="s">
-        <PrimaryButton onClick={action('click')} variant={variant}>Primary Button</PrimaryButton>
-        <PrimaryButton onClick={action('click')} variant={variant} disabled>Primary disabled</PrimaryButton>
-        <PrimaryButton onClick={action('click')} variant={variant}>
-            <Icon name="settings" />
-            {' '}
+            <PrimaryButton onClick={action('click')} variant={variant}>Primary Button</PrimaryButton>
+            <PrimaryButton onClick={action('click')} variant={variant} disabled>Primary disabled</PrimaryButton>
+            <PrimaryButton onClick={action('click')} variant={variant}>
+                <Icon name="settings" />
+                {' '}
             Primary
-        </PrimaryButton>
-        <PrimaryButton onClick={action('click')} variant={variant}>
-            <Icon name="settings" />
-        </PrimaryButton>
-        <PrimaryButton onClick={action('click')} variant={variant} loading />
+            </PrimaryButton>
+            <PrimaryButton onClick={action('click')} variant={variant}>
+                <Icon name="settings" />
+            </PrimaryButton>
+            <PrimaryButton onClick={action('click')} variant={variant} loading />
         </Inline>
     </Stack>
 );
@@ -63,14 +63,14 @@ const SecondaryButtonBlock = ({ variant }) => (
             <SecondaryButton onClick={action('click')} variant={variant} loading />
         </Inline>
     </Stack>
-)
+);
 
 // eslint-disable-next-line react/prop-types
 const TertiaryButtonBlock = ({ variant }) => (
     <Stack spacing="s">
         <Inline spacing="s">
             <TertiaryButton onClick={action('click')} variant={variant}>Tertiary Button</TertiaryButton>
-            <TertiaryButton onClick={action('click')} variant={variant}disabled>Tertiary disabled</TertiaryButton>
+            <TertiaryButton onClick={action('click')} variant={variant} disabled>Tertiary disabled</TertiaryButton>
             <TertiaryButton onClick={action('click')} variant={variant}>
                 <Icon name="settings" />
                 {' '}
