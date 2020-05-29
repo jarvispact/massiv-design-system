@@ -1,63 +1,82 @@
 {
-  "name": "massiv-design-system",
-  "version": "0.0.48",
-  "description": "a simple design system",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "rm -rf ./dist",
-    "build": "babel src --out-dir dist --ignore '**/*.story.js'",
-    "git-add-dist": "git add ./dist",
-    "storybook": "start-storybook -p 9001 -c .storybook"
-  },
-  "pre-commit": [
-    "clean",
-    "build",
-    "git-add-dist"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jarvispact/massiv-design-system.git"
-  },
-  "keywords": [
-    "react",
-    "design",
-    "system",
-    "massiv"
-  ],
-  "author": "jarvispact <jarvispact@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/jarvispact/massiv-design-system/issues"
-  },
-  "homepage": "https://github.com/jarvispact/massiv-design-system#readme",
-  "devDependencies": {
-    "@babel/cli": "^7.6.4",
-    "@babel/core": "^7.6.4",
-    "@babel/plugin-proposal-class-properties": "^7.5.5",
-    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
-    "@babel/preset-env": "^7.6.3",
-    "@babel/preset-react": "^7.6.3",
-    "@storybook/addon-actions": "^5.2.5",
-    "@storybook/addon-viewport": "^5.2.5",
-    "@storybook/react": "^5.2.5",
-    "babel-eslint": "^10.0.3",
-    "babel-loader": "^8.0.6",
-    "eslint": "^6.6.0",
-    "eslint-config-airbnb": "^18.0.1",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.16.0",
-    "material-design-icons": "^3.0.1",
-    "pre-commit": "^1.2.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.11.0"
-  },
-  "peerDependencies": {
-    "react": ">=16.8.6"
-  },
-  "dependencies": {
-    "prop-types": "^15.7.2",
-    "styled-components": "^4.4.0"
-  }
+    "name": "massiv-design-system",
+    "version": "0.0.48",
+    "description": "a simple design system",
+    "main": "dist/index.js",
+    "module": "dist/index.es.js",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "clean": "rm -rf ./dist",
+        "build": "rollup -c",
+        "dev": "rollup -c -w",
+        "git-add-dist": "git add ./dist",
+        "storybook": "start-storybook -p 6006",
+        "build-storybook": "build-storybook",
+        "update:check": "ncu",
+        "update:do": "ncu -u && npm i",
+        "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.{js,ts,tsx}": [
+            "tsc --noEmit --allowJs --skipLibCheck --jsx react --esModuleInterop"
+        ]
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jarvispact/massiv-design-system.git"
+    },
+    "keywords": [
+        "react",
+        "design",
+        "system",
+        "massiv"
+    ],
+    "author": "jarvispact <jarvispact@gmail.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/jarvispact/massiv-design-system/issues"
+    },
+    "homepage": "https://github.com/jarvispact/massiv-design-system#readme",
+    "devDependencies": {
+        "@babel/core": "^7.10.1",
+        "@rollup/plugin-commonjs": "^12.0.0",
+        "@rollup/plugin-node-resolve": "^8.0.0",
+        "@storybook/addon-actions": "^5.3.19",
+        "@storybook/react": "^5.3.19",
+        "@types/styled-components": "^5.1.0",
+        "@typescript-eslint/eslint-plugin": "^3.0.2",
+        "@typescript-eslint/parser": "^3.0.2",
+        "babel-loader": "^8.1.0",
+        "babel-preset-react-app": "^9.1.2",
+        "eslint": "^7.1.0",
+        "eslint-config-prettier": "^6.11.0",
+        "eslint-plugin-prettier": "^3.1.3",
+        "eslint-plugin-react": "^7.20.0",
+        "husky": "^4.2.5",
+        "lint-staged": "^10.2.7",
+        "prettier": "^2.0.5",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "rollup": "^2.11.2",
+        "rollup-plugin-commonjs": "^10.1.0",
+        "rollup-plugin-node-resolve": "^5.2.0",
+        "rollup-plugin-peer-deps-external": "^2.2.2",
+        "rollup-plugin-typescript2": "^0.27.1",
+        "typescript": "^3.9.3"
+    },
+    "peerDependencies": {
+        "react": ">=16.8.0",
+        "react-dom": ">=16.8.0"
+    },
+    "dependencies": {
+        "styled-components": "^5.1.1"
+    }
 }

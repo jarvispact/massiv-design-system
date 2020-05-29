@@ -1,11 +1,4 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
-
-var React = require('react');
-var React__default = _interopDefault(React);
+import React, { useRef, createElement, useDebugValue, useContext } from 'react';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -1909,17 +1902,17 @@ function createStylisInstance(_temp) {
 }
 
 // 
-var StyleSheetContext = React__default.createContext();
+var StyleSheetContext = React.createContext();
 var StyleSheetConsumer = StyleSheetContext.Consumer;
-var StylisContext = React__default.createContext();
+var StylisContext = React.createContext();
 var StylisConsumer = StylisContext.Consumer;
 var masterSheet = new StyleSheet();
 var masterStylis = createStylisInstance();
 function useStyleSheet() {
-  return React.useContext(StyleSheetContext) || masterSheet;
+  return useContext(StyleSheetContext) || masterSheet;
 }
 function useStylis() {
-  return React.useContext(StylisContext) || masterStylis;
+  return useContext(StylisContext) || masterStylis;
 }
 
 // 
@@ -2348,7 +2341,7 @@ var checkDynamicCreation = function checkDynamicCreation(displayName, componentI
       // We purposefully call `useRef` outside of a component and expect it to throw
       // If it doesn't, then we're inside another component.
       // eslint-disable-next-line react-hooks/rules-of-hooks
-      React.useRef();
+      useRef();
 
       if (!seen.has(message)) {
         // eslint-disable-next-line no-console
@@ -2414,7 +2407,7 @@ function joinStrings(a, b) {
   return a && b ? a + " " + b : a || b;
 }
 
-var ThemeContext = React__default.createContext();
+var ThemeContext = React.createContext();
 var ThemeConsumer = ThemeContext.Consumer;
 
 /* global $Call */
@@ -2469,7 +2462,7 @@ function useInjectedStyle(componentStyle, hasAttrs, resolvedAttrs, warnTooManyCl
 
   var isStatic = componentStyle.isStatic && !hasAttrs;
   var className = isStatic ? componentStyle.generateAndInjectStyles(EMPTY_OBJECT, styleSheet, stylis) : componentStyle.generateAndInjectStyles(resolvedAttrs, styleSheet, stylis);
-  React.useDebugValue(className);
+  useDebugValue(className);
 
   if (process.env.NODE_ENV !== 'production' && !isStatic && warnTooManyClasses) {
     warnTooManyClasses(className);
@@ -2486,11 +2479,11 @@ function useStyledComponentImpl(forwardedComponent, props, forwardedRef) {
       shouldForwardProp = forwardedComponent.shouldForwardProp,
       styledComponentId = forwardedComponent.styledComponentId,
       target = forwardedComponent.target;
-  React.useDebugValue(styledComponentId); // NOTE: the non-hooks version only subscribes to this when !componentStyle.isStatic,
+  useDebugValue(styledComponentId); // NOTE: the non-hooks version only subscribes to this when !componentStyle.isStatic,
   // but that'd be against the rules-of-hooks. We could be naughty and do it anyway as it
   // should be an immutable value, but behave for now.
 
-  var theme = determineTheme(props, React.useContext(ThemeContext), defaultProps);
+  var theme = determineTheme(props, useContext(ThemeContext), defaultProps);
 
   var _useResolvedAttrs = useResolvedAttrs(theme || EMPTY_OBJECT, props, componentAttrs),
       context = _useResolvedAttrs[0],
@@ -2519,7 +2512,7 @@ function useStyledComponentImpl(forwardedComponent, props, forwardedRef) {
 
   propsForElement.className = Array.prototype.concat(foldedComponentIds, styledComponentId, generatedClassName !== styledComponentId ? generatedClassName : null, props.className, attrs.className).filter(Boolean).join(' ');
   propsForElement.ref = refToForward;
-  return React.createElement(elementToBeCreated, propsForElement);
+  return createElement(elementToBeCreated, propsForElement);
 }
 
 function createStyledComponent(target, options, rules) {
@@ -2568,7 +2561,7 @@ function createStyledComponent(target, options, rules) {
 
   forwardRef.displayName = displayName; // $FlowFixMe this is a forced cast to merge it StyledComponentWrapperProperties
 
-  WrappedStyledComponent = React__default.forwardRef(forwardRef);
+  WrappedStyledComponent = React.forwardRef(forwardRef);
   WrappedStyledComponent.attrs = finalAttrs;
   WrappedStyledComponent.componentStyle = componentStyle;
   WrappedStyledComponent.displayName = displayName;
@@ -2673,12 +2666,11 @@ if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test' && 
 var Button = styled.button(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    padding: 10px;\n"], ["\n    padding: 10px;\n"])));
 var Test = function (_a) {
     var color = _a.color;
-    return (React__default.createElement(Button, { onClick: function () {
+    return (React.createElement(Button, { onClick: function () {
             console.log('hello');
         }, "aria-label": "foo", style: { color: color }, className: "sldjksdhkjfhsdjkfgsdfjhsdfhsdgf" }, "heelo world"));
 };
 var templateObject_1;
 
-exports.Button = Button;
-exports.Test = Test;
-//# sourceMappingURL=index.js.map
+export { Button, Test };
+//# sourceMappingURL=index.es.js.map
