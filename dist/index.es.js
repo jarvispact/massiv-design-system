@@ -1,4 +1,4 @@
-import React, { useRef, createElement, useDebugValue, useContext } from 'react';
+import React, { useContext, useMemo, useState, useEffect, useRef, createElement, useDebugValue } from 'react';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -15,6 +15,36 @@ OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 PERFORMANCE OF THIS SOFTWARE.
 ***************************************************************************** */
 
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
+function __rest(s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+}
+
+function __spreadArrays() {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+}
 function __makeTemplateObject(cooked, raw) {
     if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
     return cooked;
@@ -282,6 +312,53 @@ if (process.env.NODE_ENV === 'production') {
 var reactIs_1 = reactIs.typeOf;
 var reactIs_2 = reactIs.isElement;
 var reactIs_3 = reactIs.isValidElementType;
+
+//
+
+var shallowequal = function shallowEqual(objA, objB, compare, compareContext) {
+  var ret = compare ? compare.call(compareContext, objA, objB) : void 0;
+
+  if (ret !== void 0) {
+    return !!ret;
+  }
+
+  if (objA === objB) {
+    return true;
+  }
+
+  if (typeof objA !== "object" || !objA || typeof objB !== "object" || !objB) {
+    return false;
+  }
+
+  var keysA = Object.keys(objA);
+  var keysB = Object.keys(objB);
+
+  if (keysA.length !== keysB.length) {
+    return false;
+  }
+
+  var bHasOwnProperty = Object.prototype.hasOwnProperty.bind(objB);
+
+  // Test for A's keys different from B.
+  for (var idx = 0; idx < keysA.length; idx++) {
+    var key = keysA[idx];
+
+    if (!bHasOwnProperty(key)) {
+      return false;
+    }
+
+    var valueA = objA[key];
+    var valueB = objB[key];
+
+    ret = compare ? compare.call(compareContext, valueA, valueB, key) : void 0;
+
+    if (ret === false || (ret === void 0 && valueA !== valueB)) {
+      return false;
+    }
+  }
+
+  return true;
+};
 
 function stylis_min (W) {
   function M(d, c, e, h, a) {
@@ -1150,6 +1227,8 @@ var SPLITTER = '/*!sc*/\n';
 var IS_BROWSER = typeof window !== 'undefined' && 'HTMLElement' in window;
 var DISABLE_SPEEDY = typeof SC_DISABLE_SPEEDY === 'boolean' && SC_DISABLE_SPEEDY || typeof process !== 'undefined' && (process.env.REACT_APP_SC_DISABLE_SPEEDY || process.env.SC_DISABLE_SPEEDY) || process.env.NODE_ENV !== 'production'; // Shared empty execution context when generating static styles
 
+var STATIC_EXECUTION_CONTEXT = {};
+
 // 
 
 /* eslint-disable camelcase, no-undef */
@@ -1914,6 +1993,49 @@ function useStyleSheet() {
 function useStylis() {
   return useContext(StylisContext) || masterStylis;
 }
+function StyleSheetManager(props) {
+  var _useState = useState(props.stylisPlugins),
+      plugins = _useState[0],
+      setPlugins = _useState[1];
+
+  var contextStyleSheet = useStyleSheet();
+  var styleSheet = useMemo(function () {
+    var sheet = contextStyleSheet;
+
+    if (props.sheet) {
+      // eslint-disable-next-line prefer-destructuring
+      sheet = props.sheet;
+    } else if (props.target) {
+      sheet = sheet.reconstructWithOptions({
+        target: props.target
+      });
+    }
+
+    if (props.disableCSSOMInjection) {
+      sheet = sheet.reconstructWithOptions({
+        useCSSOMInjection: false
+      });
+    }
+
+    return sheet;
+  }, [props.disableCSSOMInjection, props.sheet, props.target]);
+  var stylis = useMemo(function () {
+    return createStylisInstance({
+      options: {
+        prefix: !props.disableVendorPrefixes
+      },
+      plugins: plugins
+    });
+  }, [props.disableVendorPrefixes, plugins]);
+  useEffect(function () {
+    if (!shallowequal(plugins, props.stylisPlugins)) setPlugins(props.stylisPlugins);
+  }, [props.stylisPlugins]);
+  return /*#__PURE__*/React.createElement(StyleSheetContext.Provider, {
+    value: styleSheet
+  }, /*#__PURE__*/React.createElement(StylisContext.Provider, {
+    value: stylis
+  }, process.env.NODE_ENV !== 'production' ? React.Children.only(props.children) : props.children));
+}
 
 // 
 
@@ -2410,6 +2532,47 @@ function joinStrings(a, b) {
 var ThemeContext = React.createContext();
 var ThemeConsumer = ThemeContext.Consumer;
 
+function mergeTheme(theme, outerTheme) {
+  if (!theme) {
+    return throwStyledComponentsError(14);
+  }
+
+  if (isFunction(theme)) {
+    var mergedTheme = theme(outerTheme);
+
+    if (process.env.NODE_ENV !== 'production' && (mergedTheme === null || Array.isArray(mergedTheme) || typeof mergedTheme !== 'object')) {
+      return throwStyledComponentsError(7);
+    }
+
+    return mergedTheme;
+  }
+
+  if (Array.isArray(theme) || typeof theme !== 'object') {
+    return throwStyledComponentsError(8);
+  }
+
+  return outerTheme ? _extends({}, outerTheme, {}, theme) : theme;
+}
+/**
+ * Provide a theme to an entire react component tree via context
+ */
+
+
+function ThemeProvider(props) {
+  var outerTheme = useContext(ThemeContext);
+  var themeContext = useMemo(function () {
+    return mergeTheme(props.theme, outerTheme);
+  }, [props.theme, outerTheme]);
+
+  if (!props.children) {
+    return null;
+  }
+
+  return /*#__PURE__*/React.createElement(ThemeContext.Provider, {
+    value: themeContext
+  }, props.children);
+}
+
 /* global $Call */
 
 var identifiers = {};
@@ -2643,6 +2806,281 @@ var styled = function styled(tag) {
 domElements.forEach(function (domElement) {
   styled[domElement] = styled(domElement);
 });
+
+// 
+
+var GlobalStyle = /*#__PURE__*/function () {
+  function GlobalStyle(rules, componentId) {
+    this.rules = rules;
+    this.componentId = componentId;
+    this.isStatic = isStaticRules(rules);
+  }
+
+  var _proto = GlobalStyle.prototype;
+
+  _proto.createStyles = function createStyles(instance, executionContext, styleSheet, stylis) {
+    var flatCSS = flatten(this.rules, executionContext, styleSheet);
+    var css = stylis(flatCSS.join(''), '');
+    var id = this.componentId + instance; // NOTE: We use the id as a name as well, since these rules never change
+
+    styleSheet.insertRules(id, id, css);
+  };
+
+  _proto.removeStyles = function removeStyles(instance, styleSheet) {
+    styleSheet.clearRules(this.componentId + instance);
+  };
+
+  _proto.renderStyles = function renderStyles(instance, executionContext, styleSheet, stylis) {
+    StyleSheet.registerId(this.componentId + instance); // NOTE: Remove old styles, then inject the new ones
+
+    this.removeStyles(instance, styleSheet);
+    this.createStyles(instance, executionContext, styleSheet, stylis);
+  };
+
+  return GlobalStyle;
+}();
+
+function createGlobalStyle(strings) {
+  for (var _len = arguments.length, interpolations = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    interpolations[_key - 1] = arguments[_key];
+  }
+
+  var rules = css.apply(void 0, [strings].concat(interpolations));
+  var styledComponentId = "sc-global-" + generateComponentId(JSON.stringify(rules));
+  var globalStyle = new GlobalStyle(rules, styledComponentId);
+
+  if (process.env.NODE_ENV !== 'production') {
+    checkDynamicCreation(styledComponentId);
+  }
+
+  function GlobalStyleComponent(props) {
+    var styleSheet = useStyleSheet();
+    var stylis = useStylis();
+    var theme = useContext(ThemeContext);
+    var instanceRef = useRef(null);
+
+    if (instanceRef.current === null) {
+      instanceRef.current = styleSheet.allocateGSInstance(styledComponentId);
+    }
+
+    var instance = instanceRef.current;
+
+    if (process.env.NODE_ENV !== 'production' && React.Children.count(props.children)) {
+      // eslint-disable-next-line no-console
+      console.warn("The global style component " + styledComponentId + " was given child JSX. createGlobalStyle does not render children.");
+    }
+
+    if (process.env.NODE_ENV !== 'production' && rules.some(function (rule) {
+      return typeof rule === 'string' && rule.indexOf('@import') !== -1;
+    })) {
+      console.warn("Please do not use @import CSS syntax in createGlobalStyle at this time, as the CSSOM APIs we use in production do not handle it well. Instead, we recommend using a library such as react-helmet to inject a typical <link> meta tag to the stylesheet, or simply embedding it manually in your index.html <head> section for a simpler app.");
+    }
+
+    if (globalStyle.isStatic) {
+      globalStyle.renderStyles(instance, STATIC_EXECUTION_CONTEXT, styleSheet, stylis);
+    } else {
+      var context = _extends({}, props, {
+        theme: determineTheme(props, theme, GlobalStyleComponent.defaultProps)
+      });
+
+      globalStyle.renderStyles(instance, context, styleSheet, stylis);
+    }
+
+    useEffect(function () {
+      return function () {
+        return globalStyle.removeStyles(instance, styleSheet);
+      };
+    }, EMPTY_ARRAY);
+    return null;
+  } // $FlowFixMe
+
+
+  return React.memo(GlobalStyleComponent);
+}
+
+// 
+function keyframes(strings) {
+  /* Warning if you've used keyframes on React Native */
+  if (process.env.NODE_ENV !== 'production' && typeof navigator !== 'undefined' && navigator.product === 'ReactNative') {
+    // eslint-disable-next-line no-console
+    console.warn('`keyframes` cannot be used on ReactNative, only on the web. To do animation in ReactNative please use Animated.');
+  }
+
+  for (var _len = arguments.length, interpolations = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    interpolations[_key - 1] = arguments[_key];
+  }
+
+  var rules = css.apply(void 0, [strings].concat(interpolations)).join('');
+  var name = generateComponentId(rules);
+  return new Keyframes(name, [rules, name, '@keyframes']);
+}
+
+var CLOSING_TAG_R = /^\s*<\/[a-z]/i;
+
+var ServerStyleSheet = /*#__PURE__*/function () {
+  function ServerStyleSheet() {
+    var _this = this;
+
+    this._emitSheetCSS = function () {
+      var css = _this.instance.toString();
+
+      var nonce = getNonce();
+      var attrs = [nonce && "nonce=\"" + nonce + "\"", SC_ATTR + "=\"true\"", SC_ATTR_VERSION + "=\"" + SC_VERSION + "\""];
+      var htmlAttr = attrs.filter(Boolean).join(' ');
+      return "<style " + htmlAttr + ">" + css + "</style>";
+    };
+
+    this.getStyleTags = function () {
+      if (_this.sealed) {
+        return throwStyledComponentsError(2);
+      }
+
+      return _this._emitSheetCSS();
+    };
+
+    this.getStyleElement = function () {
+      var _props;
+
+      if (_this.sealed) {
+        return throwStyledComponentsError(2);
+      }
+
+      var props = (_props = {}, _props[SC_ATTR] = '', _props[SC_ATTR_VERSION] = SC_VERSION, _props.dangerouslySetInnerHTML = {
+        __html: _this.instance.toString()
+      }, _props);
+      var nonce = getNonce();
+
+      if (nonce) {
+        props.nonce = nonce;
+      } // v4 returned an array for this fn, so we'll do the same for v5 for backward compat
+
+
+      return [/*#__PURE__*/React.createElement("style", _extends({}, props, {
+        key: "sc-0-0"
+      }))];
+    };
+
+    this.seal = function () {
+      _this.sealed = true;
+    };
+
+    this.instance = new StyleSheet({
+      isServer: true
+    });
+    this.sealed = false;
+  }
+
+  var _proto = ServerStyleSheet.prototype;
+
+  _proto.collectStyles = function collectStyles(children) {
+    if (this.sealed) {
+      return throwStyledComponentsError(2);
+    }
+
+    return /*#__PURE__*/React.createElement(StyleSheetManager, {
+      sheet: this.instance
+    }, children);
+  };
+
+  // eslint-disable-next-line consistent-return
+  _proto.interleaveWithNodeStream = function interleaveWithNodeStream(input) {
+    if ( IS_BROWSER) {
+      return throwStyledComponentsError(3);
+    } else if (this.sealed) {
+      return throwStyledComponentsError(2);
+    }
+
+    {
+      this.seal(); // eslint-disable-next-line global-require
+
+      var _require = require('stream'),
+          Readable = _require.Readable,
+          Transform = _require.Transform;
+
+      var readableStream = input;
+      var sheet = this.instance,
+          _emitSheetCSS = this._emitSheetCSS;
+      var transformer = new Transform({
+        transform: function appendStyleChunks(chunk,
+        /* encoding */
+        _, callback) {
+          // Get the chunk and retrieve the sheet's CSS as an HTML chunk,
+          // then reset its rules so we get only new ones for the next chunk
+          var renderedHtml = chunk.toString();
+
+          var html = _emitSheetCSS();
+
+          sheet.clearTag(); // prepend style html to chunk, unless the start of the chunk is a
+          // closing tag in which case append right after that
+
+          if (CLOSING_TAG_R.test(renderedHtml)) {
+            var endOfClosingTag = renderedHtml.indexOf('>') + 1;
+            var before = renderedHtml.slice(0, endOfClosingTag);
+            var after = renderedHtml.slice(endOfClosingTag);
+            this.push(before + html + after);
+          } else {
+            this.push(html + renderedHtml);
+          }
+
+          callback();
+        }
+      });
+      readableStream.on('error', function (err) {
+        // forward the error to the transform stream
+        transformer.emit('error', err);
+      });
+      return readableStream.pipe(transformer);
+    }
+  };
+
+  return ServerStyleSheet;
+}();
+
+// export default <Config: { theme?: any }, Instance>(
+//  Component: AbstractComponent<Config, Instance>
+// ): AbstractComponent<$Diff<Config, { theme?: any }> & { theme?: any }, Instance>
+//
+// but the old build system tooling doesn't support the syntax
+
+var withTheme = (function (Component) {
+  // $FlowFixMe This should be React.forwardRef<Config, Instance>
+  var WithTheme = React.forwardRef(function (props, ref) {
+    var theme = useContext(ThemeContext); // $FlowFixMe defaultProps isn't declared so it can be inferrable
+
+    var defaultProps = Component.defaultProps;
+    var themeProp = determineTheme(props, theme, defaultProps);
+
+    if (process.env.NODE_ENV !== 'production' && themeProp === undefined) {
+      // eslint-disable-next-line no-console
+      console.warn("[withTheme] You are not using a ThemeProvider nor passing a theme prop or a theme in defaultProps in component class \"" + getComponentName(Component) + "\"");
+    }
+
+    return /*#__PURE__*/React.createElement(Component, _extends({}, props, {
+      theme: themeProp,
+      ref: ref
+    }));
+  });
+  hoistNonReactStatics_cjs(WithTheme, Component);
+  WithTheme.displayName = "WithTheme(" + getComponentName(Component) + ")";
+  return WithTheme;
+});
+
+// 
+
+var useTheme = function useTheme() {
+  return useContext(ThemeContext);
+};
+
+// 
+var __PRIVATE__ = {
+  StyleSheet: StyleSheet,
+  masterSheet: masterSheet
+};
+
+// 
+/* Define bundle version for export */
+
+var version = "5.1.1";
 /* Warning if you've imported this file on React Native */
 
 if (process.env.NODE_ENV !== 'production' && typeof navigator !== 'undefined' && navigator.product === 'ReactNative') {
@@ -2663,14 +3101,1050 @@ if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test' && 
   window['__styled-components-init__'] += 1;
 }
 
-var Button = styled.button(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    padding: 10px;\n"], ["\n    padding: 10px;\n"])));
-var Test = function (_a) {
-    var color = _a.color;
-    return (React.createElement(Button, { onClick: function () {
-            console.log('hello');
-        }, "aria-label": "foo", style: { color: color }, className: "sldjksdhkjfhsdjkfgsdfjhsdfhsdgf" }, "heelo world"));
+var styledComponents = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    'default': styled,
+    ServerStyleSheet: ServerStyleSheet,
+    StyleSheetConsumer: StyleSheetConsumer,
+    StyleSheetContext: StyleSheetContext,
+    StyleSheetManager: StyleSheetManager,
+    ThemeConsumer: ThemeConsumer,
+    ThemeContext: ThemeContext,
+    ThemeProvider: ThemeProvider,
+    __PRIVATE__: __PRIVATE__,
+    createGlobalStyle: createGlobalStyle,
+    css: css,
+    isStyledComponent: isStyledComponent,
+    keyframes: keyframes,
+    useTheme: useTheme,
+    version: version,
+    withTheme: withTheme
+});
+
+var _a = styledComponents, styled$1 = _a.default, css$1 = _a.css, createGlobalStyle$1 = _a.createGlobalStyle, keyframes$1 = _a.keyframes;
+
+/* eslint-disable @typescript-eslint/ban-types */
+var curry = function (f) {
+    var args = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        args[_i - 1] = arguments[_i];
+    }
+    return args.length >= f.length ? f.apply(void 0, args) : function () {
+        var next = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            next[_i] = arguments[_i];
+        }
+        return curry.apply(void 0, __spreadArrays([f.bind.apply(f, __spreadArrays([f], args))], next));
+    };
 };
+
+var isNil = function (value) { return value === undefined || value === null; };
+
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+var omitImpl = function (propertyList, obj) {
+    var keys = Object.keys(obj);
+    return keys.reduce(function (accum, key) {
+        // @ts-ignore
+        if (!propertyList.includes(key))
+            accum[key] = obj[key];
+        return accum;
+    }, {});
+};
+var omit = curry(omitImpl);
+
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-ignore
+var reducer = function (accum, pathKey) {
+    if (isNil(accum))
+        return undefined;
+    return !isNil(accum[pathKey]) ? accum[pathKey] : undefined;
+};
+var pathImpl = function (path, obj) {
+    if (obj === void 0) { obj = {}; }
+    return path.reduce(reducer, obj);
+};
+var path = curry(pathImpl);
+
+var defaultPropertyBlacklist = ['color', 'width', 'height', 'spacing', 'display', 'fontFamily', 'fontSize'];
+var shouldForwardProp = function (propertyBlackList) {
+    if (propertyBlackList === void 0) { propertyBlackList = defaultPropertyBlacklist; }
+    return function (prop, defaultValidator) {
+        return propertyBlackList.includes(prop) ? false : defaultValidator(prop);
+    };
+};
+
+var getMediaQueryForBreakpoint = function (breakpoint, cssArray) {
+    var mediaQuery = css(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n        @media screen and (min-width: ", ") {\n            ", "\n        }\n    "], ["\n        @media screen and (min-width: ", ") {\n            ", "\n        }\n    "])), breakpoint, cssArray.join('\n'));
+    return mediaQuery.join('');
+};
+var getValue = function (key, themeScope, index, props) {
+    // @ts-ignore
+    var valueArray = Array.isArray(props[key]) ? props[key] : [props[key]];
+    if (isNil(valueArray[index]))
+        return undefined;
+    return themeScope
+        ? path(valueArray[index].split('.'), props.theme[themeScope]) || valueArray[index]
+        : valueArray[index];
+};
+var buildCss = function (propertyConfigList) { return function (props) {
+    var theme = props.theme;
+    var screen = theme.screen;
+    var componentProps = omit(['as', 'children', 'theme'], props);
+    var cssArray = Object.keys(componentProps).map(function (componentPropKey) {
+        var configForCssProp = propertyConfigList.find(function (config) { return config.componentProps.includes(componentPropKey); });
+        if (!configForCssProp)
+            return undefined;
+        var value = getValue(componentPropKey, configForCssProp.themeScope, 0, props);
+        return value ? configForCssProp.cssProperty + ": " + value + ";" : undefined;
+    });
+    var mediaQueryArray = Object.values(screen).map(function (breakPoint, idx) {
+        var valueIdx = idx + 1;
+        var breakPointBuffer = [];
+        Object.keys(componentProps).forEach(function (componentPropKey) {
+            var configForCssProp = propertyConfigList.find(function (c) { return c.componentProps.includes(componentPropKey); });
+            if (configForCssProp) {
+                var value = getValue(componentPropKey, configForCssProp.themeScope, valueIdx, props);
+                if (value)
+                    breakPointBuffer.push(configForCssProp.cssProperty + ": " + value + ";");
+            }
+        });
+        return getMediaQueryForBreakpoint(breakPoint, breakPointBuffer);
+    });
+    var allCss = __spreadArrays(cssArray, mediaQueryArray).filter(Boolean);
+    return allCss.length ? allCss.join('\n') : undefined;
+}; };
 var templateObject_1;
 
-export { Button, Test };
+var borderConfig = [
+    {
+        cssProperty: 'border-style',
+        componentProps: ['borderStyle', 'bs'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'border-width',
+        componentProps: ['borderWidth', 'bw'],
+        themeScope: 'width',
+    },
+    {
+        cssProperty: 'border-color',
+        componentProps: ['borderColor', 'bc'],
+        themeScope: 'color',
+    },
+    {
+        cssProperty: 'border-radius',
+        componentProps: ['borderRadius', 'br'],
+        themeScope: 'radii',
+    },
+    {
+        cssProperty: 'border-top-style',
+        componentProps: ['borderTopStyle', 'bts'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'border-top-width',
+        componentProps: ['borderTopWidth', 'btw'],
+        themeScope: 'width',
+    },
+    {
+        cssProperty: 'border-top-color',
+        componentProps: ['borderTopColor', 'btc'],
+        themeScope: 'color',
+    },
+    {
+        cssProperty: 'border-bottom-style',
+        componentProps: ['borderBottomStyle', 'bbs'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'border-bottom-width',
+        componentProps: ['borderBottomWidth', 'bbw'],
+        themeScope: 'width',
+    },
+    {
+        cssProperty: 'border-bottom-color',
+        componentProps: ['borderBottomColor', 'bbc'],
+        themeScope: 'color',
+    },
+    {
+        cssProperty: 'border-left-style',
+        componentProps: ['borderLeftStyle', 'bls'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'border-left-width',
+        componentProps: ['borderLeftWidth', 'blw'],
+        themeScope: 'width',
+    },
+    {
+        cssProperty: 'border-left-color',
+        componentProps: ['borderLeftColor', 'blc'],
+        themeScope: 'color',
+    },
+    {
+        cssProperty: 'border-right-style',
+        componentProps: ['borderRightStyle', 'brs'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'border-right-width',
+        componentProps: ['borderRightWidth', 'brw'],
+        themeScope: 'width',
+    },
+    {
+        cssProperty: 'border-right-color',
+        componentProps: ['borderRightColor', 'brc'],
+        themeScope: 'color',
+    },
+    {
+        cssProperty: 'border-top-left-radius',
+        componentProps: ['borderTopLeftRadius', 'btlr'],
+        themeScope: 'radii',
+    },
+    {
+        cssProperty: 'border-top-right-radius',
+        componentProps: ['borderTopRightRadius', 'btrr'],
+        themeScope: 'radii',
+    },
+    {
+        cssProperty: 'border-bottom-left-radius',
+        componentProps: ['borderBottomLeftRadius', 'bblr'],
+        themeScope: 'radii',
+    },
+    {
+        cssProperty: 'border-bottom-right-radius',
+        componentProps: ['borderBottomRightRadius', 'bbrr'],
+        themeScope: 'radii',
+    },
+];
+
+var boxShadowConfig = [
+    {
+        cssProperty: 'box-shadow',
+        componentProps: ['boxShadow'],
+        themeScope: 'boxShadow',
+    },
+];
+
+var colorConfig = [
+    {
+        cssProperty: 'background-color',
+        componentProps: ['backgroundColor', 'bg'],
+        themeScope: 'color',
+    },
+    {
+        cssProperty: 'color',
+        componentProps: ['color'],
+        themeScope: 'color',
+    },
+    {
+        cssProperty: 'outline-color',
+        componentProps: ['outlineColor'],
+        themeScope: 'color',
+    },
+];
+
+var displayConfig = [
+    {
+        cssProperty: 'display',
+        componentProps: ['display'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'clip-path',
+        componentProps: ['clipPath'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'list-style',
+        componentProps: ['listStyle'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'text-decoration',
+        componentProps: ['textDecoration'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'resize',
+        componentProps: ['resize'],
+        themeScope: null,
+    },
+];
+
+var flexConfig = [
+    // flex parent config
+    {
+        cssProperty: 'flex-direction',
+        componentProps: ['flexDirection'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'flex-wrap',
+        componentProps: ['flexWrap'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'flex-flow',
+        componentProps: ['flexFlow'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'justify-content',
+        componentProps: ['justifyContent'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'align-items',
+        componentProps: ['alignItems'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'align-content',
+        componentProps: ['alignContent'],
+        themeScope: null,
+    },
+    // flex child config
+    {
+        cssProperty: 'flex-order',
+        componentProps: ['flexOrder'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'flex-grow',
+        componentProps: ['flexGrow'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'flex-shrink',
+        componentProps: ['flexShrink'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'flex-basis',
+        componentProps: ['flexBasis'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'flex',
+        componentProps: ['flex'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'align-self',
+        componentProps: ['alignSelf'],
+        themeScope: null,
+    },
+];
+
+var fontConfig = [
+    {
+        cssProperty: 'font-family',
+        componentProps: ['fontFamily'],
+        themeScope: 'fontFamily',
+    },
+    {
+        cssProperty: 'font-size',
+        componentProps: ['fontSize'],
+        themeScope: 'fontSize',
+    },
+    {
+        cssProperty: 'font-weight',
+        componentProps: ['fontWeight'],
+        themeScope: 'fontWeight',
+    },
+    {
+        cssProperty: 'line-height',
+        componentProps: ['lineHeight'],
+        themeScope: 'lineHeight',
+    },
+    {
+        cssProperty: 'letter-spacing',
+        componentProps: ['letterSpacing'],
+        themeScope: 'letterSpacing',
+    },
+    {
+        cssProperty: 'text-overflow',
+        componentProps: ['textOverflow'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'text-shadow',
+        componentProps: ['textShadow'],
+        themeScope: 'textShadow',
+    },
+    {
+        cssProperty: 'white-space',
+        componentProps: ['whiteSpace'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'text-align',
+        componentProps: ['textAlign'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'vertical-align',
+        componentProps: ['verticalAlign'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'text-transform',
+        componentProps: ['textTransform'],
+        themeScope: null,
+    },
+];
+
+var gridConfig = [
+    // grid parent config
+    {
+        cssProperty: 'grid-template-columns',
+        componentProps: ['gridTemplateColumns'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'grid-template-rows',
+        componentProps: ['gridTemplateRows'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'grid-template-areas',
+        componentProps: ['gridTemplateAreas'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'column-gap',
+        componentProps: ['columnGap'],
+        themeScope: 'spacing',
+    },
+    {
+        cssProperty: 'row-gap',
+        componentProps: ['rowGap'],
+        themeScope: 'spacing',
+    },
+    {
+        cssProperty: 'gap',
+        componentProps: ['gap'],
+        themeScope: 'spacing',
+    },
+    {
+        cssProperty: 'justify-items',
+        componentProps: ['justifyItems'],
+        themeScope: null,
+    },
+    // already defined in flex config
+    // {
+    //     cssProperty: 'align-items',
+    //     componentProps: ['alignItems'],
+    //     themeScope: null,
+    // },
+    // {
+    //     cssProperty: 'justify-content',
+    //     componentProps: ['justifyContent'],
+    //     themeScope: null,
+    // },
+    // {
+    //     cssProperty: 'align-content',
+    //     componentProps: ['alignContent'],
+    //     themeScope: null,
+    // },
+    // grid child config
+    {
+        cssProperty: 'grid-column-start',
+        componentProps: ['gridColumnStart'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'grid-column-end',
+        componentProps: ['gridColumnEnd'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'grid-row-start',
+        componentProps: ['gridRowStart'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'grid-row-end',
+        componentProps: ['gridRowEnd'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'grid-area',
+        componentProps: ['gridArea'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'justify-self',
+        componentProps: ['justifySelf'],
+        themeScope: null,
+    },
+    // already defined in flex config
+    // {
+    //     cssProperty: 'align-self',
+    //     componentProps: ['alignSelf'],
+    //     themeScope: null,
+    // },
+    {
+        cssProperty: 'place-self',
+        componentProps: ['placeSelf'],
+        themeScope: null,
+    },
+];
+
+var heightConfig = [
+    {
+        cssProperty: 'height',
+        componentProps: ['height', 'h'],
+        themeScope: 'height',
+    },
+    {
+        cssProperty: 'min-height',
+        componentProps: ['minHeight', 'minH'],
+        themeScope: 'height',
+    },
+    {
+        cssProperty: 'max-height',
+        componentProps: ['maxHeight', 'maxH'],
+        themeScope: 'height',
+    },
+];
+
+var marginConfig = [
+    {
+        cssProperty: 'margin',
+        componentProps: ['margin', 'm'],
+        themeScope: 'spacing',
+    },
+    {
+        cssProperty: 'margin-top',
+        componentProps: ['marginTop', 'mt'],
+        themeScope: 'spacing',
+    },
+    {
+        cssProperty: 'margin-left',
+        componentProps: ['marginLeft', 'ml'],
+        themeScope: 'spacing',
+    },
+    {
+        cssProperty: 'margin-bottom',
+        componentProps: ['marginBottom', 'mb'],
+        themeScope: 'spacing',
+    },
+    {
+        cssProperty: 'margin-right',
+        componentProps: ['marginRight', 'mr'],
+        themeScope: 'spacing',
+    },
+];
+
+var overflowConfig = [
+    {
+        cssProperty: 'overflow',
+        componentProps: ['overflow'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'overflow-x',
+        componentProps: ['overflowX'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'overflow-y',
+        componentProps: ['overflowY'],
+        themeScope: null,
+    },
+];
+
+var paddingConfig = [
+    {
+        cssProperty: 'padding',
+        componentProps: ['padding', 'p'],
+        themeScope: 'spacing',
+    },
+    {
+        cssProperty: 'padding-top',
+        componentProps: ['paddingTop', 'pt'],
+        themeScope: 'spacing',
+    },
+    {
+        cssProperty: 'padding-left',
+        componentProps: ['paddingLeft', 'pl'],
+        themeScope: 'spacing',
+    },
+    {
+        cssProperty: 'padding-bottom',
+        componentProps: ['paddingBottom', 'pb'],
+        themeScope: 'spacing',
+    },
+    {
+        cssProperty: 'padding-right',
+        componentProps: ['paddingRight', 'pr'],
+        themeScope: 'spacing',
+    },
+];
+
+var positionConfig = [
+    {
+        cssProperty: 'position',
+        componentProps: ['position'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'top',
+        componentProps: ['top'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'left',
+        componentProps: ['left'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'bottom',
+        componentProps: ['bottom'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'right',
+        componentProps: ['right'],
+        themeScope: null,
+    },
+];
+
+var widthConfig = [
+    {
+        cssProperty: 'width',
+        componentProps: ['width', 'w'],
+        themeScope: 'width',
+    },
+    {
+        cssProperty: 'min-width',
+        componentProps: ['minWidth', 'minW'],
+        themeScope: 'width',
+    },
+    {
+        cssProperty: 'max-width',
+        componentProps: ['maxWidth', 'maxW'],
+        themeScope: 'width',
+    },
+];
+
+var propertyConfigList = __spreadArrays(colorConfig, marginConfig, paddingConfig, widthConfig, heightConfig, positionConfig, overflowConfig, displayConfig, fontConfig, borderConfig, boxShadowConfig, flexConfig, gridConfig);
+var Box = styled$1.div.withConfig({
+    shouldForwardProp: shouldForwardProp(),
+})(templateObject_1$1 || (templateObject_1$1 = __makeTemplateObject(["\n    ", "\n"], ["\n    ", "\n"])), buildCss(propertyConfigList));
+var templateObject_1$1;
+
+/* eslint-disable react/prop-types */
+var propertyConfigList$1 = __spreadArrays(colorConfig, marginConfig, paddingConfig, widthConfig, heightConfig, positionConfig, overflowConfig, displayConfig, fontConfig, borderConfig, boxShadowConfig, flexConfig, gridConfig);
+var getCursor = function (props) {
+    if (props.disabled)
+        return 'not-allowed';
+    return 'pointer';
+};
+var getVariantProps = function (props) {
+    if (props.variant === 'secondary') {
+        return "\n            border-color: " + props.theme.color.secondary['500'] + ";\n            background-color: " + props.theme.color.secondary['500'] + ";\n        ";
+    }
+    if (props.variant === 'error') {
+        return "\n            border-color: " + props.theme.color.error['500'] + ";\n            background-color: " + props.theme.color.error['500'] + ";\n        ";
+    }
+    if (props.variant === 'warning') {
+        return "\n            border-color: " + props.theme.color.warning['500'] + ";\n            background-color: " + props.theme.color.warning['500'] + ";\n        ";
+    }
+    if (props.variant === 'success') {
+        return "\n            border-color: " + props.theme.color.success['500'] + ";\n            background-color: " + props.theme.color.success['500'] + ";\n        ";
+    }
+    return "\n        border-color: " + props.theme.color.primary['500'] + ";\n        background-color: " + props.theme.color.primary['500'] + ";\n    ";
+};
+var Button = styled$1.button.withConfig({
+    shouldForwardProp: shouldForwardProp(),
+})(templateObject_1$2 || (templateObject_1$2 = __makeTemplateObject(["\n    cursor: ", ";\n    opacity: ", ";\n    border-style: solid;\n    border-width: 1px;\n    border-radius: 2px;\n    color: ", ";\n    padding: ", ";\n    ", "\n    ", "\n"], ["\n    cursor: ", ";\n    opacity: ", ";\n    border-style: solid;\n    border-width: 1px;\n    border-radius: 2px;\n    color: ", ";\n    padding: ", ";\n    ", "\n    ", "\n"])), getCursor, function (props) { return props.disabled && '0.5'; }, function (props) { return props.theme.color.gray['100']; }, function (props) { return props.theme.spacing.m; }, getVariantProps, buildCss(propertyConfigList$1));
+var templateObject_1$2;
+
+var screen = {
+    s: '640px',
+    m: '768px',
+    l: '1024px',
+    xl: '1280px',
+    '2xl': '1600px',
+    '3xl': '1920px',
+};
+var color = {
+    gray: {
+        100: '#f7fafc',
+        200: '#edf2f7',
+        300: '#e2e8f0',
+        400: '#cbd5e0',
+        500: '#a0aec0',
+        600: '#718096',
+        700: '#4a5568',
+        800: '#2d3748',
+        900: '#1a202c',
+    },
+    error: {
+        100: '#fff5f5',
+        200: '#fed7d7',
+        300: '#feb2b2',
+        400: '#fc8181',
+        500: '#f56565',
+        600: '#e53e3e',
+        700: '#c53030',
+        800: '#9b2c2c',
+        900: '#742a2a',
+    },
+    warning: {
+        100: '#fffff0',
+        200: '#fefcbf',
+        300: '#faf089',
+        400: '#f6e05e',
+        500: '#ecc94b',
+        600: '#d69e2e',
+        700: '#b7791f',
+        800: '#975a16',
+        900: '#744210',
+    },
+    success: {
+        100: '#f0fff4',
+        200: '#c6f6d5',
+        300: '#9ae6b4',
+        400: '#68d391',
+        500: '#48bb78',
+        600: '#38a169',
+        700: '#2f855a',
+        800: '#276749',
+        900: '#22543d',
+    },
+    primary: {
+        100: '#ebf8ff',
+        200: '#bee3f8',
+        300: '#90cdf4',
+        400: '#63b3ed',
+        500: '#4299e1',
+        600: '#3182ce',
+        700: '#2b6cb0',
+        800: '#2c5282',
+        900: '#2a4365',
+    },
+    secondary: {
+        100: '#fff5f7',
+        200: '#fed7e2',
+        300: '#fbb6ce',
+        400: '#f687b3',
+        500: '#ed64a6',
+        600: '#d53f8c',
+        700: '#b83280',
+        800: '#97266d',
+        900: '#702459',
+    },
+};
+var spacing = {
+    xs: '0.15rem',
+    s: '0.25rem',
+    m: '0.5rem',
+    l: '0.75rem',
+    xl: '1rem',
+    '2xl': '2rem',
+    '3xl': '3rem',
+    '4xl': '4rem',
+    '5xl': '5rem',
+    '6xl': '6rem',
+};
+var boxShadow = {
+    xs: '0 0 0 1px rgba(0, 0, 0, 0.05)',
+    s: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    m: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+    l: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+    xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+    '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+    inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
+    outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
+};
+var width = __assign(__assign({}, spacing), { '1/2': '50%' });
+var height = __assign(__assign({}, spacing), { '1/2': '50%' });
+var fontFamily = {
+    sans: [
+        'system-ui',
+        '-apple-system',
+        'BlinkMacSystemFont',
+        '"Segoe UI"',
+        'Roboto',
+        '"Helvetica Neue"',
+        'Arial',
+        '"Noto Sans"',
+        'sans-serif',
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"',
+        '"Noto Color Emoji"',
+    ].join(', '),
+    serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'].join(', '),
+    mono: ['Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'].join(', '),
+};
+var fontSize = {
+    xs: '0.75rem',
+    s: '0.875rem',
+    m: '1rem',
+    l: '1.125rem',
+    xl: '1.25rem',
+    '2xl': '1.5rem',
+    '3xl': '1.875rem',
+    '4xl': '2.25rem',
+    '5xl': '3rem',
+    '6xl': '4rem',
+};
+var fontWeight = {
+    xxs: '100',
+    xs: '200',
+    s: '300',
+    m: '400',
+    l: '500',
+    xl: '600',
+    '2xl': '700',
+    '3xl': '800',
+    '4xl': '900',
+};
+var lineHeight = {
+    xs: '0.75rem',
+    s: '0.875rem',
+    m: '1rem',
+    l: '1.125rem',
+    xl: '1.25rem',
+    '2xl': '1.5rem',
+    '3xl': '1.875rem',
+    '4xl': '2.25rem',
+    '5xl': '3rem',
+    '6xl': '4rem',
+};
+var letterSpacing = {
+    tighter: '-0.05em',
+    tight: '-0.025em',
+    normal: '0',
+    wide: '0.025em',
+    wider: '0.05em',
+    widest: '0.1em',
+};
+var textShadow = {};
+var radii = {
+    s: '2px',
+    m: '4px',
+    l: '8px',
+};
+var icon = {
+    className: '',
+};
+var defaultTheme = {
+    screen: screen,
+    color: color,
+    spacing: spacing,
+    boxShadow: boxShadow,
+    width: width,
+    height: height,
+    fontFamily: fontFamily,
+    fontSize: fontSize,
+    fontWeight: fontWeight,
+    lineHeight: lineHeight,
+    letterSpacing: letterSpacing,
+    textShadow: textShadow,
+    radii: radii,
+    icon: icon,
+};
+
+var GlobalStyle$1 = createGlobalStyle$1(templateObject_1$3 || (templateObject_1$3 = __makeTemplateObject(["\n    /* http://meyerweb.com/eric/tools/css/reset/ \n    v2.0 | 20110126\n    License: none (public domain)\n    */\n\n    html, body, div, span, applet, object, iframe,\n    h1, h2, h3, h4, h5, h6, p, blockquote, pre,\n    a, abbr, acronym, address, big, cite, code,\n    del, dfn, em, img, ins, kbd, q, s, samp,\n    small, strike, strong, sub, sup, tt, var,\n    b, u, i, center,\n    dl, dt, dd, ol, ul, li,\n    fieldset, form, label, legend,\n    table, caption, tbody, tfoot, thead, tr, th, td,\n    article, aside, canvas, details, embed, \n    figure, figcaption, footer, header, hgroup, \n    menu, nav, output, ruby, section, summary,\n    time, mark, audio, video {\n        margin: 0;\n        padding: 0;\n        border: 0;\n        font-size: 100%;\n        font-family: ", ";\n        vertical-align: baseline;\n        box-sizing: border-box;\n    }\n    /* HTML5 display-role reset for older browsers */\n    article, aside, details, figcaption, figure, \n    footer, header, hgroup, menu, nav, section {\n        display: block;\n    }\n    ol, ul {\n        list-style: none;\n    }\n    blockquote, q {\n        quotes: none;\n    }\n    blockquote:before, blockquote:after,\n    q:before, q:after {\n        content: '';\n        content: none;\n    }\n    table {\n        border-collapse: collapse;\n        border-spacing: 0;\n    }\n    input, textarea {\n        box-sizing: border-box;\n        font-family: ", ";\n    }\n"], ["\n    /* http://meyerweb.com/eric/tools/css/reset/ \n    v2.0 | 20110126\n    License: none (public domain)\n    */\n\n    html, body, div, span, applet, object, iframe,\n    h1, h2, h3, h4, h5, h6, p, blockquote, pre,\n    a, abbr, acronym, address, big, cite, code,\n    del, dfn, em, img, ins, kbd, q, s, samp,\n    small, strike, strong, sub, sup, tt, var,\n    b, u, i, center,\n    dl, dt, dd, ol, ul, li,\n    fieldset, form, label, legend,\n    table, caption, tbody, tfoot, thead, tr, th, td,\n    article, aside, canvas, details, embed, \n    figure, figcaption, footer, header, hgroup, \n    menu, nav, output, ruby, section, summary,\n    time, mark, audio, video {\n        margin: 0;\n        padding: 0;\n        border: 0;\n        font-size: 100%;\n        font-family: ", ";\n        vertical-align: baseline;\n        box-sizing: border-box;\n    }\n    /* HTML5 display-role reset for older browsers */\n    article, aside, details, figcaption, figure, \n    footer, header, hgroup, menu, nav, section {\n        display: block;\n    }\n    ol, ul {\n        list-style: none;\n    }\n    blockquote, q {\n        quotes: none;\n    }\n    blockquote:before, blockquote:after,\n    q:before, q:after {\n        content: '';\n        content: none;\n    }\n    table {\n        border-collapse: collapse;\n        border-spacing: 0;\n    }\n    input, textarea {\n        box-sizing: border-box;\n        font-family: ", ";\n    }\n"])), function (props) { return props.theme.fontFamily.sans; }, function (props) { return props.theme.fontFamily.sans; });
+var templateObject_1$3;
+
+var ThemeContext$1 = React.createContext({
+    theme: defaultTheme,
+    setTheme: function () { },
+});
+var ThemeProvider$1 = function (_a) {
+    var themes = _a.themes, theme = _a.theme, children = _a.children;
+    var _b = useState(theme), activeTheme = _b[0], setActiveTheme = _b[1];
+    var context = {
+        theme: themes[activeTheme],
+        setTheme: setActiveTheme,
+    };
+    return (React.createElement(ThemeContext$1.Provider, { value: context },
+        React.createElement(ThemeProvider, { theme: context.theme }, children)));
+};
+var useTheme$1 = function () { return useContext(ThemeContext$1); };
+
+var Flex = styled$1(Box)(templateObject_1$4 || (templateObject_1$4 = __makeTemplateObject(["\n    display: ", ";\n"], ["\n    display: ", ";\n"])), function (props) { return (props.inline ? 'inline-flex' : 'flex'); });
+var templateObject_1$4;
+
+/* eslint-disable react/prop-types */
+var propertyConfigList$2 = __spreadArrays(colorConfig, marginConfig, paddingConfig, widthConfig, heightConfig, positionConfig, overflowConfig, displayConfig, fontConfig, borderConfig, boxShadowConfig, flexConfig, gridConfig);
+var getCursor$1 = function (props) {
+    if (props.disabled)
+        return 'not-allowed';
+    return 'pointer';
+};
+var getVariantProps$1 = function (props) {
+    if (props.variant === 'secondary') {
+        return "\n            color: " + props.theme.color.secondary['500'] + ";\n        ";
+    }
+    if (props.variant === 'error') {
+        return "\n            color: " + props.theme.color.error['500'] + ";\n        ";
+    }
+    if (props.variant === 'warning') {
+        return "\n            color: " + props.theme.color.warning['500'] + ";\n        ";
+    }
+    if (props.variant === 'success') {
+        return "\n            color: " + props.theme.color.success['500'] + ";\n        ";
+    }
+    return "\n        color: " + props.theme.color.primary['500'] + ";\n    ";
+};
+var GhostButton = styled$1.button.withConfig({
+    shouldForwardProp: shouldForwardProp(),
+})(templateObject_1$5 || (templateObject_1$5 = __makeTemplateObject(["\n    cursor: ", ";\n    opacity: ", ";\n    border-style: solid;\n    border-width: 1px;\n    border-radius: 2px;\n    background-color: transparent;\n    border-color: transparent;\n    padding: ", ";\n    ", "\n    ", "\n"], ["\n    cursor: ", ";\n    opacity: ", ";\n    border-style: solid;\n    border-width: 1px;\n    border-radius: 2px;\n    background-color: transparent;\n    border-color: transparent;\n    padding: ", ";\n    ", "\n    ", "\n"])), getCursor$1, function (props) { return props.disabled && '0.5'; }, function (props) { return props.theme.spacing.m; }, getVariantProps$1, buildCss(propertyConfigList$2));
+var templateObject_1$5;
+
+var propertyConfigList$3 = __spreadArrays(colorConfig, marginConfig, paddingConfig, positionConfig, overflowConfig, displayConfig, fontConfig, borderConfig);
+var Icon = styled$1.i
+    .withConfig({ shouldForwardProp: shouldForwardProp() })
+    .attrs(function (props) { return ({ className: props.theme.icon.className }); })(templateObject_1$6 || (templateObject_1$6 = __makeTemplateObject(["\n    ", "\n"], ["\n    ", "\n"])), buildCss(propertyConfigList$3));
+var templateObject_1$6;
+
+/* eslint-disable react/prop-types */
+var propertyConfigList$4 = __spreadArrays(colorConfig, marginConfig, paddingConfig, widthConfig, heightConfig, positionConfig, overflowConfig, displayConfig, fontConfig, borderConfig, boxShadowConfig, flexConfig, gridConfig);
+var Input = styled$1.input.withConfig({
+    shouldForwardProp: shouldForwardProp(),
+})(templateObject_1$7 || (templateObject_1$7 = __makeTemplateObject(["\n    cursor: ", ";\n    opacity: ", ";\n    border-style: solid;\n    border-width: 1px;\n    border-radius: 2px;\n    border-color: white;\n    background-color: white;\n    color: ", ";\n    padding: ", ";\n    ", "\n"], ["\n    cursor: ", ";\n    opacity: ", ";\n    border-style: solid;\n    border-width: 1px;\n    border-radius: 2px;\n    border-color: white;\n    background-color: white;\n    color: ", ";\n    padding: ", ";\n    ", "\n"])), function (props) { return props.disabled && 'not-allowed'; }, function (props) { return props.disabled && '0.5'; }, function (props) { return props.theme.color.gray['900']; }, function (props) { return props.theme.spacing.m; }, buildCss(propertyConfigList$4));
+var templateObject_1$7;
+
+var LoadingIndicator = function (_a) {
+    var color1 = _a.color1, color2 = _a.color2, color3 = _a.color3, size = _a.size;
+    var theme = useTheme$1().theme;
+    return (React.createElement("svg", { version: "1.1", id: "L7", xmlns: "http://www.w3.org/2000/svg", x: "0px", y: "0px", width: theme.width[size] || size || '100px', height: theme.height[size] || size || '100px', viewBox: "0 0 100 100", enableBackground: "new 0 0 100 100", xmlSpace: "preserve", style: { verticalAlign: '-16%' } },
+        React.createElement("path", { fill: (theme.color[color1] ||
+                color1 ||
+                theme.color.primary['500']), d: "M31.6,3.5C5.9,13.6-6.6,42.7,3.5,68.4c10.1,25.7,39.2,38.3,64.9,28.1l-3.1-7.9c-21.3,8.4-45.4-2-53.8-23.3\n      c-8.4-21.3,2-45.4,23.3-53.8L31.6,3.5z" },
+            React.createElement("animateTransform", { attributeName: "transform", attributeType: "XML", type: "rotate", dur: "2s", from: "0 50 50", to: "360 50 50", repeatCount: "indefinite" })),
+        React.createElement("path", { fill: (theme.color[color2] ||
+                color2 ||
+                theme.color.success['500']), d: "M42.3,39.6c5.7-4.3,13.9-3.1,18.1,2.7c4.3,5.7,3.1,13.9-2.7,18.1l4.1,5.5c8.8-6.5,10.6-19,4.1-27.7\n      c-6.5-8.8-19-10.6-27.7-4.1L42.3,39.6z" },
+            React.createElement("animateTransform", { attributeName: "transform", attributeType: "XML", type: "rotate", dur: "1s", from: "0 50 50", to: "-360 50 50", repeatCount: "indefinite" })),
+        React.createElement("path", { fill: (theme.color[color3] ||
+                color3 ||
+                theme.color.secondary['500']), d: "M82,35.7C74.1,18,53.4,10.1,35.7,18S10.1,46.6,18,64.3l7.6-3.4c-6-13.5,0-29.3,13.5-35.3s29.3,0,35.3,13.5\n      L82,35.7z" },
+            React.createElement("animateTransform", { attributeName: "transform", attributeType: "XML", type: "rotate", dur: "2s", from: "0 50 50", to: "360 50 50", repeatCount: "indefinite" }))));
+};
+
+/* eslint-disable react/prop-types */
+var propertyConfigList$5 = __spreadArrays(colorConfig, marginConfig, paddingConfig, widthConfig, heightConfig, positionConfig, overflowConfig, displayConfig, fontConfig, borderConfig, boxShadowConfig, flexConfig, gridConfig);
+var getCursor$2 = function (props) {
+    if (props.disabled)
+        return 'not-allowed';
+    return 'pointer';
+};
+var getVariantProps$2 = function (props) {
+    if (props.variant === 'secondary') {
+        return "\n            border-color: " + props.theme.color.secondary['500'] + ";\n            color: " + props.theme.color.secondary['500'] + ";\n        ";
+    }
+    if (props.variant === 'error') {
+        return "\n            border-color: " + props.theme.color.error['500'] + ";\n            color: " + props.theme.color.error['500'] + ";\n        ";
+    }
+    if (props.variant === 'warning') {
+        return "\n            border-color: " + props.theme.color.warning['500'] + ";\n            color: " + props.theme.color.warning['500'] + ";\n        ";
+    }
+    if (props.variant === 'success') {
+        return "\n            border-color: " + props.theme.color.success['500'] + ";\n            color: " + props.theme.color.success['500'] + ";\n        ";
+    }
+    return "\n        border-color: " + props.theme.color.primary['500'] + ";\n        color: " + props.theme.color.primary['500'] + ";\n    ";
+};
+var OutlineButton = styled$1.button.withConfig({
+    shouldForwardProp: shouldForwardProp(),
+})(templateObject_1$8 || (templateObject_1$8 = __makeTemplateObject(["\n    cursor: ", ";\n    opacity: ", ";\n    border-style: solid;\n    border-width: 1px;\n    border-radius: 2px;\n    background-color: transparent;\n    padding: ", ";\n    ", "\n    ", "\n"], ["\n    cursor: ", ";\n    opacity: ", ";\n    border-style: solid;\n    border-width: 1px;\n    border-radius: 2px;\n    background-color: transparent;\n    padding: ", ";\n    ", "\n    ", "\n"])), getCursor$2, function (props) { return props.disabled && '0.5'; }, function (props) { return props.theme.spacing.m; }, getVariantProps$2, buildCss(propertyConfigList$5));
+var templateObject_1$8;
+
+/* eslint-disable react/prop-types */
+var propertyConfigList$6 = __spreadArrays(colorConfig, marginConfig, paddingConfig, widthConfig, heightConfig, positionConfig, overflowConfig, displayConfig, fontConfig, borderConfig, boxShadowConfig, flexConfig, gridConfig);
+var TextArea = styled$1.textarea.withConfig({
+    shouldForwardProp: shouldForwardProp(),
+})(templateObject_1$9 || (templateObject_1$9 = __makeTemplateObject(["\n    cursor: ", ";\n    opacity: ", ";\n    border-style: solid;\n    border-width: 1px;\n    border-radius: 2px;\n    border-color: white;\n    background-color: white;\n    color: ", ";\n    padding: ", ";\n    ", "\n"], ["\n    cursor: ", ";\n    opacity: ", ";\n    border-style: solid;\n    border-width: 1px;\n    border-radius: 2px;\n    border-color: white;\n    background-color: white;\n    color: ", ";\n    padding: ", ";\n    ", "\n"])), function (props) { return props.disabled && 'not-allowed'; }, function (props) { return props.disabled && '0.5'; }, function (props) { return props.theme.color.gray['900']; }, function (props) { return props.theme.spacing.m; }, buildCss(propertyConfigList$6));
+var templateObject_1$9;
+
+var propertyConfigList$7 = __spreadArrays(colorConfig, marginConfig, paddingConfig, positionConfig, overflowConfig, displayConfig, fontConfig, borderConfig);
+var Text = styled$1.p.withConfig({
+    shouldForwardProp: shouldForwardProp(),
+})(templateObject_1$a || (templateObject_1$a = __makeTemplateObject(["\n    ", "\n"], ["\n    ", "\n"])), buildCss(propertyConfigList$7));
+var templateObject_1$a;
+
+var Grid = styled$1(Box)(templateObject_1$b || (templateObject_1$b = __makeTemplateObject(["\n    display: ", ";\n"], ["\n    display: ", ";\n"])), function (props) { return (props.inline ? 'inline-grid' : 'grid'); });
+var templateObject_1$b;
+
+var getPropertyConfigList = function (inline) {
+    return inline
+        ? [
+            {
+                cssProperty: 'margin-right',
+                componentProps: ['spacing'],
+                themeScope: 'spacing',
+            },
+        ]
+        : [
+            {
+                cssProperty: 'margin-bottom',
+                componentProps: ['spacing'],
+                themeScope: 'spacing',
+            },
+        ];
+};
+var Stack = styled$1(Box)(templateObject_1$c || (templateObject_1$c = __makeTemplateObject(["\n    ", ";\n    > * {\n        ", "\n    }\n\n    & > :last-child {\n        ", ";\n    }\n"], ["\n    ", ";\n    > * {\n        ", "\n    }\n\n    & > :last-child {\n        ", ";\n    }\n"])), function (props) { return props.inline && 'display: inline-block'; }, function (props) { return buildCss(getPropertyConfigList(props.inline))(props); }, function (props) { return (props.inline ? 'margin-right: 0px' : 'margin-bottom: 0px'); });
+var templateObject_1$c;
+
+var getOutlineColor = function (error, warning) {
+    if (error)
+        return 'error.500';
+    if (warning)
+        return 'warning.500';
+    return 'primary.500';
+};
+var InputField = function (_a) {
+    var inline = _a.inline, disabled = _a.disabled, gridArea = _a.gridArea, name = _a.name, value = _a.value, onChange = _a.onChange, label = _a.label, hint = _a.hint, warning = _a.warning, error = _a.error, others = __rest(_a, ["inline", "disabled", "gridArea", "name", "value", "onChange", "label", "hint", "warning", "error"]);
+    return (React.createElement(Stack, __assign({ spacing: "s", inline: inline }, (inline ? { mr: 'xl' } : { mb: 'xl' }), { gridArea: gridArea || name }),
+        label && (React.createElement(Text, { as: "label", htmlFor: name, color: "gray.700", display: "block" }, label)),
+        React.createElement(Input, __assign({ id: name, name: name, value: value, onChange: onChange, "aria-describedby": name + "-aria-description", outlineColor: getOutlineColor(error, warning), disabled: disabled }, others)),
+        hint && !warning && !error && (React.createElement(Text, { id: name + "-aria-description", fontSize: "xs", color: "gray.700" },
+            React.createElement(Icon, { "aria-hidden": "true" }, "info"),
+            " ",
+            hint)),
+        warning && !error && (React.createElement(Text, { id: name + "-aria-description", fontSize: "xs", color: "warning.700" },
+            React.createElement(Icon, { "aria-hidden": "true" }, "warning"),
+            " ",
+            warning)),
+        error && (React.createElement(Text, { id: name + "-aria-description", fontSize: "xs", color: "error.700" },
+            React.createElement(Icon, { "aria-hidden": "true" }, "error"),
+            " ",
+            error))));
+};
+
+var getOutlineColor$1 = function (error, warning) {
+    if (error)
+        return 'error.500';
+    if (warning)
+        return 'warning.500';
+    return 'primary.500';
+};
+var TextAreaField = function (_a) {
+    var inline = _a.inline, disabled = _a.disabled, gridArea = _a.gridArea, name = _a.name, value = _a.value, onChange = _a.onChange, label = _a.label, hint = _a.hint, warning = _a.warning, error = _a.error, others = __rest(_a, ["inline", "disabled", "gridArea", "name", "value", "onChange", "label", "hint", "warning", "error"]);
+    return (React.createElement(Stack, __assign({ spacing: "s", inline: inline }, (inline ? { mr: 'xl' } : { mb: 'xl' }), { gridArea: gridArea || name }),
+        label && (React.createElement(Text, { as: "label", htmlFor: name, color: "gray.700", display: "block" }, label)),
+        React.createElement(TextArea, __assign({ id: name, name: name, value: value, onChange: onChange, "aria-describedby": name + "-aria-description", outlineColor: getOutlineColor$1(error, warning), disabled: disabled }, others)),
+        hint && !warning && !error && (React.createElement(Text, { id: name + "-aria-description", fontSize: "xs", color: "gray.700" },
+            React.createElement(Icon, { "aria-hidden": "true" }, "info"),
+            " ",
+            hint)),
+        warning && !error && (React.createElement(Text, { id: name + "-aria-description", fontSize: "xs", color: "warning.700" },
+            React.createElement(Icon, { "aria-hidden": "true" }, "warning"),
+            " ",
+            warning)),
+        error && (React.createElement(Text, { id: name + "-aria-description", fontSize: "xs", color: "error.700" },
+            React.createElement(Icon, { "aria-hidden": "true" }, "error"),
+            " ",
+            error))));
+};
+
+export { Box, Button, Flex, GhostButton, GlobalStyle$1 as GlobalStyle, Grid, Icon, Input, InputField, LoadingIndicator, OutlineButton, Stack, Text, TextArea, TextAreaField, ThemeContext$1 as ThemeContext, ThemeProvider$1 as ThemeProvider, createGlobalStyle$1 as createGlobalStyle, css$1 as css, curry, defaultTheme, isNil, keyframes$1 as keyframes, omit, path, shouldForwardProp, styled$1 as styled, useTheme$1 as useTheme };
 //# sourceMappingURL=index.es.js.map
