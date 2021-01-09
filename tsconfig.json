@@ -19,9 +19,6 @@
         "dist",
         "src/**/*.stories.tsx",
         "src/**/*.test.tsx",
-        "src.backup",
-        "utils.backup",
-        "stories.backup",
         "*.js",
         ".storybook/main.js"
     ]

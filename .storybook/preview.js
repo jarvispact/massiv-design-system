@@ -1,12 +1,11 @@
 import React from 'react';
 import { addDecorator } from '@storybook/react';
-import { ThemeProvider } from '../src/theme/theme-context';
+import { ThemeProvider } from '../src/theme/theme-provider';
 import { defaultTheme } from '../src/theme/default-theme';
-import { GlobalStyle } from '../src/theme';
-import './global.css';
+import { GlobalStyle } from '../src/global-style';
 
 const themes = {
-    default: { ...defaultTheme, icon: { className: 'material-icons' } },
+    default: { ...defaultTheme },
 };
 
 addDecorator((StoryFn) => {

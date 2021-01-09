@@ -1,4 +1,4 @@
-import { ThemeScope, Theme } from '../theme';
+import { Theme, ThemeScope } from '../theme/default-theme';
 export declare type CssPropertyConfig = {
     cssProperty: string;
     componentProps: string[];
@@ -6,4 +6,4 @@ export declare type CssPropertyConfig = {
 };
 export declare const buildCss: <PropsWithTheme extends {
     theme: Theme;
-}>(propertyConfigList: CssPropertyConfig[]) => (props: PropsWithTheme) => string | undefined;
+}>(propertyConfigList: CssPropertyConfig[], propScope?: string | undefined) => (props: PropsWithTheme) => string | undefined;

@@ -1,0 +1,20 @@
+import { Theme } from '../theme/default-theme';
+import { CssPropertyConfig } from '../utils/build-css';
+import { ResponsiveThemeProp, ResponsiveProp } from '../utils/types';
+export declare type GridProps<T extends Theme> = {
+    gridTemplateColumns?: ResponsiveProp;
+    gridTemplateRows?: ResponsiveProp;
+    gridTemplateAreas?: ResponsiveProp;
+    columnGap?: ResponsiveThemeProp<T, 'spacing'>;
+    rowGap?: ResponsiveThemeProp<T, 'spacing'>;
+    gap?: ResponsiveThemeProp<T, 'spacing'>;
+    justifyItems?: ResponsiveProp;
+    gridColumnStart?: ResponsiveProp;
+    gridColumnEnd?: ResponsiveProp;
+    gridRowStart?: ResponsiveProp;
+    gridRowEnd?: ResponsiveProp;
+    gridArea?: ResponsiveProp;
+    justifySelf?: ResponsiveProp;
+    placeSelf?: ResponsiveProp;
+};
+export declare const gridConfig: CssPropertyConfig[];
