@@ -31,7 +31,7 @@ export type BoxSystemProps<T extends Theme> = ColorProps<T> &
     DisplayProps &
     OverflowProps;
 
-export type BoxProps<T extends Theme = Theme, HTMLElem extends HTMLElement = HTMLDivElement> = React.HTMLAttributes<HTMLElem> &
+export type BoxProps<T extends Theme = Theme, HTMLElem = HTMLDivElement> = React.HTMLAttributes<HTMLElem> &
     BoxSystemProps<T> & {
         as?: React.ElementType;
         children?: React.ReactNode;
