@@ -1,6 +1,6 @@
 {
     "name": "massiv-design-system",
-    "version": "0.0.55",
+    "version": "0.0.56",
     "description": "a simple design system",
     "main": "dist/index.js",
     "module": "dist/index.es.js",
