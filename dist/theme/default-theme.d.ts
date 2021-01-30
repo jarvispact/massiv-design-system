@@ -8,6 +8,7 @@ export declare const defaultTheme: {
         '3xl': string;
     };
     color: {
+        gray50: string;
         gray100: string;
         gray200: string;
         gray300: string;
@@ -17,6 +18,7 @@ export declare const defaultTheme: {
         gray700: string;
         gray800: string;
         gray900: string;
+        error50: string;
         error100: string;
         error200: string;
         error300: string;
@@ -26,6 +28,7 @@ export declare const defaultTheme: {
         error700: string;
         error800: string;
         error900: string;
+        warning50: string;
         warning100: string;
         warning200: string;
         warning300: string;
@@ -35,6 +38,7 @@ export declare const defaultTheme: {
         warning700: string;
         warning800: string;
         warning900: string;
+        success50: string;
         success100: string;
         success200: string;
         success300: string;
@@ -44,6 +48,7 @@ export declare const defaultTheme: {
         success700: string;
         success800: string;
         success900: string;
+        primary50: string;
         primary100: string;
         primary200: string;
         primary300: string;
@@ -53,6 +58,7 @@ export declare const defaultTheme: {
         primary700: string;
         primary800: string;
         primary900: string;
+        secondary50: string;
         secondary100: string;
         secondary200: string;
         secondary300: string;
@@ -76,10 +82,6 @@ export declare const defaultTheme: {
         '6xl': string;
     };
     width: {
-        '1/4': string;
-        '1/3': string;
-        '1/2': string;
-        '1': string;
         xs: string;
         s: string;
         m: string;
@@ -92,10 +94,6 @@ export declare const defaultTheme: {
         '6xl': string;
     };
     height: {
-        '1/4': string;
-        '1/3': string;
-        '1/2': string;
-        '1': string;
         xs: string;
         s: string;
         m: string;
@@ -184,6 +182,7 @@ export declare const createCustomTheme: <T extends {
         '3xl': string;
     };
     color: {
+        gray50: string;
         gray100: string;
         gray200: string;
         gray300: string;
@@ -193,6 +192,7 @@ export declare const createCustomTheme: <T extends {
         gray700: string;
         gray800: string;
         gray900: string;
+        error50: string;
         error100: string;
         error200: string;
         error300: string;
@@ -202,6 +202,7 @@ export declare const createCustomTheme: <T extends {
         error700: string;
         error800: string;
         error900: string;
+        warning50: string;
         warning100: string;
         warning200: string;
         warning300: string;
@@ -211,6 +212,7 @@ export declare const createCustomTheme: <T extends {
         warning700: string;
         warning800: string;
         warning900: string;
+        success50: string;
         success100: string;
         success200: string;
         success300: string;
@@ -220,6 +222,7 @@ export declare const createCustomTheme: <T extends {
         success700: string;
         success800: string;
         success900: string;
+        primary50: string;
         primary100: string;
         primary200: string;
         primary300: string;
@@ -229,6 +232,7 @@ export declare const createCustomTheme: <T extends {
         primary700: string;
         primary800: string;
         primary900: string;
+        secondary50: string;
         secondary100: string;
         secondary200: string;
         secondary300: string;
@@ -252,10 +256,6 @@ export declare const createCustomTheme: <T extends {
         '6xl': string;
     };
     width: {
-        '1/4': string;
-        '1/3': string;
-        '1/2': string;
-        '1': string;
         xs: string;
         s: string;
         m: string;
@@ -268,10 +268,6 @@ export declare const createCustomTheme: <T extends {
         '6xl': string;
     };
     height: {
-        '1/4': string;
-        '1/3': string;
-        '1/2': string;
-        '1': string;
         xs: string;
         s: string;
         m: string;
