@@ -8,6 +8,7 @@ import { FontProps, fontConfig } from '../system/font';
 import { GridProps, gridConfig } from '../system/grid';
 import { HeightProps, heightConfig } from '../system/height';
 import { marginConfig, MarginProps } from '../system/margin';
+import { OutlineProps } from '../system/outline';
 import { overflowConfig, OverflowProps } from '../system/overflow';
 import { paddingConfig, PaddingProps } from '../system/padding';
 import { positionConfig, PositionProps } from '../system/position';
@@ -26,6 +27,7 @@ export type BoxSystemProps<T extends Theme> = ColorProps<T> &
     GridProps<T> &
     WidthProps<T> &
     HeightProps<T> &
+    OutlineProps<T> &
     FlexProps &
     PositionProps &
     DisplayProps &
