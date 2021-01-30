@@ -7,6 +7,7 @@ import { FontProps } from '../system/font';
 import { GridProps } from '../system/grid';
 import { HeightProps } from '../system/height';
 import { MarginProps } from '../system/margin';
+import { OutlineProps } from '../system/outline';
 import { OverflowProps } from '../system/overflow';
 import { PaddingProps } from '../system/padding';
 import { PositionProps } from '../system/position';
@@ -14,7 +15,7 @@ import { ShadowProps } from '../system/shadow';
 import { WidthProps } from '../system/width';
 import { Theme } from '../theme/default-theme';
 import { CssPropertyConfig } from '../utils/build-css';
-export declare type BoxSystemProps<T extends Theme> = ColorProps<T> & BorderProps<T> & PaddingProps<T> & MarginProps<T> & FontProps<T> & ShadowProps<T> & GridProps<T> & WidthProps<T> & HeightProps<T> & FlexProps & PositionProps & DisplayProps & OverflowProps;
+export declare type BoxSystemProps<T extends Theme> = ColorProps<T> & BorderProps<T> & PaddingProps<T> & MarginProps<T> & FontProps<T> & ShadowProps<T> & GridProps<T> & WidthProps<T> & HeightProps<T> & OutlineProps<T> & FlexProps & PositionProps & DisplayProps & OverflowProps;
 export declare type BoxProps<T extends Theme = Theme, HTMLElem = HTMLDivElement> = React.HTMLAttributes<HTMLElem> & BoxSystemProps<T> & {
     as?: React.ElementType;
     children?: React.ReactNode;

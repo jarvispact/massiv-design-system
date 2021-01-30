@@ -5,6 +5,5 @@ export declare type ColorProps<T extends Theme> = {
     backgroundColor?: ResponsiveThemeProp<T, 'color'>;
     bg?: ResponsiveThemeProp<T, 'color'>;
     color?: ResponsiveThemeProp<T, 'color'>;
-    outlineColor?: ResponsiveThemeProp<T, 'color'>;
 };
 export declare const colorConfig: CssPropertyConfig[];
