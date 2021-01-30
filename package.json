@@ -26,6 +26,8 @@
     },
     "lint-staged": {
         "*.{js,ts,tsx}": [
+            "rm -rf ./dist",
+            "rollup -c",
             "tsc --noEmit --allowJs --skipLibCheck --jsx react --esModuleInterop"
         ]
     },
