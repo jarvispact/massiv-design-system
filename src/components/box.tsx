@@ -37,8 +37,6 @@ export type BoxProps<T extends Theme = Theme, HTMLElem = HTMLDivElement> = React
     BoxSystemProps<T> & {
         as?: React.ElementType;
         children?: React.ReactNode;
-        _hover?: BoxSystemProps<T>;
-        _focus?: BoxSystemProps<T>;
         [x: string]: unknown;
     };
 
@@ -68,10 +66,10 @@ export const createBox = (options: CreateBoxOptions = {}) => styled.div.withConf
 })`
     ${buildCss(options.systemConfig || boxConfig)}
     &:hover {
-        ${buildCss(options.systemConfig || boxConfig, '_hover')}
+        ${buildCss(options.systemConfig || boxConfig)}
     }
     &:focus {
-        ${buildCss(options.systemConfig || boxConfig, '_focus')}
+        ${buildCss(options.systemConfig || boxConfig)}
     }
 `;
 

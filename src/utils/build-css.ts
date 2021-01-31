@@ -28,16 +28,15 @@ export type CssPropertyConfig = {
     themeScope: ThemeScope | null;
 };
 
-export const buildCss = <PropsWithTheme extends { theme: Theme }>(propertyConfigList: CssPropertyConfig[], propScope?: string) => (props: PropsWithTheme) => {
+export const buildCss = <PropsWithTheme extends { theme: Theme }>(propertyConfigList: CssPropertyConfig[]) => (props: PropsWithTheme) => {
     const { theme } = props;
     const { breakpoint } = theme;
     const componentProps = omit(['as', 'children', 'theme'], props);
-    const scopedProps = propScope ? { ...props[propScope as keyof PropsWithTheme], theme: props.theme } : props;
 
     const cssArray = Object.keys(componentProps).map((componentPropKey) => {
         const configForCssProp = propertyConfigList.find((config) => config.componentProps.includes(componentPropKey));
         if (!configForCssProp) return undefined;
-        const value = getValue(componentPropKey, configForCssProp.themeScope, 0, scopedProps);
+        const value = getValue(componentPropKey, configForCssProp.themeScope, 0, props);
         return value ? `${configForCssProp.cssProperty}: ${value};` : undefined;
     });
 
@@ -48,7 +47,7 @@ export const buildCss = <PropsWithTheme extends { theme: Theme }>(propertyConfig
         Object.keys(componentProps).forEach((componentPropKey) => {
             const configForCssProp = propertyConfigList.find((c) => c.componentProps.includes(componentPropKey));
             if (configForCssProp) {
-                const value = getValue(componentPropKey, configForCssProp.themeScope, valueIdx, scopedProps);
+                const value = getValue(componentPropKey, configForCssProp.themeScope, valueIdx, props);
                 if (value) breakPointBuffer.push(`${configForCssProp.cssProperty}: ${value};`);
             }
         });
