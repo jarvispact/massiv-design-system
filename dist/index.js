@@ -1722,16 +1722,15 @@ var getValue = function (key, themeScope, index, props) {
         return undefined;
     return themeScope ? path(valueArray[index].split('.'), props.theme[themeScope]) || valueArray[index] : valueArray[index];
 };
-var buildCss = function (propertyConfigList, propScope) { return function (props) {
+var buildCss = function (propertyConfigList) { return function (props) {
     var theme = props.theme;
     var breakpoint = theme.breakpoint;
     var componentProps = omit(['as', 'children', 'theme'], props);
-    var scopedProps = propScope ? __assign(__assign({}, props[propScope]), { theme: props.theme }) : props;
     var cssArray = Object.keys(componentProps).map(function (componentPropKey) {
         var configForCssProp = propertyConfigList.find(function (config) { return config.componentProps.includes(componentPropKey); });
         if (!configForCssProp)
             return undefined;
-        var value = getValue(componentPropKey, configForCssProp.themeScope, 0, scopedProps);
+        var value = getValue(componentPropKey, configForCssProp.themeScope, 0, props);
         return value ? configForCssProp.cssProperty + ": " + value + ";" : undefined;
     });
     var mediaQueryArray = Object.values(breakpoint).map(function (bp, idx) {
@@ -1740,7 +1739,7 @@ var buildCss = function (propertyConfigList, propScope) { return function (props
         Object.keys(componentProps).forEach(function (componentPropKey) {
             var configForCssProp = propertyConfigList.find(function (c) { return c.componentProps.includes(componentPropKey); });
             if (configForCssProp) {
-                var value = getValue(componentPropKey, configForCssProp.themeScope, valueIdx, scopedProps);
+                var value = getValue(componentPropKey, configForCssProp.themeScope, valueIdx, props);
                 if (value)
                     breakPointBuffer.push(configForCssProp.cssProperty + ": " + value + ";");
             }
@@ -1763,7 +1762,7 @@ var createBox = function (options) {
     if (options === void 0) { options = {}; }
     return styled.div.withConfig({
         shouldForwardProp: options.forwardPropertyBlacklist ? createShouldForwardProp(options.forwardPropertyBlacklist) : shouldForwardProp,
-    })(templateObject_1$1 || (templateObject_1$1 = __makeTemplateObject(["\n    ", "\n    &:hover {\n        ", "\n    }\n    &:focus {\n        ", "\n    }\n"], ["\n    ", "\n    &:hover {\n        ", "\n    }\n    &:focus {\n        ", "\n    }\n"])), buildCss(options.systemConfig || boxConfig), buildCss(options.systemConfig || boxConfig, '_hover'), buildCss(options.systemConfig || boxConfig, '_focus'));
+    })(templateObject_1$1 || (templateObject_1$1 = __makeTemplateObject(["\n    ", "\n    &:hover {\n        ", "\n    }\n    &:focus {\n        ", "\n    }\n"], ["\n    ", "\n    &:hover {\n        ", "\n    }\n    &:focus {\n        ", "\n    }\n"])), buildCss(options.systemConfig || boxConfig), buildCss(options.systemConfig || boxConfig), buildCss(options.systemConfig || boxConfig));
 };
 var Box = createBox();
 var templateObject_1$1;

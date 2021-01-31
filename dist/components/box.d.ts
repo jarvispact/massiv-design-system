@@ -19,8 +19,6 @@ export declare type BoxSystemProps<T extends Theme> = ColorProps<T> & BorderProp
 export declare type BoxProps<T extends Theme = Theme, HTMLElem = HTMLDivElement> = React.HTMLAttributes<HTMLElem> & BoxSystemProps<T> & {
     as?: React.ElementType;
     children?: React.ReactNode;
-    _hover?: BoxSystemProps<T>;
-    _focus?: BoxSystemProps<T>;
     [x: string]: unknown;
 };
 export declare const boxConfig: CssPropertyConfig[];

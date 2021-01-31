@@ -6,4 +6,4 @@ export declare type CssPropertyConfig = {
 };
 export declare const buildCss: <PropsWithTheme extends {
     theme: Theme;
-}>(propertyConfigList: CssPropertyConfig[], propScope?: string | undefined) => (props: PropsWithTheme) => string | undefined;
+}>(propertyConfigList: CssPropertyConfig[]) => (props: PropsWithTheme) => string | undefined;
