@@ -8,6 +8,7 @@ export type PositionProps = {
     left?: ResponsiveProp;
     bottom?: ResponsiveProp;
     right?: ResponsiveProp;
+    zIndex?: ResponsiveProp;
 };
 
 export const positionConfig: CssPropertyConfig[] = [
@@ -34,6 +35,11 @@ export const positionConfig: CssPropertyConfig[] = [
     {
         cssProperty: 'right',
         componentProps: ['right'],
+        themeScope: null,
+    },
+    {
+        cssProperty: 'z-index',
+        componentProps: ['zIndex'],
         themeScope: null,
     },
 ];

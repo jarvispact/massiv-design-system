@@ -1642,6 +1642,11 @@ var positionConfig = [
         componentProps: ['right'],
         themeScope: null,
     },
+    {
+        cssProperty: 'z-index',
+        componentProps: ['zIndex'],
+        themeScope: null,
+    },
 ];
 
 var shadowConfig = [

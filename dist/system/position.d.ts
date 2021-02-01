@@ -7,5 +7,6 @@ export declare type PositionProps = {
     left?: ResponsiveProp;
     bottom?: ResponsiveProp;
     right?: ResponsiveProp;
+    zIndex?: ResponsiveProp;
 };
 export declare const positionConfig: CssPropertyConfig[];
