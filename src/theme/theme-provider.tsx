@@ -1,14 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useContext } from 'react';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import { defaultTheme, Theme } from './default-theme';
 
-type Themes = {
-    [key: string]: Theme;
-};
-
 type Ctx<T extends Theme> = {
     theme: T;
-    setTheme: (t: string) => void;
+    setTheme: React.Dispatch<React.SetStateAction<T>>;
 };
 
 export const ThemeContext = React.createContext<Ctx<Theme>>({
@@ -16,22 +13,21 @@ export const ThemeContext = React.createContext<Ctx<Theme>>({
     setTheme: () => {},
 });
 
-type Props<T extends Themes> = {
-    themes: T;
-    theme: keyof T;
+type Props<T extends Theme> = {
+    theme: T;
     children: React.ReactNode;
 };
 
-export const ThemeProvider = <T extends Themes>({ themes, theme, children }: Props<T>) => {
+export const ThemeProvider = <T extends Theme>({ theme, children }: Props<T>) => {
     const [activeTheme, setActiveTheme] = useState(theme);
 
     const context = {
-        theme: themes[activeTheme],
+        theme: activeTheme,
         setTheme: setActiveTheme,
     };
 
     return (
-        <ThemeContext.Provider value={context}>
+        <ThemeContext.Provider value={context as any}>
             <StyledThemeProvider theme={context.theme}>{children}</StyledThemeProvider>
         </ThemeContext.Provider>
     );

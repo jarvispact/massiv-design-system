@@ -16,7 +16,8 @@ import { WidthProps } from '../system/width';
 import { Theme } from '../theme/default-theme';
 import { CssPropertyConfig } from '../utils/build-css';
 export declare type BoxSystemProps<T extends Theme> = ColorProps<T> & BorderProps<T> & PaddingProps<T> & MarginProps<T> & FontProps<T> & ShadowProps<T> & GridProps<T> & WidthProps<T> & HeightProps<T> & OutlineProps<T> & FlexProps & PositionProps & DisplayProps & OverflowProps;
-export declare type BoxProps<T extends Theme = Theme, HTMLElem = HTMLDivElement> = React.HTMLAttributes<HTMLElem> & BoxSystemProps<T> & {
+declare type HTMLAttributesWithoutColor<HTMLElem = HTMLDivElement> = Omit<React.HTMLAttributes<HTMLElem>, 'color'>;
+export declare type BoxProps<T extends Theme = Theme, HTMLElem = HTMLDivElement> = HTMLAttributesWithoutColor<HTMLElem> & BoxSystemProps<T> & {
     as?: React.ElementType;
     children?: React.ReactNode;
     [x: string]: unknown;
@@ -193,8 +194,6 @@ export declare const createBox: (options?: CreateBoxOptions) => import("styled-c
         l: string;
         xl: string;
         '2xl': string;
-        inner: string;
-        outline: string;
     };
     textShadow: {};
 }, {

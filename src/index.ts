@@ -18,11 +18,6 @@ export * from './system/width';
 export * from './theme/default-theme';
 export * from './theme/theme-provider';
 
-export * from './utils/build-css';
-export * from './utils/curry';
-export * from './utils/is-nil';
-export * from './utils/omit';
-export * from './utils/path';
 export * from './utils/should-forward-prop';
 export * from './utils/types';
 

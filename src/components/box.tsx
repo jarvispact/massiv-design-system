@@ -33,7 +33,9 @@ export type BoxSystemProps<T extends Theme> = ColorProps<T> &
     DisplayProps &
     OverflowProps;
 
-export type BoxProps<T extends Theme = Theme, HTMLElem = HTMLDivElement> = React.HTMLAttributes<HTMLElem> &
+type HTMLAttributesWithoutColor<HTMLElem = HTMLDivElement> = Omit<React.HTMLAttributes<HTMLElem>, 'color'>;
+
+export type BoxProps<T extends Theme = Theme, HTMLElem = HTMLDivElement> = HTMLAttributesWithoutColor<HTMLElem> &
     BoxSystemProps<T> & {
         as?: React.ElementType;
         children?: React.ReactNode;
@@ -65,12 +67,6 @@ export const createBox = (options: CreateBoxOptions = {}) => styled.div.withConf
     shouldForwardProp: options.forwardPropertyBlacklist ? createShouldForwardProp(options.forwardPropertyBlacklist) : shouldForwardProp,
 })`
     ${buildCss(options.systemConfig || boxConfig)}
-    &:hover {
-        ${buildCss(options.systemConfig || boxConfig)}
-    }
-    &:focus {
-        ${buildCss(options.systemConfig || boxConfig)}
-    }
 `;
 
 export const Box: React.FC<BoxProps> = createBox();

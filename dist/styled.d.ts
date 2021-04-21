@@ -166,8 +166,6 @@ declare const styled: styledComponents.ThemedStyledInterface<{
         l: string;
         xl: string;
         '2xl': string;
-        inner: string;
-        outline: string;
     };
     textShadow: {};
 }>, css: styledComponents.ThemedCssFunction<{
@@ -337,8 +335,6 @@ declare const styled: styledComponents.ThemedStyledInterface<{
         l: string;
         xl: string;
         '2xl': string;
-        inner: string;
-        outline: string;
     };
     textShadow: {};
 }>, createGlobalStyle: <P extends object = {}>(first: styledComponents.CSSObject | TemplateStringsArray | styledComponents.InterpolationFunction<styledComponents.ThemedStyledProps<P, {
@@ -508,8 +504,6 @@ declare const styled: styledComponents.ThemedStyledInterface<{
         l: string;
         xl: string;
         '2xl': string;
-        inner: string;
-        outline: string;
     };
     textShadow: {};
 }>>, ...interpolations: styledComponents.Interpolation<styledComponents.ThemedStyledProps<P, {
@@ -679,8 +673,6 @@ declare const styled: styledComponents.ThemedStyledInterface<{
         l: string;
         xl: string;
         '2xl': string;
-        inner: string;
-        outline: string;
     };
     textShadow: {};
 }>>[]) => styledComponents.GlobalStyleComponent<P, {
@@ -850,8 +842,6 @@ declare const styled: styledComponents.ThemedStyledInterface<{
         l: string;
         xl: string;
         '2xl': string;
-        inner: string;
-        outline: string;
     };
     textShadow: {};
 }>, keyframes: (strings: TemplateStringsArray | styledComponents.CSSKeyframes, ...interpolations: styledComponents.SimpleInterpolation[]) => styledComponents.Keyframes;

@@ -165,8 +165,6 @@ export declare const defaultTheme: {
         l: string;
         xl: string;
         '2xl': string;
-        inner: string;
-        outline: string;
     };
     textShadow: {};
 };
@@ -339,8 +337,6 @@ export declare const createCustomTheme: <T extends {
         l: string;
         xl: string;
         '2xl': string;
-        inner: string;
-        outline: string;
     };
     textShadow: {};
 }>(theme: T) => T;

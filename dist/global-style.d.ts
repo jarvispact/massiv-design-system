@@ -165,8 +165,6 @@ export declare const GlobalStyle: import("styled-components").GlobalStyleCompone
         l: string;
         xl: string;
         '2xl': string;
-        inner: string;
-        outline: string;
     };
     textShadow: {};
 }>;
