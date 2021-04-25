@@ -1,13 +1,13 @@
 import React from 'react';
 import { addDecorator } from '@storybook/react';
-import { ThemeProvider } from '../src/theme/theme-provider';
-import { defaultTheme } from '../src/theme/default-theme';
-import { GlobalStyle } from '../src/global-style';
+import { ThemeProvider } from '../src/theme-provider';
+import { defaultTheme } from '../src/default-theme';
+import { CssReset } from '../src/css-reset';
 
 addDecorator((StoryFn) => {
     return (
         <ThemeProvider theme={defaultTheme}>
-            <GlobalStyle />
+            <CssReset />
             <StoryFn />
         </ThemeProvider>
     );

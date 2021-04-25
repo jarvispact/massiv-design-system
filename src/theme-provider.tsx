@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useContext } from 'react';
-import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import { defaultTheme, Theme } from './default-theme';
 
 type Ctx<T extends Theme> = {
@@ -28,7 +27,7 @@ export const ThemeProvider = <T extends Theme>({ theme, children }: Props<T>) =>
 
     return (
         <ThemeContext.Provider value={context as any}>
-            <StyledThemeProvider theme={context.theme}>{children}</StyledThemeProvider>
+            {children}
         </ThemeContext.Provider>
     );
 };
