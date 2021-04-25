@@ -10,7 +10,7 @@ export default {
 export const headings = () => {
     return (
         <>
-            <Heading element="h1">h1: The quick brown fox jumps over the lazy dog</Heading>
+            {/* <Heading element="h1">h1: The quick brown fox jumps over the lazy dog</Heading>
             <Heading element="h2">h2: The quick brown fox jumps over the lazy dog</Heading>
             <Heading element="h3">h3: The quick brown fox jumps over the lazy dog</Heading>
             <Heading element="h4">h4: The quick brown fox jumps over the lazy dog</Heading>
@@ -27,8 +27,14 @@ export const headings = () => {
             </Heading>
             <Heading element="h1" fontFamily="mono" lineHeight="6xl" className={css({ color: 'hotpink' })}>
                 h1 The quick brown fox jumps over the lazy dog
-            </Heading>
-            <Heading element="h1" fontFamily="mono" letterSpacing="widest" className={css({ color: 'hotpink' })}>
+            </Heading> */}
+            <Heading
+                element="h1"
+                fontFamily={['mono', 'serif', 'sans']}
+                lineHeight={['xs', 'm', '6xl', '6xl']}
+                letterSpacing={['tighter', 'normal', 'widest']}
+                className={css({ color: 'hotpink' })}
+            >
                 h1 The quick brown fox jumps over the lazy dog
             </Heading>
         </>
