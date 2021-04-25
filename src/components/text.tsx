@@ -2,17 +2,15 @@ import { css } from '@emotion/css';
 import React from 'react';
 import { useTheme } from '../theme-provider';
 
-type HeadingElement = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-type BodyElement = 'p' | 'span' | 'label';
-type TypographyElement = HeadingElement | BodyElement;
+export type TextElement = 'div' | 'span' | 'p' | 'label' | 'a';
 
-type Props = {
-    element?: TypographyElement;
+export type TextProps = React.HTMLAttributes<HTMLDivElement | HTMLSpanElement | HTMLParagraphElement | HTMLLabelElement | HTMLAnchorElement> & {
+    element?: TextElement;
     children: React.ReactNode;
     [x: string]: unknown;
 };
 
-export const Typography = ({ element = 'p', children, ...props }: Props) => {
+export const Text = ({ element = 'p', children, ...props }: TextProps) => {
     const { theme } = useTheme();
     const className = css({ fontFamily: theme.fontFamily.sans });
     return React.createElement(element, { ...props, className }, children);
