@@ -1,3 +1,13 @@
+const breakpoint = {
+    xs: '320px',
+    s: '640px',
+    m: '768px',
+    l: '1024px',
+    xl: '1280px',
+    '2xl': '1600px',
+    '3xl': '1920px',
+};
+
 const color = {
     gray50: '#FAFAFA',
     gray100: '#F5F5F5',
@@ -66,8 +76,81 @@ const color = {
     secondary900: '#831843',
 };
 
+const fontFamily = {
+    sans: [
+        'system-ui',
+        '-apple-system',
+        'BlinkMacSystemFont',
+        '"Segoe UI"',
+        'Roboto',
+        '"Helvetica Neue"',
+        'Arial',
+        '"Noto Sans"',
+        'sans-serif',
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"',
+        '"Noto Color Emoji"',
+    ].join(', '),
+    serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'].join(', '),
+    mono: ['Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'].join(', '),
+};
+
+const fontSize = {
+    xs: '0.75rem',
+    s: '0.875rem',
+    m: '1rem',
+    l: '1.125rem',
+    xl: '1.25rem',
+    '2xl': '1.5rem',
+    '3xl': '1.875rem',
+    '4xl': '2.25rem',
+    '5xl': '3rem',
+    '6xl': '4rem',
+};
+
+const fontWeight = {
+    xxs: '100',
+    xs: '200',
+    s: '300',
+    m: '400',
+    l: '500',
+    xl: '600',
+    '2xl': '700',
+    '3xl': '800',
+    '4xl': '900',
+};
+
+const lineHeight = {
+    xs: '0.75rem',
+    s: '0.875rem',
+    m: '1rem',
+    l: '1.125rem',
+    xl: '1.25rem',
+    '2xl': '1.5rem',
+    '3xl': '1.875rem',
+    '4xl': '2.25rem',
+    '5xl': '3rem',
+    '6xl': '4rem',
+};
+
+const letterSpacing = {
+    tighter: '-0.05em',
+    tight: '-0.025em',
+    normal: '0',
+    wide: '0.025em',
+    wider: '0.05em',
+    widest: '0.1em',
+};
+
 export const defaultTheme = {
+    breakpoint,
     color,
+    fontFamily,
+    fontSize,
+    fontWeight,
+    lineHeight,
+    letterSpacing,
 };
 
 export type Theme = typeof defaultTheme;

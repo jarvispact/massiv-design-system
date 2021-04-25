@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from '../src/box';
+import { Typography } from '../src/components/typography';
 
 export default {
     title: 'Docs/Color Palette',
@@ -7,6 +7,8 @@ export default {
 
 export const test = () => {
     return (
-        <Box />
+        <div>
+            <Typography>hello world</Typography>
+        </div>
     );
 };
