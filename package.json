@@ -8,7 +8,7 @@
         "dist"
     ],
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
+        "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'test/**/*.spec.ts'",
         "clean": "rm -rf ./dist",
         "build": "rollup -c",
         "dev": "rollup -c -w",
@@ -52,17 +52,21 @@
         "@storybook/addon-actions": "^6.2.9",
         "@storybook/addon-docs": "^6.2.9",
         "@storybook/react": "^6.2.9",
+        "@types/chai": "^4.2.17",
+        "@types/mocha": "^8.2.2",
         "@types/styled-components": "^5.1.9",
         "@typescript-eslint/eslint-plugin": "^4.22.0",
         "@typescript-eslint/parser": "^4.22.0",
         "babel-loader": "^8.2.2",
         "babel-preset-react-app": "^10.0.0",
+        "chai": "^4.3.4",
         "eslint": "^7.24.0",
         "eslint-config-prettier": "^8.2.0",
         "eslint-plugin-prettier": "^3.4.0",
         "eslint-plugin-react": "^7.23.2",
         "husky": "^6.0.0",
         "lint-staged": "^10.5.4",
+        "mocha": "^8.3.2",
         "npm-check-updates": "^11.5.1",
         "prettier": "^2.2.1",
         "react": "^16.13.1",
@@ -72,6 +76,7 @@
         "rollup-plugin-node-resolve": "^5.2.0",
         "rollup-plugin-peer-deps-external": "^2.2.4",
         "rollup-plugin-typescript2": "^0.30.0",
+        "ts-node": "^9.1.1",
         "typescript": "^4.2.4"
     },
     "peerDependencies": {

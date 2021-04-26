@@ -1,6 +1,6 @@
 import { css } from '@emotion/css';
 import React from 'react';
-import { useTheme } from '../theme-provider';
+import { useTheme } from '../theme/theme-provider';
 
 export type TextElement = 'div' | 'span' | 'p' | 'label' | 'a';
 

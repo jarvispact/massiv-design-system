@@ -76,6 +76,19 @@ const color = {
     secondary900: '#831843',
 };
 
+const spacing = {
+    xs: '0.15rem',
+    s: '0.25rem',
+    m: '0.5rem',
+    l: '0.75rem',
+    xl: '1rem',
+    '2xl': '2rem',
+    '3xl': '3rem',
+    '4xl': '4rem',
+    '5xl': '5rem',
+    '6xl': '6rem',
+};
+
 const fontFamily = {
     sans: [
         'system-ui',
@@ -147,6 +160,7 @@ const letterSpacing = {
 export const defaultTheme = {
     breakpoint,
     color,
+    spacing,
     fontFamily,
     fontSize,
     fontWeight,
@@ -155,3 +169,4 @@ export const defaultTheme = {
 };
 
 export type Theme = typeof defaultTheme;
+export type ThemeScope = keyof Theme;
