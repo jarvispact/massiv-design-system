@@ -1,4 +1,4 @@
-import { Theme } from '../default-theme';
+import { Theme } from '../theme/default-theme';
 import { ResponsiveThemeProp } from '../utils/types';
 import { SystemConfig } from './system';
 

@@ -1,4 +1,4 @@
-import { Theme } from '../default-theme';
+import { Theme } from '../theme/default-theme';
 
 type LiteralUnion<T extends U, U = string> = T | (U & { __literal_union__?: never });
 type UnpackThemeScope<T extends Theme, K extends keyof T> = Extract<keyof T[K], string>;
