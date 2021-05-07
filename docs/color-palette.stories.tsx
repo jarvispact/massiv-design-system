@@ -1,13 +1,19 @@
-import { css } from '@emotion/css';
 import React from 'react';
 import { Heading } from '../src/components/heading';
 import { Text } from '../src/components/text';
+import { useCSS } from '../src/hooks/use-css';
+import { Theme } from '../src/theme/default-theme';
 
 export default {
     title: 'Docs/Color Palette',
 };
 
 export const defaultHeadings = () => {
+    const { css } = useCSS<Theme>();
+
+    const className = css({ padding: '10px' });
+    console.log({ className });
+
     return (
         <>
             <Heading as="h1">h1: The quick brown fox jumps over the lazy dog</Heading>
