@@ -8,6 +8,6 @@ export const colorSystemDef = {
     color: { themeScope: 'color', getCSS: (v: string) => ({ color: v }) },
 };
 
-export type ColorKey = keyof typeof colorSystemDef;
-export type ColorValue<T extends Theme> = LiteralUnion<UnpackThemeScope<T, 'color'>>;
+type ColorKey = keyof typeof colorSystemDef;
+type ColorValue<T extends Theme> = LiteralUnion<UnpackThemeScope<T, 'color'>>;
 export type ColorObj<T extends Theme> = Partial<Record<ColorKey, ColorValue<T> | CssValueObject<T, ColorValue<T>>>>;

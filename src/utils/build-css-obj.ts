@@ -15,15 +15,15 @@ export const buildCssObj = <T extends Theme>(theme: T, definitions: SystemDefini
             if (typeof value === 'object' && !Array.isArray(value)) {
                 if (value.value) {
                     // @ts-ignore
-                    accum = { ...accum, ...def.getCSS(themeScope[value.value] || value.value) };
+                    accum = { ...accum, ...def.getCSS(themeScope ? themeScope[value.value] || value.value : value.value) };
                 }
                 if (value.hover) {
                     // @ts-ignore
-                    accum = { ...accum, '&:hover': { ...accum['&:hover'], ...def.getCSS(themeScope[value.hover] || value.hover) } };
+                    accum = { ...accum, '&:hover': { ...accum['&:hover'], ...def.getCSS(themeScope ? themeScope[value.hover] || value.hover : value.hover) } };
                 }
                 if (value.focus) {
                     // @ts-ignore
-                    accum = { ...accum, '&:focus': { ...accum['&:focus'], ...def.getCSS(themeScope[value.focus] || value.focus) } };
+                    accum = { ...accum, '&:focus': { ...accum['&:focus'], ...def.getCSS(themeScope ? themeScope[value.focus] || value.focus : value.focus) } };
                 }
                 if (value.hocus) {
                     accum = {
@@ -31,12 +31,12 @@ export const buildCssObj = <T extends Theme>(theme: T, definitions: SystemDefini
                         '&:hover': {
                             // @ts-ignore
                             ...accum['&:hover'],
-                            ...def.getCSS(themeScope[value.hocus] || value.hocus),
+                            ...def.getCSS(themeScope ? themeScope[value.hocus] || value.hocus : value.hocus),
                         },
                         '&:focus': {
                             // @ts-ignore
                             ...accum['&:focus'],
-                            ...def.getCSS(themeScope[value.hocus] || value.hocus),
+                            ...def.getCSS(themeScope ? themeScope[value.hocus] || value.hocus : value.hocus),
                         },
                     };
                 }
@@ -48,14 +48,17 @@ export const buildCssObj = <T extends Theme>(theme: T, definitions: SystemDefini
                     if (value[breakpointKey]) {
                         accum = {
                             ...accum,
-                            // @ts-ignore
-                            [mediaQueryKey]: { ...accum[mediaQueryKey], ...def.getCSS(themeScope[value[breakpointKey]] || value[breakpointKey]) },
+                            [mediaQueryKey]: {
+                                // @ts-ignore
+                                ...accum[mediaQueryKey],
+                                ...def.getCSS(themeScope ? themeScope[value[breakpointKey]] || value[breakpointKey] : value[breakpointKey]),
+                            },
                         };
                     }
                 });
             } else {
                 // @ts-ignore
-                accum = { ...accum, ...def.getCSS(themeScope[value] || value) };
+                accum = { ...accum, ...def.getCSS(themeScope ? themeScope[value] || value : value) };
             }
         }
         return accum;

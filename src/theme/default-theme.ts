@@ -1,5 +1,4 @@
 const breakpoint = {
-    xs: '320px',
     s: '640px',
     m: '768px',
     l: '1024px',
@@ -77,16 +76,21 @@ const color = {
 };
 
 const spacing = {
-    xs: '0.15rem',
-    s: '0.25rem',
-    m: '0.5rem',
-    l: '0.75rem',
-    xl: '1rem',
-    '2xl': '2rem',
-    '3xl': '3rem',
-    '4xl': '4rem',
-    '5xl': '5rem',
-    '6xl': '6rem',
+    xxxs: '1px',
+    xxs: '4px',
+    xs: '8px',
+    s: '12px',
+    m: '16px',
+    l: '20px',
+    xl: '24px',
+    '2xl': '28px',
+    '3xl': '32px',
+    '4xl': '36px',
+    '5xl': '40px',
+    '6xl': '44px',
+    '7xl': '48px',
+    '8xl': '52px',
+    '9xl': '56px',
 };
 
 const fontFamily = {
@@ -110,7 +114,7 @@ const fontFamily = {
 };
 
 const fontSize = {
-    xxs: '0.5rem',
+    xxs: '0.6rem',
     xs: '0.75rem',
     s: '0.875rem',
     m: '1rem',
@@ -157,15 +161,26 @@ const letterSpacing = {
     widest: '0.1em',
 };
 
+const radii = {
+    s: '2px',
+    m: '4px',
+    l: '6px',
+    xl: '8px',
+    circle: '9999px',
+};
+
 export const defaultTheme = {
     breakpoint,
     color,
     spacing,
+    width: spacing,
+    height: spacing,
     fontFamily,
     fontSize,
     fontWeight,
     lineHeight,
     letterSpacing,
+    radii,
 };
 
 export type Theme = typeof defaultTheme;

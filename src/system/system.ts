@@ -4,6 +4,7 @@ import { paddingSystemDef, PaddingObj } from '../system/padding';
 import { marginSystemDef, MarginObj } from '../system/margin';
 import { typographySystemDef, TypographyObj } from '../system/typography';
 import { ColorObj, colorSystemDef } from './color';
+import { BorderObj, borderSystemDef } from './border';
 
 type BreakPointKey<T extends Theme> = keyof T['breakpoint'];
 
@@ -26,6 +27,7 @@ export const systemDefinitions = {
     ...marginSystemDef,
     ...typographySystemDef,
     ...colorSystemDef,
+    ...borderSystemDef,
 };
 
-export type SystemObj<T extends Theme> = PaddingObj<T> | MarginObj<T> | TypographyObj<T> | ColorObj<T>;
+export type SystemObj<T extends Theme> = PaddingObj<T> | MarginObj<T> | TypographyObj<T> | ColorObj<T> | BorderObj<T>;

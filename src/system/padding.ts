@@ -13,6 +13,6 @@ export const paddingSystemDef = {
     py: { themeScope: 'spacing', getCSS: (v: string) => ({ paddingTop: v, paddingBottom: v }) },
 };
 
-export type PaddingKey = keyof typeof paddingSystemDef;
-export type PaddingValue<T extends Theme> = LiteralUnion<UnpackThemeScope<T, 'spacing'>>;
+type PaddingKey = keyof typeof paddingSystemDef;
+type PaddingValue<T extends Theme> = LiteralUnion<UnpackThemeScope<T, 'spacing'>>;
 export type PaddingObj<T extends Theme> = Partial<Record<PaddingKey, PaddingValue<T> | CssValueObject<T, PaddingValue<T>>>>;

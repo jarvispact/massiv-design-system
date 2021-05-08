@@ -10,8 +10,7 @@ export const typographySystemDef = {
     letterSpacing: { themeScope: 'letterSpacing', getCSS: (v: string) => ({ letterSpacing: v }) },
 };
 
-export type TypographyKey = keyof typeof typographySystemDef;
-export type TypographyValue<T extends Theme, S extends ThemeScope> = LiteralUnion<UnpackThemeScope<T, S>>;
+type TypographyValue<T extends Theme, S extends ThemeScope> = LiteralUnion<UnpackThemeScope<T, S>>;
 
 export type TypographyObj<T extends Theme> = Partial<{
     fontFamily: TypographyValue<T, 'fontFamily'> | CssValueObject<T, TypographyValue<T, 'fontFamily'>>;

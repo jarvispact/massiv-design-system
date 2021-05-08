@@ -9,7 +9,7 @@ export default {
 
 export const test = () => {
     return (
-        <Box bg="error100" color="error800" p="l">
+        <Box bg="error100" color="error800" p="l" bs="solid" bc="error800" br="s" bw="xxxs">
             error box
         </Box>
     );
@@ -91,7 +91,7 @@ export const customFontWeight = () => {
 export const responsiveStyles = () => {
     return (
         <>
-            <Heading fontSize={{ value: 'xxs', xs: 'xs', s: 's', m: 'm', l: 'l', xl: 'xl', xxl: '2xl', xxxl: '3xl' }}>
+            <Heading fontSize={{ value: 'xxs', s: 's', m: 'm', l: 'l', xl: 'xl', xxl: '2xl', xxxl: '3xl' }}>
                 h1: The quick brown fox jumps over the lazy dog
             </Heading>
         </>

@@ -13,6 +13,8 @@ export const marginSystemDef = {
     my: { themeScope: 'spacing', getCSS: (v: string) => ({ marginTop: v, marginBottom: v }) },
 };
 
-type MarginKey = keyof typeof marginSystemDef;
-type MarginValue<T extends Theme> = LiteralUnion<UnpackThemeScope<T, 'spacing'>>;
-export type MarginObj<T extends Theme> = Partial<Record<MarginKey, MarginValue<T> | CssValueObject<T, MarginValue<T>>>>;
+type BorderValue<T extends Theme, S extends ThemeScope> = LiteralUnion<UnpackThemeScope<T, S>>;
+
+export type BorderObj<T extends Theme> = Partial<{
+    borderStyle: Exclude<BorderStyle, null | undefined> | CssValueObject<T, Exclude<BorderStyle, null | undefined>>;
+}>;
