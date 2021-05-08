@@ -1,26 +1,26 @@
-import { css, cx } from '@emotion/css';
+import { cx } from '@emotion/css';
 import React from 'react';
 import { Theme } from '../theme/default-theme';
-import { textSystemConfig, TextSystemProps } from '../system/typography';
-import { useTheme } from '../theme/theme-provider';
+import { typographySystemDef, TypographyObj } from '../system/typography';
 import { omit } from '../utils/omit';
-import { createCssObj } from '../utils/create-css-obj';
+import { useCSS } from '../hooks/use-css';
+import { HTMLAttributesWithoutColor } from '../utils/types';
 
-export type HeadingElement = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+type HeadingElement = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
-const omitProps = textSystemConfig.map((cfg) => cfg.componentProp);
+const omitProps = Object.keys(typographySystemDef);
 
-export type HeadingProps<T extends Theme = Theme> = React.HTMLAttributes<HTMLHeadingElement> &
-    TextSystemProps<T> & {
+export type HeadingProps<T extends Theme = Theme> = HTMLAttributesWithoutColor<HTMLHeadingElement> &
+    TypographyObj<T> & {
         as?: HeadingElement;
         children: React.ReactNode;
         [x: string]: unknown;
     };
 
-export const Heading = ({ as = 'h1', children, ...props }: HeadingProps) => {
-    const { theme } = useTheme();
+export const Heading = <T extends Theme>({ as = 'h1', children, className, ...props }: HeadingProps<T>) => {
+    const { css, theme } = useCSS<T>();
     const defaultStyle = css({ fontFamily: theme.fontFamily.serif });
-    const dynamicStyle = css(createCssObj(textSystemConfig, props, theme));
-    const className = cx(defaultStyle, dynamicStyle, props.className);
-    return React.createElement(as, { ...omit(omitProps, props), className }, children);
+    const dynamicStyle = css(props);
+    const newClassName = cx(defaultStyle, dynamicStyle, className);
+    return React.createElement(as, { ...omit(omitProps, props), className: newClassName }, children);
 };

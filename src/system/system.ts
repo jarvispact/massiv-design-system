@@ -1,25 +1,31 @@
 import { CSSProperties } from 'react';
-import { Theme, ThemeScope } from '../theme/default-theme';
-
-// export type Definition<T extends Theme> = {
-//     themeScope: keyof T;
-//     getCSS: (value: string) => CSSProperties;
-// };
-
-// export type Definitions<T extends Theme> = Record<string, Definition<T>>;
-
-// type LiteralUnion<T extends U, U = string> = T | (U & { __literal_union__?: never });
-// type UnpackThemeScope<T extends Theme, K extends keyof T> = Extract<keyof T[K], string>;
+import { Theme } from '../theme/default-theme';
+import { paddingSystemDef, PaddingObj } from '../system/padding';
+import { marginSystemDef, MarginObj } from '../system/margin';
+import { typographySystemDef, TypographyObj } from '../system/typography';
+import { ColorObj, colorSystemDef } from './color';
 
 type BreakPointKey<T extends Theme> = keyof T['breakpoint'];
 
-type CssNestedObj<T extends Theme> = Partial<{ [K in BreakPointKey<T>]: string }> & {
-    value?: string;
-    hover?: string;
-    focus?: string;
-    hocus?: string;
+export type CssValueObject<T extends Theme, V extends string> = Partial<{ [K in BreakPointKey<T>]: V }> & {
+    value?: V;
+    hover?: V;
+    focus?: V;
+    hocus?: V;
 };
 
-// export type CssObj<T extends Theme, K extends string> = Record<K, string | CssNestedObj<T>>;
+export type SystemDefinition<T extends Theme> = {
+    themeScope: keyof T;
+    getCSS: (value: string) => CSSProperties;
+};
 
-export type CssObj<K extends string, T extends Theme> = Partial<Record<K, string | CssNestedObj<T>>>;
+export type SystemDefinitionObj<T extends Theme> = Record<string, SystemDefinition<T>>;
+
+export const systemDefinitions = {
+    ...paddingSystemDef,
+    ...marginSystemDef,
+    ...typographySystemDef,
+    ...colorSystemDef,
+};
+
+export type SystemObj<T extends Theme> = PaddingObj<T> | MarginObj<T> | TypographyObj<T> | ColorObj<T>;

@@ -1,28 +1,28 @@
 import { expect } from 'chai';
 import { defaultTheme, Theme } from '../src/theme/default-theme';
-import { paddingDefinitions } from '../src/system/padding';
+import { paddingSystemDef } from '../src/system/padding';
 import { buildCssObj } from '../src/utils/build-css-obj';
-import { Definitions } from '../src/system/system';
+import { SystemDefinitionObj } from '../src/system/system';
 
 describe('build-css-obj', () => {
     it('should directly pipe a simple style rule', () => {
         const inputObject = { padding: '42px' };
         const expectedObject = { padding: '42px' };
-        const result = buildCssObj(defaultTheme, paddingDefinitions as Definitions<Theme>, inputObject);
+        const result = buildCssObj(defaultTheme, paddingSystemDef as SystemDefinitionObj<Theme>, inputObject);
         expect(result).to.eql(expectedObject);
     });
 
     it('should take the value from the correct theme section by key', () => {
         const inputObject = { padding: 's' };
         const expectedObject = { padding: defaultTheme.spacing.s };
-        const result = buildCssObj(defaultTheme, paddingDefinitions as Definitions<Theme>, inputObject);
+        const result = buildCssObj(defaultTheme, paddingSystemDef as SystemDefinitionObj<Theme>, inputObject);
         expect(result).to.eql(expectedObject);
     });
 
     it('should merge multiple rules correctly', () => {
         const inputObject = { px: 's', py: '42px' };
         const expectedObject = { paddingLeft: defaultTheme.spacing.s, paddingRight: defaultTheme.spacing.s, paddingTop: '42px', paddingBottom: '42px' };
-        const result = buildCssObj(defaultTheme, paddingDefinitions as Definitions<Theme>, inputObject);
+        const result = buildCssObj(defaultTheme, paddingSystemDef as SystemDefinitionObj<Theme>, inputObject);
         expect(result).to.eql(expectedObject);
     });
 
@@ -58,7 +58,7 @@ describe('build-css-obj', () => {
             [`@media(min-width: ${defaultTheme.breakpoint['3xl']})`]: { padding: '7px' },
         };
 
-        const result = buildCssObj(defaultTheme, paddingDefinitions as Definitions<Theme>, inputObject);
+        const result = buildCssObj(defaultTheme, paddingSystemDef as SystemDefinitionObj<Theme>, inputObject);
         expect(result).to.eql(expectedObject);
     });
 });
