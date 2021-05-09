@@ -1,9 +1,5 @@
-import { CSSProperties } from 'react';
-import { Theme, ThemeScope } from '../theme/default-theme';
-import { LiteralUnion, UnpackThemeScope } from '../utils/types';
-import { CssValueObject } from './system';
-
-type BorderStyle = CSSProperties['borderStyle'];
+import { Theme } from '../theme/default-theme';
+import { CssProperty, ScopedThemeKeyOrStringValue } from './system';
 
 export const borderSystemDef = {
     borderStyle: { themeScope: null, getCSS: (v: string) => ({ borderStyle: v }) },
@@ -57,56 +53,54 @@ export const borderSystemDef = {
     bbrr: { themeScope: 'radii', getCSS: (v: string) => ({ borderBottomRightRadius: v }) },
 };
 
-type BorderValue<T extends Theme, S extends ThemeScope> = LiteralUnion<UnpackThemeScope<T, S>>;
-
 export type BorderObj<T extends Theme> = Partial<{
-    borderStyle: Exclude<BorderStyle, null | undefined> | CssValueObject<T, Exclude<BorderStyle, null | undefined>>;
-    bs: Exclude<BorderStyle, null | undefined> | CssValueObject<T, Exclude<BorderStyle, null | undefined>>;
-    borderWidth: BorderValue<T, 'width'> | CssValueObject<T, BorderValue<T, 'width'>>;
-    bw: BorderValue<T, 'width'> | CssValueObject<T, BorderValue<T, 'width'>>;
-    borderColor: BorderValue<T, 'color'> | CssValueObject<T, BorderValue<T, 'color'>>;
-    bc: BorderValue<T, 'color'> | CssValueObject<T, BorderValue<T, 'color'>>;
+    borderStyle: CssProperty<T, 'borderStyle'>;
+    bs: CssProperty<T, 'borderStyle'>;
+    borderWidth: ScopedThemeKeyOrStringValue<T, 'width'>;
+    bw: ScopedThemeKeyOrStringValue<T, 'width'>;
+    borderColor: ScopedThemeKeyOrStringValue<T, 'color'>;
+    bc: ScopedThemeKeyOrStringValue<T, 'color'>;
 
-    borderRadius: BorderValue<T, 'radii'> | CssValueObject<T, BorderValue<T, 'radii'>>;
-    br: BorderValue<T, 'radii'> | CssValueObject<T, BorderValue<T, 'radii'>>;
+    borderRadius: ScopedThemeKeyOrStringValue<T, 'radii'>;
+    br: ScopedThemeKeyOrStringValue<T, 'radii'>;
 
-    borderTopStyle: Exclude<BorderStyle, null | undefined> | CssValueObject<T, Exclude<BorderStyle, null | undefined>>;
-    bts: Exclude<BorderStyle, null | undefined> | CssValueObject<T, Exclude<BorderStyle, null | undefined>>;
-    borderTopWidth: BorderValue<T, 'width'> | CssValueObject<T, BorderValue<T, 'width'>>;
-    btw: BorderValue<T, 'width'> | CssValueObject<T, BorderValue<T, 'width'>>;
-    borderTopColor: BorderValue<T, 'color'> | CssValueObject<T, BorderValue<T, 'color'>>;
-    btc: BorderValue<T, 'color'> | CssValueObject<T, BorderValue<T, 'color'>>;
+    borderTopStyle: CssProperty<T, 'borderStyle'>;
+    bts: CssProperty<T, 'borderStyle'>;
+    borderTopWidth: ScopedThemeKeyOrStringValue<T, 'width'>;
+    btw: ScopedThemeKeyOrStringValue<T, 'width'>;
+    borderTopColor: ScopedThemeKeyOrStringValue<T, 'color'>;
+    btc: ScopedThemeKeyOrStringValue<T, 'color'>;
 
-    borderBottomStyle: Exclude<BorderStyle, null | undefined> | CssValueObject<T, Exclude<BorderStyle, null | undefined>>;
-    bbs: Exclude<BorderStyle, null | undefined> | CssValueObject<T, Exclude<BorderStyle, null | undefined>>;
-    borderBottomWidth: BorderValue<T, 'width'> | CssValueObject<T, BorderValue<T, 'width'>>;
-    bbw: BorderValue<T, 'width'> | CssValueObject<T, BorderValue<T, 'width'>>;
-    borderBottomColor: BorderValue<T, 'color'> | CssValueObject<T, BorderValue<T, 'color'>>;
-    bbc: BorderValue<T, 'color'> | CssValueObject<T, BorderValue<T, 'color'>>;
+    borderBottomStyle: CssProperty<T, 'borderStyle'>;
+    bbs: CssProperty<T, 'borderStyle'>;
+    borderBottomWidth: ScopedThemeKeyOrStringValue<T, 'width'>;
+    bbw: ScopedThemeKeyOrStringValue<T, 'width'>;
+    borderBottomColor: ScopedThemeKeyOrStringValue<T, 'color'>;
+    bbc: ScopedThemeKeyOrStringValue<T, 'color'>;
 
-    borderLeftStyle: Exclude<BorderStyle, null | undefined> | CssValueObject<T, Exclude<BorderStyle, null | undefined>>;
-    bls: Exclude<BorderStyle, null | undefined> | CssValueObject<T, Exclude<BorderStyle, null | undefined>>;
-    borderLeftWidth: BorderValue<T, 'width'> | CssValueObject<T, BorderValue<T, 'width'>>;
-    blw: BorderValue<T, 'width'> | CssValueObject<T, BorderValue<T, 'width'>>;
-    borderLeftColor: BorderValue<T, 'color'> | CssValueObject<T, BorderValue<T, 'color'>>;
-    blc: BorderValue<T, 'color'> | CssValueObject<T, BorderValue<T, 'color'>>;
+    borderLeftStyle: CssProperty<T, 'borderStyle'>;
+    bls: CssProperty<T, 'borderStyle'>;
+    borderLeftWidth: ScopedThemeKeyOrStringValue<T, 'width'>;
+    blw: ScopedThemeKeyOrStringValue<T, 'width'>;
+    borderLeftColor: ScopedThemeKeyOrStringValue<T, 'color'>;
+    blc: ScopedThemeKeyOrStringValue<T, 'color'>;
 
-    borderRightStyle: Exclude<BorderStyle, null | undefined> | CssValueObject<T, Exclude<BorderStyle, null | undefined>>;
-    brs: Exclude<BorderStyle, null | undefined> | CssValueObject<T, Exclude<BorderStyle, null | undefined>>;
-    borderRightWidth: BorderValue<T, 'width'> | CssValueObject<T, BorderValue<T, 'width'>>;
-    brw: BorderValue<T, 'width'> | CssValueObject<T, BorderValue<T, 'width'>>;
-    borderRightColor: BorderValue<T, 'color'> | CssValueObject<T, BorderValue<T, 'color'>>;
-    brc: BorderValue<T, 'color'> | CssValueObject<T, BorderValue<T, 'color'>>;
+    borderRightStyle: CssProperty<T, 'borderStyle'>;
+    brs: CssProperty<T, 'borderStyle'>;
+    borderRightWidth: ScopedThemeKeyOrStringValue<T, 'width'>;
+    brw: ScopedThemeKeyOrStringValue<T, 'width'>;
+    borderRightColor: ScopedThemeKeyOrStringValue<T, 'color'>;
+    brc: ScopedThemeKeyOrStringValue<T, 'color'>;
 
-    borderTopLeftRadius: BorderValue<T, 'radii'> | CssValueObject<T, BorderValue<T, 'radii'>>;
-    btlr: BorderValue<T, 'radii'> | CssValueObject<T, BorderValue<T, 'radii'>>;
+    borderTopLeftRadius: ScopedThemeKeyOrStringValue<T, 'radii'>;
+    btlr: ScopedThemeKeyOrStringValue<T, 'radii'>;
 
-    borderTopRightRadius: BorderValue<T, 'radii'> | CssValueObject<T, BorderValue<T, 'radii'>>;
-    btrr: BorderValue<T, 'radii'> | CssValueObject<T, BorderValue<T, 'radii'>>;
+    borderTopRightRadius: ScopedThemeKeyOrStringValue<T, 'radii'>;
+    btrr: ScopedThemeKeyOrStringValue<T, 'radii'>;
 
-    borderBottomLeftRadius: BorderValue<T, 'radii'> | CssValueObject<T, BorderValue<T, 'radii'>>;
-    bblr: BorderValue<T, 'radii'> | CssValueObject<T, BorderValue<T, 'radii'>>;
+    borderBottomLeftRadius: ScopedThemeKeyOrStringValue<T, 'radii'>;
+    bblr: ScopedThemeKeyOrStringValue<T, 'radii'>;
 
-    borderBottomRghtRadius: BorderValue<T, 'radii'> | CssValueObject<T, BorderValue<T, 'radii'>>;
-    bbrr: BorderValue<T, 'radii'> | CssValueObject<T, BorderValue<T, 'radii'>>;
+    borderBottomRghtRadius: ScopedThemeKeyOrStringValue<T, 'radii'>;
+    bbrr: ScopedThemeKeyOrStringValue<T, 'radii'>;
 }>;

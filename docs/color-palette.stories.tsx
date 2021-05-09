@@ -104,7 +104,17 @@ export const overrides = () => {
         <>
             <Heading
                 fontSize="3xl"
-                className={css({ fontSize: '8px' })}
+                className={css({
+                    fontSize: '8px',
+                    px: { value: '4xl' },
+                    flexDirection: 'initial',
+                    flexWrap: 'initial',
+                    flex: '1 1 auto',
+                    borderRadius: { value: 'l' },
+                    verticalAlign: 'sd',
+                    whiteSpace: 'nowrap',
+                    textTransform: 'none',
+                })}
                 aria-hidden="true"
                 aria-describedby="some-id"
                 onClick={(e) => {
@@ -116,15 +126,3 @@ export const overrides = () => {
         </>
     );
 };
-
-// export const texts = () => {
-//     return (
-//         <>
-//             <Text element="div">div: The quick brown fox jumps over the lazy dog</Text>
-//             <Text element="span">span: The quick brown fox jumps over the lazy dog</Text>
-//             <Text element="p">p: The quick brown fox jumps over the lazy dog</Text>
-//             <Text element="label">label: The quick brown fox jumps over the lazy dog</Text>
-//             <Text element="a">a: The quick brown fox jumps over the lazy dog</Text>
-//         </>
-//     );
-// };

@@ -1,6 +1,5 @@
-import { Theme, ThemeScope } from '../theme/default-theme';
-import { LiteralUnion, UnpackThemeScope } from '../utils/types';
-import { CssValueObject } from './system';
+import { Theme } from '../theme/default-theme';
+import { CssProperty, ScopedThemeKeyOrStringValue } from './system';
 
 export const typographySystemDef = {
     fontFamily: { themeScope: 'fontFamily', getCSS: (v: string) => ({ fontFamily: v }) },
@@ -8,14 +7,20 @@ export const typographySystemDef = {
     fontWeight: { themeScope: 'fontWeight', getCSS: (v: string) => ({ fontWeight: v }) },
     lineHeight: { themeScope: 'lineHeight', getCSS: (v: string) => ({ lineHeight: v }) },
     letterSpacing: { themeScope: 'letterSpacing', getCSS: (v: string) => ({ letterSpacing: v }) },
+    textOverflow: { themeScope: null, getCSS: (v: string) => ({ textOverflow: v }) },
+    whiteSpace: { themeScope: null, getCSS: (v: string) => ({ whiteSpace: v }) },
+    verticalAlign: { themeScope: null, getCSS: (v: string) => ({ verticalAlign: v }) },
+    textTransform: { themeScope: null, getCSS: (v: string) => ({ textTransform: v }) },
 };
 
-type TypographyValue<T extends Theme, S extends ThemeScope> = LiteralUnion<UnpackThemeScope<T, S>>;
-
 export type TypographyObj<T extends Theme> = Partial<{
-    fontFamily: TypographyValue<T, 'fontFamily'> | CssValueObject<T, TypographyValue<T, 'fontFamily'>>;
-    fontSize: TypographyValue<T, 'fontSize'> | CssValueObject<T, TypographyValue<T, 'fontSize'>>;
-    fontWeight: TypographyValue<T, 'fontWeight'> | CssValueObject<T, TypographyValue<T, 'fontWeight'>>;
-    lineHeight: TypographyValue<T, 'lineHeight'> | CssValueObject<T, TypographyValue<T, 'lineHeight'>>;
-    letterSpacing: TypographyValue<T, 'letterSpacing'> | CssValueObject<T, TypographyValue<T, 'letterSpacing'>>;
+    fontFamily: ScopedThemeKeyOrStringValue<T, 'fontFamily'>;
+    fontSize: ScopedThemeKeyOrStringValue<T, 'fontSize'>;
+    fontWeight: ScopedThemeKeyOrStringValue<T, 'fontWeight'>;
+    lineHeight: ScopedThemeKeyOrStringValue<T, 'lineHeight'>;
+    letterSpacing: ScopedThemeKeyOrStringValue<T, 'letterSpacing'>;
+    textOverflow: CssProperty<T, 'textOverflow'>;
+    whiteSpace: CssProperty<T, 'whiteSpace'>;
+    verticalAlign: CssProperty<T, 'verticalAlign'>;
+    textTransform: CssProperty<T, 'textTransform'>;
 }>;

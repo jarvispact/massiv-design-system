@@ -1,6 +1,5 @@
 import { Theme } from '../theme/default-theme';
-import { LiteralUnion, UnpackThemeScope } from '../utils/types';
-import { CssValueObject } from './system';
+import { ScopedThemeKeyOrStringValue } from './system';
 
 export const colorSystemDef = {
     backgroundColor: { themeScope: 'color', getCSS: (v: string) => ({ backgroundColor: v }) },
@@ -9,5 +8,4 @@ export const colorSystemDef = {
 };
 
 type ColorKey = keyof typeof colorSystemDef;
-type ColorValue<T extends Theme> = LiteralUnion<UnpackThemeScope<T, 'color'>>;
-export type ColorObj<T extends Theme> = Partial<Record<ColorKey, ColorValue<T> | CssValueObject<T, ColorValue<T>>>>;
+export type ColorObj<T extends Theme> = Partial<Record<ColorKey, ScopedThemeKeyOrStringValue<T, 'color'>>>;

@@ -6,7 +6,7 @@ export const buildCssObj = <T extends Theme>(theme: T, definitions: SystemDefini
     const reducer = (accum: Record<string, unknown>, key: string) => {
         const def = definitions[key];
         if (!def) return accum;
-        const themeScope = theme[def.themeScope];
+        const themeScope = def.themeScope ? theme[def.themeScope] : null;
 
         // @ts-ignore
         const value = obj[key];

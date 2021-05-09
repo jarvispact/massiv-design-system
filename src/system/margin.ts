@@ -1,6 +1,5 @@
 import { Theme } from '../theme/default-theme';
-import { LiteralUnion, UnpackThemeScope } from '../utils/types';
-import { CssValueObject } from './system';
+import { ScopedThemeKeyOrStringValue } from './system';
 
 export const marginSystemDef = {
     margin: { themeScope: 'spacing', getCSS: (v: string) => ({ margin: v }) },
@@ -14,5 +13,4 @@ export const marginSystemDef = {
 };
 
 type MarginKey = keyof typeof marginSystemDef;
-type MarginValue<T extends Theme> = LiteralUnion<UnpackThemeScope<T, 'spacing'>>;
-export type MarginObj<T extends Theme> = Partial<Record<MarginKey, MarginValue<T> | CssValueObject<T, MarginValue<T>>>>;
+export type MarginObj<T extends Theme> = Partial<Record<MarginKey, ScopedThemeKeyOrStringValue<T, 'spacing'>>>;

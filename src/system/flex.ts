@@ -1,20 +1,30 @@
 import { Theme } from '../theme/default-theme';
-import { LiteralUnion, UnpackThemeScope } from '../utils/types';
-import { CssValueObject } from './system';
+import { CssProperty } from './system';
 
-export const marginSystemDef = {
-    margin: { themeScope: 'spacing', getCSS: (v: string) => ({ margin: v }) },
-    m: { themeScope: 'spacing', getCSS: (v: string) => ({ margin: v }) },
-    mt: { themeScope: 'spacing', getCSS: (v: string) => ({ marginTop: v }) },
-    mr: { themeScope: 'spacing', getCSS: (v: string) => ({ marginRight: v }) },
-    mb: { themeScope: 'spacing', getCSS: (v: string) => ({ marginBottom: v }) },
-    ml: { themeScope: 'spacing', getCSS: (v: string) => ({ marginLeft: v }) },
-    mx: { themeScope: 'spacing', getCSS: (v: string) => ({ marginLeft: v, marginRight: v }) },
-    my: { themeScope: 'spacing', getCSS: (v: string) => ({ marginTop: v, marginBottom: v }) },
+export const flexSystemDef = {
+    flexDirection: { themeScope: null, getCSS: (v: string) => ({ flexDirection: v }) },
+    flexWrap: { themeScope: null, getCSS: (v: string) => ({ flexWrap: v }) },
+    flexFlow: { themeScope: null, getCSS: (v: string) => ({ flexFlow: v }) },
+    justifyContent: { themeScope: null, getCSS: (v: string) => ({ justifyContent: v }) },
+    alignItems: { themeScope: null, getCSS: (v: string) => ({ alignItems: v }) },
+    alignContent: { themeScope: null, getCSS: (v: string) => ({ alignContent: v }) },
+    flexGrow: { themeScope: null, getCSS: (v: string) => ({ flexGrow: v }) },
+    flexShrink: { themeScope: null, getCSS: (v: string) => ({ flexShrink: v }) },
+    flexBasis: { themeScope: null, getCSS: (v: string) => ({ flexBasis: v }) },
+    flex: { themeScope: null, getCSS: (v: string) => ({ flex: v }) },
+    alignSelf: { themeScope: null, getCSS: (v: string) => ({ alignSelf: v }) },
 };
 
-type BorderValue<T extends Theme, S extends ThemeScope> = LiteralUnion<UnpackThemeScope<T, S>>;
-
-export type BorderObj<T extends Theme> = Partial<{
-    borderStyle: Exclude<BorderStyle, null | undefined> | CssValueObject<T, Exclude<BorderStyle, null | undefined>>;
+export type FlexObj<T extends Theme> = Partial<{
+    flexDirection: CssProperty<T, 'flexDirection'>;
+    flexWrap: CssProperty<T, 'flexWrap'>;
+    flexFlow: CssProperty<T, 'flexFlow'>;
+    justifyContent: CssProperty<T, 'justifyContent'>;
+    alignItems: CssProperty<T, 'alignItems'>;
+    alignContent: CssProperty<T, 'alignContent'>;
+    flexGrow: CssProperty<T, 'flexGrow'>;
+    flexShrink: CssProperty<T, 'flexShrink'>;
+    flexBasis: CssProperty<T, 'flexBasis'>;
+    flex: CssProperty<T, 'flex'>;
+    alignSelf: CssProperty<T, 'alignSelf'>;
 }>;
