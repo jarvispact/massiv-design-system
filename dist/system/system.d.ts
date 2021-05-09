@@ -11,6 +11,8 @@ import { WidthObj } from './width';
 import { HeightObj } from './height';
 import { MiscObj } from './misc';
 import { LiteralUnion, UnpackThemeScope } from '../utils/types';
+import { AnimationObj } from './animation';
+import { TransitionObj } from './transition';
 declare type BreakPointKey<T extends Theme> = keyof T['breakpoint'];
 export declare type CssValueObject<T extends Theme, V extends string | number> = Partial<{
     [K in BreakPointKey<T>]: V;
@@ -29,6 +31,84 @@ declare type NotNil<T> = Exclude<T, null | undefined>;
 export declare type CssProperty<T extends Theme, K extends keyof CSSProperties> = NotNil<CSSProperties[K]> | CssValueObject<T, NotNil<CSSProperties[K]>>;
 export declare type SystemDefinitionObj<T extends Theme> = Record<string, SystemDefinition<T>>;
 export declare const systemDefinitions: {
+    transition: {
+        themeScope: null;
+        getCSS: (v: string) => {
+            transition: string;
+        };
+    };
+    transitionDelay: {
+        themeScope: null;
+        getCSS: (v: string) => {
+            transitionDelay: string;
+        };
+    };
+    transitionDuration: {
+        themeScope: null;
+        getCSS: (v: string) => {
+            transitionDuration: string;
+        };
+    };
+    transitionProperty: {
+        themeScope: null;
+        getCSS: (v: string) => {
+            transitionProperty: string;
+        };
+    };
+    transitionTimingFunction: {
+        themeScope: null;
+        getCSS: (v: string) => {
+            transitionTimingFunction: string;
+        };
+    };
+    animation: {
+        themeScope: null;
+        getCSS: (v: string) => {
+            animation: string;
+        };
+    };
+    animationName: {
+        themeScope: null;
+        getCSS: (v: string) => {
+            animationName: string;
+        };
+    };
+    animationDuration: {
+        themeScope: null;
+        getCSS: (v: string) => {
+            animationDuration: string;
+        };
+    };
+    animationDelay: {
+        themeScope: null;
+        getCSS: (v: string) => {
+            animationDelay: string;
+        };
+    };
+    animationIterationCount: {
+        themeScope: null;
+        getCSS: (v: string) => {
+            animationIterationCount: string;
+        };
+    };
+    animationDirection: {
+        themeScope: null;
+        getCSS: (v: string) => {
+            animationDirection: string;
+        };
+    };
+    animationTimingFunction: {
+        themeScope: null;
+        getCSS: (v: string) => {
+            animationTimingFunction: string;
+        };
+    };
+    animationFillMode: {
+        themeScope: null;
+        getCSS: (v: string) => {
+            animationFillMode: string;
+        };
+    };
     display: {
         themeScope: null;
         getCSS: (v: string) => {
@@ -766,5 +846,5 @@ export declare const systemDefinitions: {
         };
     };
 };
-export declare type SystemObj<T extends Theme> = PaddingObj<T> & MarginObj<T> & TypographyObj<T> & ColorObj<T> & BorderObj<T> & FlexObj<T> & GridObj<T> & WidthObj<T> & HeightObj<T> & MiscObj<T>;
+export declare type SystemObj<T extends Theme> = PaddingObj<T> & MarginObj<T> & TypographyObj<T> & ColorObj<T> & BorderObj<T> & FlexObj<T> & GridObj<T> & WidthObj<T> & HeightObj<T> & MiscObj<T> & AnimationObj<T> & TransitionObj<T>;
 export {};

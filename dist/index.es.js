@@ -1572,7 +1572,26 @@ var miscSystemDef = {
     overflowY: { themeScope: 'color', getCSS: function (v) { return ({ overflowY: v }); } },
 };
 
-var systemDefinitions = __assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign({}, paddingSystemDef), marginSystemDef), typographySystemDef), colorSystemDef), borderSystemDef), flexSystemDef), gridSystemDef), widthSystemDef), heightSystemDef), miscSystemDef);
+var animationSystemDef = {
+    animation: { themeScope: null, getCSS: function (v) { return ({ animation: v }); } },
+    animationName: { themeScope: null, getCSS: function (v) { return ({ animationName: v }); } },
+    animationDuration: { themeScope: null, getCSS: function (v) { return ({ animationDuration: v }); } },
+    animationDelay: { themeScope: null, getCSS: function (v) { return ({ animationDelay: v }); } },
+    animationIterationCount: { themeScope: null, getCSS: function (v) { return ({ animationIterationCount: v }); } },
+    animationDirection: { themeScope: null, getCSS: function (v) { return ({ animationDirection: v }); } },
+    animationTimingFunction: { themeScope: null, getCSS: function (v) { return ({ animationTimingFunction: v }); } },
+    animationFillMode: { themeScope: null, getCSS: function (v) { return ({ animationFillMode: v }); } },
+};
+
+var transitionSystemDef = {
+    transition: { themeScope: null, getCSS: function (v) { return ({ transition: v }); } },
+    transitionDelay: { themeScope: null, getCSS: function (v) { return ({ transitionDelay: v }); } },
+    transitionDuration: { themeScope: null, getCSS: function (v) { return ({ transitionDuration: v }); } },
+    transitionProperty: { themeScope: null, getCSS: function (v) { return ({ transitionProperty: v }); } },
+    transitionTimingFunction: { themeScope: null, getCSS: function (v) { return ({ transitionTimingFunction: v }); } },
+};
+
+var systemDefinitions = __assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign({}, paddingSystemDef), marginSystemDef), typographySystemDef), colorSystemDef), borderSystemDef), flexSystemDef), gridSystemDef), widthSystemDef), heightSystemDef), miscSystemDef), animationSystemDef), transitionSystemDef);
 
 var useCss = function () {
     var theme = useTheme().theme;
