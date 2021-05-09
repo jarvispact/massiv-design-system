@@ -32,13 +32,12 @@ describe('build-css-obj', () => {
                 value: '5px',
                 hover: '42px',
                 focus: '12px',
-                xs: '1px',
                 s: '2px',
                 m: '3px',
                 l: '4px',
                 xl: '5px',
-                '2xl': '6px',
-                '3xl': '7px',
+                xxl: '6px',
+                xxxl: '7px',
             },
             px: {
                 hocus: '12px',
@@ -49,13 +48,12 @@ describe('build-css-obj', () => {
             padding: '5px',
             '&:hover': { padding: '42px', paddingLeft: '12px', paddingRight: '12px' },
             '&:focus': { padding: '12px', paddingLeft: '12px', paddingRight: '12px' },
-            [`@media(min-width: ${defaultTheme.breakpoint.xs})`]: { padding: '1px' },
             [`@media(min-width: ${defaultTheme.breakpoint.s})`]: { padding: '2px' },
             [`@media(min-width: ${defaultTheme.breakpoint.m})`]: { padding: '3px' },
             [`@media(min-width: ${defaultTheme.breakpoint.l})`]: { padding: '4px' },
             [`@media(min-width: ${defaultTheme.breakpoint.xl})`]: { padding: '5px' },
-            [`@media(min-width: ${defaultTheme.breakpoint['2xl']})`]: { padding: '6px' },
-            [`@media(min-width: ${defaultTheme.breakpoint['3xl']})`]: { padding: '7px' },
+            [`@media(min-width: ${defaultTheme.breakpoint.xxl})`]: { padding: '6px' },
+            [`@media(min-width: ${defaultTheme.breakpoint.xxxl})`]: { padding: '7px' },
         };
 
         const result = buildCssObj(defaultTheme, paddingSystemDef as SystemDefinitionObj<Theme>, inputObject);

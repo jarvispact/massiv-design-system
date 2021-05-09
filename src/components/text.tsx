@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { useCSS } from '../hooks/use-css';
+import { useCss } from '../hooks/use-css';
 import { TypographyObj, typographySystemDef } from '../system/typography';
 import { Theme } from '../theme/default-theme';
 import { omit } from '../utils/omit';
@@ -20,7 +20,7 @@ export type TextProps<T extends Theme = Theme, HTMLElem extends TextHTMLElement 
     };
 
 export const Text = <T extends Theme>({ as = 'p', children, className, ...props }: TextProps<T>) => {
-    const { css, theme } = useCSS<T>();
+    const { css, theme } = useCss<T>();
     const defaultStyle = css({ fontFamily: theme.fontFamily.sans });
     const dynamicStyle = css(props);
     const newClassName = cx(defaultStyle, dynamicStyle, className);

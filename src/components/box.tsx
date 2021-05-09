@@ -1,6 +1,6 @@
 import { cx } from '@emotion/css';
 import React from 'react';
-import { useCSS } from '../hooks/use-css';
+import { useCss } from '../hooks/use-css';
 import { systemDefinitions, SystemObj } from '../system/system';
 import { Theme } from '../theme/default-theme';
 import { omit } from '../utils/omit';
@@ -16,7 +16,7 @@ export type BoxProps<T extends Theme = Theme, HTMLElem extends HTMLDivElement = 
     };
 
 export const Box = <T extends Theme>({ as = 'div', children, className, ...props }: BoxProps<T>) => {
-    const { css } = useCSS<T>();
+    const { css } = useCss<T>();
     const dynamicStyle = css(props);
     const newClassName = cx(dynamicStyle, className);
     return React.createElement(as, { ...omit(omitProps, props), className: newClassName }, children);

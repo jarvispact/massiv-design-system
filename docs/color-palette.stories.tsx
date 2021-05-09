@@ -1,7 +1,7 @@
 import React from 'react';
 import { Heading } from '../src/components/heading';
 import { Box } from '../src/components/box';
-import { useCSS } from '../src/hooks/use-css';
+import { useCss } from '../src/hooks/use-css';
 
 export default {
     title: 'Docs/Color Palette',
@@ -99,7 +99,7 @@ export const responsiveStyles = () => {
 };
 
 export const overrides = () => {
-    const { css } = useCSS();
+    const { css } = useCss();
     return (
         <>
             <Heading
