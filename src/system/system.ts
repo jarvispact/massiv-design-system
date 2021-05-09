@@ -11,6 +11,8 @@ import { WidthObj, widthSystemDef } from './width';
 import { HeightObj, heightSystemDef } from './height';
 import { MiscObj, miscSystemDef } from './misc';
 import { LiteralUnion, UnpackThemeScope } from '../utils/types';
+import { AnimationObj, animationSystemDef } from './animation';
+import { TransitionObj, transitionSystemDef } from './transition';
 
 type BreakPointKey<T extends Theme> = keyof T['breakpoint'];
 
@@ -46,6 +48,8 @@ export const systemDefinitions = {
     ...widthSystemDef,
     ...heightSystemDef,
     ...miscSystemDef,
+    ...animationSystemDef,
+    ...transitionSystemDef,
 };
 
 export type SystemObj<T extends Theme> = PaddingObj<T> &
@@ -57,4 +61,6 @@ export type SystemObj<T extends Theme> = PaddingObj<T> &
     GridObj<T> &
     WidthObj<T> &
     HeightObj<T> &
-    MiscObj<T>;
+    MiscObj<T> &
+    AnimationObj<T> &
+    TransitionObj<T>;
