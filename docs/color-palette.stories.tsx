@@ -9,7 +9,7 @@ export default {
 
 export const test = () => {
     return (
-        <Box bg="error100" color="error800" p="l" bs="solid" bc="error800" br="s" bw="xxxs">
+        <Box bg="error100" color="error800" p={{ xl: '5xl' }}>
             error box
         </Box>
     );

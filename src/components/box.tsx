@@ -11,7 +11,7 @@ const omitProps = Object.keys(systemDefinitions);
 export type BoxProps<T extends Theme = Theme, HTMLElem extends HTMLDivElement = HTMLDivElement> = HTMLAttributesWithoutColor<HTMLElem> &
     SystemObj<T> & {
         as?: React.ElementType;
-        children: React.ReactNode;
+        children?: React.ReactNode;
         [x: string]: unknown;
     };
 
@@ -21,3 +21,5 @@ export const Box = <T extends Theme>({ as = 'div', children, className, ...props
     const newClassName = cx(dynamicStyle, className);
     return React.createElement(as, { ...omit(omitProps, props), className: newClassName }, children);
 };
+
+export const getBoxWithTheme = <T extends Theme, HTMLElem extends HTMLDivElement = HTMLDivElement>() => Box as React.FC<BoxProps<T, HTMLElem>>;

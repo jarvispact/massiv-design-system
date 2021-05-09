@@ -48,14 +48,13 @@ export const systemDefinitions = {
     ...miscSystemDef,
 };
 
-export type SystemObj<T extends Theme> =
-    | PaddingObj<T>
-    | MarginObj<T>
-    | TypographyObj<T>
-    | ColorObj<T>
-    | BorderObj<T>
-    | FlexObj<T>
-    | GridObj<T>
-    | WidthObj<T>
-    | HeightObj<T>
-    | MiscObj<T>;
+export type SystemObj<T extends Theme> = PaddingObj<T> &
+    MarginObj<T> &
+    TypographyObj<T> &
+    ColorObj<T> &
+    BorderObj<T> &
+    FlexObj<T> &
+    GridObj<T> &
+    WidthObj<T> &
+    HeightObj<T> &
+    MiscObj<T>;

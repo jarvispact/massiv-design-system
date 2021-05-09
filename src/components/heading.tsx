@@ -24,3 +24,5 @@ export const Heading = <T extends Theme>({ as = 'h1', children, className, ...pr
     const newClassName = cx(defaultStyle, dynamicStyle, className);
     return React.createElement(as, { ...omit(omitProps, props), className: newClassName }, children);
 };
+
+export const getHeadingWithTheme = <T extends Theme>() => Heading as React.FC<HeadingProps<T>>;

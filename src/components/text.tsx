@@ -26,3 +26,5 @@ export const Text = <T extends Theme>({ as = 'p', children, className, ...props 
     const newClassName = cx(defaultStyle, dynamicStyle, className);
     return React.createElement(as, { ...omit(omitProps, props), className: newClassName }, children);
 };
+
+export const getTextWithTheme = <T extends Theme, HTMLElem extends TextHTMLElement = TextHTMLElement>() => Text as React.FC<TextProps<T, HTMLElem>>;
