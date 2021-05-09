@@ -1165,11 +1165,31 @@ var __assign = function() {
     return __assign.apply(this, arguments);
 };
 
+function __rest(s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+}
+
 function __makeTemplateObject(cooked, raw) {
     if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
     return cooked;
 }
 
+var breakpoint = {
+    s: '640px',
+    m: '768px',
+    l: '1024px',
+    xl: '1280px',
+    xxl: '1600px',
+    xxxl: '1920px',
+};
 var color = {
     gray50: '#FAFAFA',
     gray100: '#F5F5F5',
@@ -1232,8 +1252,111 @@ var color = {
     secondary800: '#9D174D',
     secondary900: '#831843',
 };
+var spacing = {
+    xxxs: '1px',
+    xxs: '4px',
+    xs: '8px',
+    s: '12px',
+    m: '16px',
+    l: '20px',
+    xl: '24px',
+    '2xl': '28px',
+    '3xl': '32px',
+    '4xl': '36px',
+    '5xl': '40px',
+    '6xl': '44px',
+    '7xl': '48px',
+    '8xl': '52px',
+    '9xl': '56px',
+};
+var fontFamily = {
+    sans: [
+        'system-ui',
+        '-apple-system',
+        'BlinkMacSystemFont',
+        '"Segoe UI"',
+        'Roboto',
+        '"Helvetica Neue"',
+        'Arial',
+        '"Noto Sans"',
+        'sans-serif',
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"',
+        '"Noto Color Emoji"',
+    ].join(', '),
+    serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'].join(', '),
+    mono: ['Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'].join(', '),
+};
+var fontSize = {
+    xxs: '0.6rem',
+    xs: '0.75rem',
+    s: '0.875rem',
+    m: '1rem',
+    l: '1.125rem',
+    xl: '1.25rem',
+    '2xl': '1.5rem',
+    '3xl': '1.875rem',
+    '4xl': '2.25rem',
+    '5xl': '3rem',
+    '6xl': '4rem',
+};
+var fontWeight = {
+    xxxs: '100',
+    xxs: '200',
+    xs: '300',
+    s: '400',
+    m: '500',
+    l: '600',
+    xl: '700',
+    '2xl': '800',
+    '3xl': '900',
+};
+var lineHeight = {
+    xs: '0.75rem',
+    s: '0.875rem',
+    m: '1rem',
+    l: '1.125rem',
+    xl: '1.25rem',
+    '2xl': '1.5rem',
+    '3xl': '1.875rem',
+    '4xl': '2.25rem',
+    '5xl': '3rem',
+    '6xl': '4rem',
+};
+var letterSpacing = {
+    tighter: '-0.05em',
+    tight: '-0.025em',
+    normal: '0',
+    wide: '0.025em',
+    wider: '0.05em',
+    widest: '0.1em',
+};
+var radii = {
+    s: '2px',
+    m: '4px',
+    l: '6px',
+    xl: '8px',
+    circle: '9999px',
+};
+var shadow = {
+    s: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+    m: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+    l: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+};
 var defaultTheme = {
+    breakpoint: breakpoint,
     color: color,
+    spacing: spacing,
+    width: spacing,
+    height: spacing,
+    fontFamily: fontFamily,
+    fontSize: fontSize,
+    fontWeight: fontWeight,
+    lineHeight: lineHeight,
+    letterSpacing: letterSpacing,
+    radii: radii,
+    shadow: shadow,
 };
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -1248,18 +1371,254 @@ var ThemeProvider = function (_a) {
         theme: activeTheme,
         setTheme: setActiveTheme,
     };
-    return (React.createElement(ThemeContext.Provider, { value: context }, children));
+    return React.createElement(ThemeContext.Provider, { value: context }, children);
 };
 var useTheme = function () { return useContext(ThemeContext); };
 
-var Box = function () {
-    var _a = useTheme(), theme = _a.theme, setTheme = _a.setTheme;
-    return (React.createElement(React.Fragment, null,
-        React.createElement("div", { className: css({ color: theme.color.error700 }) }, "hello emotion"),
-        React.createElement("button", { onClick: function () { return setTheme(__assign(__assign({}, theme), { color: __assign(__assign({}, theme.color), { error700: '#ff0000' }) })); } }, "change theme")));
+var buildCssObj = function (theme, definitions, obj) {
+    var reducer = function (accum, key) {
+        var def = definitions[key];
+        if (!def)
+            return accum;
+        var themeScope = def.themeScope ? theme[def.themeScope] : null;
+        // @ts-ignore
+        var value = obj[key];
+        if (def) {
+            if (typeof value === 'object' && !Array.isArray(value)) {
+                if (value.value) {
+                    // @ts-ignore
+                    accum = __assign(__assign({}, accum), def.getCSS(themeScope ? themeScope[value.value] || value.value : value.value));
+                }
+                if (value.hover) {
+                    // @ts-ignore
+                    accum = __assign(__assign({}, accum), { '&:hover': __assign(__assign({}, accum['&:hover']), def.getCSS(themeScope ? themeScope[value.hover] || value.hover : value.hover)) });
+                }
+                if (value.focus) {
+                    // @ts-ignore
+                    accum = __assign(__assign({}, accum), { '&:focus': __assign(__assign({}, accum['&:focus']), def.getCSS(themeScope ? themeScope[value.focus] || value.focus : value.focus)) });
+                }
+                if (value.hocus) {
+                    accum = __assign(__assign({}, accum), { '&:hover': __assign(__assign({}, accum['&:hover']), def.getCSS(themeScope ? themeScope[value.hocus] || value.hocus : value.hocus)), '&:focus': __assign(__assign({}, accum['&:focus']), def.getCSS(themeScope ? themeScope[value.hocus] || value.hocus : value.hocus)) });
+                }
+                Object.keys(theme.breakpoint).forEach(function (breakpointKey) {
+                    var _a;
+                    // @ts-ignore
+                    var mediaQueryKey = "@media(min-width: " + theme.breakpoint[breakpointKey] + ")";
+                    // @ts-ignore
+                    if (value[breakpointKey]) {
+                        accum = __assign(__assign({}, accum), (_a = {}, _a[mediaQueryKey] = __assign(__assign({}, accum[mediaQueryKey]), def.getCSS(themeScope ? themeScope[value[breakpointKey]] || value[breakpointKey] : value[breakpointKey])), _a));
+                    }
+                });
+            }
+            else {
+                // @ts-ignore
+                accum = __assign(__assign({}, accum), def.getCSS(themeScope ? themeScope[value] || value : value));
+            }
+        }
+        return accum;
+    };
+    return Object.keys(obj).reduce(reducer, {});
 };
 
-var injectGlobalStyle = function () { return injectGlobal(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    body {\n        margin: 0;\n        padding: 0;\n        border: 0;\n        font-size: 100%;\n        vertical-align: baseline;\n        box-sizing: border-box;\n    }\n\n    article, aside, details, figcaption, figure, \n    footer, header, hgroup, menu, nav, section {\n        display: block;\n    }\n\n    ol, ul {\n        list-style: none;\n    }\n\n    table {\n        border-collapse: collapse;\n        border-spacing: 0;\n    }\n"], ["\n    body {\n        margin: 0;\n        padding: 0;\n        border: 0;\n        font-size: 100%;\n        vertical-align: baseline;\n        box-sizing: border-box;\n    }\n\n    article, aside, details, figcaption, figure, \n    footer, header, hgroup, menu, nav, section {\n        display: block;\n    }\n\n    ol, ul {\n        list-style: none;\n    }\n\n    table {\n        border-collapse: collapse;\n        border-spacing: 0;\n    }\n"]))); };
+var paddingSystemDef = {
+    padding: { themeScope: 'spacing', getCSS: function (v) { return ({ padding: v }); } },
+    p: { themeScope: 'spacing', getCSS: function (v) { return ({ padding: v }); } },
+    pt: { themeScope: 'spacing', getCSS: function (v) { return ({ paddingTop: v }); } },
+    pr: { themeScope: 'spacing', getCSS: function (v) { return ({ paddingRight: v }); } },
+    pb: { themeScope: 'spacing', getCSS: function (v) { return ({ paddingBottom: v }); } },
+    pl: { themeScope: 'spacing', getCSS: function (v) { return ({ paddingLeft: v }); } },
+    px: { themeScope: 'spacing', getCSS: function (v) { return ({ paddingLeft: v, paddingRight: v }); } },
+    py: { themeScope: 'spacing', getCSS: function (v) { return ({ paddingTop: v, paddingBottom: v }); } },
+};
+
+var marginSystemDef = {
+    margin: { themeScope: 'spacing', getCSS: function (v) { return ({ margin: v }); } },
+    m: { themeScope: 'spacing', getCSS: function (v) { return ({ margin: v }); } },
+    mt: { themeScope: 'spacing', getCSS: function (v) { return ({ marginTop: v }); } },
+    mr: { themeScope: 'spacing', getCSS: function (v) { return ({ marginRight: v }); } },
+    mb: { themeScope: 'spacing', getCSS: function (v) { return ({ marginBottom: v }); } },
+    ml: { themeScope: 'spacing', getCSS: function (v) { return ({ marginLeft: v }); } },
+    mx: { themeScope: 'spacing', getCSS: function (v) { return ({ marginLeft: v, marginRight: v }); } },
+    my: { themeScope: 'spacing', getCSS: function (v) { return ({ marginTop: v, marginBottom: v }); } },
+};
+
+var typographySystemDef = {
+    fontFamily: { themeScope: 'fontFamily', getCSS: function (v) { return ({ fontFamily: v }); } },
+    fontSize: { themeScope: 'fontSize', getCSS: function (v) { return ({ fontSize: v }); } },
+    fontWeight: { themeScope: 'fontWeight', getCSS: function (v) { return ({ fontWeight: v }); } },
+    lineHeight: { themeScope: 'lineHeight', getCSS: function (v) { return ({ lineHeight: v }); } },
+    letterSpacing: { themeScope: 'letterSpacing', getCSS: function (v) { return ({ letterSpacing: v }); } },
+    textOverflow: { themeScope: null, getCSS: function (v) { return ({ textOverflow: v }); } },
+    whiteSpace: { themeScope: null, getCSS: function (v) { return ({ whiteSpace: v }); } },
+    verticalAlign: { themeScope: null, getCSS: function (v) { return ({ verticalAlign: v }); } },
+    textTransform: { themeScope: null, getCSS: function (v) { return ({ textTransform: v }); } },
+};
+
+var colorSystemDef = {
+    backgroundColor: { themeScope: 'color', getCSS: function (v) { return ({ backgroundColor: v }); } },
+    bg: { themeScope: 'color', getCSS: function (v) { return ({ backgroundColor: v }); } },
+    color: { themeScope: 'color', getCSS: function (v) { return ({ color: v }); } },
+};
+
+var borderSystemDef = {
+    borderStyle: { themeScope: null, getCSS: function (v) { return ({ borderStyle: v }); } },
+    bs: { themeScope: null, getCSS: function (v) { return ({ borderStyle: v }); } },
+    borderWidth: { themeScope: 'width', getCSS: function (v) { return ({ borderWidth: v }); } },
+    bw: { themeScope: 'width', getCSS: function (v) { return ({ borderWidth: v }); } },
+    borderColor: { themeScope: 'color', getCSS: function (v) { return ({ borderColor: v }); } },
+    bc: { themeScope: 'color', getCSS: function (v) { return ({ borderColor: v }); } },
+    borderRadius: { themeScope: 'radii', getCSS: function (v) { return ({ borderRadius: v }); } },
+    br: { themeScope: 'radii', getCSS: function (v) { return ({ borderRadius: v }); } },
+    borderTopStyle: { themeScope: null, getCSS: function (v) { return ({ borderTopStyle: v }); } },
+    bts: { themeScope: null, getCSS: function (v) { return ({ borderTopStyle: v }); } },
+    borderTopWidth: { themeScope: 'width', getCSS: function (v) { return ({ borderTopWidth: v }); } },
+    btw: { themeScope: 'width', getCSS: function (v) { return ({ borderTopWidth: v }); } },
+    borderTopColor: { themeScope: 'color', getCSS: function (v) { return ({ borderTopColor: v }); } },
+    btc: { themeScope: 'color', getCSS: function (v) { return ({ borderTopColor: v }); } },
+    borderBottomStyle: { themeScope: null, getCSS: function (v) { return ({ borderBottomStyle: v }); } },
+    bbs: { themeScope: null, getCSS: function (v) { return ({ borderBottomStyle: v }); } },
+    borderBottomWidth: { themeScope: 'width', getCSS: function (v) { return ({ borderBottomWidth: v }); } },
+    bbw: { themeScope: 'width', getCSS: function (v) { return ({ borderBottomWidth: v }); } },
+    borderBottomColor: { themeScope: 'color', getCSS: function (v) { return ({ borderBottomColor: v }); } },
+    bbc: { themeScope: 'color', getCSS: function (v) { return ({ borderBottomColor: v }); } },
+    borderLeftStyle: { themeScope: null, getCSS: function (v) { return ({ borderLeftStyle: v }); } },
+    bls: { themeScope: null, getCSS: function (v) { return ({ borderLeftStyle: v }); } },
+    borderLeftWidth: { themeScope: 'width', getCSS: function (v) { return ({ borderLeftWidth: v }); } },
+    blw: { themeScope: 'width', getCSS: function (v) { return ({ borderLeftWidth: v }); } },
+    borderLeftColor: { themeScope: 'color', getCSS: function (v) { return ({ borderLeftColor: v }); } },
+    blc: { themeScope: 'color', getCSS: function (v) { return ({ borderLeftColor: v }); } },
+    borderRightStyle: { themeScope: null, getCSS: function (v) { return ({ borderRightStyle: v }); } },
+    brs: { themeScope: null, getCSS: function (v) { return ({ borderRightStyle: v }); } },
+    borderRightWidth: { themeScope: 'width', getCSS: function (v) { return ({ borderRightWidth: v }); } },
+    brw: { themeScope: 'width', getCSS: function (v) { return ({ borderRightWidth: v }); } },
+    borderRightColor: { themeScope: 'color', getCSS: function (v) { return ({ borderRightColor: v }); } },
+    brc: { themeScope: 'color', getCSS: function (v) { return ({ borderRightColor: v }); } },
+    borderTopLeftRadius: { themeScope: 'radii', getCSS: function (v) { return ({ borderTopLeftRadius: v }); } },
+    btlr: { themeScope: 'radii', getCSS: function (v) { return ({ borderTopLeftRadius: v }); } },
+    borderTopRightRadius: { themeScope: 'radii', getCSS: function (v) { return ({ borderTopRightRadius: v }); } },
+    btrr: { themeScope: 'radii', getCSS: function (v) { return ({ borderTopRightRadius: v }); } },
+    borderBottomLeftRadius: { themeScope: 'radii', getCSS: function (v) { return ({ borderBottomLeftRadius: v }); } },
+    bblr: { themeScope: 'radii', getCSS: function (v) { return ({ borderBottomLeftRadius: v }); } },
+    borderBottomRghtRadius: { themeScope: 'radii', getCSS: function (v) { return ({ borderBottomRightRadius: v }); } },
+    bbrr: { themeScope: 'radii', getCSS: function (v) { return ({ borderBottomRightRadius: v }); } },
+};
+
+var flexSystemDef = {
+    flexDirection: { themeScope: null, getCSS: function (v) { return ({ flexDirection: v }); } },
+    flexWrap: { themeScope: null, getCSS: function (v) { return ({ flexWrap: v }); } },
+    flexFlow: { themeScope: null, getCSS: function (v) { return ({ flexFlow: v }); } },
+    justifyContent: { themeScope: null, getCSS: function (v) { return ({ justifyContent: v }); } },
+    alignItems: { themeScope: null, getCSS: function (v) { return ({ alignItems: v }); } },
+    alignContent: { themeScope: null, getCSS: function (v) { return ({ alignContent: v }); } },
+    flexGrow: { themeScope: null, getCSS: function (v) { return ({ flexGrow: v }); } },
+    flexShrink: { themeScope: null, getCSS: function (v) { return ({ flexShrink: v }); } },
+    flexBasis: { themeScope: null, getCSS: function (v) { return ({ flexBasis: v }); } },
+    flex: { themeScope: null, getCSS: function (v) { return ({ flex: v }); } },
+    alignSelf: { themeScope: null, getCSS: function (v) { return ({ alignSelf: v }); } },
+};
+
+var gridSystemDef = {
+    gridTemplateColumns: { themeScope: null, getCSS: function (v) { return ({ gridTemplateColumns: v }); } },
+    gridTemplateRows: { themeScope: null, getCSS: function (v) { return ({ gridTemplateRows: v }); } },
+    gridTemplateAreas: { themeScope: null, getCSS: function (v) { return ({ gridTemplateAreas: v }); } },
+    columnGap: { themeScope: 'spacing', getCSS: function (v) { return ({ columnGap: v }); } },
+    rowGap: { themeScope: 'spacing', getCSS: function (v) { return ({ rowGap: v }); } },
+    gap: { themeScope: 'spacing', getCSS: function (v) { return ({ gap: v }); } },
+    justifyItems: { themeScope: null, getCSS: function (v) { return ({ justifyItems: v }); } },
+    gridColumnStart: { themeScope: null, getCSS: function (v) { return ({ gridColumnStart: v }); } },
+    gridColumnEnd: { themeScope: null, getCSS: function (v) { return ({ gridColumnEnd: v }); } },
+    gridRowStart: { themeScope: null, getCSS: function (v) { return ({ gridRowStart: v }); } },
+    gridRowEnd: { themeScope: null, getCSS: function (v) { return ({ gridRowEnd: v }); } },
+    gridArea: { themeScope: null, getCSS: function (v) { return ({ gridArea: v }); } },
+    justifySelf: { themeScope: null, getCSS: function (v) { return ({ justifySelf: v }); } },
+    placeSelf: { themeScope: null, getCSS: function (v) { return ({ placeSelf: v }); } },
+};
+
+var widthSystemDef = {
+    width: { themeScope: 'width', getCSS: function (v) { return ({ width: v }); } },
+    w: { themeScope: 'width', getCSS: function (v) { return ({ width: v }); } },
+    minWidth: { themeScope: 'width', getCSS: function (v) { return ({ minWidth: v }); } },
+    minW: { themeScope: 'width', getCSS: function (v) { return ({ minWidth: v }); } },
+    maxWidth: { themeScope: 'width', getCSS: function (v) { return ({ maxWidth: v }); } },
+    maxW: { themeScope: 'width', getCSS: function (v) { return ({ maxWidth: v }); } },
+};
+
+var heightSystemDef = {
+    height: { themeScope: 'height', getCSS: function (v) { return ({ height: v }); } },
+    h: { themeScope: 'height', getCSS: function (v) { return ({ height: v }); } },
+    minHeight: { themeScope: 'height', getCSS: function (v) { return ({ minHeight: v }); } },
+    minH: { themeScope: 'height', getCSS: function (v) { return ({ minHeight: v }); } },
+    maxHeight: { themeScope: 'height', getCSS: function (v) { return ({ maxHeight: v }); } },
+    maxH: { themeScope: 'height', getCSS: function (v) { return ({ maxHeight: v }); } },
+};
+
+var miscSystemDef = {
+    display: { themeScope: null, getCSS: function (v) { return ({ display: v }); } },
+    clipPath: { themeScope: null, getCSS: function (v) { return ({ clipPath: v }); } },
+    listStyle: { themeScope: null, getCSS: function (v) { return ({ listStyle: v }); } },
+    textDecoration: { themeScope: null, getCSS: function (v) { return ({ textDecoration: v }); } },
+    resize: { themeScope: null, getCSS: function (v) { return ({ resize: v }); } },
+    position: { themeScope: null, getCSS: function (v) { return ({ position: v }); } },
+    top: { themeScope: null, getCSS: function (v) { return ({ top: v }); } },
+    left: { themeScope: null, getCSS: function (v) { return ({ left: v }); } },
+    bottom: { themeScope: null, getCSS: function (v) { return ({ bottom: v }); } },
+    right: { themeScope: null, getCSS: function (v) { return ({ right: v }); } },
+    zIndex: { themeScope: null, getCSS: function (v) { return ({ zIndex: v }); } },
+    boxShadow: { themeScope: 'shadow', getCSS: function (v) { return ({ boxShadow: v }); } },
+    outline: { themeScope: null, getCSS: function (v) { return ({ outline: v }); } },
+    outlineColor: { themeScope: 'color', getCSS: function (v) { return ({ outlineColor: v }); } },
+    overflow: { themeScope: 'color', getCSS: function (v) { return ({ overflow: v }); } },
+    overflowX: { themeScope: 'color', getCSS: function (v) { return ({ overflowX: v }); } },
+    overflowY: { themeScope: 'color', getCSS: function (v) { return ({ overflowY: v }); } },
+};
+
+var systemDefinitions = __assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign({}, paddingSystemDef), marginSystemDef), typographySystemDef), colorSystemDef), borderSystemDef), flexSystemDef), gridSystemDef), widthSystemDef), heightSystemDef), miscSystemDef);
+
+var useCSS = function () {
+    var theme = useTheme().theme;
+    var css$1 = function (obj) { return css(buildCssObj(theme, systemDefinitions, obj)); };
+    return { css: css$1, theme: theme };
+};
+
+var omit = function (propertyList, obj) {
+    var keys = Object.keys(obj);
+    return keys.reduce(function (accum, key) {
+        if (!propertyList.includes(key))
+            accum[key] = obj[key];
+        return accum;
+    }, {});
+};
+
+var omitProps$2 = Object.keys(systemDefinitions);
+var Box = function (_a) {
+    var _b = _a.as, as = _b === void 0 ? 'div' : _b, children = _a.children, className = _a.className, props = __rest(_a, ["as", "children", "className"]);
+    var css = useCSS().css;
+    var dynamicStyle = css(props);
+    var newClassName = cx(dynamicStyle, className);
+    return React.createElement(as, __assign(__assign({}, omit(omitProps$2, props)), { className: newClassName }), children);
+};
+
+var omitProps$1 = Object.keys(typographySystemDef);
+var Heading = function (_a) {
+    var _b = _a.as, as = _b === void 0 ? 'h1' : _b, children = _a.children, className = _a.className, props = __rest(_a, ["as", "children", "className"]);
+    var _c = useCSS(), css = _c.css, theme = _c.theme;
+    var defaultStyle = css({ fontFamily: theme.fontFamily.serif });
+    var dynamicStyle = css(props);
+    var newClassName = cx(defaultStyle, dynamicStyle, className);
+    return React.createElement(as, __assign(__assign({}, omit(omitProps$1, props)), { className: newClassName }), children);
+};
+
+var omitProps = Object.keys(typographySystemDef);
+var Text = function (_a) {
+    var _b = _a.as, as = _b === void 0 ? 'p' : _b, children = _a.children, className = _a.className, props = __rest(_a, ["as", "children", "className"]);
+    var _c = useCSS(), css = _c.css, theme = _c.theme;
+    var defaultStyle = css({ fontFamily: theme.fontFamily.sans });
+    var dynamicStyle = css(props);
+    var newClassName = cx(defaultStyle, dynamicStyle, className);
+    return React.createElement(as, __assign(__assign({}, omit(omitProps, props)), { className: newClassName }), children);
+};
+
+var injectGlobalStyle = function () { return injectGlobal(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    html, body, div, span, applet, object, iframe,\n    h1, h2, h3, h4, h5, h6, p, blockquote, pre,\n    a, abbr, acronym, address, big, cite, code,\n    del, dfn, em, img, ins, kbd, q, s, samp,\n    small, strike, strong, sub, sup, tt, var,\n    b, u, i, center,\n    dl, dt, dd, ol, ul, li,\n    fieldset, form, label, legend,\n    table, caption, tbody, tfoot, thead, tr, th, td,\n    article, aside, canvas, details, embed, \n    figure, figcaption, footer, header, hgroup, \n    menu, nav, output, ruby, section, summary,\n    time, mark, audio, video {\n        margin: 0;\n        padding: 0;\n        border: 0;\n        font-size: 100%;\n        vertical-align: baseline;\n        box-sizing: border-box;\n    }\n    article, aside, details, figcaption, figure, \n    footer, header, hgroup, menu, nav, section {\n        display: block;\n    }\n    ol, ul {\n        list-style: none;\n    }\n    blockquote, q {\n        quotes: none;\n    }\n    blockquote:before, blockquote:after,\n    q:before, q:after {\n        content: '';\n        content: none;\n    }\n    table {\n        border-collapse: collapse;\n        border-spacing: 0;\n    }\n    input, textarea {\n        box-sizing: border-box;\n    }\n"], ["\n    html, body, div, span, applet, object, iframe,\n    h1, h2, h3, h4, h5, h6, p, blockquote, pre,\n    a, abbr, acronym, address, big, cite, code,\n    del, dfn, em, img, ins, kbd, q, s, samp,\n    small, strike, strong, sub, sup, tt, var,\n    b, u, i, center,\n    dl, dt, dd, ol, ul, li,\n    fieldset, form, label, legend,\n    table, caption, tbody, tfoot, thead, tr, th, td,\n    article, aside, canvas, details, embed, \n    figure, figcaption, footer, header, hgroup, \n    menu, nav, output, ruby, section, summary,\n    time, mark, audio, video {\n        margin: 0;\n        padding: 0;\n        border: 0;\n        font-size: 100%;\n        vertical-align: baseline;\n        box-sizing: border-box;\n    }\n    article, aside, details, figcaption, figure, \n    footer, header, hgroup, menu, nav, section {\n        display: block;\n    }\n    ol, ul {\n        list-style: none;\n    }\n    blockquote, q {\n        quotes: none;\n    }\n    blockquote:before, blockquote:after,\n    q:before, q:after {\n        content: '';\n        content: none;\n    }\n    table {\n        border-collapse: collapse;\n        border-spacing: 0;\n    }\n    input, textarea {\n        box-sizing: border-box;\n    }\n"]))); };
 var CssReset = function () {
     useEffect(function () {
         injectGlobalStyle();
@@ -1268,5 +1627,5 @@ var CssReset = function () {
 };
 var templateObject_1;
 
-export { Box, CssReset, ThemeContext, ThemeProvider, cache, css, cx, defaultTheme, flush, getRegisteredStyles, hydrate, injectGlobal, injectGlobalStyle, keyframes, merge, sheet, useTheme };
+export { Box, CssReset, Heading, Text, ThemeContext, ThemeProvider, cache, css, cx, defaultTheme, flush, getRegisteredStyles, hydrate, injectGlobal, injectGlobalStyle, keyframes, merge, sheet, useCSS, useTheme };
 //# sourceMappingURL=index.es.js.map
