@@ -1,5 +1,6 @@
+import { CSSInterpolation } from '@emotion/css';
 import { SystemObj } from '../system/system';
-export declare const useCSS: <T extends {
+export declare const useCss: <T extends {
     breakpoint: {
         s: string;
         m: string;
@@ -185,4 +186,8 @@ export declare const useCSS: <T extends {
 }>() => {
     css: (obj: SystemObj<T>) => string;
     theme: T;
+    rawCss: {
+        (template: TemplateStringsArray, ...args: CSSInterpolation[]): string;
+        (...args: CSSInterpolation[]): string;
+    };
 };

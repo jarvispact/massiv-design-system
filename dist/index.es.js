@@ -1574,10 +1574,10 @@ var miscSystemDef = {
 
 var systemDefinitions = __assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign({}, paddingSystemDef), marginSystemDef), typographySystemDef), colorSystemDef), borderSystemDef), flexSystemDef), gridSystemDef), widthSystemDef), heightSystemDef), miscSystemDef);
 
-var useCSS = function () {
+var useCss = function () {
     var theme = useTheme().theme;
     var css$1 = function (obj) { return css(buildCssObj(theme, systemDefinitions, obj)); };
-    return { css: css$1, theme: theme };
+    return { css: css$1, theme: theme, rawCss: css };
 };
 
 var omit = function (propertyList, obj) {
@@ -1592,31 +1592,34 @@ var omit = function (propertyList, obj) {
 var omitProps$2 = Object.keys(systemDefinitions);
 var Box = function (_a) {
     var _b = _a.as, as = _b === void 0 ? 'div' : _b, children = _a.children, className = _a.className, props = __rest(_a, ["as", "children", "className"]);
-    var css = useCSS().css;
+    var css = useCss().css;
     var dynamicStyle = css(props);
     var newClassName = cx(dynamicStyle, className);
     return React.createElement(as, __assign(__assign({}, omit(omitProps$2, props)), { className: newClassName }), children);
 };
+var getBoxWithTheme = function () { return Box; };
 
 var omitProps$1 = Object.keys(typographySystemDef);
 var Heading = function (_a) {
     var _b = _a.as, as = _b === void 0 ? 'h1' : _b, children = _a.children, className = _a.className, props = __rest(_a, ["as", "children", "className"]);
-    var _c = useCSS(), css = _c.css, theme = _c.theme;
+    var _c = useCss(), css = _c.css, theme = _c.theme;
     var defaultStyle = css({ fontFamily: theme.fontFamily.serif });
     var dynamicStyle = css(props);
     var newClassName = cx(defaultStyle, dynamicStyle, className);
     return React.createElement(as, __assign(__assign({}, omit(omitProps$1, props)), { className: newClassName }), children);
 };
+var getHeadingWithTheme = function () { return Heading; };
 
 var omitProps = Object.keys(typographySystemDef);
 var Text = function (_a) {
     var _b = _a.as, as = _b === void 0 ? 'p' : _b, children = _a.children, className = _a.className, props = __rest(_a, ["as", "children", "className"]);
-    var _c = useCSS(), css = _c.css, theme = _c.theme;
+    var _c = useCss(), css = _c.css, theme = _c.theme;
     var defaultStyle = css({ fontFamily: theme.fontFamily.sans });
     var dynamicStyle = css(props);
     var newClassName = cx(defaultStyle, dynamicStyle, className);
     return React.createElement(as, __assign(__assign({}, omit(omitProps, props)), { className: newClassName }), children);
 };
+var getTextWithTheme = function () { return Text; };
 
 var injectGlobalStyle = function () { return injectGlobal(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    html, body, div, span, applet, object, iframe,\n    h1, h2, h3, h4, h5, h6, p, blockquote, pre,\n    a, abbr, acronym, address, big, cite, code,\n    del, dfn, em, img, ins, kbd, q, s, samp,\n    small, strike, strong, sub, sup, tt, var,\n    b, u, i, center,\n    dl, dt, dd, ol, ul, li,\n    fieldset, form, label, legend,\n    table, caption, tbody, tfoot, thead, tr, th, td,\n    article, aside, canvas, details, embed, \n    figure, figcaption, footer, header, hgroup, \n    menu, nav, output, ruby, section, summary,\n    time, mark, audio, video {\n        margin: 0;\n        padding: 0;\n        border: 0;\n        font-size: 100%;\n        vertical-align: baseline;\n        box-sizing: border-box;\n    }\n    article, aside, details, figcaption, figure, \n    footer, header, hgroup, menu, nav, section {\n        display: block;\n    }\n    ol, ul {\n        list-style: none;\n    }\n    blockquote, q {\n        quotes: none;\n    }\n    blockquote:before, blockquote:after,\n    q:before, q:after {\n        content: '';\n        content: none;\n    }\n    table {\n        border-collapse: collapse;\n        border-spacing: 0;\n    }\n    input, textarea {\n        box-sizing: border-box;\n    }\n"], ["\n    html, body, div, span, applet, object, iframe,\n    h1, h2, h3, h4, h5, h6, p, blockquote, pre,\n    a, abbr, acronym, address, big, cite, code,\n    del, dfn, em, img, ins, kbd, q, s, samp,\n    small, strike, strong, sub, sup, tt, var,\n    b, u, i, center,\n    dl, dt, dd, ol, ul, li,\n    fieldset, form, label, legend,\n    table, caption, tbody, tfoot, thead, tr, th, td,\n    article, aside, canvas, details, embed, \n    figure, figcaption, footer, header, hgroup, \n    menu, nav, output, ruby, section, summary,\n    time, mark, audio, video {\n        margin: 0;\n        padding: 0;\n        border: 0;\n        font-size: 100%;\n        vertical-align: baseline;\n        box-sizing: border-box;\n    }\n    article, aside, details, figcaption, figure, \n    footer, header, hgroup, menu, nav, section {\n        display: block;\n    }\n    ol, ul {\n        list-style: none;\n    }\n    blockquote, q {\n        quotes: none;\n    }\n    blockquote:before, blockquote:after,\n    q:before, q:after {\n        content: '';\n        content: none;\n    }\n    table {\n        border-collapse: collapse;\n        border-spacing: 0;\n    }\n    input, textarea {\n        box-sizing: border-box;\n    }\n"]))); };
 var CssReset = function () {
@@ -1627,5 +1630,5 @@ var CssReset = function () {
 };
 var templateObject_1;
 
-export { Box, CssReset, Heading, Text, ThemeContext, ThemeProvider, cache, css, cx, defaultTheme, flush, getRegisteredStyles, hydrate, injectGlobal, injectGlobalStyle, keyframes, merge, sheet, useCSS, useTheme };
+export { Box, CssReset, Heading, Text, ThemeContext, ThemeProvider, cache, css, cx, defaultTheme, flush, getBoxWithTheme, getHeadingWithTheme, getRegisteredStyles, getTextWithTheme, hydrate, injectGlobal, injectGlobalStyle, keyframes, merge, sheet, useCss, useTheme };
 //# sourceMappingURL=index.es.js.map
