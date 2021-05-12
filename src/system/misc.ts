@@ -32,7 +32,7 @@ export type MiscObj<T extends Theme> = Partial<{
     left: CssProperty<T, 'left'>;
     bottom: CssProperty<T, 'bottom'>;
     right: CssProperty<T, 'right'>;
-    zIndex: CssProperty<T, 'zIndex'>;
+    zIndex: ScopedThemeKeyOrStringValue<T, 'zIndex'>;
     boxShadow: ScopedThemeKeyOrStringValue<T, 'shadow'>;
     outline: CssProperty<T, 'outline'>;
     outlineColor: ScopedThemeKeyOrStringValue<T, 'color'>;

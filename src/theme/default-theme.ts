@@ -175,6 +175,15 @@ const shadow = {
     l: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
 };
 
+const zIndex = {
+    '0': 0,
+    '10': 0,
+    '20': 0,
+    '30': 0,
+    '40': 0,
+    '50': 0,
+};
+
 export const defaultTheme = {
     breakpoint,
     color,
@@ -188,6 +197,7 @@ export const defaultTheme = {
     letterSpacing,
     radii,
     shadow,
+    zIndex,
 };
 
 export type Theme = typeof defaultTheme;
