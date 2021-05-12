@@ -1,3 +1,5 @@
+import { useCss } from '../hooks/use-css';
+
 const breakpoint = {
     s: '640px',
     m: '768px',
@@ -153,12 +155,12 @@ const lineHeight = {
 };
 
 const letterSpacing = {
-    tighter: '-0.05em',
-    tight: '-0.025em',
-    normal: '0',
-    wide: '0.025em',
-    wider: '0.05em',
-    widest: '0.1em',
+    xs: '-0.05em',
+    s: '-0.025em',
+    m: '0',
+    l: '0.025em',
+    xl: '0.05em',
+    xxl: '0.1em',
 };
 
 const radii = {
@@ -184,6 +186,31 @@ const zIndex = {
     '50': 0,
 };
 
+type HeadingVariant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+
+const components = {
+    Heading: (variant?: HeadingVariant) => {
+        const { css } = useCss();
+        console.log('called');
+        switch (variant) {
+            case 'h1':
+                return css({ fontFamily: 'serif', fontSize: '4xl' });
+            case 'h2':
+                return css({ fontFamily: 'serif', fontSize: '3xl' });
+            case 'h3':
+                return css({ fontFamily: 'serif', fontSize: '2xl' });
+            case 'h4':
+                return css({ fontFamily: 'serif', fontSize: 'xl' });
+            case 'h5':
+                return css({ fontFamily: 'serif', fontSize: 'l' });
+            case 'h6':
+                return css({ fontFamily: 'serif', fontSize: 'm' });
+            default:
+                return '';
+        }
+    },
+};
+
 export const defaultTheme = {
     breakpoint,
     color,
@@ -198,6 +225,7 @@ export const defaultTheme = {
     radii,
     shadow,
     zIndex,
+    components,
 };
 
 export type Theme = typeof defaultTheme;
