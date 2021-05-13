@@ -5,7 +5,7 @@ import { TextVariant } from '../system/variant';
 import { Theme } from '../theme/default-theme';
 import { HTMLAttributesWithoutColor } from '../utils/types';
 declare type SystemObj<T extends Theme> = TypographySystemObj<T> & ColorSystemObj<T>;
-declare type TextElement = 'div' | 'span' | 'p' | 'label' | 'a';
+declare type TextElement = 'div' | 'span' | 'p' | 'label' | 'a' | 'i' | 'b';
 declare type TextHTMLElement = HTMLDivElement | HTMLSpanElement | HTMLParagraphElement | HTMLLabelElement | HTMLAnchorElement;
 export declare type TextProps<T extends Theme = Theme, HTMLElem extends TextHTMLElement = TextHTMLElement> = HTMLAttributesWithoutColor<HTMLElem> & SystemObj<T> & {
     as?: TextElement;
@@ -154,7 +154,6 @@ export declare const Text: <T extends {
         '6xl': string;
     };
     fontWeight: {
-        xxxs: string;
         xxs: string;
         xs: string;
         s: string;
@@ -163,6 +162,7 @@ export declare const Text: <T extends {
         xl: string;
         '2xl': string;
         '3xl': string;
+        '4xl': string;
     };
     lineHeight: {
         xs: string;
@@ -352,7 +352,6 @@ export declare const getTextWithTheme: <T extends {
         '6xl': string;
     };
     fontWeight: {
-        xxxs: string;
         xxs: string;
         xs: string;
         s: string;
@@ -361,6 +360,7 @@ export declare const getTextWithTheme: <T extends {
         xl: string;
         '2xl': string;
         '3xl': string;
+        '4xl': string;
     };
     lineHeight: {
         xs: string;

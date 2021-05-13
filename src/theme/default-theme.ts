@@ -131,15 +131,15 @@ const fontSize = {
 };
 
 const fontWeight = {
-    xxxs: '100',
-    xxs: '200',
-    xs: '300',
-    s: '400',
-    m: '500',
-    l: '600',
-    xl: '700',
-    '2xl': '800',
-    '3xl': '900',
+    xxs: '100',
+    xs: '200',
+    s: '300',
+    m: '400',
+    l: '500',
+    xl: '600',
+    '2xl': '700',
+    '3xl': '800',
+    '4xl': '900',
 };
 
 const lineHeight = {
@@ -210,6 +210,8 @@ const components = {
     Text: (variant?: TextVariant) => {
         const { css } = useCss();
         switch (variant) {
+            case 'bold':
+                return css({ fontFamily: 'sans', fontSize: 'm', fontWeight: 'l' });
             case 'body1':
                 return css({ fontFamily: 'sans', fontSize: 'm', fontWeight: 'm' });
             case 'body2':

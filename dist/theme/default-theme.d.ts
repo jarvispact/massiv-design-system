@@ -140,7 +140,6 @@ export declare const defaultTheme: {
         '6xl': string;
     };
     fontWeight: {
-        xxxs: string;
         xxs: string;
         xs: string;
         s: string;
@@ -149,6 +148,7 @@ export declare const defaultTheme: {
         xl: string;
         '2xl': string;
         '3xl': string;
+        '4xl': string;
     };
     lineHeight: {
         xs: string;

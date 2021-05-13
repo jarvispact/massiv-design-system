@@ -34,6 +34,7 @@ export const defaultHeadings = () => {
 export const defaultText = () => {
     return (
         <>
+            <Text variant="bold">bold: The quick brown fox jumps over the lazy dog</Text>
             <Text variant="body1">body1: The quick brown fox jumps over the lazy dog</Text>
             <Text variant="body2">body2: The quick brown fox jumps over the lazy dog</Text>
             <Text variant="body3">body3: The quick brown fox jumps over the lazy dog</Text>

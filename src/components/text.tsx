@@ -15,7 +15,7 @@ const systemDefinitions = {
 
 type SystemObj<T extends Theme> = TypographySystemObj<T> & ColorSystemObj<T>;
 
-type TextElement = 'div' | 'span' | 'p' | 'label' | 'a';
+type TextElement = 'div' | 'span' | 'p' | 'label' | 'a' | 'i' | 'b';
 
 type TextHTMLElement = HTMLDivElement | HTMLSpanElement | HTMLParagraphElement | HTMLLabelElement | HTMLAnchorElement;
 
