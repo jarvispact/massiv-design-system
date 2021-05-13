@@ -164,12 +164,12 @@ export declare const useCss: <T extends {
         '6xl': string;
     };
     letterSpacing: {
-        tighter: string;
-        tight: string;
-        normal: string;
-        wide: string;
-        wider: string;
-        widest: string;
+        xs: string;
+        s: string;
+        m: string;
+        l: string;
+        xl: string;
+        xxl: string;
     };
     radii: {
         s: string;
@@ -182,6 +182,18 @@ export declare const useCss: <T extends {
         s: string;
         m: string;
         l: string;
+    };
+    zIndex: {
+        '0': number;
+        '10': number;
+        '20': number;
+        '30': number;
+        '40': number;
+        '50': number;
+    };
+    components: {
+        Heading: (variant?: import("..").HeadingVariant | undefined) => string;
+        Text: (variant?: import("..").TextVariant | undefined) => string;
     };
 }>() => {
     css: (obj: SystemObj<T>) => string;

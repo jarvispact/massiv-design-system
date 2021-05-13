@@ -171,12 +171,12 @@ export declare const Box: <T extends {
         '6xl': string;
     };
     letterSpacing: {
-        tighter: string;
-        tight: string;
-        normal: string;
-        wide: string;
-        wider: string;
-        widest: string;
+        xs: string;
+        s: string;
+        m: string;
+        l: string;
+        xl: string;
+        xxl: string;
     };
     radii: {
         s: string;
@@ -189,6 +189,18 @@ export declare const Box: <T extends {
         s: string;
         m: string;
         l: string;
+    };
+    zIndex: {
+        '0': number;
+        '10': number;
+        '20': number;
+        '30': number;
+        '40': number;
+        '50': number;
+    };
+    components: {
+        Heading: (variant?: import("..").HeadingVariant | undefined) => string;
+        Text: (variant?: import("..").TextVariant | undefined) => string;
     };
 }>({ as, children, className, ...props }: BoxProps<T, HTMLDivElement>) => React.ReactElement<any, string | React.JSXElementConstructor<any>>;
 export declare const getBoxWithTheme: <T extends {
@@ -355,12 +367,12 @@ export declare const getBoxWithTheme: <T extends {
         '6xl': string;
     };
     letterSpacing: {
-        tighter: string;
-        tight: string;
-        normal: string;
-        wide: string;
-        wider: string;
-        widest: string;
+        xs: string;
+        s: string;
+        m: string;
+        l: string;
+        xl: string;
+        xxl: string;
     };
     radii: {
         s: string;
@@ -373,5 +385,17 @@ export declare const getBoxWithTheme: <T extends {
         s: string;
         m: string;
         l: string;
+    };
+    zIndex: {
+        '0': number;
+        '10': number;
+        '20': number;
+        '30': number;
+        '40': number;
+        '50': number;
+    };
+    components: {
+        Heading: (variant?: import("..").HeadingVariant | undefined) => string;
+        Text: (variant?: import("..").TextVariant | undefined) => string;
     };
 }, HTMLElem extends HTMLDivElement = HTMLDivElement>() => React.FC<BoxProps<T, HTMLElem>>;

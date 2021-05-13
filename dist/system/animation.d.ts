@@ -50,7 +50,7 @@ export declare const animationSystemDef: {
         };
     };
 };
-export declare type AnimationObj<T extends Theme> = Partial<{
+export declare type AnimationSystemObj<T extends Theme> = Partial<{
     animation: CssProperty<T, 'animation'>;
     animationName: CssProperty<T, 'animationName'>;
     animationDuration: CssProperty<T, 'animationDuration'>;

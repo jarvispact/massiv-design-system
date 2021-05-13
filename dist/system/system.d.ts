@@ -1,18 +1,18 @@
 import { CSSProperties } from 'react';
 import { Theme } from '../theme/default-theme';
-import { PaddingObj } from '../system/padding';
-import { MarginObj } from '../system/margin';
-import { TypographyObj } from '../system/typography';
-import { ColorObj } from './color';
-import { BorderObj } from './border';
-import { FlexObj } from './flex';
-import { GridObj } from './grid';
-import { WidthObj } from './width';
-import { HeightObj } from './height';
-import { MiscObj } from './misc';
+import { PaddingSystemObj } from '../system/padding';
+import { MarginSystemObj } from '../system/margin';
+import { TypographySystemObj } from '../system/typography';
+import { ColorSystemObj } from './color';
+import { BorderSystemObj } from './border';
+import { FlexSystemObj } from './flex';
+import { GridSystemObj } from './grid';
+import { WidthSystemObj } from './width';
+import { HeightSystemObj } from './height';
+import { MiscSystemObj } from './misc';
 import { LiteralUnion, UnpackThemeScope } from '../utils/types';
-import { AnimationObj } from './animation';
-import { TransitionObj } from './transition';
+import { AnimationSystemObj } from './animation';
+import { TransitionSystemObj } from './transition';
 declare type BreakPointKey<T extends Theme> = keyof T['breakpoint'];
 export declare type CssValueObject<T extends Theme, V extends string | number> = Partial<{
     [K in BreakPointKey<T>]: V;
@@ -846,5 +846,5 @@ export declare const systemDefinitions: {
         };
     };
 };
-export declare type SystemObj<T extends Theme> = PaddingObj<T> & MarginObj<T> & TypographyObj<T> & ColorObj<T> & BorderObj<T> & FlexObj<T> & GridObj<T> & WidthObj<T> & HeightObj<T> & MiscObj<T> & AnimationObj<T> & TransitionObj<T>;
+export declare type SystemObj<T extends Theme> = PaddingSystemObj<T> & MarginSystemObj<T> & TypographySystemObj<T> & ColorSystemObj<T> & BorderSystemObj<T> & FlexSystemObj<T> & GridSystemObj<T> & WidthSystemObj<T> & HeightSystemObj<T> & MiscSystemObj<T> & AnimationSystemObj<T> & TransitionSystemObj<T>;
 export {};

@@ -242,7 +242,7 @@ export declare const borderSystemDef: {
         };
     };
 };
-export declare type BorderObj<T extends Theme> = Partial<{
+export declare type BorderSystemObj<T extends Theme> = Partial<{
     borderStyle: CssProperty<T, 'borderStyle'>;
     bs: CssProperty<T, 'borderStyle'>;
     borderWidth: ScopedThemeKeyOrStringValue<T, 'width'>;

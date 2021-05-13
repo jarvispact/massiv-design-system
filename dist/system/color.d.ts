@@ -21,5 +21,5 @@ export declare const colorSystemDef: {
     };
 };
 declare type ColorKey = keyof typeof colorSystemDef;
-export declare type ColorObj<T extends Theme> = Partial<Record<ColorKey, ScopedThemeKeyOrStringValue<T, 'color'>>>;
+export declare type ColorSystemObj<T extends Theme> = Partial<Record<ColorKey, ScopedThemeKeyOrStringValue<T, 'color'>>>;
 export {};

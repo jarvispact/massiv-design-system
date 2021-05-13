@@ -86,7 +86,7 @@ export declare const gridSystemDef: {
         };
     };
 };
-export declare type GridObj<T extends Theme> = Partial<{
+export declare type GridSystemObj<T extends Theme> = Partial<{
     gridTemplateColumns: CssProperty<T, 'gridTemplateColumns'>;
     gridTemplateRows: CssProperty<T, 'gridTemplateRows'>;
     gridTemplateAreas: CssProperty<T, 'gridTemplateAreas'>;

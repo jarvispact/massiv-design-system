@@ -1,3 +1,4 @@
+import { HeadingVariant, TextVariant } from '../system/variant';
 export declare const defaultTheme: {
     breakpoint: {
         s: string;
@@ -162,12 +163,12 @@ export declare const defaultTheme: {
         '6xl': string;
     };
     letterSpacing: {
-        tighter: string;
-        tight: string;
-        normal: string;
-        wide: string;
-        wider: string;
-        widest: string;
+        xs: string;
+        s: string;
+        m: string;
+        l: string;
+        xl: string;
+        xxl: string;
     };
     radii: {
         s: string;
@@ -180,6 +181,18 @@ export declare const defaultTheme: {
         s: string;
         m: string;
         l: string;
+    };
+    zIndex: {
+        '0': number;
+        '10': number;
+        '20': number;
+        '30': number;
+        '40': number;
+        '50': number;
+    };
+    components: {
+        Heading: (variant?: HeadingVariant | undefined) => string;
+        Text: (variant?: TextVariant | undefined) => string;
     };
 };
 export declare type Theme = typeof defaultTheme;

@@ -168,12 +168,12 @@ export declare const ThemeContext: React.Context<Ctx<{
         '6xl': string;
     };
     letterSpacing: {
-        tighter: string;
-        tight: string;
-        normal: string;
-        wide: string;
-        wider: string;
-        widest: string;
+        xs: string;
+        s: string;
+        m: string;
+        l: string;
+        xl: string;
+        xxl: string;
     };
     radii: {
         s: string;
@@ -186,6 +186,18 @@ export declare const ThemeContext: React.Context<Ctx<{
         s: string;
         m: string;
         l: string;
+    };
+    zIndex: {
+        '0': number;
+        '10': number;
+        '20': number;
+        '30': number;
+        '40': number;
+        '50': number;
+    };
+    components: {
+        Heading: (variant?: import("..").HeadingVariant | undefined) => string;
+        Text: (variant?: import("..").TextVariant | undefined) => string;
     };
 }>>;
 declare type Props<T extends Theme> = {
@@ -356,12 +368,12 @@ export declare const ThemeProvider: <T extends {
         '6xl': string;
     };
     letterSpacing: {
-        tighter: string;
-        tight: string;
-        normal: string;
-        wide: string;
-        wider: string;
-        widest: string;
+        xs: string;
+        s: string;
+        m: string;
+        l: string;
+        xl: string;
+        xxl: string;
     };
     radii: {
         s: string;
@@ -374,6 +386,18 @@ export declare const ThemeProvider: <T extends {
         s: string;
         m: string;
         l: string;
+    };
+    zIndex: {
+        '0': number;
+        '10': number;
+        '20': number;
+        '30': number;
+        '40': number;
+        '50': number;
+    };
+    components: {
+        Heading: (variant?: import("..").HeadingVariant | undefined) => string;
+        Text: (variant?: import("..").TextVariant | undefined) => string;
     };
 }>({ theme, children }: Props<T>) => JSX.Element;
 export declare const useTheme: <T extends {
@@ -540,12 +564,12 @@ export declare const useTheme: <T extends {
         '6xl': string;
     };
     letterSpacing: {
-        tighter: string;
-        tight: string;
-        normal: string;
-        wide: string;
-        wider: string;
-        widest: string;
+        xs: string;
+        s: string;
+        m: string;
+        l: string;
+        xl: string;
+        xxl: string;
     };
     radii: {
         s: string;
@@ -558,6 +582,18 @@ export declare const useTheme: <T extends {
         s: string;
         m: string;
         l: string;
+    };
+    zIndex: {
+        '0': number;
+        '10': number;
+        '20': number;
+        '30': number;
+        '40': number;
+        '50': number;
+    };
+    components: {
+        Heading: (variant?: import("..").HeadingVariant | undefined) => string;
+        Text: (variant?: import("..").TextVariant | undefined) => string;
     };
 }>() => Ctx<T>;
 export {};

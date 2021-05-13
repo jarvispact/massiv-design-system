@@ -104,7 +104,7 @@ export declare const miscSystemDef: {
         };
     };
 };
-export declare type MiscObj<T extends Theme> = Partial<{
+export declare type MiscSystemObj<T extends Theme> = Partial<{
     display: CssProperty<T, 'display'>;
     clipPath: CssProperty<T, 'clipPath'>;
     listStyle: CssProperty<T, 'listStyle'>;
@@ -115,7 +115,7 @@ export declare type MiscObj<T extends Theme> = Partial<{
     left: CssProperty<T, 'left'>;
     bottom: CssProperty<T, 'bottom'>;
     right: CssProperty<T, 'right'>;
-    zIndex: CssProperty<T, 'zIndex'>;
+    zIndex: ScopedThemeKeyOrStringValue<T, 'zIndex'>;
     boxShadow: ScopedThemeKeyOrStringValue<T, 'shadow'>;
     outline: CssProperty<T, 'outline'>;
     outlineColor: ScopedThemeKeyOrStringValue<T, 'color'>;

@@ -56,7 +56,7 @@ export declare const typographySystemDef: {
         };
     };
 };
-export declare type TypographyObj<T extends Theme> = Partial<{
+export declare type TypographySystemObj<T extends Theme> = Partial<{
     fontFamily: ScopedThemeKeyOrStringValue<T, 'fontFamily'>;
     fontSize: ScopedThemeKeyOrStringValue<T, 'fontSize'>;
     fontWeight: ScopedThemeKeyOrStringValue<T, 'fontWeight'>;

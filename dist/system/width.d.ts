@@ -39,5 +39,5 @@ export declare const widthSystemDef: {
     };
 };
 declare type WidthKey = keyof typeof widthSystemDef;
-export declare type WidthObj<T extends Theme> = Partial<Record<WidthKey, ScopedThemeKeyOrStringValue<T, 'width'>>>;
+export declare type WidthSystemObj<T extends Theme> = Partial<Record<WidthKey, ScopedThemeKeyOrStringValue<T, 'width'>>>;
 export {};

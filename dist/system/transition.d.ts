@@ -32,7 +32,7 @@ export declare const transitionSystemDef: {
         };
     };
 };
-export declare type TransitionObj<T extends Theme> = Partial<{
+export declare type TransitionSystemObj<T extends Theme> = Partial<{
     transition: CssProperty<T, 'transition'>;
     transitionDelay: CssProperty<T, 'transitionDelay'>;
     transitionDuration: CssProperty<T, 'transitionDuration'>;

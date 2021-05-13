@@ -1325,12 +1325,12 @@ var lineHeight = {
     '6xl': '4rem',
 };
 var letterSpacing = {
-    tighter: '-0.05em',
-    tight: '-0.025em',
-    normal: '0',
-    wide: '0.025em',
-    wider: '0.05em',
-    widest: '0.1em',
+    xs: '-0.05em',
+    s: '-0.025em',
+    m: '0',
+    l: '0.025em',
+    xl: '0.05em',
+    xxl: '0.1em',
 };
 var radii = {
     s: '2px',
@@ -1343,6 +1343,52 @@ var shadow = {
     s: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
     m: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
     l: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+};
+var zIndex = {
+    '0': 0,
+    '10': 0,
+    '20': 0,
+    '30': 0,
+    '40': 0,
+    '50': 0,
+};
+var components = {
+    Heading: function (variant) {
+        var css = useCss().css;
+        switch (variant) {
+            case 'h1':
+                return css({ fontFamily: 'serif', fontSize: { value: '3xl', m: '4xl' } });
+            case 'h2':
+                return css({ fontFamily: 'serif', fontSize: { value: '2xl', m: '3xl' } });
+            case 'h3':
+                return css({ fontFamily: 'serif', fontSize: { value: 'xl', m: '2xl' } });
+            case 'h4':
+                return css({ fontFamily: 'serif', fontSize: { value: 'l', m: 'xl' } });
+            case 'h5':
+                return css({ fontFamily: 'serif', fontSize: { value: 'm', m: 'l' } });
+            case 'h6':
+                return css({ fontFamily: 'serif', fontSize: { value: 'm', m: 'm' } });
+            default:
+                return css({ fontFamily: 'serif' });
+        }
+    },
+    Text: function (variant) {
+        var css = useCss().css;
+        switch (variant) {
+            case 'body1':
+                return css({ fontFamily: 'sans', fontSize: 'm', fontWeight: 'm' });
+            case 'body2':
+                return css({ fontFamily: 'sans', fontSize: 'm', fontWeight: 's' });
+            case 'body3':
+                return css({ fontFamily: 'sans', fontSize: 's', fontWeight: 's' });
+            case 'body4':
+                return css({ fontFamily: 'sans', fontSize: 's', fontWeight: 'xs' });
+            case 'body5':
+                return css({ fontFamily: 'sans', fontSize: 'xs', fontWeight: 'xs' });
+            default:
+                return css({ fontFamily: 'sans' });
+        }
+    },
 };
 var defaultTheme = {
     breakpoint: breakpoint,
@@ -1357,6 +1403,8 @@ var defaultTheme = {
     letterSpacing: letterSpacing,
     radii: radii,
     shadow: shadow,
+    zIndex: zIndex,
+    components: components,
 };
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -1591,11 +1639,11 @@ var transitionSystemDef = {
     transitionTimingFunction: { themeScope: null, getCSS: function (v) { return ({ transitionTimingFunction: v }); } },
 };
 
-var systemDefinitions = __assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign({}, paddingSystemDef), marginSystemDef), typographySystemDef), colorSystemDef), borderSystemDef), flexSystemDef), gridSystemDef), widthSystemDef), heightSystemDef), miscSystemDef), animationSystemDef), transitionSystemDef);
+var systemDefinitions$2 = __assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign({}, paddingSystemDef), marginSystemDef), typographySystemDef), colorSystemDef), borderSystemDef), flexSystemDef), gridSystemDef), widthSystemDef), heightSystemDef), miscSystemDef), animationSystemDef), transitionSystemDef);
 
 var useCss = function () {
     var theme = useTheme().theme;
-    var css$1 = function (obj) { return css(buildCssObj(theme, systemDefinitions, obj)); };
+    var css$1 = function (obj) { return css(buildCssObj(theme, systemDefinitions$2, obj)); };
     return { css: css$1, theme: theme, rawCss: css };
 };
 
@@ -1608,7 +1656,7 @@ var omit = function (propertyList, obj) {
     }, {});
 };
 
-var omitProps$2 = Object.keys(systemDefinitions);
+var omitProps$2 = Object.keys(systemDefinitions$2);
 var Box = function (_a) {
     var _b = _a.as, as = _b === void 0 ? 'div' : _b, children = _a.children, className = _a.className, props = __rest(_a, ["as", "children", "className"]);
     var css = useCss().css;
@@ -1618,22 +1666,24 @@ var Box = function (_a) {
 };
 var getBoxWithTheme = function () { return Box; };
 
-var omitProps$1 = Object.keys(typographySystemDef);
+var systemDefinitions$1 = __assign(__assign({}, typographySystemDef), colorSystemDef);
+var omitProps$1 = Object.keys(systemDefinitions$1);
 var Heading = function (_a) {
-    var _b = _a.as, as = _b === void 0 ? 'h1' : _b, children = _a.children, className = _a.className, props = __rest(_a, ["as", "children", "className"]);
+    var _b = _a.as, as = _b === void 0 ? 'h1' : _b, variant = _a.variant, children = _a.children, className = _a.className, props = __rest(_a, ["as", "variant", "children", "className"]);
     var _c = useCss(), css = _c.css, theme = _c.theme;
-    var defaultStyle = css({ fontFamily: theme.fontFamily.serif });
+    var defaultStyle = theme.components.Heading(variant);
     var dynamicStyle = css(props);
     var newClassName = cx(defaultStyle, dynamicStyle, className);
     return React.createElement(as, __assign(__assign({}, omit(omitProps$1, props)), { className: newClassName }), children);
 };
 var getHeadingWithTheme = function () { return Heading; };
 
-var omitProps = Object.keys(typographySystemDef);
+var systemDefinitions = __assign(__assign({}, typographySystemDef), colorSystemDef);
+var omitProps = Object.keys(systemDefinitions);
 var Text = function (_a) {
-    var _b = _a.as, as = _b === void 0 ? 'p' : _b, children = _a.children, className = _a.className, props = __rest(_a, ["as", "children", "className"]);
+    var _b = _a.as, as = _b === void 0 ? 'p' : _b, variant = _a.variant, children = _a.children, className = _a.className, props = __rest(_a, ["as", "variant", "children", "className"]);
     var _c = useCss(), css = _c.css, theme = _c.theme;
-    var defaultStyle = css({ fontFamily: theme.fontFamily.sans });
+    var defaultStyle = theme.components.Text(variant);
     var dynamicStyle = css(props);
     var newClassName = cx(defaultStyle, dynamicStyle, className);
     return React.createElement(as, __assign(__assign({}, omit(omitProps, props)), { className: newClassName }), children);
@@ -1649,5 +1699,5 @@ var CssReset = function () {
 };
 var templateObject_1;
 
-export { Box, CssReset, Heading, Text, ThemeContext, ThemeProvider, cache, css, cx, defaultTheme, flush, getBoxWithTheme, getHeadingWithTheme, getRegisteredStyles, getTextWithTheme, hydrate, injectGlobal, injectGlobalStyle, keyframes, merge, sheet, useCss, useTheme };
+export { Box, CssReset, Heading, Text, ThemeContext, ThemeProvider, animationSystemDef, borderSystemDef, cache, colorSystemDef, css, cx, defaultTheme, flexSystemDef, flush, getBoxWithTheme, getHeadingWithTheme, getRegisteredStyles, getTextWithTheme, gridSystemDef, heightSystemDef, hydrate, injectGlobal, injectGlobalStyle, keyframes, marginSystemDef, merge, miscSystemDef, paddingSystemDef, sheet, systemDefinitions$2 as systemDefinitions, transitionSystemDef, typographySystemDef, useCss, useTheme, widthSystemDef };
 //# sourceMappingURL=index.es.js.map

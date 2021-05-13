@@ -68,7 +68,7 @@ export declare const flexSystemDef: {
         };
     };
 };
-export declare type FlexObj<T extends Theme> = Partial<{
+export declare type FlexSystemObj<T extends Theme> = Partial<{
     flexDirection: CssProperty<T, 'flexDirection'>;
     flexWrap: CssProperty<T, 'flexWrap'>;
     flexFlow: CssProperty<T, 'flexFlow'>;

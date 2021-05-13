@@ -1,10 +1,14 @@
 import React from 'react';
 import { Theme } from '../theme/default-theme';
-import { TypographyObj } from '../system/typography';
+import { TypographySystemObj } from '../system/typography';
 import { HTMLAttributesWithoutColor } from '../utils/types';
+import { HeadingVariant } from '../system/variant';
+import { ColorSystemObj } from '../system/color';
+declare type SystemObj<T extends Theme> = TypographySystemObj<T> & ColorSystemObj<T>;
 declare type HeadingElement = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-export declare type HeadingProps<T extends Theme = Theme> = HTMLAttributesWithoutColor<HTMLHeadingElement> & TypographyObj<T> & {
+export declare type HeadingProps<T extends Theme = Theme> = HTMLAttributesWithoutColor<HTMLHeadingElement> & SystemObj<T> & {
     as?: HeadingElement;
+    variant?: HeadingVariant;
     children: React.ReactNode;
     [x: string]: unknown;
 };
@@ -172,12 +176,12 @@ export declare const Heading: <T extends {
         '6xl': string;
     };
     letterSpacing: {
-        tighter: string;
-        tight: string;
-        normal: string;
-        wide: string;
-        wider: string;
-        widest: string;
+        xs: string;
+        s: string;
+        m: string;
+        l: string;
+        xl: string;
+        xxl: string;
     };
     radii: {
         s: string;
@@ -191,7 +195,19 @@ export declare const Heading: <T extends {
         m: string;
         l: string;
     };
-}>({ as, children, className, ...props }: HeadingProps<T>) => React.DetailedReactHTMLElement<{
+    zIndex: {
+        '0': number;
+        '10': number;
+        '20': number;
+        '30': number;
+        '40': number;
+        '50': number;
+    };
+    components: {
+        Heading: (variant?: HeadingVariant | undefined) => string;
+        Text: (variant?: import("../system/variant").TextVariant | undefined) => string;
+    };
+}>({ as, variant, children, className, ...props }: HeadingProps<T>) => React.DetailedReactHTMLElement<{
     className: string;
 }, HTMLElement>;
 export declare const getHeadingWithTheme: <T extends {
@@ -358,12 +374,12 @@ export declare const getHeadingWithTheme: <T extends {
         '6xl': string;
     };
     letterSpacing: {
-        tighter: string;
-        tight: string;
-        normal: string;
-        wide: string;
-        wider: string;
-        widest: string;
+        xs: string;
+        s: string;
+        m: string;
+        l: string;
+        xl: string;
+        xxl: string;
     };
     radii: {
         s: string;
@@ -376,6 +392,18 @@ export declare const getHeadingWithTheme: <T extends {
         s: string;
         m: string;
         l: string;
+    };
+    zIndex: {
+        '0': number;
+        '10': number;
+        '20': number;
+        '30': number;
+        '40': number;
+        '50': number;
+    };
+    components: {
+        Heading: (variant?: HeadingVariant | undefined) => string;
+        Text: (variant?: import("../system/variant").TextVariant | undefined) => string;
     };
 }>() => React.FC<HeadingProps<T>>;
 export {};

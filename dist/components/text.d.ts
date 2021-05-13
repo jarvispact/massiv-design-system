@@ -1,11 +1,15 @@
 import React from 'react';
-import { TypographyObj } from '../system/typography';
+import { ColorSystemObj } from '../system/color';
+import { TypographySystemObj } from '../system/typography';
+import { TextVariant } from '../system/variant';
 import { Theme } from '../theme/default-theme';
 import { HTMLAttributesWithoutColor } from '../utils/types';
+declare type SystemObj<T extends Theme> = TypographySystemObj<T> & ColorSystemObj<T>;
 declare type TextElement = 'div' | 'span' | 'p' | 'label' | 'a';
 declare type TextHTMLElement = HTMLDivElement | HTMLSpanElement | HTMLParagraphElement | HTMLLabelElement | HTMLAnchorElement;
-export declare type TextProps<T extends Theme = Theme, HTMLElem extends TextHTMLElement = TextHTMLElement> = HTMLAttributesWithoutColor<HTMLElem> & TypographyObj<T> & {
+export declare type TextProps<T extends Theme = Theme, HTMLElem extends TextHTMLElement = TextHTMLElement> = HTMLAttributesWithoutColor<HTMLElem> & SystemObj<T> & {
     as?: TextElement;
+    variant?: TextVariant;
     children: React.ReactNode;
     [x: string]: unknown;
 };
@@ -173,12 +177,12 @@ export declare const Text: <T extends {
         '6xl': string;
     };
     letterSpacing: {
-        tighter: string;
-        tight: string;
-        normal: string;
-        wide: string;
-        wider: string;
-        widest: string;
+        xs: string;
+        s: string;
+        m: string;
+        l: string;
+        xl: string;
+        xxl: string;
     };
     radii: {
         s: string;
@@ -192,7 +196,19 @@ export declare const Text: <T extends {
         m: string;
         l: string;
     };
-}>({ as, children, className, ...props }: TextProps<T, TextHTMLElement>) => React.DetailedReactHTMLElement<{
+    zIndex: {
+        '0': number;
+        '10': number;
+        '20': number;
+        '30': number;
+        '40': number;
+        '50': number;
+    };
+    components: {
+        Heading: (variant?: import("../system/variant").HeadingVariant | undefined) => string;
+        Text: (variant?: TextVariant | undefined) => string;
+    };
+}>({ as, variant, children, className, ...props }: TextProps<T, TextHTMLElement>) => React.DetailedReactHTMLElement<{
     className: string;
 }, HTMLElement>;
 export declare const getTextWithTheme: <T extends {
@@ -359,12 +375,12 @@ export declare const getTextWithTheme: <T extends {
         '6xl': string;
     };
     letterSpacing: {
-        tighter: string;
-        tight: string;
-        normal: string;
-        wide: string;
-        wider: string;
-        widest: string;
+        xs: string;
+        s: string;
+        m: string;
+        l: string;
+        xl: string;
+        xxl: string;
     };
     radii: {
         s: string;
@@ -377,6 +393,18 @@ export declare const getTextWithTheme: <T extends {
         s: string;
         m: string;
         l: string;
+    };
+    zIndex: {
+        '0': number;
+        '10': number;
+        '20': number;
+        '30': number;
+        '40': number;
+        '50': number;
+    };
+    components: {
+        Heading: (variant?: import("../system/variant").HeadingVariant | undefined) => string;
+        Text: (variant?: TextVariant | undefined) => string;
     };
 }, HTMLElem extends TextHTMLElement = TextHTMLElement>() => React.FC<TextProps<T, HTMLElem>>;
 export {};
