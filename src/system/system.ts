@@ -1,18 +1,18 @@
 import { CSSProperties } from 'react';
 import { Theme } from '../theme/default-theme';
-import { paddingSystemDef, PaddingObj } from '../system/padding';
-import { marginSystemDef, MarginObj } from '../system/margin';
-import { typographySystemDef, TypographyObj } from '../system/typography';
-import { ColorObj, colorSystemDef } from './color';
-import { BorderObj, borderSystemDef } from './border';
-import { FlexObj, flexSystemDef } from './flex';
-import { GridObj, gridSystemDef } from './grid';
-import { WidthObj, widthSystemDef } from './width';
-import { HeightObj, heightSystemDef } from './height';
-import { MiscObj, miscSystemDef } from './misc';
+import { paddingSystemDef, PaddingSystemObj } from '../system/padding';
+import { marginSystemDef, MarginSystemObj } from '../system/margin';
+import { typographySystemDef, TypographySystemObj } from '../system/typography';
+import { ColorSystemObj, colorSystemDef } from './color';
+import { BorderSystemObj, borderSystemDef } from './border';
+import { FlexSystemObj, flexSystemDef } from './flex';
+import { GridSystemObj, gridSystemDef } from './grid';
+import { WidthSystemObj, widthSystemDef } from './width';
+import { HeightSystemObj, heightSystemDef } from './height';
+import { MiscSystemObj, miscSystemDef } from './misc';
 import { LiteralUnion, UnpackThemeScope } from '../utils/types';
-import { AnimationObj, animationSystemDef } from './animation';
-import { TransitionObj, transitionSystemDef } from './transition';
+import { AnimationSystemObj, animationSystemDef } from './animation';
+import { TransitionSystemObj, transitionSystemDef } from './transition';
 
 type BreakPointKey<T extends Theme> = keyof T['breakpoint'];
 
@@ -52,15 +52,15 @@ export const systemDefinitions = {
     ...transitionSystemDef,
 };
 
-export type SystemObj<T extends Theme> = PaddingObj<T> &
-    MarginObj<T> &
-    TypographyObj<T> &
-    ColorObj<T> &
-    BorderObj<T> &
-    FlexObj<T> &
-    GridObj<T> &
-    WidthObj<T> &
-    HeightObj<T> &
-    MiscObj<T> &
-    AnimationObj<T> &
-    TransitionObj<T>;
+export type SystemObj<T extends Theme> = PaddingSystemObj<T> &
+    MarginSystemObj<T> &
+    TypographySystemObj<T> &
+    ColorSystemObj<T> &
+    BorderSystemObj<T> &
+    FlexSystemObj<T> &
+    GridSystemObj<T> &
+    WidthSystemObj<T> &
+    HeightSystemObj<T> &
+    MiscSystemObj<T> &
+    AnimationSystemObj<T> &
+    TransitionSystemObj<T>;

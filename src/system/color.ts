@@ -8,4 +8,4 @@ export const colorSystemDef = {
 };
 
 type ColorKey = keyof typeof colorSystemDef;
-export type ColorObj<T extends Theme> = Partial<Record<ColorKey, ScopedThemeKeyOrStringValue<T, 'color'>>>;
+export type ColorSystemObj<T extends Theme> = Partial<Record<ColorKey, ScopedThemeKeyOrStringValue<T, 'color'>>>;

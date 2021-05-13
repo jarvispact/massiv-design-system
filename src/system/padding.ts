@@ -13,4 +13,4 @@ export const paddingSystemDef = {
 };
 
 type PaddingKey = keyof typeof paddingSystemDef;
-export type PaddingObj<T extends Theme> = Partial<Record<PaddingKey, ScopedThemeKeyOrStringValue<T, 'spacing'>>>;
+export type PaddingSystemObj<T extends Theme> = Partial<Record<PaddingKey, ScopedThemeKeyOrStringValue<T, 'spacing'>>>;

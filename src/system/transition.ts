@@ -9,7 +9,7 @@ export const transitionSystemDef = {
     transitionTimingFunction: { themeScope: null, getCSS: (v: string) => ({ transitionTimingFunction: v }) },
 };
 
-export type TransitionObj<T extends Theme> = Partial<{
+export type TransitionSystemObj<T extends Theme> = Partial<{
     transition: CssProperty<T, 'transition'>;
     transitionDelay: CssProperty<T, 'transitionDelay'>;
     transitionDuration: CssProperty<T, 'transitionDuration'>;

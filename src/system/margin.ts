@@ -13,4 +13,4 @@ export const marginSystemDef = {
 };
 
 type MarginKey = keyof typeof marginSystemDef;
-export type MarginObj<T extends Theme> = Partial<Record<MarginKey, ScopedThemeKeyOrStringValue<T, 'spacing'>>>;
+export type MarginSystemObj<T extends Theme> = Partial<Record<MarginKey, ScopedThemeKeyOrStringValue<T, 'spacing'>>>;

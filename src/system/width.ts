@@ -11,4 +11,4 @@ export const widthSystemDef = {
 };
 
 type WidthKey = keyof typeof widthSystemDef;
-export type WidthObj<T extends Theme> = Partial<Record<WidthKey, ScopedThemeKeyOrStringValue<T, 'width'>>>;
+export type WidthSystemObj<T extends Theme> = Partial<Record<WidthKey, ScopedThemeKeyOrStringValue<T, 'width'>>>;

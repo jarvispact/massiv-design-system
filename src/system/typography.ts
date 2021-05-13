@@ -13,7 +13,7 @@ export const typographySystemDef = {
     textTransform: { themeScope: null, getCSS: (v: string) => ({ textTransform: v }) },
 };
 
-export type TypographyObj<T extends Theme> = Partial<{
+export type TypographySystemObj<T extends Theme> = Partial<{
     fontFamily: ScopedThemeKeyOrStringValue<T, 'fontFamily'>;
     fontSize: ScopedThemeKeyOrStringValue<T, 'fontSize'>;
     fontWeight: ScopedThemeKeyOrStringValue<T, 'fontWeight'>;

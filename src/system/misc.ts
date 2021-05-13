@@ -21,7 +21,7 @@ export const miscSystemDef = {
     overflowY: { themeScope: 'color', getCSS: (v: string) => ({ overflowY: v }) },
 };
 
-export type MiscObj<T extends Theme> = Partial<{
+export type MiscSystemObj<T extends Theme> = Partial<{
     display: CssProperty<T, 'display'>;
     clipPath: CssProperty<T, 'clipPath'>;
     listStyle: CssProperty<T, 'listStyle'>;

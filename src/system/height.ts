@@ -11,4 +11,4 @@ export const heightSystemDef = {
 };
 
 type HeightKey = keyof typeof heightSystemDef;
-export type HeightObj<T extends Theme> = Partial<Record<HeightKey, ScopedThemeKeyOrStringValue<T, 'height'>>>;
+export type HeightSystemObj<T extends Theme> = Partial<Record<HeightKey, ScopedThemeKeyOrStringValue<T, 'height'>>>;

@@ -1,8 +1,8 @@
 import { cx } from '@emotion/css';
 import React from 'react';
 import { useCss } from '../hooks/use-css';
-import { ColorObj, colorSystemDef } from '../system/color';
-import { TypographyObj, typographySystemDef } from '../system/typography';
+import { ColorSystemObj, colorSystemDef } from '../system/color';
+import { TypographySystemObj, typographySystemDef } from '../system/typography';
 import { TextVariant } from '../system/variant';
 import { Theme } from '../theme/default-theme';
 import { omit } from '../utils/omit';
@@ -13,7 +13,7 @@ const systemDefinitions = {
     ...colorSystemDef,
 };
 
-type SystemObj<T extends Theme> = TypographyObj<T> & ColorObj<T>;
+type SystemObj<T extends Theme> = TypographySystemObj<T> & ColorSystemObj<T>;
 
 type TextElement = 'div' | 'span' | 'p' | 'label' | 'a';
 

@@ -15,7 +15,7 @@ export const flexSystemDef = {
     alignSelf: { themeScope: null, getCSS: (v: string) => ({ alignSelf: v }) },
 };
 
-export type FlexObj<T extends Theme> = Partial<{
+export type FlexSystemObj<T extends Theme> = Partial<{
     flexDirection: CssProperty<T, 'flexDirection'>;
     flexWrap: CssProperty<T, 'flexWrap'>;
     flexFlow: CssProperty<T, 'flexFlow'>;

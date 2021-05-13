@@ -12,7 +12,7 @@ export const animationSystemDef = {
     animationFillMode: { themeScope: null, getCSS: (v: string) => ({ animationFillMode: v }) },
 };
 
-export type AnimationObj<T extends Theme> = Partial<{
+export type AnimationSystemObj<T extends Theme> = Partial<{
     animation: CssProperty<T, 'animation'>;
     animationName: CssProperty<T, 'animationName'>;
     animationDuration: CssProperty<T, 'animationDuration'>;

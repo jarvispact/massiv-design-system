@@ -18,7 +18,7 @@ export const gridSystemDef = {
     placeSelf: { themeScope: null, getCSS: (v: string) => ({ placeSelf: v }) },
 };
 
-export type GridObj<T extends Theme> = Partial<{
+export type GridSystemObj<T extends Theme> = Partial<{
     gridTemplateColumns: CssProperty<T, 'gridTemplateColumns'>;
     gridTemplateRows: CssProperty<T, 'gridTemplateRows'>;
     gridTemplateAreas: CssProperty<T, 'gridTemplateAreas'>;

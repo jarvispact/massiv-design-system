@@ -53,7 +53,7 @@ export const borderSystemDef = {
     bbrr: { themeScope: 'radii', getCSS: (v: string) => ({ borderBottomRightRadius: v }) },
 };
 
-export type BorderObj<T extends Theme> = Partial<{
+export type BorderSystemObj<T extends Theme> = Partial<{
     borderStyle: CssProperty<T, 'borderStyle'>;
     bs: CssProperty<T, 'borderStyle'>;
     borderWidth: ScopedThemeKeyOrStringValue<T, 'width'>;

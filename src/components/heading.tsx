@@ -1,19 +1,19 @@
 import { cx } from '@emotion/css';
 import React from 'react';
 import { Theme } from '../theme/default-theme';
-import { typographySystemDef, TypographyObj } from '../system/typography';
+import { typographySystemDef, TypographySystemObj } from '../system/typography';
 import { omit } from '../utils/omit';
 import { useCss } from '../hooks/use-css';
 import { HTMLAttributesWithoutColor } from '../utils/types';
 import { HeadingVariant } from '../system/variant';
-import { ColorObj, colorSystemDef } from '../system/color';
+import { ColorSystemObj, colorSystemDef } from '../system/color';
 
 const systemDefinitions = {
     ...typographySystemDef,
     ...colorSystemDef,
 };
 
-type SystemObj<T extends Theme> = TypographyObj<T> & ColorObj<T>;
+type SystemObj<T extends Theme> = TypographySystemObj<T> & ColorSystemObj<T>;
 
 type HeadingElement = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
