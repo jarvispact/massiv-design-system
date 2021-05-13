@@ -5,14 +5,22 @@ import { typographySystemDef, TypographyObj } from '../system/typography';
 import { omit } from '../utils/omit';
 import { useCss } from '../hooks/use-css';
 import { HTMLAttributesWithoutColor } from '../utils/types';
+import { HeadingVariant } from '../system/variant';
+import { ColorObj, colorSystemDef } from '../system/color';
+
+const systemDefinitions = {
+    ...typographySystemDef,
+    ...colorSystemDef,
+};
+
+type SystemObj<T extends Theme> = TypographyObj<T> & ColorObj<T>;
 
 type HeadingElement = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-type HeadingVariant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
-const omitProps = Object.keys(typographySystemDef);
+const omitProps = Object.keys(systemDefinitions);
 
 export type HeadingProps<T extends Theme = Theme> = HTMLAttributesWithoutColor<HTMLHeadingElement> &
-    TypographyObj<T> & {
+    SystemObj<T> & {
         as?: HeadingElement;
         variant?: HeadingVariant;
         children: React.ReactNode;

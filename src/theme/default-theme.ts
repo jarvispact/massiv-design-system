@@ -1,4 +1,5 @@
 import { useCss } from '../hooks/use-css';
+import { HeadingVariant, TextVariant } from '../system/variant';
 
 const breakpoint = {
     s: '640px',
@@ -186,27 +187,41 @@ const zIndex = {
     '50': 0,
 };
 
-type HeadingVariant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-
 const components = {
     Heading: (variant?: HeadingVariant) => {
         const { css } = useCss();
-        console.log('called');
         switch (variant) {
             case 'h1':
-                return css({ fontFamily: 'serif', fontSize: '4xl' });
+                return css({ fontFamily: 'serif', fontSize: { value: '3xl', m: '4xl' } });
             case 'h2':
-                return css({ fontFamily: 'serif', fontSize: '3xl' });
+                return css({ fontFamily: 'serif', fontSize: { value: '2xl', m: '3xl' } });
             case 'h3':
-                return css({ fontFamily: 'serif', fontSize: '2xl' });
+                return css({ fontFamily: 'serif', fontSize: { value: 'xl', m: '2xl' } });
             case 'h4':
-                return css({ fontFamily: 'serif', fontSize: 'xl' });
+                return css({ fontFamily: 'serif', fontSize: { value: 'l', m: 'xl' } });
             case 'h5':
-                return css({ fontFamily: 'serif', fontSize: 'l' });
+                return css({ fontFamily: 'serif', fontSize: { value: 'm', m: 'l' } });
             case 'h6':
-                return css({ fontFamily: 'serif', fontSize: 'm' });
+                return css({ fontFamily: 'serif', fontSize: { value: 'm', m: 'm' } });
             default:
-                return '';
+                return css({ fontFamily: 'serif' });
+        }
+    },
+    Text: (variant?: TextVariant) => {
+        const { css } = useCss();
+        switch (variant) {
+            case 'body1':
+                return css({ fontFamily: 'sans', fontSize: 'm', fontWeight: 'm' });
+            case 'body2':
+                return css({ fontFamily: 'sans', fontSize: 'm', fontWeight: 's' });
+            case 'body3':
+                return css({ fontFamily: 'sans', fontSize: 's', fontWeight: 's' });
+            case 'body4':
+                return css({ fontFamily: 'sans', fontSize: 's', fontWeight: 'xs' });
+            case 'body5':
+                return css({ fontFamily: 'sans', fontSize: 'xs', fontWeight: 'xs' });
+            default:
+                return css({ fontFamily: 'sans' });
         }
     },
 };
