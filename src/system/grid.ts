@@ -1,5 +1,6 @@
+import { CSSProperties } from 'react';
 import { Theme } from '../theme/default-theme';
-import { CssProperty, ScopedThemeKeyOrStringValue } from './system';
+import { ResponsiveThemedValue } from '../utils/types';
 
 export const gridSystemDef = {
     gridTemplateColumns: { themeScope: null, getCSS: (v: string) => ({ gridTemplateColumns: v }) },
@@ -19,18 +20,18 @@ export const gridSystemDef = {
 };
 
 export type GridSystemObj<T extends Theme> = Partial<{
-    gridTemplateColumns: CssProperty<T, 'gridTemplateColumns'>;
-    gridTemplateRows: CssProperty<T, 'gridTemplateRows'>;
-    gridTemplateAreas: CssProperty<T, 'gridTemplateAreas'>;
-    columnGap: ScopedThemeKeyOrStringValue<T, 'spacing'>;
-    rowGap: ScopedThemeKeyOrStringValue<T, 'spacing'>;
-    gap: ScopedThemeKeyOrStringValue<T, 'spacing'>;
-    justifyItems: CssProperty<T, 'justifyItems'>;
-    gridColumnStart: CssProperty<T, 'gridColumnStart'>;
-    gridColumnEnd: CssProperty<T, 'gridColumnEnd'>;
-    gridRowStart: CssProperty<T, 'gridRowStart'>;
-    gridRowEnd: CssProperty<T, 'gridRowEnd'>;
-    gridArea: CssProperty<T, 'gridArea'>;
-    justifySelf: CssProperty<T, 'justifySelf'>;
-    placeSelf: CssProperty<T, 'placeSelf'>;
+    gridTemplateColumns: CSSProperties['gridTemplateColumns'];
+    gridTemplateRows: CSSProperties['gridTemplateRows'];
+    gridTemplateAreas: CSSProperties['gridTemplateAreas'];
+    columnGap: ResponsiveThemedValue<T, 'spacing'>;
+    rowGap: ResponsiveThemedValue<T, 'spacing'>;
+    gap: ResponsiveThemedValue<T, 'spacing'>;
+    justifyItems: CSSProperties['justifyItems'];
+    gridColumnStart: CSSProperties['gridColumnStart'];
+    gridColumnEnd: CSSProperties['gridColumnEnd'];
+    gridRowStart: CSSProperties['gridRowStart'];
+    gridRowEnd: CSSProperties['gridRowEnd'];
+    gridArea: CSSProperties['gridArea'];
+    justifySelf: CSSProperties['justifySelf'];
+    placeSelf: CSSProperties['placeSelf'];
 }>;

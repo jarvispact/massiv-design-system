@@ -1,5 +1,6 @@
+import { CSSProperties } from 'react';
 import { Theme } from '../theme/default-theme';
-import { CssProperty, ScopedThemeKeyOrStringValue } from './system';
+import { ResponsiveThemedValue } from '../utils/types';
 
 export const typographySystemDef = {
     fontFamily: { themeScope: 'fontFamily', getCSS: (v: string) => ({ fontFamily: v }) },
@@ -14,13 +15,13 @@ export const typographySystemDef = {
 };
 
 export type TypographySystemObj<T extends Theme> = Partial<{
-    fontFamily: ScopedThemeKeyOrStringValue<T, 'fontFamily'>;
-    fontSize: ScopedThemeKeyOrStringValue<T, 'fontSize'>;
-    fontWeight: ScopedThemeKeyOrStringValue<T, 'fontWeight'>;
-    lineHeight: ScopedThemeKeyOrStringValue<T, 'lineHeight'>;
-    letterSpacing: ScopedThemeKeyOrStringValue<T, 'letterSpacing'>;
-    textOverflow: CssProperty<T, 'textOverflow'>;
-    whiteSpace: CssProperty<T, 'whiteSpace'>;
-    verticalAlign: CssProperty<T, 'verticalAlign'>;
-    textTransform: CssProperty<T, 'textTransform'>;
+    fontFamily: ResponsiveThemedValue<T, 'fontFamily'>;
+    fontSize: ResponsiveThemedValue<T, 'fontSize'>;
+    fontWeight: ResponsiveThemedValue<T, 'fontWeight'>;
+    lineHeight: ResponsiveThemedValue<T, 'lineHeight'>;
+    letterSpacing: ResponsiveThemedValue<T, 'letterSpacing'>;
+    textOverflow: CSSProperties['textOverflow'];
+    whiteSpace: CSSProperties['whiteSpace'];
+    verticalAlign: CSSProperties['verticalAlign'];
+    textTransform: CSSProperties['textTransform'];
 }>;

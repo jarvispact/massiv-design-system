@@ -1,5 +1,4 @@
-import { Theme } from '../theme/default-theme';
-import { CssProperty } from './system';
+import { CSSProperties } from 'react';
 
 export const animationSystemDef = {
     animation: { themeScope: null, getCSS: (v: string) => ({ animation: v }) },
@@ -12,13 +11,13 @@ export const animationSystemDef = {
     animationFillMode: { themeScope: null, getCSS: (v: string) => ({ animationFillMode: v }) },
 };
 
-export type AnimationSystemObj<T extends Theme> = Partial<{
-    animation: CssProperty<T, 'animation'>;
-    animationName: CssProperty<T, 'animationName'>;
-    animationDuration: CssProperty<T, 'animationDuration'>;
-    animationDelay: CssProperty<T, 'animationDelay'>;
-    animationIterationCount: CssProperty<T, 'animationIterationCount'>;
-    animationDirection: CssProperty<T, 'animationDirection'>;
-    animationTimingFunction: CssProperty<T, 'animationTimingFunction'>;
-    animationFillMode: CssProperty<T, 'animationFillMode'>;
+export type AnimationSystemObj = Partial<{
+    animation: CSSProperties['animation'];
+    animationName: CSSProperties['animationName'];
+    animationDuration: CSSProperties['animationDuration'];
+    animationDelay: CSSProperties['animationDelay'];
+    animationIterationCount: CSSProperties['animationIterationCount'];
+    animationDirection: CSSProperties['animationDirection'];
+    animationTimingFunction: CSSProperties['animationTimingFunction'];
+    animationFillMode: CSSProperties['animationFillMode'];
 }>;

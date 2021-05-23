@@ -1,5 +1,17 @@
 import { Theme } from '../theme/default-theme';
-import { ScopedThemeKeyOrStringValue } from './system';
+import { ResponsiveThemedValue } from '../utils/types';
+
+// const getCSS = <T extends Theme>(value: string, theme: T, themeScope: keyof T) => (property: keyof CSSProperties) => {
+//     const section = theme[themeScope];
+//     if (!themeScope || !section) return value;
+//     console.log({ value, property });
+//     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//     // @ts-ignore
+//     const val = value as keyof T;
+//     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//     // @ts-ignore
+//     return section[val] || value;
+// };
 
 export const paddingSystemDef = {
     padding: { themeScope: 'spacing', getCSS: (v: string) => ({ padding: v }) },
@@ -13,4 +25,4 @@ export const paddingSystemDef = {
 };
 
 type PaddingKey = keyof typeof paddingSystemDef;
-export type PaddingSystemObj<T extends Theme> = Partial<Record<PaddingKey, ScopedThemeKeyOrStringValue<T, 'spacing'>>>;
+export type PaddingSystemObj<T extends Theme> = Partial<Record<PaddingKey, ResponsiveThemedValue<T, 'spacing'>>>;

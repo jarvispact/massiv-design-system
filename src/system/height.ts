@@ -1,5 +1,5 @@
 import { Theme } from '../theme/default-theme';
-import { ScopedThemeKeyOrStringValue } from './system';
+import { ResponsiveThemedValue } from '../utils/types';
 
 export const heightSystemDef = {
     height: { themeScope: 'height', getCSS: (v: string) => ({ height: v }) },
@@ -11,4 +11,4 @@ export const heightSystemDef = {
 };
 
 type HeightKey = keyof typeof heightSystemDef;
-export type HeightSystemObj<T extends Theme> = Partial<Record<HeightKey, ScopedThemeKeyOrStringValue<T, 'height'>>>;
+export type HeightSystemObj<T extends Theme> = Partial<Record<HeightKey, ResponsiveThemedValue<T, 'height'>>>;

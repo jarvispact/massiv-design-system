@@ -1,5 +1,6 @@
+import { CSSProperties } from 'react';
 import { Theme } from '../theme/default-theme';
-import { CssProperty, ScopedThemeKeyOrStringValue } from './system';
+import { ResponsiveThemedValue } from '../utils/types';
 
 export const borderSystemDef = {
     borderStyle: { themeScope: null, getCSS: (v: string) => ({ borderStyle: v }) },
@@ -54,53 +55,53 @@ export const borderSystemDef = {
 };
 
 export type BorderSystemObj<T extends Theme> = Partial<{
-    borderStyle: CssProperty<T, 'borderStyle'>;
-    bs: CssProperty<T, 'borderStyle'>;
-    borderWidth: ScopedThemeKeyOrStringValue<T, 'width'>;
-    bw: ScopedThemeKeyOrStringValue<T, 'width'>;
-    borderColor: ScopedThemeKeyOrStringValue<T, 'color'>;
-    bc: ScopedThemeKeyOrStringValue<T, 'color'>;
+    borderStyle: CSSProperties['borderStyle'];
+    bs: CSSProperties['borderStyle'];
+    borderWidth: ResponsiveThemedValue<T, 'width'>;
+    bw: ResponsiveThemedValue<T, 'width'>;
+    borderColor: ResponsiveThemedValue<T, 'color'>;
+    bc: ResponsiveThemedValue<T, 'color'>;
 
-    borderRadius: ScopedThemeKeyOrStringValue<T, 'radii'>;
-    br: ScopedThemeKeyOrStringValue<T, 'radii'>;
+    borderRadius: ResponsiveThemedValue<T, 'radii'>;
+    br: ResponsiveThemedValue<T, 'radii'>;
 
-    borderTopStyle: CssProperty<T, 'borderStyle'>;
-    bts: CssProperty<T, 'borderStyle'>;
-    borderTopWidth: ScopedThemeKeyOrStringValue<T, 'width'>;
-    btw: ScopedThemeKeyOrStringValue<T, 'width'>;
-    borderTopColor: ScopedThemeKeyOrStringValue<T, 'color'>;
-    btc: ScopedThemeKeyOrStringValue<T, 'color'>;
+    borderTopStyle: CSSProperties['borderStyle'];
+    bts: CSSProperties['borderStyle'];
+    borderTopWidth: ResponsiveThemedValue<T, 'width'>;
+    btw: ResponsiveThemedValue<T, 'width'>;
+    borderTopColor: ResponsiveThemedValue<T, 'color'>;
+    btc: ResponsiveThemedValue<T, 'color'>;
 
-    borderBottomStyle: CssProperty<T, 'borderStyle'>;
-    bbs: CssProperty<T, 'borderStyle'>;
-    borderBottomWidth: ScopedThemeKeyOrStringValue<T, 'width'>;
-    bbw: ScopedThemeKeyOrStringValue<T, 'width'>;
-    borderBottomColor: ScopedThemeKeyOrStringValue<T, 'color'>;
-    bbc: ScopedThemeKeyOrStringValue<T, 'color'>;
+    borderBottomStyle: CSSProperties['borderStyle'];
+    bbs: CSSProperties['borderStyle'];
+    borderBottomWidth: ResponsiveThemedValue<T, 'width'>;
+    bbw: ResponsiveThemedValue<T, 'width'>;
+    borderBottomColor: ResponsiveThemedValue<T, 'color'>;
+    bbc: ResponsiveThemedValue<T, 'color'>;
 
-    borderLeftStyle: CssProperty<T, 'borderStyle'>;
-    bls: CssProperty<T, 'borderStyle'>;
-    borderLeftWidth: ScopedThemeKeyOrStringValue<T, 'width'>;
-    blw: ScopedThemeKeyOrStringValue<T, 'width'>;
-    borderLeftColor: ScopedThemeKeyOrStringValue<T, 'color'>;
-    blc: ScopedThemeKeyOrStringValue<T, 'color'>;
+    borderLeftStyle: CSSProperties['borderStyle'];
+    bls: CSSProperties['borderStyle'];
+    borderLeftWidth: ResponsiveThemedValue<T, 'width'>;
+    blw: ResponsiveThemedValue<T, 'width'>;
+    borderLeftColor: ResponsiveThemedValue<T, 'color'>;
+    blc: ResponsiveThemedValue<T, 'color'>;
 
-    borderRightStyle: CssProperty<T, 'borderStyle'>;
-    brs: CssProperty<T, 'borderStyle'>;
-    borderRightWidth: ScopedThemeKeyOrStringValue<T, 'width'>;
-    brw: ScopedThemeKeyOrStringValue<T, 'width'>;
-    borderRightColor: ScopedThemeKeyOrStringValue<T, 'color'>;
-    brc: ScopedThemeKeyOrStringValue<T, 'color'>;
+    borderRightStyle: CSSProperties['borderStyle'];
+    brs: CSSProperties['borderStyle'];
+    borderRightWidth: ResponsiveThemedValue<T, 'width'>;
+    brw: ResponsiveThemedValue<T, 'width'>;
+    borderRightColor: ResponsiveThemedValue<T, 'color'>;
+    brc: ResponsiveThemedValue<T, 'color'>;
 
-    borderTopLeftRadius: ScopedThemeKeyOrStringValue<T, 'radii'>;
-    btlr: ScopedThemeKeyOrStringValue<T, 'radii'>;
+    borderTopLeftRadius: ResponsiveThemedValue<T, 'radii'>;
+    btlr: ResponsiveThemedValue<T, 'radii'>;
 
-    borderTopRightRadius: ScopedThemeKeyOrStringValue<T, 'radii'>;
-    btrr: ScopedThemeKeyOrStringValue<T, 'radii'>;
+    borderTopRightRadius: ResponsiveThemedValue<T, 'radii'>;
+    btrr: ResponsiveThemedValue<T, 'radii'>;
 
-    borderBottomLeftRadius: ScopedThemeKeyOrStringValue<T, 'radii'>;
-    bblr: ScopedThemeKeyOrStringValue<T, 'radii'>;
+    borderBottomLeftRadius: ResponsiveThemedValue<T, 'radii'>;
+    bblr: ResponsiveThemedValue<T, 'radii'>;
 
-    borderBottomRghtRadius: ScopedThemeKeyOrStringValue<T, 'radii'>;
-    bbrr: ScopedThemeKeyOrStringValue<T, 'radii'>;
+    borderBottomRghtRadius: ResponsiveThemedValue<T, 'radii'>;
+    bbrr: ResponsiveThemedValue<T, 'radii'>;
 }>;
