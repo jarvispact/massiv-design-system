@@ -16,12 +16,12 @@ import { TransitionSystemObj, transitionSystemDef } from './transition';
 
 type BreakPointKey<T extends Theme> = keyof T['breakpoint'];
 
-export type CssValueObject<T extends Theme, V extends string | number> = Partial<{ [K in BreakPointKey<T>]: V }> & {
-    value?: V;
-    hover?: V;
-    focus?: V;
-    hocus?: V;
-};
+export type CssValueObject<T extends Theme, V extends string | number> = { [x: string]: V } & Partial<{ [K in BreakPointKey<T>]: V }> & {
+        value?: V;
+        hover?: V;
+        focus?: V;
+        hocus?: V;
+    };
 
 export type SystemDefinition<T extends Theme> = {
     themeScope: keyof T | null;

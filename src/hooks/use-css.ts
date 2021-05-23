@@ -7,5 +7,5 @@ import { SystemDefinitionObj, SystemObj, systemDefinitions } from '../system/sys
 export const useCss = <T extends Theme>() => {
     const { theme } = useTheme<T>();
     const css = (obj: SystemObj<T>) => _css(buildCssObj<T>(theme, systemDefinitions as SystemDefinitionObj<Theme>, obj) as CSSInterpolation);
-    return { css, theme, rawCss: _css };
+    return { css, theme };
 };

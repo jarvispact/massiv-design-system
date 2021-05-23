@@ -1,144 +1,64 @@
 import React from 'react';
-import { Heading } from '../src/components/heading';
+import { Box } from '../src/components/box';
+import { defaultTheme } from '../src/theme/default-theme';
 import { Text } from '../src/components/text';
+import { useCss } from '../src/hooks/use-css';
 
 export default {
     title: 'Docs/Color Palette',
 };
 
-export const defaultHeadings = () => {
+type ColorBoxProps = {
+    themeKey: string;
+    themeValue: string;
+};
+
+const ColorBox = ({ themeKey, themeValue }: ColorBoxProps) => {
     return (
-        <>
-            <Heading as="h1" variant="h1">
-                h1: The quick brown fox
-            </Heading>
-            <Heading as="h2" variant="h2">
-                h2: The quick brown fox
-            </Heading>
-            <Heading as="h3" variant="h3">
-                h3: The quick brown fox
-            </Heading>
-            <Heading as="h4" variant="h4">
-                h4: The quick brown fox
-            </Heading>
-            <Heading as="h5" variant="h5">
-                h5: The quick brown fox
-            </Heading>
-            <Heading as="h6" variant="h6">
-                h6: The quick brown fox
-            </Heading>
-        </>
+        <Box display="flex" flexDirection="column" width="150px" boxShadow="s">
+            <Box height="80px" bg={themeKey} />
+            <Box p="xs">
+                <Text variant="bold">{themeKey}</Text>
+                <Text variant="body2">{themeValue}</Text>
+            </Box>
+        </Box>
     );
 };
 
-export const defaultText = () => {
+type StackProps = {
+    children: React.ReactNode;
+};
+
+const Stack = ({ children }: StackProps) => {
+    const { css } = useCss();
+    const className = css({ mr: { '& > div:not(:last-child)': 's' } });
+    console.log({ className });
     return (
-        <>
-            <Text variant="bold">bold: The quick brown fox jumps over the lazy dog</Text>
-            <Text variant="body1">body1: The quick brown fox jumps over the lazy dog</Text>
-            <Text variant="body2">body2: The quick brown fox jumps over the lazy dog</Text>
-            <Text variant="body3">body3: The quick brown fox jumps over the lazy dog</Text>
-            <Text variant="body4">body4: The quick brown fox jumps over the lazy dog</Text>
-            <Text variant="body5">body5: The quick brown fox jumps over the lazy dog</Text>
-        </>
+        <Box display="flex" className={className}>
+            {children}
+        </Box>
     );
 };
 
-// export const customFontFamily = () => {
-//     return (
-//         <>
-//             <Heading fontFamily="mono">h1: The quick brown fox jumps over the lazy dog</Heading>
-//             <Heading fontFamily="sans">h1: The quick brown fox jumps over the lazy dog</Heading>
-//             <Heading fontFamily="serif">h1: The quick brown fox jumps over the lazy dog</Heading>
-//         </>
-//     );
-// };
-
-// export const customFontSize = () => {
-//     return (
-//         <>
-//             <Heading as="h1" fontSize="3xl">
-//                 h1: The quick brown fox jumps over the lazy dog
-//             </Heading>
-//             <Heading as="h2" fontSize="2xl">
-//                 h2: The quick brown fox jumps over the lazy dog
-//             </Heading>
-//             <Heading as="h3" fontSize="xl">
-//                 h3: The quick brown fox jumps over the lazy dog
-//             </Heading>
-//             <Heading as="h4" fontSize="l">
-//                 h4: The quick brown fox jumps over the lazy dog
-//             </Heading>
-//             <Heading as="h5" fontSize="m">
-//                 h5: The quick brown fox jumps over the lazy dog
-//             </Heading>
-//             <Heading as="h6" fontSize="s">
-//                 h6: The quick brown fox jumps over the lazy dog
-//             </Heading>
-//         </>
-//     );
-// };
-
-// export const customFontWeight = () => {
-//     return (
-//         <>
-//             <Heading as="h1" fontWeight="3xl">
-//                 h1: The quick brown fox jumps over the lazy dog
-//             </Heading>
-//             <Heading as="h2" fontWeight="2xl">
-//                 h2: The quick brown fox jumps over the lazy dog
-//             </Heading>
-//             <Heading as="h3" fontWeight="xl">
-//                 h3: The quick brown fox jumps over the lazy dog
-//             </Heading>
-//             <Heading as="h4" fontWeight="l">
-//                 h4: The quick brown fox jumps over the lazy dog
-//             </Heading>
-//             <Heading as="h5" fontWeight="m">
-//                 h5: The quick brown fox jumps over the lazy dog
-//             </Heading>
-//             <Heading as="h6" fontWeight="s">
-//                 h6: The quick brown fox jumps over the lazy dog
-//             </Heading>
-//         </>
-//     );
-// };
-
-// export const responsiveStyles = () => {
-//     return (
-//         <>
-//             <Heading fontSize={{ value: 'xxs', s: 's', m: 'm', l: 'l', xl: 'xl', xxl: '2xl', xxxl: '3xl' }}>
-//                 h1: The quick brown fox jumps over the lazy dog
-//             </Heading>
-//         </>
-//     );
-// };
-
-// export const overrides = () => {
-//     const { css } = useCss();
-//     return (
-//         <>
-//             <Heading
-//                 fontSize="3xl"
-//                 className={css({
-//                     fontSize: '8px',
-//                     px: { value: '4xl' },
-//                     flexDirection: 'initial',
-//                     flexWrap: 'initial',
-//                     flex: '1 1 auto',
-//                     borderRadius: { value: 'l' },
-//                     verticalAlign: 'sd',
-//                     whiteSpace: 'nowrap',
-//                     textTransform: 'none',
-//                 })}
-//                 aria-hidden="true"
-//                 aria-describedby="some-id"
-//                 onClick={(e) => {
-//                     console.log(e);
-//                 }}
-//             >
-//                 h1: The quick brown fox jumps over the lazy dog
-//             </Heading>
-//         </>
-//     );
-// };
+export const example = () => {
+    return (
+        <>
+            <Stack>
+                {Object.keys(defaultTheme.color)
+                    .filter((c) => c.startsWith('gray'))
+                    .filter((_, i) => i < 5)
+                    .map((themeKey) => (
+                        <ColorBox key={defaultTheme.color[themeKey]} themeKey={themeKey} themeValue={defaultTheme.color[themeKey] as string} />
+                    ))}
+            </Stack>
+            <Stack>
+                {Object.keys(defaultTheme.color)
+                    .filter((c) => c.startsWith('gray'))
+                    .filter((_, i) => i >= 5)
+                    .map((themeKey) => (
+                        <ColorBox key={defaultTheme.color[themeKey]} themeKey={themeKey} themeValue={defaultTheme.color[themeKey] as string} />
+                    ))}
+            </Stack>
+        </>
+    );
+};

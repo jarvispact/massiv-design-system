@@ -2,6 +2,9 @@
 import { SystemDefinitionObj, SystemObj } from '../system/system';
 import { Theme } from '../theme/default-theme';
 
+const isKeyInIgnoredSelectors = <T extends Theme>(theme: T, key: string) =>
+    ['value', 'focus', 'hover', 'hocus', ...Object.keys(theme.breakpoint)].includes(key);
+
 export const buildCssObj = <T extends Theme>(theme: T, definitions: SystemDefinitionObj<T>, obj: SystemObj<T>) => {
     const reducer = (accum: Record<string, unknown>, key: string) => {
         const def = definitions[key];
@@ -13,6 +16,13 @@ export const buildCssObj = <T extends Theme>(theme: T, definitions: SystemDefini
 
         if (def) {
             if (typeof value === 'object' && !Array.isArray(value)) {
+                Object.keys(value).forEach((key) => {
+                    if (!isKeyInIgnoredSelectors(theme, key)) {
+                        // @ts-ignore
+                        accum = { ...accum, [key]: { ...accum[key], ...def.getCSS(themeScope ? themeScope[value[key]] || value[key] : value[key]) } };
+                    }
+                });
+
                 if (value.value) {
                     // @ts-ignore
                     accum = { ...accum, ...def.getCSS(themeScope ? themeScope[value.value] || value.value : value.value) };
