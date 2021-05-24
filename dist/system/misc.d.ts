@@ -1,5 +1,6 @@
+import { CSSProperties } from 'react';
 import { Theme } from '../theme/default-theme';
-import { CssProperty, ScopedThemeKeyOrStringValue } from './system';
+import { LiteralUnion, ResponsiveThemedValue, UnpackThemeScope } from '../utils/types';
 export declare const miscSystemDef: {
     display: {
         themeScope: null;
@@ -104,22 +105,30 @@ export declare const miscSystemDef: {
         };
     };
 };
-export declare type MiscSystemObj<T extends Theme> = Partial<{
-    display: CssProperty<T, 'display'>;
-    clipPath: CssProperty<T, 'clipPath'>;
-    listStyle: CssProperty<T, 'listStyle'>;
-    textDecoration: CssProperty<T, 'textDecoration'>;
-    resize: CssProperty<T, 'resize'>;
-    position: CssProperty<T, 'position'>;
-    top: CssProperty<T, 'top'>;
-    left: CssProperty<T, 'left'>;
-    bottom: CssProperty<T, 'bottom'>;
-    right: CssProperty<T, 'right'>;
-    zIndex: ScopedThemeKeyOrStringValue<T, 'zIndex'>;
-    boxShadow: ScopedThemeKeyOrStringValue<T, 'shadow'>;
-    outline: CssProperty<T, 'outline'>;
-    outlineColor: ScopedThemeKeyOrStringValue<T, 'color'>;
-    overflow: CssProperty<T, 'overflow'>;
-    overflowX: CssProperty<T, 'overflowX'>;
-    overflowY: CssProperty<T, 'overflowY'>;
+declare type UnThemedMiscObj = Partial<{
+    display: CSSProperties['display'];
+    clipPath: CSSProperties['clipPath'];
+    listStyle: CSSProperties['listStyle'];
+    textDecoration: CSSProperties['textDecoration'];
+    resize: CSSProperties['resize'];
+    position: CSSProperties['position'];
+    top: CSSProperties['top'];
+    left: CSSProperties['left'];
+    bottom: CSSProperties['bottom'];
+    right: CSSProperties['right'];
+    outline: CSSProperties['outline'];
+    overflow: CSSProperties['overflow'];
+    overflowX: CSSProperties['overflowX'];
+    overflowY: CSSProperties['overflowY'];
 }>;
+export declare type MiscSystemObj<T extends Theme> = UnThemedMiscObj & Partial<{
+    zIndex: ResponsiveThemedValue<T, 'zIndex'>;
+    boxShadow: ResponsiveThemedValue<T, 'shadow'>;
+    outlineColor: ResponsiveThemedValue<T, 'color'>;
+}>;
+export declare type CustomMiscSystemObj<T extends Theme> = UnThemedMiscObj & Partial<{
+    zIndex: LiteralUnion<UnpackThemeScope<T, 'zIndex'>>;
+    boxShadow: LiteralUnion<UnpackThemeScope<T, 'shadow'>>;
+    outlineColor: LiteralUnion<UnpackThemeScope<T, 'color'>>;
+}>;
+export {};

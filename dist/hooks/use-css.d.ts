@@ -1,5 +1,6 @@
 import { CSSInterpolation } from '@emotion/css';
 import { SystemObj } from '../system/system';
+import { LiteralUnion } from '../utils/types';
 export declare const useCss: <T extends {
     breakpoint: {
         s: string;
@@ -141,7 +142,6 @@ export declare const useCss: <T extends {
         '6xl': string;
     };
     fontWeight: {
-        xxxs: string;
         xxs: string;
         xs: string;
         s: string;
@@ -150,6 +150,7 @@ export declare const useCss: <T extends {
         xl: string;
         '2xl': string;
         '3xl': string;
+        '4xl': string;
     };
     lineHeight: {
         xs: string;
@@ -198,7 +199,9 @@ export declare const useCss: <T extends {
 }>() => {
     css: (obj: SystemObj<T>) => string;
     theme: T;
-    rawCss: {
+    selector: (preset: LiteralUnion<"m" | "s" | "l" | "xl" | "xxl" | "xxxl" | "hover" | "focus", string>) => string;
+    cx: (...classNames: import("@emotion/css").ClassNamesArg[]) => string;
+    keyframes: {
         (template: TemplateStringsArray, ...args: CSSInterpolation[]): string;
         (...args: CSSInterpolation[]): string;
     };

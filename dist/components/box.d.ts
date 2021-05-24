@@ -148,7 +148,6 @@ export declare const Box: <T extends {
         '6xl': string;
     };
     fontWeight: {
-        xxxs: string;
         xxs: string;
         xs: string;
         s: string;
@@ -157,6 +156,7 @@ export declare const Box: <T extends {
         xl: string;
         '2xl': string;
         '3xl': string;
+        '4xl': string;
     };
     lineHeight: {
         xs: string;
@@ -344,7 +344,6 @@ export declare const getBoxWithTheme: <T extends {
         '6xl': string;
     };
     fontWeight: {
-        xxxs: string;
         xxs: string;
         xs: string;
         s: string;
@@ -353,6 +352,7 @@ export declare const getBoxWithTheme: <T extends {
         xl: string;
         '2xl': string;
         '3xl': string;
+        '4xl': string;
     };
     lineHeight: {
         xs: string;

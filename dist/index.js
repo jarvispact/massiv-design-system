@@ -1185,6 +1185,12 @@ function __rest(s, e) {
     return t;
 }
 
+function __spreadArray(to, from) {
+    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
+        to[j] = from[i];
+    return to;
+}
+
 function __makeTemplateObject(cooked, raw) {
     if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
     return cooked;
@@ -1433,49 +1439,65 @@ var ThemeProvider = function (_a) {
 };
 var useTheme = function () { return React.useContext(ThemeContext); };
 
+var objectKeys = function (obj) { return Object.keys(obj); };
+
+var objectProps = ['value'];
+// @ts-ignore
+// eslint-disable-next-line prettier/prettier
+var getValueFromThemeScopeWithFallback = function (value, theme, themeScope) { return themeScope ? theme[themeScope][value] || value : value; };
 var buildCssObj = function (theme, definitions, obj) {
-    var reducer = function (accum, key) {
+    var keys = objectKeys(obj);
+    __spreadArray(__spreadArray([], objectKeys(theme.breakpoint)), objectProps);
+    var breakpointValues = Object.values(theme.breakpoint);
+    var retVal = {};
+    keys.forEach(function (key) {
+        if (key === 'customSelectors') {
+            var value_1 = obj[key];
+            objectKeys(value_1).forEach(function (selector) {
+                var customObj = value_1[selector];
+                objectKeys(customObj).forEach(function (customObjKey) {
+                    var _a;
+                    var def = definitions[customObjKey];
+                    if (!def)
+                        return;
+                    retVal = __assign(__assign({}, retVal), (_a = {}, _a[selector] = __assign(__assign({}, retVal[selector]), def.getCSS(getValueFromThemeScopeWithFallback(customObj[customObjKey], theme, def.themeScope))), _a));
+                });
+            });
+            return;
+        }
         var def = definitions[key];
         if (!def)
-            return accum;
-        var themeScope = def.themeScope ? theme[def.themeScope] : null;
-        // @ts-ignore
+            return;
         var value = obj[key];
-        if (def) {
-            if (typeof value === 'object' && !Array.isArray(value)) {
-                if (value.value) {
-                    // @ts-ignore
-                    accum = __assign(__assign({}, accum), def.getCSS(themeScope ? themeScope[value.value] || value.value : value.value));
-                }
-                if (value.hover) {
-                    // @ts-ignore
-                    accum = __assign(__assign({}, accum), { '&:hover': __assign(__assign({}, accum['&:hover']), def.getCSS(themeScope ? themeScope[value.hover] || value.hover : value.hover)) });
-                }
-                if (value.focus) {
-                    // @ts-ignore
-                    accum = __assign(__assign({}, accum), { '&:focus': __assign(__assign({}, accum['&:focus']), def.getCSS(themeScope ? themeScope[value.focus] || value.focus : value.focus)) });
-                }
-                if (value.hocus) {
-                    accum = __assign(__assign({}, accum), { '&:hover': __assign(__assign({}, accum['&:hover']), def.getCSS(themeScope ? themeScope[value.hocus] || value.hocus : value.hocus)), '&:focus': __assign(__assign({}, accum['&:focus']), def.getCSS(themeScope ? themeScope[value.hocus] || value.hocus : value.hocus)) });
-                }
-                Object.keys(theme.breakpoint).forEach(function (breakpointKey) {
-                    var _a;
-                    // @ts-ignore
-                    var mediaQueryKey = "@media(min-width: " + theme.breakpoint[breakpointKey] + ")";
-                    // @ts-ignore
-                    if (value[breakpointKey]) {
-                        accum = __assign(__assign({}, accum), (_a = {}, _a[mediaQueryKey] = __assign(__assign({}, accum[mediaQueryKey]), def.getCSS(themeScope ? themeScope[value[breakpointKey]] || value[breakpointKey] : value[breakpointKey])), _a));
-                    }
-                });
-            }
-            else {
-                // @ts-ignore
-                accum = __assign(__assign({}, accum), def.getCSS(themeScope ? themeScope[value] || value : value));
-            }
+        if (typeof value === 'string') {
+            retVal = __assign(__assign({}, retVal), def.getCSS(getValueFromThemeScopeWithFallback(value, theme, def.themeScope)));
         }
-        return accum;
-    };
-    return Object.keys(obj).reduce(reducer, {});
+        else if (Array.isArray(value)) {
+            value.forEach(function (val, idx) {
+                var _a;
+                if (idx === 0) {
+                    retVal = __assign(__assign({}, retVal), def.getCSS(getValueFromThemeScopeWithFallback(val, theme, def.themeScope)));
+                }
+                else {
+                    var mediaQueryKey = "@media(min-width: " + breakpointValues[idx - 1] + ")";
+                    retVal = __assign(__assign({}, retVal), (_a = {}, _a[mediaQueryKey] = __assign(__assign({}, retVal[mediaQueryKey]), def.getCSS(getValueFromThemeScopeWithFallback(val, theme, def.themeScope))), _a));
+                }
+            });
+        }
+        else {
+            objectKeys(value).forEach(function (key) {
+                var _a;
+                if (key === 'value') {
+                    retVal = __assign(__assign({}, retVal), def.getCSS(getValueFromThemeScopeWithFallback(value.value, theme, def.themeScope)));
+                }
+                else {
+                    var mediaQueryKey = "@media(min-width: " + theme.breakpoint[key] + ")";
+                    retVal = __assign(__assign({}, retVal), (_a = {}, _a[mediaQueryKey] = __assign(__assign({}, retVal[mediaQueryKey]), def.getCSS(getValueFromThemeScopeWithFallback(value[key], theme, def.themeScope))), _a));
+                }
+            });
+        }
+    });
+    return retVal;
 };
 
 var paddingSystemDef = {
@@ -1649,12 +1671,24 @@ var transitionSystemDef = {
     transitionTimingFunction: { themeScope: null, getCSS: function (v) { return ({ transitionTimingFunction: v }); } },
 };
 
-var systemDefinitions$2 = __assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign({}, paddingSystemDef), marginSystemDef), typographySystemDef), colorSystemDef), borderSystemDef), flexSystemDef), gridSystemDef), widthSystemDef), heightSystemDef), miscSystemDef), animationSystemDef), transitionSystemDef);
+var allSystemDefinitions = __assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign(__assign({}, paddingSystemDef), marginSystemDef), typographySystemDef), colorSystemDef), borderSystemDef), flexSystemDef), gridSystemDef), widthSystemDef), heightSystemDef), miscSystemDef), animationSystemDef), transitionSystemDef);
 
+var commonPresetMap = {
+    hover: '&:hover',
+    focus: '&:hover',
+};
 var useCss = function () {
     var theme = useTheme().theme;
-    var css$1 = function (obj) { return css(buildCssObj(theme, systemDefinitions$2, obj)); };
-    return { css: css$1, theme: theme, rawCss: css };
+    var breakPointKeys = objectKeys(theme.breakpoint);
+    var breakPointMap = breakPointKeys.reduce(function (accum, key) {
+        accum[key] = "@media(min-width: " + theme.breakpoint[key] + ")";
+        return accum;
+    }, {});
+    var lookupMap = __assign(__assign({}, commonPresetMap), breakPointMap);
+    // @ts-ignore
+    var selector = function (preset) { return "" + (lookupMap[preset] || preset); };
+    var css$1 = function (obj) { return css(buildCssObj(theme, allSystemDefinitions, obj)); };
+    return { css: css$1, theme: theme, selector: selector, cx: cx, keyframes: keyframes };
 };
 
 var omit = function (propertyList, obj) {
@@ -1666,7 +1700,7 @@ var omit = function (propertyList, obj) {
     }, {});
 };
 
-var omitProps$2 = Object.keys(systemDefinitions$2);
+var omitProps$2 = Object.keys(allSystemDefinitions);
 var Box = function (_a) {
     var _b = _a.as, as = _b === void 0 ? 'div' : _b, children = _a.children, className = _a.className, props = __rest(_a, ["as", "children", "className"]);
     var css = useCss().css;
@@ -1715,6 +1749,7 @@ exports.Heading = Heading;
 exports.Text = Text;
 exports.ThemeContext = ThemeContext;
 exports.ThemeProvider = ThemeProvider;
+exports.allSystemDefinitions = allSystemDefinitions;
 exports.animationSystemDef = animationSystemDef;
 exports.borderSystemDef = borderSystemDef;
 exports.cache = cache;
@@ -1739,7 +1774,6 @@ exports.merge = merge;
 exports.miscSystemDef = miscSystemDef;
 exports.paddingSystemDef = paddingSystemDef;
 exports.sheet = sheet;
-exports.systemDefinitions = systemDefinitions$2;
 exports.transitionSystemDef = transitionSystemDef;
 exports.typographySystemDef = typographySystemDef;
 exports.useCss = useCss;

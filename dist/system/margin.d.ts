@@ -1,5 +1,5 @@
 import { Theme } from '../theme/default-theme';
-import { ScopedThemeKeyOrStringValue } from './system';
+import { LiteralUnion, ResponsiveThemedValue, UnpackThemeScope } from '../utils/types';
 export declare const marginSystemDef: {
     margin: {
         themeScope: string;
@@ -53,5 +53,6 @@ export declare const marginSystemDef: {
     };
 };
 declare type MarginKey = keyof typeof marginSystemDef;
-export declare type MarginSystemObj<T extends Theme> = Partial<Record<MarginKey, ScopedThemeKeyOrStringValue<T, 'spacing'>>>;
+export declare type MarginSystemObj<T extends Theme> = Partial<Record<MarginKey, ResponsiveThemedValue<T, 'spacing'>>>;
+export declare type CustomMarginSystemObj<T extends Theme> = Partial<Record<MarginKey, LiteralUnion<UnpackThemeScope<T, 'spacing'>>>>;
 export {};

@@ -1,5 +1,5 @@
 import { Theme } from '../theme/default-theme';
-import { ScopedThemeKeyOrStringValue } from './system';
+import { LiteralUnion, ResponsiveThemedValue, UnpackThemeScope } from '../utils/types';
 export declare const paddingSystemDef: {
     padding: {
         themeScope: string;
@@ -53,5 +53,6 @@ export declare const paddingSystemDef: {
     };
 };
 declare type PaddingKey = keyof typeof paddingSystemDef;
-export declare type PaddingSystemObj<T extends Theme> = Partial<Record<PaddingKey, ScopedThemeKeyOrStringValue<T, 'spacing'>>>;
+export declare type PaddingSystemObj<T extends Theme> = Partial<Record<PaddingKey, ResponsiveThemedValue<T, 'spacing'>>>;
+export declare type CustomPaddingSystemObj<T extends Theme> = Partial<Record<PaddingKey, LiteralUnion<UnpackThemeScope<T, 'spacing'>>>>;
 export {};

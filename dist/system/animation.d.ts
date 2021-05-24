@@ -1,5 +1,4 @@
-import { Theme } from '../theme/default-theme';
-import { CssProperty } from './system';
+import { CSSProperties } from 'react';
 export declare const animationSystemDef: {
     animation: {
         themeScope: null;
@@ -50,13 +49,13 @@ export declare const animationSystemDef: {
         };
     };
 };
-export declare type AnimationSystemObj<T extends Theme> = Partial<{
-    animation: CssProperty<T, 'animation'>;
-    animationName: CssProperty<T, 'animationName'>;
-    animationDuration: CssProperty<T, 'animationDuration'>;
-    animationDelay: CssProperty<T, 'animationDelay'>;
-    animationIterationCount: CssProperty<T, 'animationIterationCount'>;
-    animationDirection: CssProperty<T, 'animationDirection'>;
-    animationTimingFunction: CssProperty<T, 'animationTimingFunction'>;
-    animationFillMode: CssProperty<T, 'animationFillMode'>;
+export declare type AnimationSystemObj = Partial<{
+    animation: CSSProperties['animation'];
+    animationName: CSSProperties['animationName'];
+    animationDuration: CSSProperties['animationDuration'];
+    animationDelay: CSSProperties['animationDelay'];
+    animationIterationCount: CSSProperties['animationIterationCount'];
+    animationDirection: CSSProperties['animationDirection'];
+    animationTimingFunction: CSSProperties['animationTimingFunction'];
+    animationFillMode: CSSProperties['animationFillMode'];
 }>;

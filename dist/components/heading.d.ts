@@ -153,7 +153,6 @@ export declare const Heading: <T extends {
         '6xl': string;
     };
     fontWeight: {
-        xxxs: string;
         xxs: string;
         xs: string;
         s: string;
@@ -162,6 +161,7 @@ export declare const Heading: <T extends {
         xl: string;
         '2xl': string;
         '3xl': string;
+        '4xl': string;
     };
     lineHeight: {
         xs: string;
@@ -351,7 +351,6 @@ export declare const getHeadingWithTheme: <T extends {
         '6xl': string;
     };
     fontWeight: {
-        xxxs: string;
         xxs: string;
         xs: string;
         s: string;
@@ -360,6 +359,7 @@ export declare const getHeadingWithTheme: <T extends {
         xl: string;
         '2xl': string;
         '3xl': string;
+        '4xl': string;
     };
     lineHeight: {
         xs: string;

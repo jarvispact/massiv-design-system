@@ -1,5 +1,5 @@
 import { Theme } from '../theme/default-theme';
-import { ScopedThemeKeyOrStringValue } from './system';
+import { LiteralUnion, ResponsiveThemedValue, UnpackThemeScope } from '../utils/types';
 export declare const widthSystemDef: {
     width: {
         themeScope: string;
@@ -39,5 +39,6 @@ export declare const widthSystemDef: {
     };
 };
 declare type WidthKey = keyof typeof widthSystemDef;
-export declare type WidthSystemObj<T extends Theme> = Partial<Record<WidthKey, ScopedThemeKeyOrStringValue<T, 'width'>>>;
+export declare type WidthSystemObj<T extends Theme> = Partial<Record<WidthKey, ResponsiveThemedValue<T, 'width'>>>;
+export declare type CustomWidthSystemObj<T extends Theme> = Partial<Record<WidthKey, LiteralUnion<UnpackThemeScope<T, 'width'>>>>;
 export {};

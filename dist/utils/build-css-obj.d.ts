@@ -1,3 +1,4 @@
+import { CSSProperties } from 'react';
 import { SystemDefinitionObj, SystemObj } from '../system/system';
 export declare const buildCssObj: <T extends {
     breakpoint: {
@@ -140,7 +141,6 @@ export declare const buildCssObj: <T extends {
         '6xl': string;
     };
     fontWeight: {
-        xxxs: string;
         xxs: string;
         xs: string;
         s: string;
@@ -149,6 +149,7 @@ export declare const buildCssObj: <T extends {
         xl: string;
         '2xl': string;
         '3xl': string;
+        '4xl': string;
     };
     lineHeight: {
         xs: string;
@@ -194,4 +195,4 @@ export declare const buildCssObj: <T extends {
         Heading: (variant?: import("..").HeadingVariant | undefined) => string;
         Text: (variant?: import("..").TextVariant | undefined) => string;
     };
-}>(theme: T, definitions: SystemDefinitionObj<T>, obj: SystemObj<T>) => Record<string, unknown>;
+}>(theme: T, definitions: SystemDefinitionObj<T, "padding" | "p" | "pt" | "pr" | "pb" | "pl" | "px" | "py" | "margin" | "m" | "mt" | "mr" | "mb" | "ml" | "mx" | "my" | "color" | "backgroundColor" | "bg" | "width" | "w" | "minWidth" | "minW" | "maxWidth" | "maxW" | "height" | "h" | "minHeight" | "minH" | "maxHeight" | "maxH" | "textOverflow" | "whiteSpace" | "verticalAlign" | "textTransform" | "fontFamily" | "fontSize" | "fontWeight" | "lineHeight" | "letterSpacing" | "borderStyle" | "bs" | "borderTopStyle" | "bts" | "borderBottomStyle" | "bbs" | "borderLeftStyle" | "bls" | "borderRightStyle" | "brs" | "borderWidth" | "bw" | "borderColor" | "bc" | "borderRadius" | "br" | "borderTopWidth" | "btw" | "borderTopColor" | "btc" | "borderBottomWidth" | "bbw" | "borderBottomColor" | "bbc" | "borderLeftWidth" | "blw" | "borderLeftColor" | "blc" | "borderRightWidth" | "brw" | "borderRightColor" | "brc" | "borderTopLeftRadius" | "btlr" | "borderTopRightRadius" | "btrr" | "borderBottomLeftRadius" | "bblr" | "borderBottomRghtRadius" | "bbrr" | "flexDirection" | "flexWrap" | "flexFlow" | "justifyContent" | "alignItems" | "alignContent" | "flexGrow" | "flexShrink" | "flexBasis" | "flex" | "alignSelf" | "gridTemplateColumns" | "gridTemplateRows" | "gridTemplateAreas" | "justifyItems" | "gridColumnStart" | "gridColumnEnd" | "gridRowStart" | "gridRowEnd" | "gridArea" | "justifySelf" | "placeSelf" | "columnGap" | "rowGap" | "gap" | "display" | "clipPath" | "listStyle" | "textDecoration" | "resize" | "position" | "top" | "left" | "bottom" | "right" | "outline" | "overflow" | "overflowX" | "overflowY" | "zIndex" | "boxShadow" | "outlineColor" | "animation" | "animationName" | "animationDuration" | "animationDelay" | "animationIterationCount" | "animationDirection" | "animationTimingFunction" | "animationFillMode" | "transition" | "transitionDelay" | "transitionDuration" | "transitionProperty" | "transitionTimingFunction" | "customSelectors">, obj: SystemObj<T>) => CSSProperties;

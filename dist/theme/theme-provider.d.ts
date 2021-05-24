@@ -145,7 +145,6 @@ export declare const ThemeContext: React.Context<Ctx<{
         '6xl': string;
     };
     fontWeight: {
-        xxxs: string;
         xxs: string;
         xs: string;
         s: string;
@@ -154,6 +153,7 @@ export declare const ThemeContext: React.Context<Ctx<{
         xl: string;
         '2xl': string;
         '3xl': string;
+        '4xl': string;
     };
     lineHeight: {
         xs: string;
@@ -345,7 +345,6 @@ export declare const ThemeProvider: <T extends {
         '6xl': string;
     };
     fontWeight: {
-        xxxs: string;
         xxs: string;
         xs: string;
         s: string;
@@ -354,6 +353,7 @@ export declare const ThemeProvider: <T extends {
         xl: string;
         '2xl': string;
         '3xl': string;
+        '4xl': string;
     };
     lineHeight: {
         xs: string;
@@ -541,7 +541,6 @@ export declare const useTheme: <T extends {
         '6xl': string;
     };
     fontWeight: {
-        xxxs: string;
         xxs: string;
         xs: string;
         s: string;
@@ -550,6 +549,7 @@ export declare const useTheme: <T extends {
         xl: string;
         '2xl': string;
         '3xl': string;
+        '4xl': string;
     };
     lineHeight: {
         xs: string;

@@ -1,5 +1,4 @@
-import { Theme } from '../theme/default-theme';
-import { CssProperty } from './system';
+import { CSSProperties } from 'react';
 export declare const flexSystemDef: {
     flexDirection: {
         themeScope: null;
@@ -68,16 +67,16 @@ export declare const flexSystemDef: {
         };
     };
 };
-export declare type FlexSystemObj<T extends Theme> = Partial<{
-    flexDirection: CssProperty<T, 'flexDirection'>;
-    flexWrap: CssProperty<T, 'flexWrap'>;
-    flexFlow: CssProperty<T, 'flexFlow'>;
-    justifyContent: CssProperty<T, 'justifyContent'>;
-    alignItems: CssProperty<T, 'alignItems'>;
-    alignContent: CssProperty<T, 'alignContent'>;
-    flexGrow: CssProperty<T, 'flexGrow'>;
-    flexShrink: CssProperty<T, 'flexShrink'>;
-    flexBasis: CssProperty<T, 'flexBasis'>;
-    flex: CssProperty<T, 'flex'>;
-    alignSelf: CssProperty<T, 'alignSelf'>;
+export declare type FlexSystemObj = Partial<{
+    flexDirection: CSSProperties['flexDirection'];
+    flexWrap: CSSProperties['flexWrap'];
+    flexFlow: CSSProperties['flexFlow'];
+    justifyContent: CSSProperties['justifyContent'];
+    alignItems: CSSProperties['alignItems'];
+    alignContent: CSSProperties['alignContent'];
+    flexGrow: CSSProperties['flexGrow'];
+    flexShrink: CSSProperties['flexShrink'];
+    flexBasis: CSSProperties['flexBasis'];
+    flex: CSSProperties['flex'];
+    alignSelf: CSSProperties['alignSelf'];
 }>;

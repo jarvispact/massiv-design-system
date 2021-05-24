@@ -5,10 +5,9 @@ import { TextVariant } from '../system/variant';
 import { Theme } from '../theme/default-theme';
 import { HTMLAttributesWithoutColor } from '../utils/types';
 declare type SystemObj<T extends Theme> = TypographySystemObj<T> & ColorSystemObj<T>;
-declare type TextElement = 'div' | 'span' | 'p' | 'label' | 'a' | 'i' | 'b';
 declare type TextHTMLElement = HTMLDivElement | HTMLSpanElement | HTMLParagraphElement | HTMLLabelElement | HTMLAnchorElement;
 export declare type TextProps<T extends Theme = Theme, HTMLElem extends TextHTMLElement = TextHTMLElement> = HTMLAttributesWithoutColor<HTMLElem> & SystemObj<T> & {
-    as?: TextElement;
+    as?: React.ElementType;
     variant?: TextVariant;
     children: React.ReactNode;
     [x: string]: unknown;
@@ -208,9 +207,7 @@ export declare const Text: <T extends {
         Heading: (variant?: import("../system/variant").HeadingVariant | undefined) => string;
         Text: (variant?: TextVariant | undefined) => string;
     };
-}>({ as, variant, children, className, ...props }: TextProps<T, TextHTMLElement>) => React.DetailedReactHTMLElement<{
-    className: string;
-}, HTMLElement>;
+}>({ as, variant, children, className, ...props }: TextProps<T, TextHTMLElement>) => React.ReactElement<any, string | React.JSXElementConstructor<any>>;
 export declare const getTextWithTheme: <T extends {
     breakpoint: {
         s: string;

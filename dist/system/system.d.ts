@@ -1,36 +1,18 @@
-import { CSSProperties } from 'react';
 import { Theme } from '../theme/default-theme';
-import { PaddingSystemObj } from '../system/padding';
-import { MarginSystemObj } from '../system/margin';
-import { TypographySystemObj } from '../system/typography';
-import { ColorSystemObj } from './color';
-import { BorderSystemObj } from './border';
+import { CustomPaddingSystemObj, PaddingSystemObj } from '../system/padding';
+import { CustomMarginSystemObj, MarginSystemObj } from '../system/margin';
+import { CustomTypographySystemObj, TypographySystemObj } from '../system/typography';
+import { ColorSystemObj, CustomColorSystemObj } from './color';
+import { BorderSystemObj, CustomBorderSystemObj } from './border';
 import { FlexSystemObj } from './flex';
-import { GridSystemObj } from './grid';
-import { WidthSystemObj } from './width';
-import { HeightSystemObj } from './height';
-import { MiscSystemObj } from './misc';
-import { LiteralUnion, UnpackThemeScope } from '../utils/types';
+import { GridSystemObj, CustomGridSystemObj } from './grid';
+import { WidthSystemObj, CustomWidthSystemObj } from './width';
+import { HeightSystemObj, CustomHeightSystemObj } from './height';
+import { MiscSystemObj, CustomMiscSystemObj } from './misc';
 import { AnimationSystemObj } from './animation';
 import { TransitionSystemObj } from './transition';
-declare type BreakPointKey<T extends Theme> = keyof T['breakpoint'];
-export declare type CssValueObject<T extends Theme, V extends string | number> = Partial<{
-    [K in BreakPointKey<T>]: V;
-}> & {
-    value?: V;
-    hover?: V;
-    focus?: V;
-    hocus?: V;
-};
-export declare type SystemDefinition<T extends Theme> = {
-    themeScope: keyof T | null;
-    getCSS: (value: string) => CSSProperties;
-};
-export declare type ScopedThemeKeyOrStringValue<T extends Theme, S extends keyof T> = LiteralUnion<UnpackThemeScope<T, S>> | CssValueObject<T, LiteralUnion<UnpackThemeScope<T, S>>>;
-declare type NotNil<T> = Exclude<T, null | undefined>;
-export declare type CssProperty<T extends Theme, K extends keyof CSSProperties> = NotNil<CSSProperties[K]> | CssValueObject<T, NotNil<CSSProperties[K]>>;
-export declare type SystemDefinitionObj<T extends Theme> = Record<string, SystemDefinition<T>>;
-export declare const systemDefinitions: {
+import { CSSProperties } from 'react';
+export declare const allSystemDefinitions: {
     transition: {
         themeScope: null;
         getCSS: (v: string) => {
@@ -846,5 +828,14 @@ export declare const systemDefinitions: {
         };
     };
 };
-export declare type SystemObj<T extends Theme> = PaddingSystemObj<T> & MarginSystemObj<T> & TypographySystemObj<T> & ColorSystemObj<T> & BorderSystemObj<T> & FlexSystemObj<T> & GridSystemObj<T> & WidthSystemObj<T> & HeightSystemObj<T> & MiscSystemObj<T> & AnimationSystemObj<T> & TransitionSystemObj<T>;
+declare type SystemObject<T extends Theme> = PaddingSystemObj<T> & MarginSystemObj<T> & TypographySystemObj<T> & ColorSystemObj<T> & BorderSystemObj<T> & FlexSystemObj & GridSystemObj<T> & WidthSystemObj<T> & HeightSystemObj<T> & MiscSystemObj<T> & AnimationSystemObj & TransitionSystemObj;
+export declare type CustomSelectorSystemObject<T extends Theme> = CustomPaddingSystemObj<T> & CustomMarginSystemObj<T> & CustomTypographySystemObj<T> & CustomColorSystemObj<T> & CustomBorderSystemObj<T> & FlexSystemObj & CustomGridSystemObj<T> & CustomWidthSystemObj<T> & CustomHeightSystemObj<T> & CustomMiscSystemObj<T> & AnimationSystemObj & TransitionSystemObj;
+export declare type SystemObj<T extends Theme> = {
+    customSelectors?: Record<string, CustomSelectorSystemObject<T>>;
+} & SystemObject<T>;
+export declare type SystemDefinition<T extends Theme> = {
+    themeScope: keyof T | null;
+    getCSS: (value: string) => CSSProperties;
+};
+export declare type SystemDefinitionObj<T extends Theme, K extends string> = Record<K, SystemDefinition<T>>;
 export {};

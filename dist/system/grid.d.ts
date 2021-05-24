@@ -1,5 +1,6 @@
+import { CSSProperties } from 'react';
 import { Theme } from '../theme/default-theme';
-import { CssProperty, ScopedThemeKeyOrStringValue } from './system';
+import { LiteralUnion, ResponsiveThemedValue, UnpackThemeScope } from '../utils/types';
 export declare const gridSystemDef: {
     gridTemplateColumns: {
         themeScope: null;
@@ -86,19 +87,27 @@ export declare const gridSystemDef: {
         };
     };
 };
-export declare type GridSystemObj<T extends Theme> = Partial<{
-    gridTemplateColumns: CssProperty<T, 'gridTemplateColumns'>;
-    gridTemplateRows: CssProperty<T, 'gridTemplateRows'>;
-    gridTemplateAreas: CssProperty<T, 'gridTemplateAreas'>;
-    columnGap: ScopedThemeKeyOrStringValue<T, 'spacing'>;
-    rowGap: ScopedThemeKeyOrStringValue<T, 'spacing'>;
-    gap: ScopedThemeKeyOrStringValue<T, 'spacing'>;
-    justifyItems: CssProperty<T, 'justifyItems'>;
-    gridColumnStart: CssProperty<T, 'gridColumnStart'>;
-    gridColumnEnd: CssProperty<T, 'gridColumnEnd'>;
-    gridRowStart: CssProperty<T, 'gridRowStart'>;
-    gridRowEnd: CssProperty<T, 'gridRowEnd'>;
-    gridArea: CssProperty<T, 'gridArea'>;
-    justifySelf: CssProperty<T, 'justifySelf'>;
-    placeSelf: CssProperty<T, 'placeSelf'>;
+declare type UnThemedGridObj = Partial<{
+    gridTemplateColumns: CSSProperties['gridTemplateColumns'];
+    gridTemplateRows: CSSProperties['gridTemplateRows'];
+    gridTemplateAreas: CSSProperties['gridTemplateAreas'];
+    justifyItems: CSSProperties['justifyItems'];
+    gridColumnStart: CSSProperties['gridColumnStart'];
+    gridColumnEnd: CSSProperties['gridColumnEnd'];
+    gridRowStart: CSSProperties['gridRowStart'];
+    gridRowEnd: CSSProperties['gridRowEnd'];
+    gridArea: CSSProperties['gridArea'];
+    justifySelf: CSSProperties['justifySelf'];
+    placeSelf: CSSProperties['placeSelf'];
 }>;
+export declare type GridSystemObj<T extends Theme> = UnThemedGridObj & Partial<{
+    columnGap: ResponsiveThemedValue<T, 'spacing'>;
+    rowGap: ResponsiveThemedValue<T, 'spacing'>;
+    gap: ResponsiveThemedValue<T, 'spacing'>;
+}>;
+export declare type CustomGridSystemObj<T extends Theme> = UnThemedGridObj & Partial<{
+    columnGap: LiteralUnion<UnpackThemeScope<T, 'spacing'>>;
+    rowGap: LiteralUnion<UnpackThemeScope<T, 'spacing'>>;
+    gap: LiteralUnion<UnpackThemeScope<T, 'spacing'>>;
+}>;
+export {};

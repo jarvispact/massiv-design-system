@@ -1,5 +1,6 @@
+import { CSSProperties } from 'react';
 import { Theme } from '../theme/default-theme';
-import { CssProperty, ScopedThemeKeyOrStringValue } from './system';
+import { LiteralUnion, ResponsiveThemedValue, UnpackThemeScope } from '../utils/types';
 export declare const typographySystemDef: {
     fontFamily: {
         themeScope: string;
@@ -56,14 +57,24 @@ export declare const typographySystemDef: {
         };
     };
 };
-export declare type TypographySystemObj<T extends Theme> = Partial<{
-    fontFamily: ScopedThemeKeyOrStringValue<T, 'fontFamily'>;
-    fontSize: ScopedThemeKeyOrStringValue<T, 'fontSize'>;
-    fontWeight: ScopedThemeKeyOrStringValue<T, 'fontWeight'>;
-    lineHeight: ScopedThemeKeyOrStringValue<T, 'lineHeight'>;
-    letterSpacing: ScopedThemeKeyOrStringValue<T, 'letterSpacing'>;
-    textOverflow: CssProperty<T, 'textOverflow'>;
-    whiteSpace: CssProperty<T, 'whiteSpace'>;
-    verticalAlign: CssProperty<T, 'verticalAlign'>;
-    textTransform: CssProperty<T, 'textTransform'>;
+declare type UnThemedMiscObj = Partial<{
+    textOverflow: CSSProperties['textOverflow'];
+    whiteSpace: CSSProperties['whiteSpace'];
+    verticalAlign: CSSProperties['verticalAlign'];
+    textTransform: CSSProperties['textTransform'];
 }>;
+export declare type TypographySystemObj<T extends Theme> = UnThemedMiscObj & Partial<{
+    fontFamily: ResponsiveThemedValue<T, 'fontFamily'>;
+    fontSize: ResponsiveThemedValue<T, 'fontSize'>;
+    fontWeight: ResponsiveThemedValue<T, 'fontWeight'>;
+    lineHeight: ResponsiveThemedValue<T, 'lineHeight'>;
+    letterSpacing: ResponsiveThemedValue<T, 'letterSpacing'>;
+}>;
+export declare type CustomTypographySystemObj<T extends Theme> = UnThemedMiscObj & Partial<{
+    fontFamily: LiteralUnion<UnpackThemeScope<T, 'fontFamily'>>;
+    fontSize: LiteralUnion<UnpackThemeScope<T, 'fontSize'>>;
+    fontWeight: LiteralUnion<UnpackThemeScope<T, 'fontWeight'>>;
+    lineHeight: LiteralUnion<UnpackThemeScope<T, 'lineHeight'>>;
+    letterSpacing: LiteralUnion<UnpackThemeScope<T, 'letterSpacing'>>;
+}>;
+export {};

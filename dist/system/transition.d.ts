@@ -1,5 +1,4 @@
-import { Theme } from '../theme/default-theme';
-import { CssProperty } from './system';
+import { CSSProperties } from 'react';
 export declare const transitionSystemDef: {
     transition: {
         themeScope: null;
@@ -32,10 +31,10 @@ export declare const transitionSystemDef: {
         };
     };
 };
-export declare type TransitionSystemObj<T extends Theme> = Partial<{
-    transition: CssProperty<T, 'transition'>;
-    transitionDelay: CssProperty<T, 'transitionDelay'>;
-    transitionDuration: CssProperty<T, 'transitionDuration'>;
-    transitionProperty: CssProperty<T, 'transitionProperty'>;
-    transitionTimingFunction: CssProperty<T, 'transitionTimingFunction'>;
+export declare type TransitionSystemObj = Partial<{
+    transition: CSSProperties['transition'];
+    transitionDelay: CSSProperties['transitionDelay'];
+    transitionDuration: CSSProperties['transitionDuration'];
+    transitionProperty: CSSProperties['transitionProperty'];
+    transitionTimingFunction: CSSProperties['transitionTimingFunction'];
 }>;
