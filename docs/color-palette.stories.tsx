@@ -31,13 +31,20 @@ type StackProps = {
 
 const Stack = ({ children }: StackProps) => {
     const { css } = useCss();
-    const className = css({ mr: { '& > div:not(:last-child)': 's' } });
-    console.log({ className });
-    return (
-        <Box display="flex" className={className}>
-            {children}
-        </Box>
-    );
+
+    const className = css({
+        customSelectors: {
+            '& > div': {
+                display: 'inline-block',
+                my: 'xs',
+            },
+            '& > div:not(:last-child)': {
+                mr: 's',
+            },
+        },
+    });
+
+    return <Box className={className}>{children}</Box>;
 };
 
 export const example = () => {
@@ -46,15 +53,6 @@ export const example = () => {
             <Stack>
                 {Object.keys(defaultTheme.color)
                     .filter((c) => c.startsWith('gray'))
-                    .filter((_, i) => i < 5)
-                    .map((themeKey) => (
-                        <ColorBox key={defaultTheme.color[themeKey]} themeKey={themeKey} themeValue={defaultTheme.color[themeKey] as string} />
-                    ))}
-            </Stack>
-            <Stack>
-                {Object.keys(defaultTheme.color)
-                    .filter((c) => c.startsWith('gray'))
-                    .filter((_, i) => i >= 5)
                     .map((themeKey) => (
                         <ColorBox key={defaultTheme.color[themeKey]} themeKey={themeKey} themeValue={defaultTheme.color[themeKey] as string} />
                     ))}

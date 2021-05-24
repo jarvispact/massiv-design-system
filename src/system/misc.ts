@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react';
 import { Theme } from '../theme/default-theme';
-import { ResponsiveThemedValue } from '../utils/types';
+import { LiteralUnion, ResponsiveThemedValue, UnpackThemeScope } from '../utils/types';
 
 export const miscSystemDef = {
     display: { themeScope: null, getCSS: (v: string) => ({ display: v }) },
@@ -37,6 +37,26 @@ export type MiscSystemObj<T extends Theme> = Partial<{
     boxShadow: ResponsiveThemedValue<T, 'shadow'>;
     outline: CSSProperties['outline'];
     outlineColor: ResponsiveThemedValue<T, 'color'>;
+    overflow: CSSProperties['overflow'];
+    overflowX: CSSProperties['overflowX'];
+    overflowY: CSSProperties['overflowY'];
+}>;
+
+export type CustomMiscSystemObj<T extends Theme> = Partial<{
+    display: CSSProperties['display'];
+    clipPath: CSSProperties['clipPath'];
+    listStyle: CSSProperties['listStyle'];
+    textDecoration: CSSProperties['textDecoration'];
+    resize: CSSProperties['resize'];
+    position: CSSProperties['position'];
+    top: CSSProperties['top'];
+    left: CSSProperties['left'];
+    bottom: CSSProperties['bottom'];
+    right: CSSProperties['right'];
+    zIndex: LiteralUnion<UnpackThemeScope<T, 'zIndex'>>;
+    boxShadow: LiteralUnion<UnpackThemeScope<T, 'shadow'>>;
+    outline: CSSProperties['outline'];
+    outlineColor: LiteralUnion<UnpackThemeScope<T, 'color'>>;
     overflow: CSSProperties['overflow'];
     overflowX: CSSProperties['overflowX'];
     overflowY: CSSProperties['overflowY'];

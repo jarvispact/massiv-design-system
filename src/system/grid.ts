@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react';
 import { Theme } from '../theme/default-theme';
-import { ResponsiveThemedValue } from '../utils/types';
+import { LiteralUnion, ResponsiveThemedValue, UnpackThemeScope } from '../utils/types';
 
 export const gridSystemDef = {
     gridTemplateColumns: { themeScope: null, getCSS: (v: string) => ({ gridTemplateColumns: v }) },
@@ -26,6 +26,23 @@ export type GridSystemObj<T extends Theme> = Partial<{
     columnGap: ResponsiveThemedValue<T, 'spacing'>;
     rowGap: ResponsiveThemedValue<T, 'spacing'>;
     gap: ResponsiveThemedValue<T, 'spacing'>;
+    justifyItems: CSSProperties['justifyItems'];
+    gridColumnStart: CSSProperties['gridColumnStart'];
+    gridColumnEnd: CSSProperties['gridColumnEnd'];
+    gridRowStart: CSSProperties['gridRowStart'];
+    gridRowEnd: CSSProperties['gridRowEnd'];
+    gridArea: CSSProperties['gridArea'];
+    justifySelf: CSSProperties['justifySelf'];
+    placeSelf: CSSProperties['placeSelf'];
+}>;
+
+export type CustomGridSystemObj<T extends Theme> = Partial<{
+    gridTemplateColumns: CSSProperties['gridTemplateColumns'];
+    gridTemplateRows: CSSProperties['gridTemplateRows'];
+    gridTemplateAreas: CSSProperties['gridTemplateAreas'];
+    columnGap: LiteralUnion<UnpackThemeScope<T, 'spacing'>>;
+    rowGap: LiteralUnion<UnpackThemeScope<T, 'spacing'>>;
+    gap: LiteralUnion<UnpackThemeScope<T, 'spacing'>>;
     justifyItems: CSSProperties['justifyItems'];
     gridColumnStart: CSSProperties['gridColumnStart'];
     gridColumnEnd: CSSProperties['gridColumnEnd'];

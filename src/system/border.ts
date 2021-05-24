@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react';
 import { Theme } from '../theme/default-theme';
-import { ResponsiveThemedValue } from '../utils/types';
+import { LiteralUnion, ResponsiveThemedValue, UnpackThemeScope } from '../utils/types';
 
 export const borderSystemDef = {
     borderStyle: { themeScope: null, getCSS: (v: string) => ({ borderStyle: v }) },
@@ -104,4 +104,56 @@ export type BorderSystemObj<T extends Theme> = Partial<{
 
     borderBottomRghtRadius: ResponsiveThemedValue<T, 'radii'>;
     bbrr: ResponsiveThemedValue<T, 'radii'>;
+}>;
+
+export type CustomBorderSystemObj<T extends Theme> = Partial<{
+    borderStyle: CSSProperties['borderStyle'];
+    bs: CSSProperties['borderStyle'];
+    borderWidth: LiteralUnion<UnpackThemeScope<T, 'width'>>;
+    bw: LiteralUnion<UnpackThemeScope<T, 'width'>>;
+    borderColor: LiteralUnion<UnpackThemeScope<T, 'color'>>;
+    bc: LiteralUnion<UnpackThemeScope<T, 'color'>>;
+
+    borderRadius: LiteralUnion<UnpackThemeScope<T, 'radii'>>;
+    br: LiteralUnion<UnpackThemeScope<T, 'radii'>>;
+
+    borderTopStyle: CSSProperties['borderStyle'];
+    bts: CSSProperties['borderStyle'];
+    borderTopWidth: LiteralUnion<UnpackThemeScope<T, 'width'>>;
+    btw: LiteralUnion<UnpackThemeScope<T, 'width'>>;
+    borderTopColor: LiteralUnion<UnpackThemeScope<T, 'color'>>;
+    btc: LiteralUnion<UnpackThemeScope<T, 'color'>>;
+
+    borderBottomStyle: CSSProperties['borderStyle'];
+    bbs: CSSProperties['borderStyle'];
+    borderBottomWidth: LiteralUnion<UnpackThemeScope<T, 'width'>>;
+    bbw: LiteralUnion<UnpackThemeScope<T, 'width'>>;
+    borderBottomColor: LiteralUnion<UnpackThemeScope<T, 'color'>>;
+    bbc: LiteralUnion<UnpackThemeScope<T, 'color'>>;
+
+    borderLeftStyle: CSSProperties['borderStyle'];
+    bls: CSSProperties['borderStyle'];
+    borderLeftWidth: LiteralUnion<UnpackThemeScope<T, 'width'>>;
+    blw: LiteralUnion<UnpackThemeScope<T, 'width'>>;
+    borderLeftColor: LiteralUnion<UnpackThemeScope<T, 'color'>>;
+    blc: LiteralUnion<UnpackThemeScope<T, 'color'>>;
+
+    borderRightStyle: CSSProperties['borderStyle'];
+    brs: CSSProperties['borderStyle'];
+    borderRightWidth: LiteralUnion<UnpackThemeScope<T, 'width'>>;
+    brw: LiteralUnion<UnpackThemeScope<T, 'width'>>;
+    borderRightColor: LiteralUnion<UnpackThemeScope<T, 'color'>>;
+    brc: LiteralUnion<UnpackThemeScope<T, 'color'>>;
+
+    borderTopLeftRadius: LiteralUnion<UnpackThemeScope<T, 'radii'>>;
+    btlr: LiteralUnion<UnpackThemeScope<T, 'radii'>>;
+
+    borderTopRightRadius: LiteralUnion<UnpackThemeScope<T, 'radii'>>;
+    btrr: LiteralUnion<UnpackThemeScope<T, 'radii'>>;
+
+    borderBottomLeftRadius: LiteralUnion<UnpackThemeScope<T, 'radii'>>;
+    bblr: LiteralUnion<UnpackThemeScope<T, 'radii'>>;
+
+    borderBottomRghtRadius: LiteralUnion<UnpackThemeScope<T, 'radii'>>;
+    bbrr: LiteralUnion<UnpackThemeScope<T, 'radii'>>;
 }>;

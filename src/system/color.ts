@@ -1,5 +1,5 @@
 import { Theme } from '../theme/default-theme';
-import { ResponsiveThemedValue } from '../utils/types';
+import { LiteralUnion, ResponsiveThemedValue, UnpackThemeScope } from '../utils/types';
 
 export const colorSystemDef = {
     backgroundColor: { themeScope: 'color', getCSS: (v: string) => ({ backgroundColor: v }) },
@@ -9,3 +9,4 @@ export const colorSystemDef = {
 
 type ColorKey = keyof typeof colorSystemDef;
 export type ColorSystemObj<T extends Theme> = Partial<Record<ColorKey, ResponsiveThemedValue<T, 'color'>>>;
+export type CustomColorSystemObj<T extends Theme> = Partial<Record<ColorKey, LiteralUnion<UnpackThemeScope<T, 'color'>>>>;

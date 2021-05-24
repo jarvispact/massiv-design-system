@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react';
 import { Theme } from '../theme/default-theme';
-import { ResponsiveThemedValue } from '../utils/types';
+import { LiteralUnion, ResponsiveThemedValue, UnpackThemeScope } from '../utils/types';
 
 export const typographySystemDef = {
     fontFamily: { themeScope: 'fontFamily', getCSS: (v: string) => ({ fontFamily: v }) },
@@ -20,6 +20,18 @@ export type TypographySystemObj<T extends Theme> = Partial<{
     fontWeight: ResponsiveThemedValue<T, 'fontWeight'>;
     lineHeight: ResponsiveThemedValue<T, 'lineHeight'>;
     letterSpacing: ResponsiveThemedValue<T, 'letterSpacing'>;
+    textOverflow: CSSProperties['textOverflow'];
+    whiteSpace: CSSProperties['whiteSpace'];
+    verticalAlign: CSSProperties['verticalAlign'];
+    textTransform: CSSProperties['textTransform'];
+}>;
+
+export type CustomTypographySystemObj<T extends Theme> = Partial<{
+    fontFamily: LiteralUnion<UnpackThemeScope<T, 'fontFamily'>>;
+    fontSize: LiteralUnion<UnpackThemeScope<T, 'fontSize'>>;
+    fontWeight: LiteralUnion<UnpackThemeScope<T, 'fontWeight'>>;
+    lineHeight: LiteralUnion<UnpackThemeScope<T, 'lineHeight'>>;
+    letterSpacing: LiteralUnion<UnpackThemeScope<T, 'letterSpacing'>>;
     textOverflow: CSSProperties['textOverflow'];
     whiteSpace: CSSProperties['whiteSpace'];
     verticalAlign: CSSProperties['verticalAlign'];

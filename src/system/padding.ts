@@ -1,5 +1,5 @@
 import { Theme } from '../theme/default-theme';
-import { ResponsiveThemedValue } from '../utils/types';
+import { LiteralUnion, ResponsiveThemedValue, UnpackThemeScope } from '../utils/types';
 
 // const getCSS = <T extends Theme>(value: string, theme: T, themeScope: keyof T) => (property: keyof CSSProperties) => {
 //     const section = theme[themeScope];
@@ -26,3 +26,4 @@ export const paddingSystemDef = {
 
 type PaddingKey = keyof typeof paddingSystemDef;
 export type PaddingSystemObj<T extends Theme> = Partial<Record<PaddingKey, ResponsiveThemedValue<T, 'spacing'>>>;
+export type CustomPaddingSystemObj<T extends Theme> = Partial<Record<PaddingKey, LiteralUnion<UnpackThemeScope<T, 'spacing'>>>>;
