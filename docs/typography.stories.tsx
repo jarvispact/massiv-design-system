@@ -6,7 +6,7 @@ export default {
     title: 'Docs/Typography',
 };
 
-export const defaultHeadings = () => {
+export const heading = () => {
     return (
         <>
             <Heading as="h1" variant="h1">
@@ -31,7 +31,7 @@ export const defaultHeadings = () => {
     );
 };
 
-export const defaultText = () => {
+export const text = () => {
     return (
         <>
             <Text variant="bold">bold: The quick brown fox jumps over the lazy dog</Text>

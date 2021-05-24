@@ -14,26 +14,27 @@ export const typographySystemDef = {
     textTransform: { themeScope: null, getCSS: (v: string) => ({ textTransform: v }) },
 };
 
-export type TypographySystemObj<T extends Theme> = Partial<{
-    fontFamily: ResponsiveThemedValue<T, 'fontFamily'>;
-    fontSize: ResponsiveThemedValue<T, 'fontSize'>;
-    fontWeight: ResponsiveThemedValue<T, 'fontWeight'>;
-    lineHeight: ResponsiveThemedValue<T, 'lineHeight'>;
-    letterSpacing: ResponsiveThemedValue<T, 'letterSpacing'>;
+type UnThemedMiscObj = Partial<{
     textOverflow: CSSProperties['textOverflow'];
     whiteSpace: CSSProperties['whiteSpace'];
     verticalAlign: CSSProperties['verticalAlign'];
     textTransform: CSSProperties['textTransform'];
 }>;
 
-export type CustomTypographySystemObj<T extends Theme> = Partial<{
-    fontFamily: LiteralUnion<UnpackThemeScope<T, 'fontFamily'>>;
-    fontSize: LiteralUnion<UnpackThemeScope<T, 'fontSize'>>;
-    fontWeight: LiteralUnion<UnpackThemeScope<T, 'fontWeight'>>;
-    lineHeight: LiteralUnion<UnpackThemeScope<T, 'lineHeight'>>;
-    letterSpacing: LiteralUnion<UnpackThemeScope<T, 'letterSpacing'>>;
-    textOverflow: CSSProperties['textOverflow'];
-    whiteSpace: CSSProperties['whiteSpace'];
-    verticalAlign: CSSProperties['verticalAlign'];
-    textTransform: CSSProperties['textTransform'];
-}>;
+export type TypographySystemObj<T extends Theme> = UnThemedMiscObj &
+    Partial<{
+        fontFamily: ResponsiveThemedValue<T, 'fontFamily'>;
+        fontSize: ResponsiveThemedValue<T, 'fontSize'>;
+        fontWeight: ResponsiveThemedValue<T, 'fontWeight'>;
+        lineHeight: ResponsiveThemedValue<T, 'lineHeight'>;
+        letterSpacing: ResponsiveThemedValue<T, 'letterSpacing'>;
+    }>;
+
+export type CustomTypographySystemObj<T extends Theme> = UnThemedMiscObj &
+    Partial<{
+        fontFamily: LiteralUnion<UnpackThemeScope<T, 'fontFamily'>>;
+        fontSize: LiteralUnion<UnpackThemeScope<T, 'fontSize'>>;
+        fontWeight: LiteralUnion<UnpackThemeScope<T, 'fontWeight'>>;
+        lineHeight: LiteralUnion<UnpackThemeScope<T, 'lineHeight'>>;
+        letterSpacing: LiteralUnion<UnpackThemeScope<T, 'letterSpacing'>>;
+    }>;

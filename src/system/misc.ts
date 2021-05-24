@@ -22,7 +22,7 @@ export const miscSystemDef = {
     overflowY: { themeScope: 'color', getCSS: (v: string) => ({ overflowY: v }) },
 };
 
-export type MiscSystemObj<T extends Theme> = Partial<{
+type UnThemedMiscObj = Partial<{
     display: CSSProperties['display'];
     clipPath: CSSProperties['clipPath'];
     listStyle: CSSProperties['listStyle'];
@@ -33,31 +33,22 @@ export type MiscSystemObj<T extends Theme> = Partial<{
     left: CSSProperties['left'];
     bottom: CSSProperties['bottom'];
     right: CSSProperties['right'];
-    zIndex: ResponsiveThemedValue<T, 'zIndex'>;
-    boxShadow: ResponsiveThemedValue<T, 'shadow'>;
     outline: CSSProperties['outline'];
-    outlineColor: ResponsiveThemedValue<T, 'color'>;
     overflow: CSSProperties['overflow'];
     overflowX: CSSProperties['overflowX'];
     overflowY: CSSProperties['overflowY'];
 }>;
 
-export type CustomMiscSystemObj<T extends Theme> = Partial<{
-    display: CSSProperties['display'];
-    clipPath: CSSProperties['clipPath'];
-    listStyle: CSSProperties['listStyle'];
-    textDecoration: CSSProperties['textDecoration'];
-    resize: CSSProperties['resize'];
-    position: CSSProperties['position'];
-    top: CSSProperties['top'];
-    left: CSSProperties['left'];
-    bottom: CSSProperties['bottom'];
-    right: CSSProperties['right'];
-    zIndex: LiteralUnion<UnpackThemeScope<T, 'zIndex'>>;
-    boxShadow: LiteralUnion<UnpackThemeScope<T, 'shadow'>>;
-    outline: CSSProperties['outline'];
-    outlineColor: LiteralUnion<UnpackThemeScope<T, 'color'>>;
-    overflow: CSSProperties['overflow'];
-    overflowX: CSSProperties['overflowX'];
-    overflowY: CSSProperties['overflowY'];
-}>;
+export type MiscSystemObj<T extends Theme> = UnThemedMiscObj &
+    Partial<{
+        zIndex: ResponsiveThemedValue<T, 'zIndex'>;
+        boxShadow: ResponsiveThemedValue<T, 'shadow'>;
+        outlineColor: ResponsiveThemedValue<T, 'color'>;
+    }>;
+
+export type CustomMiscSystemObj<T extends Theme> = UnThemedMiscObj &
+    Partial<{
+        zIndex: LiteralUnion<UnpackThemeScope<T, 'zIndex'>>;
+        boxShadow: LiteralUnion<UnpackThemeScope<T, 'shadow'>>;
+        outlineColor: LiteralUnion<UnpackThemeScope<T, 'color'>>;
+    }>;

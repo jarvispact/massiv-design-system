@@ -15,15 +15,13 @@ const systemDefinitions = {
 
 type SystemObj<T extends Theme> = TypographySystemObj<T> & ColorSystemObj<T>;
 
-type TextElement = 'div' | 'span' | 'p' | 'label' | 'a' | 'i' | 'b';
-
 type TextHTMLElement = HTMLDivElement | HTMLSpanElement | HTMLParagraphElement | HTMLLabelElement | HTMLAnchorElement;
 
 const omitProps = Object.keys(systemDefinitions);
 
 export type TextProps<T extends Theme = Theme, HTMLElem extends TextHTMLElement = TextHTMLElement> = HTMLAttributesWithoutColor<HTMLElem> &
     SystemObj<T> & {
-        as?: TextElement;
+        as?: React.ElementType;
         variant?: TextVariant;
         children: React.ReactNode;
         [x: string]: unknown;

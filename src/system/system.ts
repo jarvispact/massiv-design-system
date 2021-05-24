@@ -29,9 +29,6 @@ export const allSystemDefinitions = {
     ...transitionSystemDef,
 };
 
-export const allSystemDefinitionKeys = objectKeys(allSystemDefinitions);
-export type SystemDefinitionKey = typeof allSystemDefinitionKeys[number];
-
 type SystemObject<T extends Theme> = PaddingSystemObj<T> &
     MarginSystemObj<T> &
     TypographySystemObj<T> &
@@ -45,7 +42,7 @@ type SystemObject<T extends Theme> = PaddingSystemObj<T> &
     AnimationSystemObj &
     TransitionSystemObj;
 
-export type CustomSystemObject<T extends Theme> = CustomPaddingSystemObj<T> &
+export type CustomSelectorSystemObject<T extends Theme> = CustomPaddingSystemObj<T> &
     CustomMarginSystemObj<T> &
     CustomTypographySystemObj<T> &
     CustomColorSystemObj<T> &
@@ -58,7 +55,7 @@ export type CustomSystemObject<T extends Theme> = CustomPaddingSystemObj<T> &
     AnimationSystemObj &
     TransitionSystemObj;
 
-export type SystemObj<T extends Theme> = { customSelectors?: Record<string, CustomSystemObject<T>> } & SystemObject<T>;
+export type SystemObj<T extends Theme> = { customSelectors?: Record<string, CustomSelectorSystemObject<T>> } & SystemObject<T>;
 
 export type SystemDefinition<T extends Theme> = {
     themeScope: keyof T | null;

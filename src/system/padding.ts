@@ -1,18 +1,6 @@
 import { Theme } from '../theme/default-theme';
 import { LiteralUnion, ResponsiveThemedValue, UnpackThemeScope } from '../utils/types';
 
-// const getCSS = <T extends Theme>(value: string, theme: T, themeScope: keyof T) => (property: keyof CSSProperties) => {
-//     const section = theme[themeScope];
-//     if (!themeScope || !section) return value;
-//     console.log({ value, property });
-//     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-//     // @ts-ignore
-//     const val = value as keyof T;
-//     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-//     // @ts-ignore
-//     return section[val] || value;
-// };
-
 export const paddingSystemDef = {
     padding: { themeScope: 'spacing', getCSS: (v: string) => ({ padding: v }) },
     p: { themeScope: 'spacing', getCSS: (v: string) => ({ padding: v }) },

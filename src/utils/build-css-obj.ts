@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { CSSProperties } from 'react';
-import { CustomSystemObject, SystemDefinitionObj, SystemObj } from '../system/system';
+import { CustomSelectorSystemObject, SystemDefinitionObj, SystemObj } from '../system/system';
 import { Theme } from '../theme/default-theme';
 import { objectKeys } from './object-keys';
 
@@ -20,7 +20,7 @@ export const buildCssObj = <T extends Theme>(theme: T, definitions: SystemDefini
 
     keys.forEach((key) => {
         if (key === 'customSelectors') {
-            const value = obj[key] as Record<string, CustomSystemObject<T>>;
+            const value = obj[key] as Record<string, CustomSelectorSystemObject<T>>;
 
             objectKeys(value).forEach((selector) => {
                 const customObj = value[selector];

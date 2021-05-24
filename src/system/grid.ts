@@ -19,13 +19,10 @@ export const gridSystemDef = {
     placeSelf: { themeScope: null, getCSS: (v: string) => ({ placeSelf: v }) },
 };
 
-export type GridSystemObj<T extends Theme> = Partial<{
+type UnThemedGridObj = Partial<{
     gridTemplateColumns: CSSProperties['gridTemplateColumns'];
     gridTemplateRows: CSSProperties['gridTemplateRows'];
     gridTemplateAreas: CSSProperties['gridTemplateAreas'];
-    columnGap: ResponsiveThemedValue<T, 'spacing'>;
-    rowGap: ResponsiveThemedValue<T, 'spacing'>;
-    gap: ResponsiveThemedValue<T, 'spacing'>;
     justifyItems: CSSProperties['justifyItems'];
     gridColumnStart: CSSProperties['gridColumnStart'];
     gridColumnEnd: CSSProperties['gridColumnEnd'];
@@ -36,19 +33,16 @@ export type GridSystemObj<T extends Theme> = Partial<{
     placeSelf: CSSProperties['placeSelf'];
 }>;
 
-export type CustomGridSystemObj<T extends Theme> = Partial<{
-    gridTemplateColumns: CSSProperties['gridTemplateColumns'];
-    gridTemplateRows: CSSProperties['gridTemplateRows'];
-    gridTemplateAreas: CSSProperties['gridTemplateAreas'];
-    columnGap: LiteralUnion<UnpackThemeScope<T, 'spacing'>>;
-    rowGap: LiteralUnion<UnpackThemeScope<T, 'spacing'>>;
-    gap: LiteralUnion<UnpackThemeScope<T, 'spacing'>>;
-    justifyItems: CSSProperties['justifyItems'];
-    gridColumnStart: CSSProperties['gridColumnStart'];
-    gridColumnEnd: CSSProperties['gridColumnEnd'];
-    gridRowStart: CSSProperties['gridRowStart'];
-    gridRowEnd: CSSProperties['gridRowEnd'];
-    gridArea: CSSProperties['gridArea'];
-    justifySelf: CSSProperties['justifySelf'];
-    placeSelf: CSSProperties['placeSelf'];
-}>;
+export type GridSystemObj<T extends Theme> = UnThemedGridObj &
+    Partial<{
+        columnGap: ResponsiveThemedValue<T, 'spacing'>;
+        rowGap: ResponsiveThemedValue<T, 'spacing'>;
+        gap: ResponsiveThemedValue<T, 'spacing'>;
+    }>;
+
+export type CustomGridSystemObj<T extends Theme> = UnThemedGridObj &
+    Partial<{
+        columnGap: LiteralUnion<UnpackThemeScope<T, 'spacing'>>;
+        rowGap: LiteralUnion<UnpackThemeScope<T, 'spacing'>>;
+        gap: LiteralUnion<UnpackThemeScope<T, 'spacing'>>;
+    }>;
