@@ -27,6 +27,6 @@ export default {
                 'node_modules/react-is/index.js': ['typeOf', 'isElement', 'isValidElementType'],
             },
         }),
-        typescript(),
+        typescript({ useTsconfigDeclarationDir: true }),
     ],
 };
