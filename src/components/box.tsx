@@ -6,7 +6,7 @@ import { Theme } from '../theme/default-theme';
 import { omit } from '../utils/omit';
 import { HTMLAttributesWithoutColor } from '../utils/types';
 
-const omitProps = Object.keys(allSystemDefinitions);
+const omitProps = [...Object.keys(allSystemDefinitions), 'customSelectors'];
 
 export type BoxProps<T extends Theme = Theme, HTMLElem extends HTMLDivElement = HTMLDivElement> = HTMLAttributesWithoutColor<HTMLElem> &
     SystemObj<T> & {

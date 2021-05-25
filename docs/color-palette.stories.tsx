@@ -17,7 +17,7 @@ const ColorBox = ({ themeKey, themeValue }: ColorBoxProps) => {
     return (
         <Box display="flex" flexDirection="column" width="150px" boxShadow="s">
             <Box height="80px" bg={themeKey} />
-            <Box p="xs">
+            <Box p="2">
                 <Text variant="bold">{themeKey}</Text>
                 <Text variant="body2">{themeValue}</Text>
             </Box>
@@ -36,10 +36,10 @@ const HStack = ({ children }: StackProps) => {
         customSelectors: {
             '& > div': {
                 display: 'inline-block',
-                my: 'xs',
+                my: '2',
             },
             '& > div:not(:last-child)': {
-                mr: 's',
+                mr: '4',
             },
         },
     });

@@ -13,15 +13,15 @@ describe('build-css-obj', () => {
     });
 
     it('should take the value from the correct theme section by key', () => {
-        const inputObject = { padding: 's' };
-        const expectedObject = { padding: defaultTheme.spacing.s };
+        const inputObject = { padding: '2' };
+        const expectedObject = { padding: defaultTheme.spacing['2'] };
         const result = buildCssObj(defaultTheme, paddingSystemDef as SystemDefinitionObj<Theme, keyof SystemObj<Theme>>, inputObject);
         expect(result).to.eql(expectedObject);
     });
 
     it('should merge multiple rules correctly', () => {
-        const inputObject = { px: 's', py: '42px' };
-        const expectedObject = { paddingLeft: defaultTheme.spacing.s, paddingRight: defaultTheme.spacing.s, paddingTop: '42px', paddingBottom: '42px' };
+        const inputObject = { px: '2', py: '42px' };
+        const expectedObject = { paddingLeft: defaultTheme.spacing['2'], paddingRight: defaultTheme.spacing['2'], paddingTop: '42px', paddingBottom: '42px' };
         const result = buildCssObj(defaultTheme, paddingSystemDef as SystemDefinitionObj<Theme, keyof SystemObj<Theme>>, inputObject);
         expect(result).to.eql(expectedObject);
     });
@@ -61,8 +61,8 @@ describe('build-css-obj', () => {
     });
 
     it('should handle custom selectors', () => {
-        const inputObject = { p: 's', customSelectors: { '&:hover': { p: 'm' } } };
-        const expectedObject = { padding: defaultTheme.spacing.s, '&:hover': { padding: defaultTheme.spacing.m } };
+        const inputObject = { p: '2', customSelectors: { '&:hover': { p: '4' } } };
+        const expectedObject = { padding: defaultTheme.spacing['2'], '&:hover': { padding: defaultTheme.spacing['4'] } };
         const result = buildCssObj(defaultTheme, paddingSystemDef as SystemDefinitionObj<Theme, keyof SystemObj<Theme>>, inputObject);
         expect(result).to.eql(expectedObject);
     });
