@@ -17,8 +17,8 @@
         "build-storybook": "build-storybook --docs",
         "update:check": "ncu",
         "update:do": "ncu -u && npm i",
-        "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
-        "tsc": "bash -c tsc --noEmit --allowJs --skipLibCheck --jsx react --esModuleInterop"
+        "lint": "eslint '*/**/*.{ts,tsx}' --quiet --fix",
+        "tsc": "bash -c tsc --noEmit"
     },
     "husky": {
         "hooks": {
@@ -26,9 +26,9 @@
         }
     },
     "lint-staged": {
-        "*.{js,ts,tsx}": [
-            "tsc --noEmit --allowJs --skipLibCheck --jsx react --esModuleInterop",
-            ""
+        "src/**/*.{ts,tsx}": [
+            "npm run tsc",
+            "npm run lint"
         ]
     },
     "repository": {
