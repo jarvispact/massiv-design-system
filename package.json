@@ -18,7 +18,7 @@
         "update:check": "ncu",
         "update:do": "ncu -u && npm i",
         "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
-        "tsc": "bash -c tsc --noEmit"
+        "tsc": "bash -c tsc --noEmit --allowJs --skipLibCheck --jsx react --esModuleInterop"
     },
     "husky": {
         "hooks": {
