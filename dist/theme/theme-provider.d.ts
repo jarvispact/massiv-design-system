@@ -14,6 +14,9 @@ export declare const ThemeContext: React.Context<Ctx<{
         xxxl: string;
     };
     color: {
+        background: string;
+        heading: string;
+        text: string;
         gray50: string;
         gray100: string;
         gray200: string;
@@ -244,12 +247,12 @@ export declare const ThemeContext: React.Context<Ctx<{
         l: string;
     };
     zIndex: {
-        '0': number;
-        '10': number;
-        '20': number;
-        '30': number;
-        '40': number;
-        '50': number;
+        '0': string;
+        '10': string;
+        '20': string;
+        '30': string;
+        '40': string;
+        '50': string;
     };
     components: {
         Heading: (variant?: import("..").HeadingVariant | undefined) => string;
@@ -270,6 +273,9 @@ export declare const ThemeProvider: <T extends {
         xxxl: string;
     };
     color: {
+        background: string;
+        heading: string;
+        text: string;
         gray50: string;
         gray100: string;
         gray200: string;
@@ -500,12 +506,12 @@ export declare const ThemeProvider: <T extends {
         l: string;
     };
     zIndex: {
-        '0': number;
-        '10': number;
-        '20': number;
-        '30': number;
-        '40': number;
-        '50': number;
+        '0': string;
+        '10': string;
+        '20': string;
+        '30': string;
+        '40': string;
+        '50': string;
     };
     components: {
         Heading: (variant?: import("..").HeadingVariant | undefined) => string;
@@ -522,6 +528,9 @@ export declare const useTheme: <T extends {
         xxxl: string;
     };
     color: {
+        background: string;
+        heading: string;
+        text: string;
         gray50: string;
         gray100: string;
         gray200: string;
@@ -752,12 +761,12 @@ export declare const useTheme: <T extends {
         l: string;
     };
     zIndex: {
-        '0': number;
-        '10': number;
-        '20': number;
-        '30': number;
-        '40': number;
-        '50': number;
+        '0': string;
+        '10': string;
+        '20': string;
+        '30': string;
+        '40': string;
+        '50': string;
     };
     components: {
         Heading: (variant?: import("..").HeadingVariant | undefined) => string;

@@ -1214,7 +1214,7 @@ var breakpoint = {
     xxl: '1600px',
     xxxl: '1920px',
 };
-var color = {
+var baseColors = {
     gray50: '#FAFAFA',
     gray100: '#F5F5F5',
     gray200: '#E5E5E5',
@@ -1276,6 +1276,7 @@ var color = {
     secondary800: '#9D174D',
     secondary900: '#831843',
 };
+var color = __assign(__assign({}, baseColors), { background: baseColors.gray100, heading: baseColors.gray900, text: baseColors.gray900 });
 var spacing = {
     px: '1px',
     '0.5': '0.125rem',
@@ -1387,50 +1388,50 @@ var shadow = {
     l: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
 };
 var zIndex = {
-    '0': 0,
-    '10': 0,
-    '20': 0,
-    '30': 0,
-    '40': 0,
-    '50': 0,
+    '0': '0',
+    '10': '10',
+    '20': '20',
+    '30': '30',
+    '40': '40',
+    '50': '50',
 };
 var components = {
     Heading: function (variant) {
         var css = useCss().css;
         switch (variant) {
             case 'h1':
-                return css({ fontFamily: 'serif', fontSize: { value: '3xl', m: '4xl' } });
+                return css({ fontFamily: 'serif', color: 'heading', fontSize: { value: '3xl', m: '4xl' } });
             case 'h2':
-                return css({ fontFamily: 'serif', fontSize: { value: '2xl', m: '3xl' } });
+                return css({ fontFamily: 'serif', color: 'heading', fontSize: { value: '2xl', m: '3xl' } });
             case 'h3':
-                return css({ fontFamily: 'serif', fontSize: { value: 'xl', m: '2xl' } });
+                return css({ fontFamily: 'serif', color: 'heading', fontSize: { value: 'xl', m: '2xl' } });
             case 'h4':
-                return css({ fontFamily: 'serif', fontSize: { value: 'l', m: 'xl' } });
+                return css({ fontFamily: 'serif', color: 'heading', fontSize: { value: 'l', m: 'xl' } });
             case 'h5':
-                return css({ fontFamily: 'serif', fontSize: { value: 'm', m: 'l' } });
+                return css({ fontFamily: 'serif', color: 'heading', fontSize: { value: 'm', m: 'l' } });
             case 'h6':
-                return css({ fontFamily: 'serif', fontSize: { value: 'm', m: 'm' } });
+                return css({ fontFamily: 'serif', color: 'heading', fontSize: { value: 'm', m: 'm' } });
             default:
-                return css({ fontFamily: 'serif' });
+                return css({ fontFamily: 'serif', color: 'heading' });
         }
     },
     Text: function (variant) {
         var css = useCss().css;
         switch (variant) {
             case 'bold':
-                return css({ fontFamily: 'sans', fontSize: 'm', fontWeight: 'l' });
+                return css({ fontFamily: 'sans', color: 'text', fontSize: 'm', fontWeight: 'l' });
             case 'body1':
-                return css({ fontFamily: 'sans', fontSize: 'm', fontWeight: 'm' });
+                return css({ fontFamily: 'sans', color: 'text', fontSize: 'm', fontWeight: 'm' });
             case 'body2':
-                return css({ fontFamily: 'sans', fontSize: 'm', fontWeight: 's' });
+                return css({ fontFamily: 'sans', color: 'text', fontSize: 'm', fontWeight: 's' });
             case 'body3':
-                return css({ fontFamily: 'sans', fontSize: 's', fontWeight: 's' });
+                return css({ fontFamily: 'sans', color: 'text', fontSize: 's', fontWeight: 's' });
             case 'body4':
-                return css({ fontFamily: 'sans', fontSize: 's', fontWeight: 'xs' });
+                return css({ fontFamily: 'sans', color: 'text', fontSize: 's', fontWeight: 'xs' });
             case 'body5':
-                return css({ fontFamily: 'sans', fontSize: 'xs', fontWeight: 'xs' });
+                return css({ fontFamily: 'sans', color: 'text', fontSize: 'xs', fontWeight: 'xs' });
             default:
-                return css({ fontFamily: 'sans' });
+                return css({ fontFamily: 'sans', color: 'text' });
         }
     },
 };

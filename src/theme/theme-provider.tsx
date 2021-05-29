@@ -28,4 +28,4 @@ export const ThemeProvider = <T extends Theme>({ theme, children }: Props<T>) =>
     return <ThemeContext.Provider value={context as any}>{children}</ThemeContext.Provider>;
 };
 
-export const useTheme = <T extends Theme>() => useContext<Ctx<T>>((ThemeContext as any) as React.Context<Ctx<T>>);
+export const useTheme = <T extends Theme>() => useContext<Ctx<T>>(ThemeContext as any as React.Context<Ctx<T>>);
