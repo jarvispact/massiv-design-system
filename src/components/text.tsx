@@ -14,9 +14,7 @@ const systemDefinitions = {
 };
 
 type SystemObj<T extends Theme> = TypographySystemObj<T> & ColorSystemObj<T>;
-
 type TextHTMLElement = HTMLDivElement | HTMLSpanElement | HTMLParagraphElement | HTMLLabelElement | HTMLAnchorElement;
-
 const omitProps = Object.keys(systemDefinitions);
 
 export type TextProps<T extends Theme = Theme, HTMLElem extends TextHTMLElement = TextHTMLElement> =
