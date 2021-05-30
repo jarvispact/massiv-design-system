@@ -1,13 +1,20 @@
-import React from 'react';
-import { SystemObj } from '../system/system';
+/// <reference types="react" />
 import { Theme } from '../theme/default-theme';
-import { HTMLAttributesWithoutColor } from '../utils/types';
-export declare type BoxProps<T extends Theme = Theme, HTMLElem = HTMLDivElement> = HTMLAttributesWithoutColor<HTMLElem> & SystemObj<T> & {
-    as?: React.ElementType;
-    children?: React.ReactNode;
+import { HTMLAttributesWithoutColor, LiteralUnion, UnpackThemeScope } from '../utils/types';
+import { WidthSystemObj } from '../system/width';
+import { HeightSystemObj } from '../system/height';
+declare type SystemObj<T extends Theme> = Omit<WidthSystemObj<T>, 'width' | 'w'> & Omit<HeightSystemObj<T>, 'height' | 'h'> & {
+    cssWidth?: LiteralUnion<UnpackThemeScope<T, 'width'>>;
+    cssHeight?: LiteralUnion<UnpackThemeScope<T, 'height'>>;
+};
+export declare type ImageProps<T extends Theme = Theme> = HTMLAttributesWithoutColor<HTMLImageElement> & SystemObj<T> & {
+    src?: string;
+    alt?: string;
+    width?: string;
+    height?: string;
     [x: string]: unknown;
 };
-export declare const Box: <T extends {
+export declare const Image: <T extends {
     breakpoint: {
         s: string;
         m: string;
@@ -261,4 +268,5 @@ export declare const Box: <T extends {
         Heading: (variant?: import("..").HeadingVariant | undefined) => string;
         Text: (variant?: import("..").TextVariant | undefined) => string;
     };
-}>({ as, children, className, ...props }: BoxProps<T, HTMLDivElement>) => React.ReactElement<any, string | React.JSXElementConstructor<any>>;
+}>({ className, ...props }: ImageProps<T>) => JSX.Element;
+export {};

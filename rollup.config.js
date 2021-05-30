@@ -18,15 +18,5 @@ export default {
             sourcemap: true,
         },
     ],
-    plugins: [
-        peerDepsExternal(),
-        resolve(),
-        commonjs({
-            include: 'node_modules/**',
-            namedExports: {
-                'node_modules/react-is/index.js': ['typeOf', 'isElement', 'isValidElementType'],
-            },
-        }),
-        typescript({ useTsconfigDeclarationDir: true }),
-    ],
+    plugins: [peerDepsExternal(), resolve(), commonjs(), typescript({ tsconfig: './tsconfig.build.json' })],
 };
