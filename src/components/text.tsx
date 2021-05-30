@@ -30,9 +30,7 @@ export type TextProps<T extends Theme = Theme, HTMLElem extends TextHTMLElement 
 export const Text = <T extends Theme>({ as = 'p', variant, children, className, ...props }: TextProps<T>) => {
     const { css, theme } = useCss<T>();
     const defaultStyle = theme.components.Text(variant);
-    const dynamicStyle = css(props);
+    const dynamicStyle = css(props, systemDefinitions);
     const newClassName = cx(defaultStyle, dynamicStyle, className);
     return React.createElement(as, { ...omit(omitProps, props), className: newClassName }, children);
 };
-
-export const getTextWithTheme = <T extends Theme, HTMLElem extends TextHTMLElement = TextHTMLElement>() => Text as React.FC<TextProps<T, HTMLElem>>;

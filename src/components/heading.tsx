@@ -30,9 +30,7 @@ export type HeadingProps<T extends Theme = Theme> = HTMLAttributesWithoutColor<H
 export const Heading = <T extends Theme>({ as = 'h1', variant, children, className, ...props }: HeadingProps<T>) => {
     const { css, theme } = useCss<T>();
     const defaultStyle = theme.components.Heading(variant);
-    const dynamicStyle = css(props);
+    const dynamicStyle = css(props, systemDefinitions);
     const newClassName = cx(defaultStyle, dynamicStyle, className);
     return React.createElement(as, { ...omit(omitProps, props), className: newClassName }, children);
 };
-
-export const getHeadingWithTheme = <T extends Theme>() => Heading as React.FC<HeadingProps<T>>;
