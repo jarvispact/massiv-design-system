@@ -14,4 +14,6 @@ export const paddingSystemDef = {
 
 type PaddingKey = keyof typeof paddingSystemDef;
 export type PaddingSystemObj<T extends Theme> = Partial<Record<PaddingKey, ResponsiveThemedValue<T, 'spacing'>>>;
-export type CustomPaddingSystemObj<T extends Theme> = Partial<Record<PaddingKey, LiteralUnion<UnpackThemeScope<T, 'spacing'>>>>;
+export type CustomPaddingSystemObj<T extends Theme> = Partial<
+    Record<PaddingKey, LiteralUnion<UnpackThemeScope<T, 'spacing'>>>
+>;

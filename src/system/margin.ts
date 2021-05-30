@@ -14,4 +14,6 @@ export const marginSystemDef = {
 
 type MarginKey = keyof typeof marginSystemDef;
 export type MarginSystemObj<T extends Theme> = Partial<Record<MarginKey, ResponsiveThemedValue<T, 'spacing'>>>;
-export type CustomMarginSystemObj<T extends Theme> = Partial<Record<MarginKey, LiteralUnion<UnpackThemeScope<T, 'spacing'>>>>;
+export type CustomMarginSystemObj<T extends Theme> = Partial<
+    Record<MarginKey, LiteralUnion<UnpackThemeScope<T, 'spacing'>>>
+>;

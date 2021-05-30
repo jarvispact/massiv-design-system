@@ -8,6 +8,8 @@ type BreakPointKey<T extends Theme> = keyof T['breakpoint'];
 export type ResponsiveThemedValue<T extends Theme, S extends keyof T> =
     | LiteralUnion<UnpackThemeScope<T, S>>
     | Array<LiteralUnion<UnpackThemeScope<T, S>>>
-    | (Partial<{ [K in BreakPointKey<T>]: LiteralUnion<UnpackThemeScope<T, S>> }> & { value?: LiteralUnion<UnpackThemeScope<T, S>> });
+    | (Partial<{ [K in BreakPointKey<T>]: LiteralUnion<UnpackThemeScope<T, S>> }> & {
+          value?: LiteralUnion<UnpackThemeScope<T, S>>;
+      });
 
 export type HTMLAttributesWithoutColor<HTMLElem = HTMLDivElement> = Omit<React.HTMLAttributes<HTMLElem>, 'color'>;

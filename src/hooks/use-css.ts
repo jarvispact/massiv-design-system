@@ -19,21 +19,32 @@ type CommonPresetKey = keyof typeof commonPresetMap;
 export const useCss = <T extends Theme = Theme>() => {
     const { theme } = useTheme<T>();
 
-    const breakPointKeys = objectKeys(theme.breakpoint).map(key => `media-query-${key}` as const);
+    const breakPointKeys = objectKeys(theme.breakpoint).map((key) => `media-query-${key}` as const);
     type BreakpointKey = typeof breakPointKeys[number];
     type SelectorPreset = BreakpointKey | CommonPresetKey;
 
     const breakPointMap = breakPointKeys.reduce((accum, key) => {
-        const breakpointKey = key.substring(key.indexOf('media-query-') + 12, key.length) as keyof typeof theme.breakpoint;
+        const breakpointKey = key.substring(
+            key.indexOf('media-query-') + 12,
+            key.length,
+        ) as keyof typeof theme.breakpoint;
         accum[key] = `@media(min-width: ${theme.breakpoint[breakpointKey]})`;
         return accum;
     }, {} as Record<SelectorPreset, string>);
 
-    const lookupMap = {...commonPresetMap, ...breakPointMap};
+    const lookupMap = { ...commonPresetMap, ...breakPointMap };
 
     // @ts-ignore
     const selector = (preset: LiteralUnion<SelectorPreset>) => `${lookupMap[preset] || preset}`;
 
-    const css = <Def = SystemDefinitionObj<Theme, keyof SystemObj<T>>>(obj: SystemObj<T>, definitions?: Def) => _css(buildCssObj<T>(theme, (definitions || allSystemDefinitions) as SystemDefinitionObj<Theme, keyof SystemObj<T>>, obj) as CSSInterpolation);
+    const css = <Def = SystemDefinitionObj<Theme, keyof SystemObj<T>>>(obj: SystemObj<T>, definitions?: Def) =>
+        _css(
+            buildCssObj<T>(
+                theme,
+                (definitions || allSystemDefinitions) as SystemDefinitionObj<Theme, keyof SystemObj<T>>,
+                obj,
+            ) as CSSInterpolation,
+        );
+
     return { css, theme, selector, cx, keyframes };
 };

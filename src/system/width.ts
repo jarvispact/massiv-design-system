@@ -12,4 +12,6 @@ export const widthSystemDef = {
 
 type WidthKey = keyof typeof widthSystemDef;
 export type WidthSystemObj<T extends Theme> = Partial<Record<WidthKey, ResponsiveThemedValue<T, 'width'>>>;
-export type CustomWidthSystemObj<T extends Theme> = Partial<Record<WidthKey, LiteralUnion<UnpackThemeScope<T, 'width'>>>>;
+export type CustomWidthSystemObj<T extends Theme> = Partial<
+    Record<WidthKey, LiteralUnion<UnpackThemeScope<T, 'width'>>>
+>;

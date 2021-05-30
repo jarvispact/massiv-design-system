@@ -9,4 +9,6 @@ export const colorSystemDef = {
 
 type ColorKey = keyof typeof colorSystemDef;
 export type ColorSystemObj<T extends Theme> = Partial<Record<ColorKey, ResponsiveThemedValue<T, 'color'>>>;
-export type CustomColorSystemObj<T extends Theme> = Partial<Record<ColorKey, LiteralUnion<UnpackThemeScope<T, 'color'>>>>;
+export type CustomColorSystemObj<T extends Theme> = Partial<
+    Record<ColorKey, LiteralUnion<UnpackThemeScope<T, 'color'>>>
+>;

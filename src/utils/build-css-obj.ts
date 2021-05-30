@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { CSSProperties } from 'react';
 import { CustomSelectorSystemObject, SystemDefinitionObj, SystemObj } from '../system/system';
@@ -7,7 +8,6 @@ import { objectKeys } from './object-keys';
 const objectProps = ['value'] as const;
 
 // @ts-ignore
-// eslint-disable-next-line prettier/prettier
 const getValueFromThemeScopeWithFallback = <T extends Theme, K extends keyof T>(value: string, theme: T, themeScope: K | null) => themeScope ? theme[themeScope][value] || value : value;
 
 export const buildCssObj = <T extends Theme>(theme: T, definitions: SystemDefinitionObj<T, keyof SystemObj<T>>, obj: SystemObj<T>) => {
@@ -32,7 +32,12 @@ export const buildCssObj = <T extends Theme>(theme: T, definitions: SystemDefini
                     retVal = {
                         ...retVal,
                         // @ts-ignore
-                        [selector]: { ...retVal[selector], ...def.getCSS(getValueFromThemeScopeWithFallback(customObj[customObjKey], theme, def.themeScope)) },
+                        [selector]: {
+                            // @ts-ignore
+                            ...retVal[selector],
+                            // @ts-ignore
+                            ...def.getCSS(getValueFromThemeScopeWithFallback(customObj[customObjKey], theme, def.themeScope)),
+                        },
                     };
                 });
             });
@@ -50,7 +55,10 @@ export const buildCssObj = <T extends Theme>(theme: T, definitions: SystemDefini
         } else if (Array.isArray(value)) {
             value.forEach((val, idx) => {
                 if (idx === 0) {
-                    retVal = { ...retVal, ...def.getCSS(getValueFromThemeScopeWithFallback(val, theme, def.themeScope)) };
+                    retVal = {
+                        ...retVal,
+                        ...def.getCSS(getValueFromThemeScopeWithFallback(val, theme, def.themeScope)),
+                    };
                 } else {
                     const mediaQueryKey = `@media(min-width: ${breakpointValues[idx - 1]})`;
                     retVal = {
@@ -66,7 +74,10 @@ export const buildCssObj = <T extends Theme>(theme: T, definitions: SystemDefini
         } else {
             objectKeys(value).forEach((key) => {
                 if (key === 'value') {
-                    retVal = { ...retVal, ...def.getCSS(getValueFromThemeScopeWithFallback(value.value, theme, def.themeScope)) };
+                    retVal = {
+                        ...retVal,
+                        ...def.getCSS(getValueFromThemeScopeWithFallback(value.value, theme, def.themeScope)),
+                    };
                 } else {
                     const mediaQueryKey = `@media(min-width: ${theme.breakpoint[key]})`;
                     retVal = {

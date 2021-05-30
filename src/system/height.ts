@@ -12,4 +12,6 @@ export const heightSystemDef = {
 
 type HeightKey = keyof typeof heightSystemDef;
 export type HeightSystemObj<T extends Theme> = Partial<Record<HeightKey, ResponsiveThemedValue<T, 'height'>>>;
-export type CustomHeightSystemObj<T extends Theme> = Partial<Record<HeightKey, LiteralUnion<UnpackThemeScope<T, 'height'>>>>;
+export type CustomHeightSystemObj<T extends Theme> = Partial<
+    Record<HeightKey, LiteralUnion<UnpackThemeScope<T, 'height'>>>
+>;

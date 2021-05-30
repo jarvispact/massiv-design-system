@@ -8,9 +8,9 @@
         "dist"
     ],
     "scripts": {
-        "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'test/**/*.spec.ts'",
+        "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' TS_NODE_PROJECT='tsconfig.build.json' mocha -r ts-node/register 'test/**/*.spec.ts'",
         "clean": "rm -rf ./dist",
-        "build": "rollup -c",
+        "build": "bash -c 'rollup -c'",
         "storybook": "start-storybook -p 6006 --docs",
         "build-storybook": "build-storybook --docs",
         "tsc": "bash -c tsc --noEmit",
@@ -25,11 +25,9 @@
     "lint-staged": {
         "src/**/*.ts{,x}": [
             "npm run tsc",
-            "npm run lint",
             "npm run prettier",
-            "npm run test",
-            "npm run clean",
-            "npm run build"
+            "npm run lint",
+            "npm run test"
         ]
     },
     "repository": {

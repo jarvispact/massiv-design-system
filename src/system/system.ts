@@ -54,7 +54,9 @@ export type CustomSelectorSystemObject<T extends Theme> = CustomPaddingSystemObj
     AnimationSystemObj &
     TransitionSystemObj;
 
-export type SystemObj<T extends Theme> = { customSelectors?: Record<string, CustomSelectorSystemObject<T>> } & SystemObject<T>;
+export type SystemObj<T extends Theme> = {
+    customSelectors?: Record<string, CustomSelectorSystemObject<T>>;
+} & SystemObject<T>;
 
 export type SystemDefinition<T extends Theme> = {
     themeScope: keyof T | null;

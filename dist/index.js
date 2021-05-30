@@ -1452,7 +1452,7 @@ var defaultTheme = {
     components: components,
 };
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-empty-function */
 var ThemeContext = React__default['default'].createContext({
     theme: defaultTheme,
     setTheme: function () { },
@@ -1472,7 +1472,6 @@ var objectKeys = function (obj) { return Object.keys(obj); };
 
 var objectProps = ['value'];
 // @ts-ignore
-// eslint-disable-next-line prettier/prettier
 var getValueFromThemeScopeWithFallback = function (value, theme, themeScope) { return themeScope ? theme[themeScope][value] || value : value; };
 var buildCssObj = function (theme, definitions, obj) {
     var keys = objectKeys(obj);
@@ -1718,7 +1717,9 @@ var useCss = function () {
     var lookupMap = __assign(__assign({}, commonPresetMap), breakPointMap);
     // @ts-ignore
     var selector = function (preset) { return "" + (lookupMap[preset] || preset); };
-    var css$1 = function (obj, definitions) { return css(buildCssObj(theme, (definitions || allSystemDefinitions), obj)); };
+    var css$1 = function (obj, definitions) {
+        return css(buildCssObj(theme, (definitions || allSystemDefinitions), obj));
+    };
     return { css: css$1, theme: theme, selector: selector, cx: cx, keyframes: keyframes };
 };
 
