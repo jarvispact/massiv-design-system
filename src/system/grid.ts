@@ -1,118 +1,48 @@
+import { CSSProperties } from 'react';
 import { Theme } from '../theme/default-theme';
-import { CssPropertyConfig } from '../utils/build-css';
-import { ResponsiveThemeProp, ResponsiveProp } from '../utils/types';
+import { LiteralUnion, ResponsiveThemedValue, UnpackThemeScope } from '../utils/types';
 
-export type GridProps<T extends Theme> = {
-    gridTemplateColumns?: ResponsiveProp;
-    gridTemplateRows?: ResponsiveProp;
-    gridTemplateAreas?: ResponsiveProp;
-    columnGap?: ResponsiveThemeProp<T, 'spacing'>;
-    rowGap?: ResponsiveThemeProp<T, 'spacing'>;
-    gap?: ResponsiveThemeProp<T, 'spacing'>;
-    justifyItems?: ResponsiveProp;
-    gridColumnStart?: ResponsiveProp;
-    gridColumnEnd?: ResponsiveProp;
-    gridRowStart?: ResponsiveProp;
-    gridRowEnd?: ResponsiveProp;
-    gridArea?: ResponsiveProp;
-    justifySelf?: ResponsiveProp;
-    placeSelf?: ResponsiveProp;
+export const gridSystemDef = {
+    gridTemplateColumns: { themeScope: null, getCSS: (v: string) => ({ gridTemplateColumns: v }) },
+    gridTemplateRows: { themeScope: null, getCSS: (v: string) => ({ gridTemplateRows: v }) },
+    gridTemplateAreas: { themeScope: null, getCSS: (v: string) => ({ gridTemplateAreas: v }) },
+    columnGap: { themeScope: 'spacing', getCSS: (v: string) => ({ columnGap: v }) },
+    rowGap: { themeScope: 'spacing', getCSS: (v: string) => ({ rowGap: v }) },
+    gap: { themeScope: 'spacing', getCSS: (v: string) => ({ gap: v }) },
+    justifyItems: { themeScope: null, getCSS: (v: string) => ({ justifyItems: v }) },
+    gridColumnStart: { themeScope: null, getCSS: (v: string) => ({ gridColumnStart: v }) },
+    gridColumnEnd: { themeScope: null, getCSS: (v: string) => ({ gridColumnEnd: v }) },
+    gridRowStart: { themeScope: null, getCSS: (v: string) => ({ gridRowStart: v }) },
+    gridRowEnd: { themeScope: null, getCSS: (v: string) => ({ gridRowEnd: v }) },
+    gridArea: { themeScope: null, getCSS: (v: string) => ({ gridArea: v }) },
+    justifySelf: { themeScope: null, getCSS: (v: string) => ({ justifySelf: v }) },
+    placeSelf: { themeScope: null, getCSS: (v: string) => ({ placeSelf: v }) },
 };
 
-export const gridConfig: CssPropertyConfig[] = [
-    // grid parent config
-    {
-        cssProperty: 'grid-template-columns',
-        componentProps: ['gridTemplateColumns'],
-        themeScope: null,
-    },
-    {
-        cssProperty: 'grid-template-rows',
-        componentProps: ['gridTemplateRows'],
-        themeScope: null,
-    },
-    {
-        cssProperty: 'grid-template-areas',
-        componentProps: ['gridTemplateAreas'],
-        themeScope: null,
-    },
-    {
-        cssProperty: 'column-gap',
-        componentProps: ['columnGap'],
-        themeScope: 'spacing',
-    },
-    {
-        cssProperty: 'row-gap',
-        componentProps: ['rowGap'],
-        themeScope: 'spacing',
-    },
-    {
-        cssProperty: 'gap',
-        componentProps: ['gap'],
-        themeScope: 'spacing',
-    },
-    {
-        cssProperty: 'justify-items',
-        componentProps: ['justifyItems'],
-        themeScope: null,
-    },
-    // already defined in flex config
-    // {
-    //     cssProperty: 'align-items',
-    //     componentProps: ['alignItems'],
-    //     themeScope: null,
-    // },
-    // {
-    //     cssProperty: 'justify-content',
-    //     componentProps: ['justifyContent'],
-    //     themeScope: null,
-    // },
-    // {
-    //     cssProperty: 'align-content',
-    //     componentProps: ['alignContent'],
-    //     themeScope: null,
-    // },
+type UnThemedGridObj = Partial<{
+    gridTemplateColumns: CSSProperties['gridTemplateColumns'];
+    gridTemplateRows: CSSProperties['gridTemplateRows'];
+    gridTemplateAreas: CSSProperties['gridTemplateAreas'];
+    justifyItems: CSSProperties['justifyItems'];
+    gridColumnStart: CSSProperties['gridColumnStart'];
+    gridColumnEnd: CSSProperties['gridColumnEnd'];
+    gridRowStart: CSSProperties['gridRowStart'];
+    gridRowEnd: CSSProperties['gridRowEnd'];
+    gridArea: CSSProperties['gridArea'];
+    justifySelf: CSSProperties['justifySelf'];
+    placeSelf: CSSProperties['placeSelf'];
+}>;
 
-    // grid child config
-    {
-        cssProperty: 'grid-column-start',
-        componentProps: ['gridColumnStart'],
-        themeScope: null,
-    },
-    {
-        cssProperty: 'grid-column-end',
-        componentProps: ['gridColumnEnd'],
-        themeScope: null,
-    },
-    {
-        cssProperty: 'grid-row-start',
-        componentProps: ['gridRowStart'],
-        themeScope: null,
-    },
-    {
-        cssProperty: 'grid-row-end',
-        componentProps: ['gridRowEnd'],
-        themeScope: null,
-    },
-    {
-        cssProperty: 'grid-area',
-        componentProps: ['gridArea'],
-        themeScope: null,
-    },
-    {
-        cssProperty: 'justify-self',
-        componentProps: ['justifySelf'],
-        themeScope: null,
-    },
-    // already defined in flex config
-    // {
-    //     cssProperty: 'align-self',
-    //     componentProps: ['alignSelf'],
-    //     themeScope: null,
-    // },
-    {
-        cssProperty: 'place-self',
-        componentProps: ['placeSelf'],
-        themeScope: null,
-    },
-];
+export type GridSystemObj<T extends Theme> = UnThemedGridObj &
+    Partial<{
+        columnGap: ResponsiveThemedValue<T, 'spacing'>;
+        rowGap: ResponsiveThemedValue<T, 'spacing'>;
+        gap: ResponsiveThemedValue<T, 'spacing'>;
+    }>;
+
+export type CustomGridSystemObj<T extends Theme> = UnThemedGridObj &
+    Partial<{
+        columnGap: LiteralUnion<UnpackThemeScope<T, 'spacing'>>;
+        rowGap: LiteralUnion<UnpackThemeScope<T, 'spacing'>>;
+        gap: LiteralUnion<UnpackThemeScope<T, 'spacing'>>;
+    }>;

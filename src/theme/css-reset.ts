@@ -1,11 +1,7 @@
-import { createGlobalStyle } from './styled';
+import { injectGlobal } from '@emotion/css';
+import { useEffect } from 'react';
 
-export const GlobalStyle = createGlobalStyle`
-    /* http://meyerweb.com/eric/tools/css/reset/ 
-    v2.0 | 20110126
-    License: none (public domain)
-    */
-
+export const injectGlobalStyle = () => injectGlobal`
     html, body, div, span, applet, object, iframe,
     h1, h2, h3, h4, h5, h6, p, blockquote, pre,
     a, abbr, acronym, address, big, cite, code,
@@ -23,11 +19,9 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         border: 0;
         font-size: 100%;
-        font-family: ${(props) => props.theme.fontFamily.sans};
         vertical-align: baseline;
         box-sizing: border-box;
     }
-    /* HTML5 display-role reset for older browsers */
     article, aside, details, figcaption, figure, 
     footer, header, hgroup, menu, nav, section {
         display: block;
@@ -49,9 +43,13 @@ export const GlobalStyle = createGlobalStyle`
     }
     input, textarea {
         box-sizing: border-box;
-        font-family: ${(props) => props.theme.fontFamily.sans};
-    }
-    input:focus, button:focus, textarea:focus {
-        outline: solid 1.5px ${(props) => props.theme.color.primary500};
     }
 `;
+
+export const CssReset = () => {
+    useEffect(() => {
+        injectGlobalStyle();
+    }, []);
+
+    return null;
+};

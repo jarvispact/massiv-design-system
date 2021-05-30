@@ -1,16 +1,58 @@
 import { Theme } from '../theme/default-theme';
-import { CssPropertyConfig } from '../utils/build-css';
-import { ResponsiveThemeProp } from '../utils/types';
-export declare type MarginProps<T extends Theme> = {
-    margin?: ResponsiveThemeProp<T, 'spacing'>;
-    m?: ResponsiveThemeProp<T, 'spacing'>;
-    marginTop?: ResponsiveThemeProp<T, 'spacing'>;
-    mt?: ResponsiveThemeProp<T, 'spacing'>;
-    marginLeft?: ResponsiveThemeProp<T, 'spacing'>;
-    ml?: ResponsiveThemeProp<T, 'spacing'>;
-    marginBottom?: ResponsiveThemeProp<T, 'spacing'>;
-    mb?: ResponsiveThemeProp<T, 'spacing'>;
-    marginRight?: ResponsiveThemeProp<T, 'spacing'>;
-    mr?: ResponsiveThemeProp<T, 'spacing'>;
+import { LiteralUnion, ResponsiveThemedValue, UnpackThemeScope } from '../utils/types';
+export declare const marginSystemDef: {
+    margin: {
+        themeScope: string;
+        getCSS: (v: string) => {
+            margin: string;
+        };
+    };
+    m: {
+        themeScope: string;
+        getCSS: (v: string) => {
+            margin: string;
+        };
+    };
+    mt: {
+        themeScope: string;
+        getCSS: (v: string) => {
+            marginTop: string;
+        };
+    };
+    mr: {
+        themeScope: string;
+        getCSS: (v: string) => {
+            marginRight: string;
+        };
+    };
+    mb: {
+        themeScope: string;
+        getCSS: (v: string) => {
+            marginBottom: string;
+        };
+    };
+    ml: {
+        themeScope: string;
+        getCSS: (v: string) => {
+            marginLeft: string;
+        };
+    };
+    mx: {
+        themeScope: string;
+        getCSS: (v: string) => {
+            marginLeft: string;
+            marginRight: string;
+        };
+    };
+    my: {
+        themeScope: string;
+        getCSS: (v: string) => {
+            marginTop: string;
+            marginBottom: string;
+        };
+    };
 };
-export declare const marginConfig: CssPropertyConfig[];
+declare type MarginKey = keyof typeof marginSystemDef;
+export declare type MarginSystemObj<T extends Theme> = Partial<Record<MarginKey, ResponsiveThemedValue<T, 'spacing'>>>;
+export declare type CustomMarginSystemObj<T extends Theme> = Partial<Record<MarginKey, LiteralUnion<UnpackThemeScope<T, 'spacing'>>>>;
+export {};

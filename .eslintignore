@@ -2,6 +2,3 @@ node_modules/
 dist/
 .prettierrc.js
 .storybook/main.js
-src.backup/
-utils.backup/
-stories.backup/

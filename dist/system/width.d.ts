@@ -1,12 +1,44 @@
 import { Theme } from '../theme/default-theme';
-import { CssPropertyConfig } from '../utils/build-css';
-import { ResponsiveThemeProp } from '../utils/types';
-export declare type WidthProps<T extends Theme> = {
-    width?: ResponsiveThemeProp<T, 'width'>;
-    w?: ResponsiveThemeProp<T, 'width'>;
-    minWidth?: ResponsiveThemeProp<T, 'width'>;
-    minW?: ResponsiveThemeProp<T, 'width'>;
-    maxWidth?: ResponsiveThemeProp<T, 'width'>;
-    maxW?: ResponsiveThemeProp<T, 'width'>;
+import { LiteralUnion, ResponsiveThemedValue, UnpackThemeScope } from '../utils/types';
+export declare const widthSystemDef: {
+    width: {
+        themeScope: string;
+        getCSS: (v: string) => {
+            width: string;
+        };
+    };
+    w: {
+        themeScope: string;
+        getCSS: (v: string) => {
+            width: string;
+        };
+    };
+    minWidth: {
+        themeScope: string;
+        getCSS: (v: string) => {
+            minWidth: string;
+        };
+    };
+    minW: {
+        themeScope: string;
+        getCSS: (v: string) => {
+            minWidth: string;
+        };
+    };
+    maxWidth: {
+        themeScope: string;
+        getCSS: (v: string) => {
+            maxWidth: string;
+        };
+    };
+    maxW: {
+        themeScope: string;
+        getCSS: (v: string) => {
+            maxWidth: string;
+        };
+    };
 };
-export declare const widthConfig: CssPropertyConfig[];
+declare type WidthKey = keyof typeof widthSystemDef;
+export declare type WidthSystemObj<T extends Theme> = Partial<Record<WidthKey, ResponsiveThemedValue<T, 'width'>>>;
+export declare type CustomWidthSystemObj<T extends Theme> = Partial<Record<WidthKey, LiteralUnion<UnpackThemeScope<T, 'width'>>>>;
+export {};

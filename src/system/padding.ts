@@ -1,44 +1,19 @@
 import { Theme } from '../theme/default-theme';
-import { CssPropertyConfig } from '../utils/build-css';
-import { ResponsiveThemeProp } from '../utils/types';
+import { LiteralUnion, ResponsiveThemedValue, UnpackThemeScope } from '../utils/types';
 
-export type PaddingProps<T extends Theme> = {
-    padding?: ResponsiveThemeProp<T, 'spacing'>;
-    p?: ResponsiveThemeProp<T, 'spacing'>;
-    paddingTop?: ResponsiveThemeProp<T, 'spacing'>;
-    pt?: ResponsiveThemeProp<T, 'spacing'>;
-    paddingLeft?: ResponsiveThemeProp<T, 'spacing'>;
-    pl?: ResponsiveThemeProp<T, 'spacing'>;
-    paddingBottom?: ResponsiveThemeProp<T, 'spacing'>;
-    pb?: ResponsiveThemeProp<T, 'spacing'>;
-    paddingRight?: ResponsiveThemeProp<T, 'spacing'>;
-    pr?: ResponsiveThemeProp<T, 'spacing'>;
+export const paddingSystemDef = {
+    padding: { themeScope: 'spacing', getCSS: (v: string) => ({ padding: v }) },
+    p: { themeScope: 'spacing', getCSS: (v: string) => ({ padding: v }) },
+    pt: { themeScope: 'spacing', getCSS: (v: string) => ({ paddingTop: v }) },
+    pr: { themeScope: 'spacing', getCSS: (v: string) => ({ paddingRight: v }) },
+    pb: { themeScope: 'spacing', getCSS: (v: string) => ({ paddingBottom: v }) },
+    pl: { themeScope: 'spacing', getCSS: (v: string) => ({ paddingLeft: v }) },
+    px: { themeScope: 'spacing', getCSS: (v: string) => ({ paddingLeft: v, paddingRight: v }) },
+    py: { themeScope: 'spacing', getCSS: (v: string) => ({ paddingTop: v, paddingBottom: v }) },
 };
 
-export const paddingConfig: CssPropertyConfig[] = [
-    {
-        cssProperty: 'padding',
-        componentProps: ['padding', 'p'],
-        themeScope: 'spacing',
-    },
-    {
-        cssProperty: 'padding-top',
-        componentProps: ['paddingTop', 'pt'],
-        themeScope: 'spacing',
-    },
-    {
-        cssProperty: 'padding-left',
-        componentProps: ['paddingLeft', 'pl'],
-        themeScope: 'spacing',
-    },
-    {
-        cssProperty: 'padding-bottom',
-        componentProps: ['paddingBottom', 'pb'],
-        themeScope: 'spacing',
-    },
-    {
-        cssProperty: 'padding-right',
-        componentProps: ['paddingRight', 'pr'],
-        themeScope: 'spacing',
-    },
-];
+type PaddingKey = keyof typeof paddingSystemDef;
+export type PaddingSystemObj<T extends Theme> = Partial<Record<PaddingKey, ResponsiveThemedValue<T, 'spacing'>>>;
+export type CustomPaddingSystemObj<T extends Theme> = Partial<
+    Record<PaddingKey, LiteralUnion<UnpackThemeScope<T, 'spacing'>>>
+>;

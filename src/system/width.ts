@@ -1,30 +1,17 @@
 import { Theme } from '../theme/default-theme';
-import { CssPropertyConfig } from '../utils/build-css';
-import { ResponsiveThemeProp } from '../utils/types';
+import { LiteralUnion, ResponsiveThemedValue, UnpackThemeScope } from '../utils/types';
 
-export type WidthProps<T extends Theme> = {
-    width?: ResponsiveThemeProp<T, 'width'>;
-    w?: ResponsiveThemeProp<T, 'width'>;
-    minWidth?: ResponsiveThemeProp<T, 'width'>;
-    minW?: ResponsiveThemeProp<T, 'width'>;
-    maxWidth?: ResponsiveThemeProp<T, 'width'>;
-    maxW?: ResponsiveThemeProp<T, 'width'>;
+export const widthSystemDef = {
+    width: { themeScope: 'width', getCSS: (v: string) => ({ width: v }) },
+    w: { themeScope: 'width', getCSS: (v: string) => ({ width: v }) },
+    minWidth: { themeScope: 'width', getCSS: (v: string) => ({ minWidth: v }) },
+    minW: { themeScope: 'width', getCSS: (v: string) => ({ minWidth: v }) },
+    maxWidth: { themeScope: 'width', getCSS: (v: string) => ({ maxWidth: v }) },
+    maxW: { themeScope: 'width', getCSS: (v: string) => ({ maxWidth: v }) },
 };
 
-export const widthConfig: CssPropertyConfig[] = [
-    {
-        cssProperty: 'width',
-        componentProps: ['width', 'w'],
-        themeScope: 'width',
-    },
-    {
-        cssProperty: 'min-width',
-        componentProps: ['minWidth', 'minW'],
-        themeScope: 'width',
-    },
-    {
-        cssProperty: 'max-width',
-        componentProps: ['maxWidth', 'maxW'],
-        themeScope: 'width',
-    },
-];
+type WidthKey = keyof typeof widthSystemDef;
+export type WidthSystemObj<T extends Theme> = Partial<Record<WidthKey, ResponsiveThemedValue<T, 'width'>>>;
+export type CustomWidthSystemObj<T extends Theme> = Partial<
+    Record<WidthKey, LiteralUnion<UnpackThemeScope<T, 'width'>>>
+>;

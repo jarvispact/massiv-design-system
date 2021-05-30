@@ -1,82 +1,29 @@
-import { CssPropertyConfig } from '../utils/build-css';
-import { ResponsiveProp } from '../utils/types';
+import { CSSProperties } from 'react';
 
-export type FlexProps = {
-    flexDirection?: ResponsiveProp;
-    flexWrap?: ResponsiveProp;
-    flexFlow?: ResponsiveProp;
-    justifyContent?: ResponsiveProp;
-    alignItems?: ResponsiveProp;
-    alignContent?: ResponsiveProp;
-    flexOrder?: ResponsiveProp;
-    flexGrow?: ResponsiveProp;
-    flexShrink?: ResponsiveProp;
-    flexBasis?: ResponsiveProp;
-    flex?: ResponsiveProp;
-    alignSelf?: ResponsiveProp;
+export const flexSystemDef = {
+    flexDirection: { themeScope: null, getCSS: (v: string) => ({ flexDirection: v }) },
+    flexWrap: { themeScope: null, getCSS: (v: string) => ({ flexWrap: v }) },
+    flexFlow: { themeScope: null, getCSS: (v: string) => ({ flexFlow: v }) },
+    justifyContent: { themeScope: null, getCSS: (v: string) => ({ justifyContent: v }) },
+    alignItems: { themeScope: null, getCSS: (v: string) => ({ alignItems: v }) },
+    alignContent: { themeScope: null, getCSS: (v: string) => ({ alignContent: v }) },
+    flexGrow: { themeScope: null, getCSS: (v: string) => ({ flexGrow: v }) },
+    flexShrink: { themeScope: null, getCSS: (v: string) => ({ flexShrink: v }) },
+    flexBasis: { themeScope: null, getCSS: (v: string) => ({ flexBasis: v }) },
+    flex: { themeScope: null, getCSS: (v: string) => ({ flex: v }) },
+    alignSelf: { themeScope: null, getCSS: (v: string) => ({ alignSelf: v }) },
 };
 
-export const flexConfig: CssPropertyConfig[] = [
-    // flex parent config
-    {
-        cssProperty: 'flex-direction',
-        componentProps: ['flexDirection'],
-        themeScope: null,
-    },
-    {
-        cssProperty: 'flex-wrap',
-        componentProps: ['flexWrap'],
-        themeScope: null,
-    },
-    {
-        cssProperty: 'flex-flow',
-        componentProps: ['flexFlow'],
-        themeScope: null,
-    },
-    {
-        cssProperty: 'justify-content',
-        componentProps: ['justifyContent'],
-        themeScope: null,
-    },
-    {
-        cssProperty: 'align-items',
-        componentProps: ['alignItems'],
-        themeScope: null,
-    },
-    {
-        cssProperty: 'align-content',
-        componentProps: ['alignContent'],
-        themeScope: null,
-    },
-    // flex child config
-    {
-        cssProperty: 'flex-order',
-        componentProps: ['flexOrder'],
-        themeScope: null,
-    },
-    {
-        cssProperty: 'flex-grow',
-        componentProps: ['flexGrow'],
-        themeScope: null,
-    },
-    {
-        cssProperty: 'flex-shrink',
-        componentProps: ['flexShrink'],
-        themeScope: null,
-    },
-    {
-        cssProperty: 'flex-basis',
-        componentProps: ['flexBasis'],
-        themeScope: null,
-    },
-    {
-        cssProperty: 'flex',
-        componentProps: ['flex'],
-        themeScope: null,
-    },
-    {
-        cssProperty: 'align-self',
-        componentProps: ['alignSelf'],
-        themeScope: null,
-    },
-];
+export type FlexSystemObj = Partial<{
+    flexDirection: CSSProperties['flexDirection'];
+    flexWrap: CSSProperties['flexWrap'];
+    flexFlow: CSSProperties['flexFlow'];
+    justifyContent: CSSProperties['justifyContent'];
+    alignItems: CSSProperties['alignItems'];
+    alignContent: CSSProperties['alignContent'];
+    flexGrow: CSSProperties['flexGrow'];
+    flexShrink: CSSProperties['flexShrink'];
+    flexBasis: CSSProperties['flexBasis'];
+    flex: CSSProperties['flex'];
+    alignSelf: CSSProperties['alignSelf'];
+}>;

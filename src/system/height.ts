@@ -1,30 +1,17 @@
 import { Theme } from '../theme/default-theme';
-import { CssPropertyConfig } from '../utils/build-css';
-import { ResponsiveThemeProp } from '../utils/types';
+import { LiteralUnion, ResponsiveThemedValue, UnpackThemeScope } from '../utils/types';
 
-export type HeightProps<T extends Theme> = {
-    height?: ResponsiveThemeProp<T, 'height'>;
-    h?: ResponsiveThemeProp<T, 'height'>;
-    minHeight?: ResponsiveThemeProp<T, 'height'>;
-    minH?: ResponsiveThemeProp<T, 'height'>;
-    maxHeight?: ResponsiveThemeProp<T, 'height'>;
-    maxH?: ResponsiveThemeProp<T, 'height'>;
+export const heightSystemDef = {
+    height: { themeScope: 'height', getCSS: (v: string) => ({ height: v }) },
+    h: { themeScope: 'height', getCSS: (v: string) => ({ height: v }) },
+    minHeight: { themeScope: 'height', getCSS: (v: string) => ({ minHeight: v }) },
+    minH: { themeScope: 'height', getCSS: (v: string) => ({ minHeight: v }) },
+    maxHeight: { themeScope: 'height', getCSS: (v: string) => ({ maxHeight: v }) },
+    maxH: { themeScope: 'height', getCSS: (v: string) => ({ maxHeight: v }) },
 };
 
-export const heightConfig: CssPropertyConfig[] = [
-    {
-        cssProperty: 'height',
-        componentProps: ['height', 'h'],
-        themeScope: 'height',
-    },
-    {
-        cssProperty: 'min-height',
-        componentProps: ['minHeight', 'minH'],
-        themeScope: 'height',
-    },
-    {
-        cssProperty: 'max-height',
-        componentProps: ['maxHeight', 'maxH'],
-        themeScope: 'height',
-    },
-];
+type HeightKey = keyof typeof heightSystemDef;
+export type HeightSystemObj<T extends Theme> = Partial<Record<HeightKey, ResponsiveThemedValue<T, 'height'>>>;
+export type CustomHeightSystemObj<T extends Theme> = Partial<
+    Record<HeightKey, LiteralUnion<UnpackThemeScope<T, 'height'>>>
+>;
