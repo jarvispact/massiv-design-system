@@ -10,7 +10,7 @@
     "scripts": {
         "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' TS_NODE_PROJECT='tsconfig.build.json' mocha -r ts-node/register 'test/**/*.spec.ts'",
         "clean": "rm -rf ./dist",
-        "build": "bash -c 'rollup -c'",
+        "build": "rollup -c",
         "storybook": "start-storybook -p 6006 --docs",
         "build-storybook": "build-storybook --docs",
         "tsc": "bash -c tsc --noEmit",
@@ -26,9 +26,7 @@
         "src/**/*.ts{,x}": [
             "npm run tsc",
             "npm run lint",
-            "npm run test",
-            "npm run clean",
-            "npm run build"
+            "npm run test"
         ]
     },
     "repository": {

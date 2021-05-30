@@ -1,8 +1,8 @@
 export * from '@emotion/css';
 
-export * from './components/box';
-export * from './components/heading';
-export * from './components/text';
+export * from './theme/css-reset';
+export * from './theme/default-theme';
+export * from './theme/theme-provider';
 
 export * from './hooks/use-css';
 
@@ -21,8 +21,8 @@ export * from './system/typography';
 export * from './system/variant';
 export * from './system/width';
 
-export * from './theme/css-reset';
-export * from './theme/default-theme';
-export * from './theme/theme-provider';
-
 export * from './utils/types';
+
+export * from './components/box';
+export * from './components/heading';
+export * from './components/text';

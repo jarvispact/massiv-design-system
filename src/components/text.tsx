@@ -19,13 +19,14 @@ type TextHTMLElement = HTMLDivElement | HTMLSpanElement | HTMLParagraphElement |
 
 const omitProps = Object.keys(systemDefinitions);
 
-export type TextProps<T extends Theme = Theme, HTMLElem extends TextHTMLElement = TextHTMLElement> = HTMLAttributesWithoutColor<HTMLElem> &
-    SystemObj<T> & {
-        as?: React.ElementType;
-        variant?: TextVariant;
-        children: React.ReactNode;
-        [x: string]: unknown;
-    };
+export type TextProps<T extends Theme = Theme, HTMLElem extends TextHTMLElement = TextHTMLElement> =
+    HTMLAttributesWithoutColor<HTMLElem> &
+        SystemObj<T> & {
+            as?: React.ElementType;
+            variant?: TextVariant;
+            children: React.ReactNode;
+            [x: string]: unknown;
+        };
 
 export const Text = <T extends Theme>({ as = 'p', variant, children, className, ...props }: TextProps<T>) => {
     const { css, theme } = useCss<T>();

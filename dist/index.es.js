@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 
 /*
 
@@ -1198,251 +1198,14 @@ function __makeTemplateObject(cooked, raw) {
     return cooked;
 }
 
-var breakpoint = {
-    s: '640px',
-    m: '768px',
-    l: '1024px',
-    xl: '1280px',
-    xxl: '1600px',
-    xxxl: '1920px',
+var injectGlobalStyle = function () { return injectGlobal(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    html, body, div, span, applet, object, iframe,\n    h1, h2, h3, h4, h5, h6, p, blockquote, pre,\n    a, abbr, acronym, address, big, cite, code,\n    del, dfn, em, img, ins, kbd, q, s, samp,\n    small, strike, strong, sub, sup, tt, var,\n    b, u, i, center,\n    dl, dt, dd, ol, ul, li,\n    fieldset, form, label, legend,\n    table, caption, tbody, tfoot, thead, tr, th, td,\n    article, aside, canvas, details, embed, \n    figure, figcaption, footer, header, hgroup, \n    menu, nav, output, ruby, section, summary,\n    time, mark, audio, video {\n        margin: 0;\n        padding: 0;\n        border: 0;\n        font-size: 100%;\n        vertical-align: baseline;\n        box-sizing: border-box;\n    }\n    article, aside, details, figcaption, figure, \n    footer, header, hgroup, menu, nav, section {\n        display: block;\n    }\n    ol, ul {\n        list-style: none;\n    }\n    blockquote, q {\n        quotes: none;\n    }\n    blockquote:before, blockquote:after,\n    q:before, q:after {\n        content: '';\n        content: none;\n    }\n    table {\n        border-collapse: collapse;\n        border-spacing: 0;\n    }\n    input, textarea {\n        box-sizing: border-box;\n    }\n"], ["\n    html, body, div, span, applet, object, iframe,\n    h1, h2, h3, h4, h5, h6, p, blockquote, pre,\n    a, abbr, acronym, address, big, cite, code,\n    del, dfn, em, img, ins, kbd, q, s, samp,\n    small, strike, strong, sub, sup, tt, var,\n    b, u, i, center,\n    dl, dt, dd, ol, ul, li,\n    fieldset, form, label, legend,\n    table, caption, tbody, tfoot, thead, tr, th, td,\n    article, aside, canvas, details, embed, \n    figure, figcaption, footer, header, hgroup, \n    menu, nav, output, ruby, section, summary,\n    time, mark, audio, video {\n        margin: 0;\n        padding: 0;\n        border: 0;\n        font-size: 100%;\n        vertical-align: baseline;\n        box-sizing: border-box;\n    }\n    article, aside, details, figcaption, figure, \n    footer, header, hgroup, menu, nav, section {\n        display: block;\n    }\n    ol, ul {\n        list-style: none;\n    }\n    blockquote, q {\n        quotes: none;\n    }\n    blockquote:before, blockquote:after,\n    q:before, q:after {\n        content: '';\n        content: none;\n    }\n    table {\n        border-collapse: collapse;\n        border-spacing: 0;\n    }\n    input, textarea {\n        box-sizing: border-box;\n    }\n"]))); };
+var CssReset = function () {
+    useEffect(function () {
+        injectGlobalStyle();
+    }, []);
+    return null;
 };
-var baseColors = {
-    gray50: '#FAFAFA',
-    gray100: '#F5F5F5',
-    gray200: '#E5E5E5',
-    gray300: '#D4D4D4',
-    gray400: '#A3A3A3',
-    gray500: '#737373',
-    gray600: '#525252',
-    gray700: '#404040',
-    gray800: '#262626',
-    gray900: '#171717',
-    error50: '#FEF2F2',
-    error100: '#FEE2E2',
-    error200: '#FECACA',
-    error300: '#FCA5A5',
-    error400: '#F87171',
-    error500: '#EF4444',
-    error600: '#DC2626',
-    error700: '#B91C1C',
-    error800: '#991B1B',
-    error900: '#7F1D1D',
-    warning50: '#FFFBEB',
-    warning100: '#FEF3C7',
-    warning200: '#FDE68A',
-    warning300: '#FCD34D',
-    warning400: '#FBBF24',
-    warning500: '#F59E0B',
-    warning600: '#D97706',
-    warning700: '#B45309',
-    warning800: '#92400E',
-    warning900: '#78350F',
-    success50: '#F0FDF4',
-    success100: '#DCFCE7',
-    success200: '#BBF7D0',
-    success300: '#86EFAC',
-    success400: '#4ADE80',
-    success500: '#22C55E',
-    success600: '#16A34A',
-    success700: '#15803D',
-    success800: '#166534',
-    success900: '#14532D',
-    primary50: '#EFF6FF',
-    primary100: '#DBEAFE',
-    primary200: '#BFDBFE',
-    primary300: '#93C5FD',
-    primary400: '#60A5FA',
-    primary500: '#3B82F6',
-    primary600: '#2563EB',
-    primary700: '#1D4ED8',
-    primary800: '#1E40AF',
-    primary900: '#1E3A8A',
-    secondary50: '#FDF2F8',
-    secondary100: '#FCE7F3',
-    secondary200: '#FBCFE8',
-    secondary300: '#F9A8D4',
-    secondary400: '#F472B6',
-    secondary500: '#EC4899',
-    secondary600: '#DB2777',
-    secondary700: '#BE185D',
-    secondary800: '#9D174D',
-    secondary900: '#831843',
-};
-var color = __assign(__assign({}, baseColors), { background: baseColors.gray100, heading: baseColors.gray900, text: baseColors.gray900 });
-var spacing = {
-    px: '1px',
-    '0.5': '0.125rem',
-    '1': '0.25rem',
-    '1.5': '0.375rem',
-    '2': '0.5rem',
-    '2.5': '0.625rem',
-    '3': '0.75rem',
-    '3.5': '0.875rem',
-    '4': '1rem',
-    '5': '1.25rem',
-    '6': '1.5rem',
-    '7': '1.75rem',
-    '8': '2rem',
-    '9': '2.25rem',
-    '10': '2.5rem',
-    '11': '2.75rem',
-    '12': '3rem',
-    '14': '3.5rem',
-    '16': '4rem',
-    '20': '5rem',
-    '24': '6rem',
-    '28': '7rem',
-    '32': '8rem',
-    '36': '9rem',
-    '40': '10rem',
-    '44': '11rem',
-    '48': '12rem',
-    '52': '13rem',
-    '56': '14rem',
-    '60': '15rem',
-    '64': '16rem',
-    '72': '18rem',
-    '80': '20rem',
-    '96': '24rem',
-};
-var fontFamily = {
-    sans: [
-        'system-ui',
-        '-apple-system',
-        'BlinkMacSystemFont',
-        '"Segoe UI"',
-        'Roboto',
-        '"Helvetica Neue"',
-        'Arial',
-        '"Noto Sans"',
-        'sans-serif',
-        '"Apple Color Emoji"',
-        '"Segoe UI Emoji"',
-        '"Segoe UI Symbol"',
-        '"Noto Color Emoji"',
-    ].join(', '),
-    serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'].join(', '),
-    mono: ['Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'].join(', '),
-};
-var fontSize = {
-    xs: '0.75rem',
-    s: '0.875rem',
-    m: '1rem',
-    l: '1.125rem',
-    xl: '1.25rem',
-    '2xl': '1.5rem',
-    '3xl': '1.875rem',
-    '4xl': '2.25rem',
-    '5xl': '3rem',
-    '6xl': '4rem',
-};
-var fontWeight = {
-    xxs: '100',
-    xs: '200',
-    s: '300',
-    m: '400',
-    l: '500',
-    xl: '600',
-    '2xl': '700',
-    '3xl': '800',
-    '4xl': '900',
-};
-var lineHeight = {
-    xs: '0.75rem',
-    s: '0.875rem',
-    m: '1rem',
-    l: '1.125rem',
-    xl: '1.25rem',
-    '2xl': '1.5rem',
-    '3xl': '1.875rem',
-    '4xl': '2.25rem',
-    '5xl': '3rem',
-    '6xl': '4rem',
-};
-var letterSpacing = {
-    xs: '-0.05em',
-    s: '-0.025em',
-    m: '0',
-    l: '0.025em',
-    xl: '0.05em',
-    xxl: '0.1em',
-};
-var radii = {
-    s: '2px',
-    m: '4px',
-    l: '6px',
-    xl: '8px',
-    circle: '9999px',
-};
-var shadow = {
-    s: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
-    m: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-    l: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
-};
-var zIndex = {
-    '0': '0',
-    '10': '10',
-    '20': '20',
-    '30': '30',
-    '40': '40',
-    '50': '50',
-};
-var components = {
-    Heading: function (variant) {
-        var css = useCss().css;
-        switch (variant) {
-            case 'h1':
-                return css({ fontFamily: 'serif', color: 'heading', fontSize: { value: '3xl', m: '4xl' } });
-            case 'h2':
-                return css({ fontFamily: 'serif', color: 'heading', fontSize: { value: '2xl', m: '3xl' } });
-            case 'h3':
-                return css({ fontFamily: 'serif', color: 'heading', fontSize: { value: 'xl', m: '2xl' } });
-            case 'h4':
-                return css({ fontFamily: 'serif', color: 'heading', fontSize: { value: 'l', m: 'xl' } });
-            case 'h5':
-                return css({ fontFamily: 'serif', color: 'heading', fontSize: { value: 'm', m: 'l' } });
-            case 'h6':
-                return css({ fontFamily: 'serif', color: 'heading', fontSize: { value: 'm', m: 'm' } });
-            default:
-                return css({ fontFamily: 'serif', color: 'heading' });
-        }
-    },
-    Text: function (variant) {
-        var css = useCss().css;
-        switch (variant) {
-            case 'bold':
-                return css({ fontFamily: 'sans', color: 'text', fontSize: 'm', fontWeight: 'l' });
-            case 'body1':
-                return css({ fontFamily: 'sans', color: 'text', fontSize: 'm', fontWeight: 'm' });
-            case 'body2':
-                return css({ fontFamily: 'sans', color: 'text', fontSize: 'm', fontWeight: 's' });
-            case 'body3':
-                return css({ fontFamily: 'sans', color: 'text', fontSize: 's', fontWeight: 's' });
-            case 'body4':
-                return css({ fontFamily: 'sans', color: 'text', fontSize: 's', fontWeight: 'xs' });
-            case 'body5':
-                return css({ fontFamily: 'sans', color: 'text', fontSize: 'xs', fontWeight: 'xs' });
-            default:
-                return css({ fontFamily: 'sans', color: 'text' });
-        }
-    },
-};
-var defaultTheme = {
-    breakpoint: breakpoint,
-    color: color,
-    spacing: spacing,
-    width: spacing,
-    height: spacing,
-    fontFamily: fontFamily,
-    fontSize: fontSize,
-    fontWeight: fontWeight,
-    lineHeight: lineHeight,
-    letterSpacing: letterSpacing,
-    radii: radii,
-    shadow: shadow,
-    zIndex: zIndex,
-    components: components,
-};
+var templateObject_1;
 
 /* eslint-disable @typescript-eslint/no-empty-function */
 var ThemeContext = React.createContext({
@@ -1715,6 +1478,252 @@ var useCss = function () {
     return { css: css$1, theme: theme, selector: selector, cx: cx, keyframes: keyframes };
 };
 
+var breakpoint = {
+    s: '640px',
+    m: '768px',
+    l: '1024px',
+    xl: '1280px',
+    xxl: '1600px',
+    xxxl: '1920px',
+};
+var baseColors = {
+    gray50: '#FAFAFA',
+    gray100: '#F5F5F5',
+    gray200: '#E5E5E5',
+    gray300: '#D4D4D4',
+    gray400: '#A3A3A3',
+    gray500: '#737373',
+    gray600: '#525252',
+    gray700: '#404040',
+    gray800: '#262626',
+    gray900: '#171717',
+    error50: '#FEF2F2',
+    error100: '#FEE2E2',
+    error200: '#FECACA',
+    error300: '#FCA5A5',
+    error400: '#F87171',
+    error500: '#EF4444',
+    error600: '#DC2626',
+    error700: '#B91C1C',
+    error800: '#991B1B',
+    error900: '#7F1D1D',
+    warning50: '#FFFBEB',
+    warning100: '#FEF3C7',
+    warning200: '#FDE68A',
+    warning300: '#FCD34D',
+    warning400: '#FBBF24',
+    warning500: '#F59E0B',
+    warning600: '#D97706',
+    warning700: '#B45309',
+    warning800: '#92400E',
+    warning900: '#78350F',
+    success50: '#F0FDF4',
+    success100: '#DCFCE7',
+    success200: '#BBF7D0',
+    success300: '#86EFAC',
+    success400: '#4ADE80',
+    success500: '#22C55E',
+    success600: '#16A34A',
+    success700: '#15803D',
+    success800: '#166534',
+    success900: '#14532D',
+    primary50: '#EFF6FF',
+    primary100: '#DBEAFE',
+    primary200: '#BFDBFE',
+    primary300: '#93C5FD',
+    primary400: '#60A5FA',
+    primary500: '#3B82F6',
+    primary600: '#2563EB',
+    primary700: '#1D4ED8',
+    primary800: '#1E40AF',
+    primary900: '#1E3A8A',
+    secondary50: '#FDF2F8',
+    secondary100: '#FCE7F3',
+    secondary200: '#FBCFE8',
+    secondary300: '#F9A8D4',
+    secondary400: '#F472B6',
+    secondary500: '#EC4899',
+    secondary600: '#DB2777',
+    secondary700: '#BE185D',
+    secondary800: '#9D174D',
+    secondary900: '#831843',
+};
+var color = __assign(__assign({}, baseColors), { background: baseColors.gray100, heading: baseColors.gray900, text: baseColors.gray900 });
+var spacing = {
+    px: '1px',
+    '0.5': '0.125rem',
+    '1': '0.25rem',
+    '1.5': '0.375rem',
+    '2': '0.5rem',
+    '2.5': '0.625rem',
+    '3': '0.75rem',
+    '3.5': '0.875rem',
+    '4': '1rem',
+    '5': '1.25rem',
+    '6': '1.5rem',
+    '7': '1.75rem',
+    '8': '2rem',
+    '9': '2.25rem',
+    '10': '2.5rem',
+    '11': '2.75rem',
+    '12': '3rem',
+    '14': '3.5rem',
+    '16': '4rem',
+    '20': '5rem',
+    '24': '6rem',
+    '28': '7rem',
+    '32': '8rem',
+    '36': '9rem',
+    '40': '10rem',
+    '44': '11rem',
+    '48': '12rem',
+    '52': '13rem',
+    '56': '14rem',
+    '60': '15rem',
+    '64': '16rem',
+    '72': '18rem',
+    '80': '20rem',
+    '96': '24rem',
+};
+var fontFamily = {
+    sans: [
+        'system-ui',
+        '-apple-system',
+        'BlinkMacSystemFont',
+        '"Segoe UI"',
+        'Roboto',
+        '"Helvetica Neue"',
+        'Arial',
+        '"Noto Sans"',
+        'sans-serif',
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"',
+        '"Noto Color Emoji"',
+    ].join(', '),
+    serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'].join(', '),
+    mono: ['Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'].join(', '),
+};
+var fontSize = {
+    xs: '0.75rem',
+    s: '0.875rem',
+    m: '1rem',
+    l: '1.125rem',
+    xl: '1.25rem',
+    '2xl': '1.5rem',
+    '3xl': '1.875rem',
+    '4xl': '2.25rem',
+    '5xl': '3rem',
+    '6xl': '4rem',
+};
+var fontWeight = {
+    xxs: '100',
+    xs: '200',
+    s: '300',
+    m: '400',
+    l: '500',
+    xl: '600',
+    '2xl': '700',
+    '3xl': '800',
+    '4xl': '900',
+};
+var lineHeight = {
+    xs: '0.75rem',
+    s: '0.875rem',
+    m: '1rem',
+    l: '1.125rem',
+    xl: '1.25rem',
+    '2xl': '1.5rem',
+    '3xl': '1.875rem',
+    '4xl': '2.25rem',
+    '5xl': '3rem',
+    '6xl': '4rem',
+};
+var letterSpacing = {
+    xs: '-0.05em',
+    s: '-0.025em',
+    m: '0',
+    l: '0.025em',
+    xl: '0.05em',
+    xxl: '0.1em',
+};
+var radii = {
+    s: '2px',
+    m: '4px',
+    l: '6px',
+    xl: '8px',
+    circle: '9999px',
+};
+var shadow = {
+    s: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+    m: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+    l: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+};
+var zIndex = {
+    '0': '0',
+    '10': '10',
+    '20': '20',
+    '30': '30',
+    '40': '40',
+    '50': '50',
+};
+var components = {
+    Heading: function (variant) {
+        var css = useCss().css;
+        switch (variant) {
+            case 'h1':
+                return css({ fontFamily: 'serif', color: 'heading', fontSize: { value: '3xl', m: '4xl' } });
+            case 'h2':
+                return css({ fontFamily: 'serif', color: 'heading', fontSize: { value: '2xl', m: '3xl' } });
+            case 'h3':
+                return css({ fontFamily: 'serif', color: 'heading', fontSize: { value: 'xl', m: '2xl' } });
+            case 'h4':
+                return css({ fontFamily: 'serif', color: 'heading', fontSize: { value: 'l', m: 'xl' } });
+            case 'h5':
+                return css({ fontFamily: 'serif', color: 'heading', fontSize: { value: 'm', m: 'l' } });
+            case 'h6':
+                return css({ fontFamily: 'serif', color: 'heading', fontSize: { value: 'm', m: 'm' } });
+            default:
+                return css({ fontFamily: 'serif', color: 'heading' });
+        }
+    },
+    Text: function (variant) {
+        var css = useCss().css;
+        switch (variant) {
+            case 'bold':
+                return css({ fontFamily: 'sans', color: 'text', fontSize: 'm', fontWeight: 'l' });
+            case 'body1':
+                return css({ fontFamily: 'sans', color: 'text', fontSize: 'm', fontWeight: 'm' });
+            case 'body2':
+                return css({ fontFamily: 'sans', color: 'text', fontSize: 'm', fontWeight: 's' });
+            case 'body3':
+                return css({ fontFamily: 'sans', color: 'text', fontSize: 's', fontWeight: 's' });
+            case 'body4':
+                return css({ fontFamily: 'sans', color: 'text', fontSize: 's', fontWeight: 'xs' });
+            case 'body5':
+                return css({ fontFamily: 'sans', color: 'text', fontSize: 'xs', fontWeight: 'xs' });
+            default:
+                return css({ fontFamily: 'sans', color: 'text' });
+        }
+    },
+};
+var defaultTheme = {
+    breakpoint: breakpoint,
+    color: color,
+    spacing: spacing,
+    width: spacing,
+    height: spacing,
+    fontFamily: fontFamily,
+    fontSize: fontSize,
+    fontWeight: fontWeight,
+    lineHeight: lineHeight,
+    letterSpacing: letterSpacing,
+    radii: radii,
+    shadow: shadow,
+    zIndex: zIndex,
+    components: components,
+};
+
 var omit = function (propertyList, obj) {
     var keys = Object.keys(obj);
     return keys.reduce(function (accum, key) {
@@ -1754,15 +1763,6 @@ var Text = function (_a) {
     var newClassName = cx(defaultStyle, dynamicStyle, className);
     return React.createElement(as, __assign(__assign({}, omit(omitProps, props)), { className: newClassName }), children);
 };
-
-var injectGlobalStyle = function () { return injectGlobal(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    html, body, div, span, applet, object, iframe,\n    h1, h2, h3, h4, h5, h6, p, blockquote, pre,\n    a, abbr, acronym, address, big, cite, code,\n    del, dfn, em, img, ins, kbd, q, s, samp,\n    small, strike, strong, sub, sup, tt, var,\n    b, u, i, center,\n    dl, dt, dd, ol, ul, li,\n    fieldset, form, label, legend,\n    table, caption, tbody, tfoot, thead, tr, th, td,\n    article, aside, canvas, details, embed, \n    figure, figcaption, footer, header, hgroup, \n    menu, nav, output, ruby, section, summary,\n    time, mark, audio, video {\n        margin: 0;\n        padding: 0;\n        border: 0;\n        font-size: 100%;\n        vertical-align: baseline;\n        box-sizing: border-box;\n    }\n    article, aside, details, figcaption, figure, \n    footer, header, hgroup, menu, nav, section {\n        display: block;\n    }\n    ol, ul {\n        list-style: none;\n    }\n    blockquote, q {\n        quotes: none;\n    }\n    blockquote:before, blockquote:after,\n    q:before, q:after {\n        content: '';\n        content: none;\n    }\n    table {\n        border-collapse: collapse;\n        border-spacing: 0;\n    }\n    input, textarea {\n        box-sizing: border-box;\n    }\n"], ["\n    html, body, div, span, applet, object, iframe,\n    h1, h2, h3, h4, h5, h6, p, blockquote, pre,\n    a, abbr, acronym, address, big, cite, code,\n    del, dfn, em, img, ins, kbd, q, s, samp,\n    small, strike, strong, sub, sup, tt, var,\n    b, u, i, center,\n    dl, dt, dd, ol, ul, li,\n    fieldset, form, label, legend,\n    table, caption, tbody, tfoot, thead, tr, th, td,\n    article, aside, canvas, details, embed, \n    figure, figcaption, footer, header, hgroup, \n    menu, nav, output, ruby, section, summary,\n    time, mark, audio, video {\n        margin: 0;\n        padding: 0;\n        border: 0;\n        font-size: 100%;\n        vertical-align: baseline;\n        box-sizing: border-box;\n    }\n    article, aside, details, figcaption, figure, \n    footer, header, hgroup, menu, nav, section {\n        display: block;\n    }\n    ol, ul {\n        list-style: none;\n    }\n    blockquote, q {\n        quotes: none;\n    }\n    blockquote:before, blockquote:after,\n    q:before, q:after {\n        content: '';\n        content: none;\n    }\n    table {\n        border-collapse: collapse;\n        border-spacing: 0;\n    }\n    input, textarea {\n        box-sizing: border-box;\n    }\n"]))); };
-var CssReset = function () {
-    useEffect(function () {
-        injectGlobalStyle();
-    }, []);
-    return null;
-};
-var templateObject_1;
 
 export { Box, CssReset, Heading, Text, ThemeContext, ThemeProvider, allSystemDefinitions, animationSystemDef, borderSystemDef, cache, colorSystemDef, css, cx, defaultTheme, flexSystemDef, flush, getRegisteredStyles, gridSystemDef, heightSystemDef, hydrate, injectGlobal, injectGlobalStyle, keyframes, marginSystemDef, merge, miscSystemDef, paddingSystemDef, sheet, transitionSystemDef, typographySystemDef, useCss, useTheme, widthSystemDef };
 //# sourceMappingURL=index.es.js.map

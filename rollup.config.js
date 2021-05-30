@@ -18,5 +18,10 @@ export default {
             sourcemap: true,
         },
     ],
-    plugins: [peerDepsExternal(), resolve(), commonjs(), typescript({ tsconfig: './tsconfig.build.json', useTsconfigDeclarationDir: true })],
+    plugins: [
+        peerDepsExternal(),
+        resolve(),
+        commonjs(),
+        typescript({ tsconfig: './tsconfig.build.json', useTsconfigDeclarationDir: true }),
+    ],
 };
