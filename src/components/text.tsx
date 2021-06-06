@@ -6,7 +6,7 @@ import { TypographySystemObj, typographySystemDef } from '../system/typography';
 import { TextVariant } from '../system/variant';
 import { Theme } from '../theme/default-theme';
 import { omit } from '../utils/omit';
-import { HTMLAttributesWithoutColor } from '../utils/types';
+import { HTMLAttributesWithoutStyleProps } from '../utils/types';
 
 const systemDefinitions = {
     ...typographySystemDef,
@@ -14,11 +14,18 @@ const systemDefinitions = {
 };
 
 type SystemObj<T extends Theme> = TypographySystemObj<T> & ColorSystemObj<T>;
-type TextHTMLElement = HTMLDivElement | HTMLSpanElement | HTMLParagraphElement | HTMLLabelElement | HTMLAnchorElement;
+
+export type TextHTMLElement =
+    | HTMLDivElement
+    | HTMLSpanElement
+    | HTMLParagraphElement
+    | HTMLLabelElement
+    | HTMLAnchorElement;
+
 const omitProps = Object.keys(systemDefinitions);
 
-export type TextProps<T extends Theme = Theme, HTMLElem extends TextHTMLElement = TextHTMLElement> =
-    HTMLAttributesWithoutColor<HTMLElem> &
+export type TextProps<T extends Theme = Theme, HTMLAttributes = React.HTMLAttributes<HTMLDivElement>> =
+    HTMLAttributesWithoutStyleProps<HTMLAttributes> &
         SystemObj<T> & {
             as?: React.ElementType;
             variant?: TextVariant;

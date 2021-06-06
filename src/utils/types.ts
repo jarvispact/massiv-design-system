@@ -12,4 +12,4 @@ export type ResponsiveThemedValue<T extends Theme, S extends keyof T> =
           value?: LiteralUnion<UnpackThemeScope<T, S>>;
       });
 
-export type HTMLAttributesWithoutColor<HTMLElem = HTMLDivElement> = Omit<React.HTMLAttributes<HTMLElem>, 'color'>;
+export type HTMLAttributesWithoutStyleProps<HTMLAttributes> = Omit<HTMLAttributes, 'color'>;

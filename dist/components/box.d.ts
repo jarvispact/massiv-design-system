@@ -1,8 +1,8 @@
 import React from 'react';
 import { SystemObj } from '../system/system';
 import { Theme } from '../theme/default-theme';
-import { HTMLAttributesWithoutColor } from '../utils/types';
-export declare type BoxProps<T extends Theme = Theme, HTMLElem = HTMLDivElement> = HTMLAttributesWithoutColor<HTMLElem> & SystemObj<T> & {
+import { HTMLAttributesWithoutStyleProps } from '../utils/types';
+export declare type BoxProps<T extends Theme = Theme, HTMLAttributes = React.HTMLAttributes<HTMLDivElement>> = HTMLAttributesWithoutStyleProps<HTMLAttributes> & SystemObj<T> & {
     as?: React.ElementType;
     children?: React.ReactNode;
     [x: string]: unknown;
@@ -261,4 +261,4 @@ export declare const Box: <T extends {
         Heading: (variant?: import("..").HeadingVariant | undefined) => string;
         Text: (variant?: import("..").TextVariant | undefined) => string;
     };
-}>({ as, children, className, ...props }: BoxProps<T, HTMLDivElement>) => React.ReactElement<any, string | React.JSXElementConstructor<any>>;
+}>({ as, children, className, ...props }: BoxProps<T, React.HTMLAttributes<HTMLDivElement>>) => React.ReactElement<any, string | React.JSXElementConstructor<any>>;

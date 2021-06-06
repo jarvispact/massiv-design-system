@@ -2,6 +2,7 @@ import React from 'react';
 import { Box } from '../src/components/box';
 import { defaultTheme } from '../src/theme/default-theme';
 import { Text } from '../src/components/text';
+import { Image } from '../src/components/image';
 import { useCss } from '../src/hooks/use-css';
 
 export default {

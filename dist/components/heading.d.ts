@@ -1,12 +1,12 @@
 import React from 'react';
 import { Theme } from '../theme/default-theme';
 import { TypographySystemObj } from '../system/typography';
-import { HTMLAttributesWithoutColor } from '../utils/types';
+import { HTMLAttributesWithoutStyleProps } from '../utils/types';
 import { HeadingVariant } from '../system/variant';
 import { ColorSystemObj } from '../system/color';
 declare type SystemObj<T extends Theme> = TypographySystemObj<T> & ColorSystemObj<T>;
 declare type HeadingElement = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-export declare type HeadingProps<T extends Theme = Theme> = HTMLAttributesWithoutColor<HTMLHeadingElement> & SystemObj<T> & {
+export declare type HeadingProps<T extends Theme = Theme> = HTMLAttributesWithoutStyleProps<React.HTMLAttributes<HTMLHeadingElement>> & SystemObj<T> & {
     as?: HeadingElement;
     variant?: HeadingVariant;
     children: React.ReactNode;

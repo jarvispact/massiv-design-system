@@ -1,15 +1,13 @@
-/// <reference types="react" />
+import React from 'react';
 import { Theme } from '../theme/default-theme';
-import { HTMLAttributesWithoutColor, LiteralUnion, UnpackThemeScope } from '../utils/types';
+import { HTMLAttributesWithoutStyleProps, LiteralUnion, UnpackThemeScope } from '../utils/types';
 import { WidthSystemObj } from '../system/width';
 import { HeightSystemObj } from '../system/height';
 declare type SystemObj<T extends Theme> = Omit<WidthSystemObj<T>, 'width' | 'w'> & Omit<HeightSystemObj<T>, 'height' | 'h'> & {
     cssWidth?: LiteralUnion<UnpackThemeScope<T, 'width'>>;
     cssHeight?: LiteralUnion<UnpackThemeScope<T, 'height'>>;
 };
-export declare type ImageProps<T extends Theme = Theme> = HTMLAttributesWithoutColor<HTMLImageElement> & SystemObj<T> & {
-    src?: string;
-    alt?: string;
+export declare type ImageProps<T extends Theme = Theme> = HTMLAttributesWithoutStyleProps<React.ImgHTMLAttributes<HTMLImageElement>> & SystemObj<T> & {
     width?: string;
     height?: string;
     [x: string]: unknown;

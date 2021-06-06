@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { Theme } from '../theme/default-theme';
 export declare type LiteralUnion<T extends U, U = string> = T | (U & {
     __literal_union__?: never;
@@ -10,5 +9,5 @@ export declare type ResponsiveThemedValue<T extends Theme, S extends keyof T> = 
 }> & {
     value?: LiteralUnion<UnpackThemeScope<T, S>>;
 });
-export declare type HTMLAttributesWithoutColor<HTMLElem = HTMLDivElement> = Omit<React.HTMLAttributes<HTMLElem>, 'color'>;
+export declare type HTMLAttributesWithoutStyleProps<HTMLAttributes> = Omit<HTMLAttributes, 'color'>;
 export {};

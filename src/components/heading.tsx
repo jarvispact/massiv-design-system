@@ -4,7 +4,7 @@ import { Theme } from '../theme/default-theme';
 import { typographySystemDef, TypographySystemObj } from '../system/typography';
 import { omit } from '../utils/omit';
 import { useCss } from '../hooks/use-css';
-import { HTMLAttributesWithoutColor } from '../utils/types';
+import { HTMLAttributesWithoutStyleProps } from '../utils/types';
 import { HeadingVariant } from '../system/variant';
 import { ColorSystemObj, colorSystemDef } from '../system/color';
 
@@ -19,7 +19,9 @@ type HeadingElement = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
 const omitProps = Object.keys(systemDefinitions);
 
-export type HeadingProps<T extends Theme = Theme> = HTMLAttributesWithoutColor<HTMLHeadingElement> &
+export type HeadingProps<T extends Theme = Theme> = HTMLAttributesWithoutStyleProps<
+    React.HTMLAttributes<HTMLHeadingElement>
+> &
     SystemObj<T> & {
         as?: HeadingElement;
         variant?: HeadingVariant;

@@ -3,7 +3,7 @@ import React from 'react';
 import { Theme } from '../theme/default-theme';
 import { omit } from '../utils/omit';
 import { useCss } from '../hooks/use-css';
-import { HTMLAttributesWithoutColor, LiteralUnion, UnpackThemeScope } from '../utils/types';
+import { HTMLAttributesWithoutStyleProps, LiteralUnion, UnpackThemeScope } from '../utils/types';
 import { widthSystemDef, WidthSystemObj } from '../system/width';
 import { heightSystemDef, HeightSystemObj } from '../system/height';
 
@@ -22,10 +22,10 @@ type SystemObj<T extends Theme> = Omit<WidthSystemObj<T>, 'width' | 'w'> &
 
 const omitProps = Object.keys(systemDefinitions);
 
-export type ImageProps<T extends Theme = Theme> = HTMLAttributesWithoutColor<HTMLImageElement> &
+export type ImageProps<T extends Theme = Theme> = HTMLAttributesWithoutStyleProps<
+    React.ImgHTMLAttributes<HTMLImageElement>
+> &
     SystemObj<T> & {
-        src?: string;
-        alt?: string;
         width?: string;
         height?: string;
         [x: string]: unknown;
