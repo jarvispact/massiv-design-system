@@ -2005,6 +2005,8 @@ var buildCssObj = function (theme, definitions, obj) {
             });
         }
         else {
+            if (!value)
+                return;
             objectKeys(value).forEach(function (key) {
                 var _a;
                 if (key === 'value') {

@@ -54,7 +54,11 @@ export const gray = () => {
                 {Object.keys(defaultTheme.color)
                     .filter((c) => c.startsWith('gray'))
                     .map((themeKey) => (
-                        <ColorBox key={defaultTheme.color[themeKey]} themeKey={themeKey} themeValue={defaultTheme.color[themeKey] as string} />
+                        <ColorBox
+                            key={defaultTheme.color[themeKey]}
+                            themeKey={themeKey}
+                            themeValue={defaultTheme.color[themeKey] as string}
+                        />
                     ))}
             </HStack>
         </>
@@ -68,7 +72,11 @@ export const primary = () => {
                 {Object.keys(defaultTheme.color)
                     .filter((c) => c.startsWith('primary'))
                     .map((themeKey) => (
-                        <ColorBox key={defaultTheme.color[themeKey]} themeKey={themeKey} themeValue={defaultTheme.color[themeKey] as string} />
+                        <ColorBox
+                            key={defaultTheme.color[themeKey]}
+                            themeKey={themeKey}
+                            themeValue={defaultTheme.color[themeKey] as string}
+                        />
                     ))}
             </HStack>
         </>
@@ -82,7 +90,11 @@ export const secondary = () => {
                 {Object.keys(defaultTheme.color)
                     .filter((c) => c.startsWith('secondary'))
                     .map((themeKey) => (
-                        <ColorBox key={defaultTheme.color[themeKey]} themeKey={themeKey} themeValue={defaultTheme.color[themeKey] as string} />
+                        <ColorBox
+                            key={defaultTheme.color[themeKey]}
+                            themeKey={themeKey}
+                            themeValue={defaultTheme.color[themeKey] as string}
+                        />
                     ))}
             </HStack>
         </>
@@ -96,7 +108,11 @@ export const success = () => {
                 {Object.keys(defaultTheme.color)
                     .filter((c) => c.startsWith('success'))
                     .map((themeKey) => (
-                        <ColorBox key={defaultTheme.color[themeKey]} themeKey={themeKey} themeValue={defaultTheme.color[themeKey] as string} />
+                        <ColorBox
+                            key={defaultTheme.color[themeKey]}
+                            themeKey={themeKey}
+                            themeValue={defaultTheme.color[themeKey] as string}
+                        />
                     ))}
             </HStack>
         </>
@@ -110,7 +126,11 @@ export const warning = () => {
                 {Object.keys(defaultTheme.color)
                     .filter((c) => c.startsWith('warning'))
                     .map((themeKey) => (
-                        <ColorBox key={defaultTheme.color[themeKey]} themeKey={themeKey} themeValue={defaultTheme.color[themeKey] as string} />
+                        <ColorBox
+                            key={defaultTheme.color[themeKey]}
+                            themeKey={themeKey}
+                            themeValue={defaultTheme.color[themeKey] as string}
+                        />
                     ))}
             </HStack>
         </>
@@ -124,7 +144,11 @@ export const error = () => {
                 {Object.keys(defaultTheme.color)
                     .filter((c) => c.startsWith('error'))
                     .map((themeKey) => (
-                        <ColorBox key={defaultTheme.color[themeKey]} themeKey={themeKey} themeValue={defaultTheme.color[themeKey] as string} />
+                        <ColorBox
+                            key={defaultTheme.color[themeKey]}
+                            themeKey={themeKey}
+                            themeValue={defaultTheme.color[themeKey] as string}
+                        />
                     ))}
             </HStack>
         </>

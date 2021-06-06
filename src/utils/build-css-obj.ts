@@ -72,6 +72,7 @@ export const buildCssObj = <T extends Theme>(theme: T, definitions: SystemDefini
                 }
             });
         } else {
+            if (!value) return;
             objectKeys(value).forEach((key) => {
                 if (key === 'value') {
                     retVal = {
