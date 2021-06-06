@@ -33,10 +33,25 @@ export type TextProps<T extends Theme = Theme, HTMLAttributes = React.HTMLAttrib
             [x: string]: unknown;
         };
 
-export const Text = <T extends Theme>({ as = 'p', variant, children, className, ...props }: TextProps<T>) => {
-    const { css, theme } = useCss<T>();
-    const defaultStyle = theme.components.Text(variant);
-    const dynamicStyle = css(props, systemDefinitions);
-    const newClassName = cx(defaultStyle, dynamicStyle, className);
-    return React.createElement(as, { ...omit(omitProps, props), className: newClassName }, children);
-};
+// export const Text = <T extends Theme>({ as = 'p', variant, children, className, ...props }: TextProps<T>) => {
+//     const { css, theme } = useCss<T>();
+//     const defaultStyle = theme.components.Text(variant);
+//     const dynamicStyle = css(props, systemDefinitions);
+//     const newClassName = cx(defaultStyle, dynamicStyle, className);
+//     return React.createElement(as, { ...omit(omitProps, props), className: newClassName }, children);
+// };
+
+export const Text = React.forwardRef(
+    <T extends Theme, HTMLElem = TextHTMLElement>(
+        { as = 'p', variant, children, className, ...props }: TextProps<T>,
+        ref: React.ForwardedRef<HTMLElem>,
+    ) => {
+        const { css, theme } = useCss<T>();
+        const defaultStyle = theme.components.Text(variant);
+        const dynamicStyle = css(props, systemDefinitions);
+        const newClassName = cx(defaultStyle, dynamicStyle, className);
+        return React.createElement(as, { ...omit(omitProps, props), className: newClassName, ref }, children);
+    },
+);
+
+Text.displayName = 'Text';

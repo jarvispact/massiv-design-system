@@ -16,9 +16,16 @@ export type BoxProps<T extends Theme = Theme, HTMLAttributes = React.HTMLAttribu
             [x: string]: unknown;
         };
 
-export const Box = <T extends Theme>({ as = 'div', children, className, ...props }: BoxProps<T>) => {
-    const { css } = useCss<T>();
-    const dynamicStyle = css(props);
-    const newClassName = cx(dynamicStyle, className);
-    return React.createElement(as, { ...omit(omitProps, props), className: newClassName }, children);
-};
+export const Box = React.forwardRef(
+    <T extends Theme, HTMLElem = HTMLDivElement>(
+        { as = 'div', children, className, ...props }: BoxProps<T>,
+        ref: React.ForwardedRef<HTMLElem>,
+    ) => {
+        const { css } = useCss<T>();
+        const dynamicStyle = css(props);
+        const newClassName = cx(dynamicStyle, className);
+        return React.createElement(as, { ...omit(omitProps, props), className: newClassName, ref }, children);
+    },
+);
+
+Box.displayName = 'Box';

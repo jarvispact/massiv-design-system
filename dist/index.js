@@ -2473,35 +2473,45 @@ var omit = function (propertyList, obj) {
 };
 
 var omitProps$2 = __spreadArray(__spreadArray([], Object.keys(allSystemDefinitions)), ['customSelectors']);
-var Box = function (_a) {
+var Box = React__default['default'].forwardRef(function (_a, ref) {
     var _b = _a.as, as = _b === void 0 ? 'div' : _b, children = _a.children, className = _a.className, props = __rest(_a, ["as", "children", "className"]);
     var css = useCss().css;
     var dynamicStyle = css(props);
     var newClassName = cx(dynamicStyle, className);
-    return React__default['default'].createElement(as, __assign(__assign({}, omit(omitProps$2, props)), { className: newClassName }), children);
-};
+    return React__default['default'].createElement(as, __assign(__assign({}, omit(omitProps$2, props)), { className: newClassName, ref: ref }), children);
+});
+Box.displayName = 'Box';
 
 var systemDefinitions$1 = __assign(__assign({}, typographySystemDef), colorSystemDef);
 var omitProps$1 = Object.keys(systemDefinitions$1);
-var Heading = function (_a) {
+var Heading = React__default['default'].forwardRef(function (_a, ref) {
     var _b = _a.as, as = _b === void 0 ? 'h1' : _b, variant = _a.variant, children = _a.children, className = _a.className, props = __rest(_a, ["as", "variant", "children", "className"]);
     var _c = useCss(), css = _c.css, theme = _c.theme;
     var defaultStyle = theme.components.Heading(variant);
     var dynamicStyle = css(props, systemDefinitions$1);
     var newClassName = cx(defaultStyle, dynamicStyle, className);
-    return React__default['default'].createElement(as, __assign(__assign({}, omit(omitProps$1, props)), { className: newClassName }), children);
-};
+    return React__default['default'].createElement(as, __assign(__assign({}, omit(omitProps$1, props)), { className: newClassName, ref: ref }), children);
+});
+Heading.displayName = 'Heading';
 
 var systemDefinitions = __assign(__assign({}, typographySystemDef), colorSystemDef);
 var omitProps = Object.keys(systemDefinitions);
-var Text = function (_a) {
+// export const Text = <T extends Theme>({ as = 'p', variant, children, className, ...props }: TextProps<T>) => {
+//     const { css, theme } = useCss<T>();
+//     const defaultStyle = theme.components.Text(variant);
+//     const dynamicStyle = css(props, systemDefinitions);
+//     const newClassName = cx(defaultStyle, dynamicStyle, className);
+//     return React.createElement(as, { ...omit(omitProps, props), className: newClassName }, children);
+// };
+var Text = React__default['default'].forwardRef(function (_a, ref) {
     var _b = _a.as, as = _b === void 0 ? 'p' : _b, variant = _a.variant, children = _a.children, className = _a.className, props = __rest(_a, ["as", "variant", "children", "className"]);
     var _c = useCss(), css = _c.css, theme = _c.theme;
     var defaultStyle = theme.components.Text(variant);
     var dynamicStyle = css(props, systemDefinitions);
     var newClassName = cx(defaultStyle, dynamicStyle, className);
-    return React__default['default'].createElement(as, __assign(__assign({}, omit(omitProps, props)), { className: newClassName }), children);
-};
+    return React__default['default'].createElement(as, __assign(__assign({}, omit(omitProps, props)), { className: newClassName, ref: ref }), children);
+});
+Text.displayName = 'Text';
 
 exports.Box = Box;
 exports.CssReset = CssReset;

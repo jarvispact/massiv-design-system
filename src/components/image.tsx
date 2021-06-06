@@ -31,9 +31,13 @@ export type ImageProps<T extends Theme = Theme> = HTMLAttributesWithoutStyleProp
         [x: string]: unknown;
     };
 
-export const Image = <T extends Theme>({ className, ...props }: ImageProps<T>) => {
-    const { css } = useCss<T>();
-    const dynamicStyle = css(props, systemDefinitions);
-    const newClassName = cx(dynamicStyle, className);
-    return <img className={newClassName} {...omit(omitProps, props)} />;
-};
+export const Image = React.forwardRef(
+    <T extends Theme>({ className, ...props }: ImageProps<T>, ref: React.ForwardedRef<HTMLImageElement>) => {
+        const { css } = useCss<T>();
+        const dynamicStyle = css(props, systemDefinitions);
+        const newClassName = cx(dynamicStyle, className);
+        return <img className={newClassName} {...omit(omitProps, { ...props, ref })} />;
+    },
+);
+
+Image.displayName = 'Image';

@@ -29,10 +29,17 @@ export type HeadingProps<T extends Theme = Theme> = HTMLAttributesWithoutStylePr
         [x: string]: unknown;
     };
 
-export const Heading = <T extends Theme>({ as = 'h1', variant, children, className, ...props }: HeadingProps<T>) => {
-    const { css, theme } = useCss<T>();
-    const defaultStyle = theme.components.Heading(variant);
-    const dynamicStyle = css(props, systemDefinitions);
-    const newClassName = cx(defaultStyle, dynamicStyle, className);
-    return React.createElement(as, { ...omit(omitProps, props), className: newClassName }, children);
-};
+export const Heading = React.forwardRef(
+    <T extends Theme>(
+        { as = 'h1', variant, children, className, ...props }: HeadingProps<T>,
+        ref: React.ForwardedRef<HTMLHeadingElement>,
+    ) => {
+        const { css, theme } = useCss<T>();
+        const defaultStyle = theme.components.Heading(variant);
+        const dynamicStyle = css(props, systemDefinitions);
+        const newClassName = cx(defaultStyle, dynamicStyle, className);
+        return React.createElement(as, { ...omit(omitProps, props), className: newClassName, ref }, children);
+    },
+);
+
+Heading.displayName = 'Heading';
