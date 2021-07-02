@@ -1,169 +1,81 @@
-const breakpoint = {
-    s: '640px',
-    m: '768px',
-    l: '1024px',
-    xl: '1280px',
-    xxl: '1600px',
-    xxxl: '1920px',
+import { objectKeys } from '../utils/object-keys';
+
+export type Theme = {
+    breakpoint: unknown;
+    color: unknown;
+    spacing: unknown;
+    width: unknown;
+    height: unknown;
+    fontFamily: unknown;
+    fontSize: unknown;
+    fontWeight: unknown;
+    radii: unknown;
+    boxShadow: unknown;
+    zIndex: unknown;
 };
 
-const color = {
-    gray50: '#FAFAFA',
-    gray100: '#F5F5F5',
-    gray200: '#E5E5E5',
-    gray300: '#D4D4D4',
-    gray400: '#A3A3A3',
-    gray500: '#737373',
-    gray600: '#525252',
-    gray700: '#404040',
-    gray800: '#262626',
-    gray900: '#171717',
+const camelCaseToKebapCase = (str: string) =>
+    str.replace(/[A-Z]+(?![a-z])|[A-Z]/g, ($, ofs) => (ofs ? '-' : '') + $.toLowerCase());
 
-    error50: '#FEF2F2',
-    error100: '#FEE2E2',
-    error200: '#FECACA',
-    error300: '#FCA5A5',
-    error400: '#F87171',
-    error500: '#EF4444',
-    error600: '#DC2626',
-    error700: '#B91C1C',
-    error800: '#991B1B',
-    error900: '#7F1D1D',
+const reduceToCssVariable = (scope: keyof Theme, scopedValues: Record<string, unknown>) =>
+    objectKeys(scopedValues).reduce((accum, key) => {
+        accum[key] = `var(--${camelCaseToKebapCase(scope)}-${camelCaseToKebapCase(key)})`;
+        return accum;
+    }, {} as Record<string, unknown>);
 
-    warning50: '#FFFBEB',
-    warning100: '#FEF3C7',
-    warning200: '#FDE68A',
-    warning300: '#FCD34D',
-    warning400: '#FBBF24',
-    warning500: '#F59E0B',
-    warning600: '#D97706',
-    warning700: '#B45309',
-    warning800: '#92400E',
-    warning900: '#78350F',
+const reduceToCssVariableDefinition = (scope: keyof Theme, scopedValues: Record<string, unknown>) =>
+    objectKeys(scopedValues).reduce((accum, key) => {
+        accum[`--${camelCaseToKebapCase(scope)}-${camelCaseToKebapCase(key)}`] = scopedValues[key];
+        return accum;
+    }, {} as Record<string, unknown>);
 
-    success50: '#F0FDF4',
-    success100: '#DCFCE7',
-    success200: '#BBF7D0',
-    success300: '#86EFAC',
-    success400: '#4ADE80',
-    success500: '#22C55E',
-    success600: '#16A34A',
-    success700: '#15803D',
-    success800: '#166534',
-    success900: '#14532D',
+export const createTheme = <S extends { [K in keyof Theme]: S[K] }>(scopes: Partial<S> = {}) => {
+    const vars = {
+        breakpoint: scopes.breakpoint || {},
+        color: reduceToCssVariable('color', scopes.color || {}),
+        spacing: reduceToCssVariable('spacing', scopes.spacing || {}),
+        width: reduceToCssVariable('width', scopes.width || {}),
+        height: reduceToCssVariable('height', scopes.height || {}),
+        fontFamily: reduceToCssVariable('fontFamily', scopes.fontFamily || {}),
+        fontSize: reduceToCssVariable('fontSize', scopes.fontSize || {}),
+        fontWeight: reduceToCssVariable('fontWeight', scopes.fontWeight || {}),
+        radii: reduceToCssVariable('radii', scopes.radii || {}),
+        boxShadow: reduceToCssVariable('boxShadow', scopes.boxShadow || {}),
+        zIndex: reduceToCssVariable('zIndex', scopes.zIndex || {}),
+    };
 
-    primary50: '#EFF6FF',
-    primary100: '#DBEAFE',
-    primary200: '#BFDBFE',
-    primary300: '#93C5FD',
-    primary400: '#60A5FA',
-    primary500: '#3B82F6',
-    primary600: '#2563EB',
-    primary700: '#1D4ED8',
-    primary800: '#1E40AF',
-    primary900: '#1E3A8A',
+    const values = {
+        ...reduceToCssVariableDefinition('color', scopes.color || {}),
+        ...reduceToCssVariableDefinition('spacing', scopes.spacing || {}),
+        ...reduceToCssVariableDefinition('width', scopes.width || {}),
+        ...reduceToCssVariableDefinition('height', scopes.height || {}),
+        ...reduceToCssVariableDefinition('fontFamily', scopes.fontFamily || {}),
+        ...reduceToCssVariableDefinition('fontSize', scopes.fontSize || {}),
+        ...reduceToCssVariableDefinition('fontWeight', scopes.fontWeight || {}),
+        ...reduceToCssVariableDefinition('radii', scopes.radii || {}),
+        ...reduceToCssVariableDefinition('boxShadow', scopes.boxShadow || {}),
+        ...reduceToCssVariableDefinition('zIndex', scopes.zIndex || {}),
+    };
 
-    secondary50: '#FDF2F8',
-    secondary100: '#FCE7F3',
-    secondary200: '#FBCFE8',
-    secondary300: '#F9A8D4',
-    secondary400: '#F472B6',
-    secondary500: '#EC4899',
-    secondary600: '#DB2777',
-    secondary700: '#BE185D',
-    secondary800: '#9D174D',
-    secondary900: '#831843',
+    return [vars, values] as any as [S, Record<string, string>];
 };
 
-const spacing = {
-    px: '1px',
-    '0.5': '0.125rem',
-    '1': '0.25rem',
-    '1.5': '0.375rem',
-    '2': '0.5rem',
-    '2.5': '0.625rem',
-    '3': '0.75rem',
-    '3.5': '0.875rem',
-    '4': '1rem',
-    '5': '1.25rem',
-    '6': '1.5rem',
-    '7': '1.75rem',
-    '8': '2rem',
-    '9': '2.25rem',
-    '10': '2.5rem',
-    '11': '2.75rem',
-    '12': '3rem',
-    '14': '3.5rem',
-    '16': '4rem',
-    '20': '5rem',
-    '24': '6rem',
-    '28': '7rem',
-    '32': '8rem',
-    '36': '9rem',
-    '40': '10rem',
-    '44': '11rem',
-    '48': '12rem',
-    '52': '13rem',
-    '56': '14rem',
-    '60': '15rem',
-    '64': '16rem',
-    '72': '18rem',
-    '80': '20rem',
-    '96': '24rem',
-};
+export const createThemeVariant = <S extends { [K in keyof Theme]: S[K] }>(
+    contract: S,
+    scopes: Partial<{ [K in keyof S]: S[K] }>,
+) => {
+    const values = {
+        ...reduceToCssVariableDefinition('color', scopes.color || {}),
+        ...reduceToCssVariableDefinition('spacing', scopes.spacing || {}),
+        ...reduceToCssVariableDefinition('width', scopes.width || {}),
+        ...reduceToCssVariableDefinition('height', scopes.height || {}),
+        ...reduceToCssVariableDefinition('fontFamily', scopes.fontFamily || {}),
+        ...reduceToCssVariableDefinition('fontSize', scopes.fontSize || {}),
+        ...reduceToCssVariableDefinition('fontWeight', scopes.fontWeight || {}),
+        ...reduceToCssVariableDefinition('radii', scopes.radii || {}),
+        ...reduceToCssVariableDefinition('boxShadow', scopes.boxShadow || {}),
+        ...reduceToCssVariableDefinition('zIndex', scopes.zIndex || {}),
+    };
 
-const fontFamily = {
-    sans: [
-        'system-ui',
-        '-apple-system',
-        'BlinkMacSystemFont',
-        '"Segoe UI"',
-        'Roboto',
-        '"Helvetica Neue"',
-        'Arial',
-        '"Noto Sans"',
-        'sans-serif',
-        '"Apple Color Emoji"',
-        '"Segoe UI Emoji"',
-        '"Segoe UI Symbol"',
-        '"Noto Color Emoji"',
-    ].join(', '),
-    serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'].join(', '),
-    mono: ['Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'].join(', '),
+    return values as Record<string, string>;
 };
-
-const fontSize = {
-    xs: '0.75rem',
-    s: '0.875rem',
-    m: '1rem',
-    l: '1.125rem',
-    xl: '1.25rem',
-    '2xl': '1.5rem',
-    '3xl': '1.875rem',
-    '4xl': '2.25rem',
-    '5xl': '3rem',
-    '6xl': '4rem',
-};
-
-const fontWeight = {
-    xxs: '100',
-    xs: '200',
-    s: '300',
-    m: '400',
-    l: '500',
-    xl: '600',
-    '2xl': '700',
-    '3xl': '800',
-    '4xl': '900',
-};
-
-export const theme = {
-    breakpoint,
-    color,
-    spacing,
-    fontFamily,
-    fontSize,
-    fontWeight,
-};
-
-export type Theme = typeof theme;

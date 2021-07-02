@@ -1,20 +1,31 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { css as _css, CSSObject } from '@emotion/css';
+import { css, CSSObject } from '@emotion/css';
+import { objectKeys } from '../utils/object-keys';
 import { Theme } from './default-theme';
 
-// type Config<T extends Theme> = {
-//     [Key in keyof CSSObject]: { themeScope: keyof T; get: (v: any) => CSSObject; t?: CSSObject[Key] };
-// };
-
 const config = {
-    color: { themeScope: 'color' as const, get: (v: any) => ({ color: v }) },
-    padding: { themeScope: 'spacing' as const, get: (v: any) => ({ padding: v }) },
-    px: { themeScope: 'spacing' as const, get: (v: any) => ({ paddingLeft: v, paddingRight: v }) },
-    py: { themeScope: 'spacing' as const, get: (v: any) => ({ paddingTop: v, paddingBottom: v }) },
+    color: {
+        themeScope: 'color' as const,
+        get: (v: any) => ({ color: v }),
+    },
+    bg: {
+        themeScope: 'color' as const,
+        get: (v: any) => ({ backgroundColor: v }),
+    },
+    padding: {
+        themeScope: 'spacing' as const,
+        get: (v: any) => ({ padding: v }),
+    },
+    px: {
+        themeScope: 'spacing' as const,
+        get: (v: any) => ({ paddingLeft: v, paddingRight: v }),
+    },
+    py: {
+        themeScope: 'spacing' as const,
+        get: (v: any) => ({ paddingTop: v, paddingBottom: v }),
+    },
 };
-
-type Overwrite<T, U> = Pick<T, Exclude<keyof T, keyof U>> & U;
 
 type LiteralUnion<T extends U, U = string | number | symbol> =
     | T
@@ -23,41 +34,59 @@ type LiteralUnion<T extends U, U = string | number | symbol> =
       });
 
 type Config = typeof config;
-type ConfigThemeScope<K extends keyof Config> = Config[K]['themeScope'];
 
-type Input<T extends Theme> = Overwrite<
-    { [Key in keyof CSSObject]: CSSObject[Key] },
-    {
-        [Key in keyof Config]?: LiteralUnion<keyof T[ConfigThemeScope<Key>]>;
-    }
->;
+type Input<T extends Theme> =
+    | CSSObject
+    | Partial<
+          {
+              [Key in keyof Config]: LiteralUnion<keyof T[Config[Key]['themeScope']]>;
+          } & {
+              [x: string]: {
+                  [Key in keyof Config]: LiteralUnion<keyof T[Config[Key]['themeScope']]>;
+              };
+          }
+      >;
 
-const objectKeys = <T extends Record<string, unknown>>(record: T) => Object.keys(record) as Array<keyof T>;
+const isObject = (v: unknown): v is Record<string, unknown> => typeof v === 'object' && v !== null && !Array.isArray(v);
 
-const transform = <T extends Theme>(input: Input<T>, theme: T, config: Config) => {
-    console.log({ input, theme, config });
-
+const transform = <T extends Theme>(input: Input<T>, theme: T, config: Config): CSSObject => {
     const output = objectKeys(input).reduce((accum, key) => {
         const cfg = config[key as keyof Config];
+        const inputValue = input[key];
 
-        if (cfg) {
-            const val = input[key] as string;
-            // @ts-ignore
-            const valueFromTheme = theme[cfg.themeScope][val];
-            // @ts-ignore
-            accum = { ...accum, ...cfg.get(valueFromTheme || val) };
-        } else {
-            accum[key] = input[key];
+        if (!cfg) {
+            if (typeof inputValue === 'string') {
+                accum[key] = inputValue;
+                return accum;
+            } else if (isObject(inputValue)) {
+                // @ts-ignore
+                accum = { ...accum, [key]: { ...accum[key], ...transform(inputValue, theme, config) } };
+                return accum;
+            } else {
+                return accum;
+            }
         }
 
+        // @ts-ignore
+        const valueFromTheme = theme[cfg.themeScope][inputValue];
+        // @ts-ignore
+        accum = { ...accum, ...cfg.get(valueFromTheme || inputValue) };
         return accum;
     }, {} as Input<T>);
 
-    console.log({ output });
-    return output;
+    return output as CSSObject;
 };
 
 export const createThemedCss = <T extends Theme>(theme: T) => {
-    const css = (input: Input<T>) => _css(transform(input, theme, config) as CSSObject);
-    return css;
+    return (input: Input<T>) => css(transform(input, theme, config));
+};
+
+export const createMedia = <T extends Theme>(theme: T) => {
+    // @ts-ignore
+    return (mediaQueryKey: keyof T['breakpoint']) => `@media(min-width: ${theme.breakpoint[mediaQueryKey]})`;
+};
+
+export const applyTheme = (selector: string, theme: Record<string, string>) => {
+    const elem = document.querySelector(selector) as HTMLDivElement;
+    if (elem) elem.className = css(theme);
 };

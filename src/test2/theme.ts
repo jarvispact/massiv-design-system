@@ -8,6 +8,9 @@ const breakpoint = {
 };
 
 const color = {
+    white: '#ffffff',
+    black: '#000000',
+
     gray50: '#FAFAFA',
     gray100: '#F5F5F5',
     gray200: '#E5E5E5',
@@ -161,9 +164,14 @@ export const theme = {
     breakpoint,
     color,
     spacing,
+    width: {},
+    height: {},
     fontFamily,
     fontSize,
     fontWeight,
+    radii: {},
+    boxShadow: {},
+    zIndex: {},
 };
 
 export type Theme = typeof theme;
