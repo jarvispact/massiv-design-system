@@ -5,7 +5,7 @@ export default {
     title: 'test',
 };
 
-export const test = () => {
+export const test3 = () => {
     return (
         <>
             <Heading />

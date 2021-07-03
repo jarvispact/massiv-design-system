@@ -17,21 +17,21 @@ export type Theme = {
 const camelCaseToKebapCase = (str: string) =>
     str.replace(/[A-Z]+(?![a-z])|[A-Z]/g, ($, ofs) => (ofs ? '-' : '') + $.toLowerCase());
 
-const reduceToCssVariable = (scope: keyof Theme, scopedValues: Record<string, unknown>) =>
+const reduceToCssVariable = (scope: keyof Theme, scopedValues: Record<string, string>) =>
     objectKeys(scopedValues).reduce((accum, key) => {
         accum[key] = `var(--${camelCaseToKebapCase(scope)}-${camelCaseToKebapCase(key)})`;
         return accum;
-    }, {} as Record<string, unknown>);
+    }, {} as Record<string, string>);
 
-const reduceToCssVariableDefinition = (scope: keyof Theme, scopedValues: Record<string, unknown>) =>
+const reduceToCssVariableDefinition = (scope: keyof Theme, scopedValues: Record<string, string>) =>
     objectKeys(scopedValues).reduce((accum, key) => {
         accum[`--${camelCaseToKebapCase(scope)}-${camelCaseToKebapCase(key)}`] = scopedValues[key];
         return accum;
-    }, {} as Record<string, unknown>);
+    }, {} as Record<string, string>);
 
-export const createTheme = <S extends { [K in keyof Theme]: S[K] }>(scopes: Partial<S> = {}) => {
+export const createTheme = <S extends { [x: string]: any }>(scopes: Partial<S> = {}) => {
     const vars = {
-        breakpoint: scopes.breakpoint || {},
+        breakpoint: (scopes.breakpoint || {}) as Record<string, string>,
         color: reduceToCssVariable('color', scopes.color || {}),
         spacing: reduceToCssVariable('spacing', scopes.spacing || {}),
         width: reduceToCssVariable('width', scopes.width || {}),
@@ -57,7 +57,7 @@ export const createTheme = <S extends { [K in keyof Theme]: S[K] }>(scopes: Part
         ...reduceToCssVariableDefinition('zIndex', scopes.zIndex || {}),
     };
 
-    return [vars, values] as any as [S, Record<string, string>];
+    return [vars, values] as any as [{ [Key in keyof Theme]: S[Key] }, Record<string, string>];
 };
 
 export const createThemeVariant = <S extends { [K in keyof Theme]: S[K] }>(

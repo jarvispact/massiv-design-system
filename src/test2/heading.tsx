@@ -1,7 +1,19 @@
+import { CSSObject } from '@emotion/css';
 import React from 'react';
-import { createMedia, createThemedCss } from '../test/css';
+import { createThemedCss } from '../test/css';
 import { createTheme, createThemeVariant } from '../test/default-theme';
-// import { theme } from './theme';
+
+const declareProperty = <ThemeScope extends string>(themeScope: ThemeScope, get?: (v: any) => CSSObject) => {
+    return {
+        themeScope,
+        get,
+    };
+};
+
+const config = {
+    colorz: declareProperty('color'),
+    paddingz: declareProperty('spacing'),
+};
 
 const [theme, light] = createTheme({
     breakpoint: {
@@ -17,7 +29,9 @@ const [theme, light] = createTheme({
         nope: '#ffff00',
     },
     spacing: {
-        small: '1px',
+        small: '2px',
+        medium: '4px',
+        large: '8px',
     },
 });
 
@@ -27,7 +41,9 @@ const dark = createThemeVariant(theme, {
         nope: '#ffff00',
     },
     spacing: {
-        small: '4px',
+        small: '2px',
+        medium: '4px',
+        large: '8px',
     },
 });
 
@@ -37,22 +53,26 @@ const other = createThemeVariant(theme, {
         nope: '#ffff00',
     },
     spacing: {
-        small: '8px',
+        small: '2px',
+        medium: '4px',
+        large: '8px',
     },
 });
 
 console.log({ theme, dark, other, light });
 
-const css = createThemedCss(theme);
-const media = createMedia(theme);
+const { css, minWidth } = createThemedCss(theme);
 
 const style = css({
     color: 'wat',
-    padding: 'small',
-    textAlign: 'center',
-    [media('s')]: {
-        textAlign: 'left',
-        color: 'nope',
+    bg: ['nope', 'wat', 'nope'],
+    [minWidth('s')]: {
+        padding: 'small',
+        margin: 'small',
+    },
+    [minWidth('m')]: {
+        padding: 'large',
+        margin: 'large',
     },
 });
 
